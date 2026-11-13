@@ -76,7 +76,9 @@ build can be verified.
 
 - **Week 1, block A:** done — 5,605 recipes cleaned, 11,266 passages (5,600
   canonical docs), 70/15/15 split (seed 42), BM25 and 384d dense indexes,
-  20 unit tests passing, ruff clean.
+  22 unit tests passing, ruff clean.
+- **Handoff A → B:** see [`docs/handoff/w1-a.md`](docs/handoff/w1-a.md) for
+  the current state, artefacts, and open decisions.
 - **Week 1, block B:** annotation guideline and 115 benchmark queries.
 - **Week 1, block C/D:** blind qrels, adjudication, frozen benchmark.
 
