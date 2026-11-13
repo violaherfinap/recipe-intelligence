@@ -1,44 +1,44 @@
 # Recipe Intelligence
 
-Evidence-grounded question answering over **5,605 historical American recipes**
-from [`open-recipe-archive`](https://github.com/AdamBouhmad/open-recipe-archive)
-(`ye-old-american`, public domain). The project studies whether retrieval,
-verification, parameter-efficient fine-tuning, and guarded tool use improve
-factual answers with citations over a plain LLM.
+Tanya-jawab berbasis bukti atas **5.605 resep historis Amerika** dari
+[`open-recipe-archive`](https://github.com/AdamBouhmad/open-recipe-archive)
+(koleksi `ye-old-american`, public domain). Proyek ini mempelajari apakah
+retrieval, verifikasi, fine-tuning parameter-efficient, dan penggunaan tool
+yang dijaga dapat meningkatkan jawaban faktual dengan sitasi dibanding LLM biasa.
 
-This repository follows `RENCANA_LENGKAP.md` and `RENCANA_MINGGUAN.md`.
-Week 1, block A builds the data foundation: corpus, passages, split, and
-retrieval indexes.
+Repo ini mengikuti `RENCANA_LENGKAP.md` dan `RENCANA_MINGGUAN.md`.
+Week 1 blok A membangun fondasi data: korpus, passage, split, dan index retrieval.
 
-## Requirements
+## Kebutuhan
 
-- Windows 11 (or Linux/macOS), Python 3.11
-- [`uv`](https://docs.astral.sh/uv/) for environment management
-- ~2 GB free disk for the environment and indexes
+- Windows 11 (atau Linux/macOS), Python 3.11
+- [`uv`](https://docs.astral.sh/uv/) untuk manajemen environment
+- Ruang disk sekitar 2 GB untuk environment dan index
 
-## Quick start
+## Mulai cepat
 
 ```powershell
-# One-time environment setup
+# Setup environment sekali saja
 uv sync --extra dev
 
-# Download and pin the corpus (public domain)
-git clone --depth 1 https://github.com/AdamBouhmad/open-recipe-archive.git data/raw/open-recipe-archive
-git -C data/raw/open-recipe-archive rev-parse HEAD | Set-Content -Encoding ascii data/corpus_commit.txt
+# Unduh korpus dan checkout commit yang sudah dipin
+git clone https://github.com/AdamBouhmad/open-recipe-archive.git data/raw/open-recipe-archive
+$sha = Get-Content data/corpus_commit.txt
+git -C data/raw/open-recipe-archive checkout $sha
 
-# Build docs.jsonl, passages.jsonl, source_register.csv, split.json, manifests
+# Bangun docs.jsonl, passages.jsonl, source_register.csv, split.json, manifest
 uv run python -m recipe_qa.corpus.cli build
 
-# Build BM25 + dense indexes
+# Bangun index BM25 dan dense
 uv run python -m recipe_qa.index.cli all
 
-# Verify
+# Verifikasi
 uv run pytest
 uv run ruff check src tests
 uv run python -m recipe_qa.index.cli smoke --query "tomato soup"
 ```
 
-On Windows, `make` is optional. The same targets are available through
+Di Windows, `make` opsional. Target yang sama tersedia lewat
 `.\scripts\tasks.ps1`:
 
 ```powershell
@@ -49,40 +49,40 @@ On Windows, `make` is optional. The same targets are available through
 .\scripts\tasks.ps1 smoke
 ```
 
-Linux/macOS can use the `Makefile` directly.
+Linux/macOS bisa memakai `Makefile` langsung.
 
-## Data layout
+## Struktur data
 
-| Path | Contents |
+| Path | Isi |
 | --- | --- |
-| `data/raw/open-recipe-archive/` | Raw corpus clone (gitignored) |
-| `data/corpus_commit.txt` | Pinned corpus commit SHA |
-| `data/processed/docs.jsonl` | One cleaned document per recipe |
-| `data/processed/passages.jsonl` | Section-aware retrieval passages |
-| `data/processed/source_register.csv` | Source, licence, hash, split per document |
-| `data/processed/split.json` | Deterministic 70/15/15 split (seed 42) |
-| `data/processed/manifest.json` | Corpus, chunking, counts, file hashes |
-| `data/processed/manifest.sha256` | SHA-256 of frozen artefacts |
-| `indexes/bm25/` | BM25 index and metadata |
-| `indexes/dense.npy` | L2-normalised BGE embeddings (N x 384) |
-| `indexes/dense_meta.parquet` | Row alignment for the dense matrix |
-| `indexes/manifest.json` | Embedding model, dimension, count, corpus hash |
+| `data/raw/open-recipe-archive/` | Clone korpus mentah (gitignored) |
+| `data/corpus_commit.txt` | Commit SHA korpus yang sudah dipin |
+| `data/processed/docs.jsonl` | Satu dokumen bersih per resep |
+| `data/processed/passages.jsonl` | Passage retrieval section-aware |
+| `data/processed/source_register.csv` | Sumber, lisensi, hash, dan split per dokumen |
+| `data/processed/split.json` | Split 70/15/15 deterministik (seed 42) |
+| `data/processed/manifest.json` | Korpus, chunking, jumlah, dan hash file |
+| `data/processed/manifest.sha256` | SHA-256 artefak yang dibekukan |
+| `indexes/bm25/` | Index BM25 dan metadata |
+| `indexes/dense.npy` | Embedding BGE yang sudah L2-normalized (N x 384) |
+| `indexes/dense_meta.parquet` | Metadata untuk menyelaraskan baris matriks dense |
+| `indexes/manifest.json` | Model embedding, dimensi, jumlah, dan hash korpus |
 
-Large files (`docs.jsonl`, `passages.jsonl`, indexes) are not committed. Rebuild
-them with the commands above; the manifests and split file are committed so the
-build can be verified.
+File besar (`docs.jsonl`, `passages.jsonl`, index) tidak di-commit. Bangun ulang
+dengan perintah di atas; manifest dan file split tetap di-commit supaya hasil
+build bisa diverifikasi.
 
-## Project status
+## Status proyek
 
-- **Week 1, block A:** done — 5,605 recipes cleaned, 11,266 passages (5,600
-  canonical docs), 70/15/15 split (seed 42), BM25 and 384d dense indexes,
-  22 unit tests passing, ruff clean.
-- **Handoff A → B:** see [`docs/handoff/w1-a.md`](docs/handoff/w1-a.md) for
-  the current state, artefacts, and open decisions.
-- **Week 1, block B:** annotation guideline and 115 benchmark queries.
-- **Week 1, block C/D:** blind qrels, adjudication, frozen benchmark.
+- **Week 1, blok A:** selesai — 5.605 resep dibersihkan, 11.266 passage
+  (5.600 dokumen kanonik), split 70/15/15 (seed 42), index BM25 dan dense 384d,
+  22 unit test lulus, ruff bersih.
+- **Handoff A → B:** lihat [`docs/handoff/w1-a.md`](docs/handoff/w1-a.md) untuk
+  status, artefak, dan keputusan yang masih terbuka.
+- **Week 1, blok B:** guideline anotasi dan 115 query benchmark.
+- **Week 1, blok C/D:** qrels blind, adjudikasi, dan benchmark frozen.
 
-## Licence
+## Lisensi
 
-The source corpus is public domain (Unlicense). Source metadata is preserved in
-`source_register.csv`. This repository does not redistribute the raw corpus.
+Korpus sumber adalah public domain (Unlicense). Metadata sumber disimpan di
+`source_register.csv`. Repo ini tidak mendistribusikan ulang korpus mentah.
