@@ -1,0 +1,372 @@
+[
+  {
+    "query": "How long is tomato soup cooked?",
+    "bm25_top": [
+      {
+        "passage_id": "ye-old-american:julienne-soup-2#ingredients#0",
+        "doc_id": "ye-old-american:julienne-soup-2",
+        "score": 5.709807872772217
+      },
+      {
+        "passage_id": "ye-old-american:julienne-soup-2#directions#0",
+        "doc_id": "ye-old-american:julienne-soup-2",
+        "score": 5.272551536560059
+      },
+      {
+        "passage_id": "ye-old-american:baked-bean-soup#directions#0",
+        "doc_id": "ye-old-american:baked-bean-soup",
+        "score": 4.193293571472168
+      }
+    ],
+    "dense_top": [
+      {
+        "passage_id": "ye-old-american:tomato-winter-soup#directions#0",
+        "doc_id": "ye-old-american:tomato-winter-soup",
+        "score": 0.7638634443283081
+      },
+      {
+        "passage_id": "ye-old-american:soup-with-bouilli-2#directions#2",
+        "doc_id": "ye-old-american:soup-with-bouilli-2",
+        "score": 0.7595703601837158
+      },
+      {
+        "passage_id": "ye-old-american:chili-sauce-2#directions#0",
+        "doc_id": "ye-old-american:chili-sauce-2",
+        "score": 0.7516487836837769
+      }
+    ]
+  },
+  {
+    "query": "How do you make bread pudding?",
+    "bm25_top": [
+      {
+        "passage_id": "ye-old-american:gooseberry-pudding-with-bread#ingredients#0",
+        "doc_id": "ye-old-american:gooseberry-pudding-with-bread",
+        "score": 3.3985023498535156
+      },
+      {
+        "passage_id": "ye-old-american:bread-and-butter-apple-pudding#ingredients#0",
+        "doc_id": "ye-old-american:bread-and-butter-apple-pudding",
+        "score": 3.2055740356445312
+      },
+      {
+        "passage_id": "ye-old-american:bread-and-butter-pudding-no-2#directions#0",
+        "doc_id": "ye-old-american:bread-and-butter-pudding-no-2",
+        "score": 3.1720895767211914
+      }
+    ],
+    "dense_top": [
+      {
+        "passage_id": "ye-old-american:bread-and-butter-pudding-no-1#directions#0",
+        "doc_id": "ye-old-american:bread-and-butter-pudding-no-1",
+        "score": 0.8788243532180786
+      },
+      {
+        "passage_id": "ye-old-american:chocolate-bread-pudding#directions#0",
+        "doc_id": "ye-old-american:chocolate-bread-pudding",
+        "score": 0.870364785194397
+      },
+      {
+        "passage_id": "ye-old-american:bread-and-butter-pudding-2#directions#0",
+        "doc_id": "ye-old-american:bread-and-butter-pudding-2",
+        "score": 0.8670439124107361
+      }
+    ]
+  },
+  {
+    "query": "What ingredients are in apple pie?",
+    "bm25_top": [
+      {
+        "passage_id": "ye-old-american:apple-custard-pie#ingredients#0",
+        "doc_id": "ye-old-american:apple-custard-pie",
+        "score": 4.181157112121582
+      },
+      {
+        "passage_id": "ye-old-american:green-apple-pie#ingredients#0",
+        "doc_id": "ye-old-american:green-apple-pie",
+        "score": 4.1323089599609375
+      },
+      {
+        "passage_id": "ye-old-american:apple-pie-3#directions#0",
+        "doc_id": "ye-old-american:apple-pie-3",
+        "score": 4.111720561981201
+      }
+    ],
+    "dense_top": [
+      {
+        "passage_id": "ye-old-american:green-apple-pie#ingredients#0",
+        "doc_id": "ye-old-american:green-apple-pie",
+        "score": 0.7991332411766052
+      },
+      {
+        "passage_id": "ye-old-american:apple-pie-no-2#directions#0",
+        "doc_id": "ye-old-american:apple-pie-no-2",
+        "score": 0.7565325498580933
+      },
+      {
+        "passage_id": "ye-old-american:apple-custard-pie-no-3#ingredients#0",
+        "doc_id": "ye-old-american:apple-custard-pie-no-3",
+        "score": 0.7523952722549438
+      }
+    ]
+  },
+  {
+    "query": "How much flour for a pound cake?",
+    "bm25_top": [
+      {
+        "passage_id": "ye-old-american:a-rich-cake#ingredients#0",
+        "doc_id": "ye-old-american:a-rich-cake",
+        "score": 4.575567245483398
+      },
+      {
+        "passage_id": "ye-old-american:a-rich-cake#directions#0",
+        "doc_id": "ye-old-american:a-rich-cake",
+        "score": 4.0760579109191895
+      },
+      {
+        "passage_id": "ye-old-american:dough-nuts-a-yankee-cake#directions#0",
+        "doc_id": "ye-old-american:dough-nuts-a-yankee-cake",
+        "score": 4.072546005249023
+      }
+    ],
+    "dense_top": [
+      {
+        "passage_id": "ye-old-american:biscuit#ingredients#0",
+        "doc_id": "ye-old-american:biscuit",
+        "score": 0.8116772174835205
+      },
+      {
+        "passage_id": "ye-old-american:naples-biscuit#ingredients#0",
+        "doc_id": "ye-old-american:naples-biscuit",
+        "score": 0.7860930562019348
+      },
+      {
+        "passage_id": "ye-old-american:puff-paste-2#ingredients#0",
+        "doc_id": "ye-old-american:puff-paste-2",
+        "score": 0.7838414311408997
+      }
+    ]
+  },
+  {
+    "query": "Which recipe uses nutmeg and mace?",
+    "bm25_top": [
+      {
+        "passage_id": "ye-old-american:lily-cake#directions#0",
+        "doc_id": "ye-old-american:lily-cake",
+        "score": 3.185253381729126
+      },
+      {
+        "passage_id": "ye-old-american:celery-sauce#ingredients#0",
+        "doc_id": "ye-old-american:celery-sauce",
+        "score": 3.158878803253174
+      },
+      {
+        "passage_id": "ye-old-american:celery-sauce-with-cream#ingredients#0",
+        "doc_id": "ye-old-american:celery-sauce-with-cream",
+        "score": 3.158878803253174
+      }
+    ],
+    "dense_top": [
+      {
+        "passage_id": "ye-old-american:rice-custard#directions#0",
+        "doc_id": "ye-old-american:rice-custard",
+        "score": 0.8102813959121704
+      },
+      {
+        "passage_id": "ye-old-american:rice-custard#ingredients#0",
+        "doc_id": "ye-old-american:rice-custard",
+        "score": 0.7701138257980347
+      },
+      {
+        "passage_id": "ye-old-american:a-cream-almond-pudding#ingredients#0",
+        "doc_id": "ye-old-american:a-cream-almond-pudding",
+        "score": 0.7606225609779358
+      }
+    ]
+  },
+  {
+    "query": "How do you roast a goose?",
+    "bm25_top": [
+      {
+        "passage_id": "ye-old-american:roast-goose-with-potato-stuffing#ingredients#0",
+        "doc_id": "ye-old-american:roast-goose-with-potato-stuffing",
+        "score": 5.840030193328857
+      },
+      {
+        "passage_id": "ye-old-american:to-roast-a-goose-2#ingredients#0",
+        "doc_id": "ye-old-american:to-roast-a-goose-2",
+        "score": 5.771064758300781
+      },
+      {
+        "passage_id": "ye-old-american:to-roast-a-goose#ingredients#0",
+        "doc_id": "ye-old-american:to-roast-a-goose",
+        "score": 5.466350555419922
+      }
+    ],
+    "dense_top": [
+      {
+        "passage_id": "ye-old-american:to-roast-a-goose#directions#0",
+        "doc_id": "ye-old-american:to-roast-a-goose",
+        "score": 0.8550664186477661
+      },
+      {
+        "passage_id": "ye-old-american:roast-goose#directions#0",
+        "doc_id": "ye-old-american:roast-goose",
+        "score": 0.8527513742446899
+      },
+      {
+        "passage_id": "ye-old-american:to-roast-a-goose-2#directions#0",
+        "doc_id": "ye-old-american:to-roast-a-goose-2",
+        "score": 0.8313573598861694
+      }
+    ]
+  },
+  {
+    "query": "How do you pickle peaches?",
+    "bm25_top": [
+      {
+        "passage_id": "ye-old-american:sweet-pickle-for-fruit#ingredients#0",
+        "doc_id": "ye-old-american:sweet-pickle-for-fruit",
+        "score": 4.145888328552246
+      },
+      {
+        "passage_id": "ye-old-american:sweet-pickle-plums-pears-peaches-or-other-fruits#ingredients#0",
+        "doc_id": "ye-old-american:sweet-pickle-plums-pears-peaches-or-other-fruits",
+        "score": 4.145888328552246
+      },
+      {
+        "passage_id": "ye-old-american:to-preserve-peaches#ingredients#0",
+        "doc_id": "ye-old-american:to-preserve-peaches",
+        "score": 3.377978801727295
+      }
+    ],
+    "dense_top": [
+      {
+        "passage_id": "ye-old-american:peach-mangoes#directions#0",
+        "doc_id": "ye-old-american:peach-mangoes",
+        "score": 0.8714021444320679
+      },
+      {
+        "passage_id": "ye-old-american:sweet-pickled-pears#directions#0",
+        "doc_id": "ye-old-american:sweet-pickled-pears",
+        "score": 0.8338857889175415
+      },
+      {
+        "passage_id": "ye-old-american:peach-cream#directions#0",
+        "doc_id": "ye-old-american:peach-cream",
+        "score": 0.796657919883728
+      }
+    ]
+  },
+  {
+    "query": "How many eggs for corn meal puffs?",
+    "bm25_top": [
+      {
+        "passage_id": "ye-old-american:corn-meal-puffs#ingredients#0",
+        "doc_id": "ye-old-american:corn-meal-puffs",
+        "score": 8.20333194732666
+      },
+      {
+        "passage_id": "ye-old-american:corn-meal-bread#ingredients#0",
+        "doc_id": "ye-old-american:corn-meal-bread",
+        "score": 5.812442302703857
+      },
+      {
+        "passage_id": "ye-old-american:corn-meal-muffins-without-eggs#ingredients#0",
+        "doc_id": "ye-old-american:corn-meal-muffins-without-eggs",
+        "score": 5.684401512145996
+      }
+    ],
+    "dense_top": [
+      {
+        "passage_id": "ye-old-american:green-corn-muffins#ingredients#0",
+        "doc_id": "ye-old-american:green-corn-muffins",
+        "score": 0.7566825151443481
+      },
+      {
+        "passage_id": "ye-old-american:tennessee-muffins-2#ingredients#0",
+        "doc_id": "ye-old-american:tennessee-muffins-2",
+        "score": 0.753497838973999
+      },
+      {
+        "passage_id": "ye-old-american:to-make-an-omelette#ingredients#0",
+        "doc_id": "ye-old-american:to-make-an-omelette",
+        "score": 0.7533047199249268
+      }
+    ]
+  },
+  {
+    "query": "What does the 1824 cookbook say about peaches in brandy?",
+    "bm25_top": [
+      {
+        "passage_id": "ye-old-american:peaches-in-brandy#ingredients#0",
+        "doc_id": "ye-old-american:peaches-in-brandy",
+        "score": 5.352080821990967
+      },
+      {
+        "passage_id": "ye-old-american:to-preserve-peaches#ingredients#0",
+        "doc_id": "ye-old-american:to-preserve-peaches",
+        "score": 5.271033763885498
+      },
+      {
+        "passage_id": "ye-old-american:brandy-peaches#ingredients#0",
+        "doc_id": "ye-old-american:brandy-peaches",
+        "score": 4.972947120666504
+      }
+    ],
+    "dense_top": [
+      {
+        "passage_id": "ye-old-american:to-preserve-peaches#ingredients#0",
+        "doc_id": "ye-old-american:to-preserve-peaches",
+        "score": 0.717475950717926
+      },
+      {
+        "passage_id": "ye-old-american:brandied-peaches#ingredients#0",
+        "doc_id": "ye-old-american:brandied-peaches",
+        "score": 0.6873679161071777
+      },
+      {
+        "passage_id": "ye-old-american:peach-crusts#ingredients#0",
+        "doc_id": "ye-old-american:peach-crusts",
+        "score": 0.6819645166397095
+      }
+    ]
+  },
+  {
+    "query": "How do you make clam soup?",
+    "bm25_top": [
+      {
+        "passage_id": "ye-old-american:clam-soup-3#ingredients#0",
+        "doc_id": "ye-old-american:clam-soup-3",
+        "score": 4.395110130310059
+      },
+      {
+        "passage_id": "ye-old-american:plain-clam-soup#ingredients#0",
+        "doc_id": "ye-old-american:plain-clam-soup",
+        "score": 4.263185024261475
+      },
+      {
+        "passage_id": "ye-old-american:clam-soup-2#ingredients#0",
+        "doc_id": "ye-old-american:clam-soup-2",
+        "score": 4.138948917388916
+      }
+    ],
+    "dense_top": [
+      {
+        "passage_id": "ye-old-american:clam-soup-french-style#directions#0",
+        "doc_id": "ye-old-american:clam-soup-french-style",
+        "score": 0.8570321798324585
+      },
+      {
+        "passage_id": "ye-old-american:the-best-clam-soup#directions#0",
+        "doc_id": "ye-old-american:the-best-clam-soup",
+        "score": 0.8567224740982056
+      },
+      {
+        "passage_id": "ye-old-american:plain-clam-soup#directions#0",
+        "doc_id": "ye-old-american:plain-clam-soup",
+        "score": 0.8485235571861267
+      }
+    ]
+  }
+]

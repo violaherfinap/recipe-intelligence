@@ -17,13 +17,45 @@ TOKEN_RE = re.compile(r"[a-z0-9']+")
 
 QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
 
+# NLTK-style English stopwords plus a few query verbs. Removing these keeps
+# BM25 focused on content words; A2 can still compare the raw variant.
+STOPWORDS = frozenset(
+    """
+    a about above after again against all am an and any are aren't as at be
+    because been before being below between both but by can't cannot could
+    couldn't did didn't do does doesn't doing don't down during each few for
+    from further had hadn't has hasn't have haven't having he he'd he'll he's
+    her here here's hers herself him himself his how how's i i'd i'll i'm i've
+    if in into is isn't it it's its itself let's me more most mustn't my myself
+    no nor not of off on once only or other ought our ours ourselves out over
+    own same shan't she she'd she'll she's should shouldn't so some such than
+    that that's the their theirs them themselves then there there's these they
+    they'd they'll they're they've this those through to too under until up
+    very was wasn't we we'd we'll we're we've were weren't what what's when
+    when's where where's which while who who's whom why why's with won't would
+    wouldn't you you'd you'll you're you've your yours yourself yourselves
+    make made making
+    """.split()
+)
+
 
 def tokenize(text: str) -> list[str]:
     return TOKEN_RE.findall(text.lower())
 
 
+def tokenize_for_index(text: str) -> list[str]:
+    """Tokenize for BM25 and drop function words."""
+    return [token for token in tokenize(text) if token not in STOPWORDS]
+
+
 def _read_passages(path: Path) -> list[dict]:
     return list(read_jsonl(path))
+
+
+def _doc_titles(path: Path) -> dict[str, str]:
+    if not path.exists():
+        return {}
+    return {doc["doc_id"]: doc.get("title", "") for doc in read_jsonl(path)}
 
 
 def _utc_now() -> str:
@@ -40,7 +72,11 @@ def build_bm25(
     if not passages:
         raise ValueError(f"no passages found in {passages_path}")
 
-    corpus_tokens = [tokenize(passage["text"]) for passage in passages]
+    titles = _doc_titles(passages_path.parent / "docs.jsonl")
+    corpus_tokens = [
+        tokenize_for_index(f"{titles.get(passage['doc_id'], '')} {passage['text']}")
+        for passage in passages
+    ]
     retriever = bm25s.BM25(k1=k1, b=b)
     retriever.index(corpus_tokens)
 
@@ -53,7 +89,9 @@ def build_bm25(
         "library": f"bm25s-{getattr(bm25s, '__version__', 'unknown')}",
         "k1": k1,
         "b": b,
-        "tokenizer": "lowercase regex [a-z0-9']+",
+        "tokenizer": "lowercase regex [a-z0-9']+; English stopwords removed",
+        "stopwords": "nltk-english + make/made/making",
+        "title_in_index": True,
         "passage_count": len(passages),
         "passages_sha256": sha256_file(passages_path),
         "created_at": _utc_now(),
@@ -72,8 +110,11 @@ def bm25_search(
     query: str,
     k: int = 10,
 ) -> list[dict]:
+    query_tokens = tokenize_for_index(query)
+    if not query_tokens:
+        return []
     retriever = load_bm25(out_dir)
-    results, scores = retriever.retrieve([tokenize(query)], k=k)
+    results, scores = retriever.retrieve([query_tokens], k=k)
     result_indices, result_scores = results[0], scores[0]
     hits: list[dict] = []
     for index, score in zip(result_indices, result_scores, strict=False):

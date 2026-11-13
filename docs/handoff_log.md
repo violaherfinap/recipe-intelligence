@@ -5,7 +5,7 @@
 
 ## Week 1 — Block A (Orang A / Vio) — 2026-11-14
 
-- **Selesai:** 5,605 resep di-parse ke `docs.jsonl`; 5,600 dokumen kanonik menjadi 11,266 passage section-aware (350 token, overlap 40); split 70/15/15 seed 42 (train 3,921 / dev 838 / test 846); manifest + SHA-256; index BM25 dan dense 384d; 20 unit test lulus; ruff bersih.
+- **Selesai:** 5,605 resep di-parse ke `docs.jsonl`; 5,600 dokumen kanonik menjadi 11,266 passage section-aware (350 token, overlap 40); split 70/15/15 seed 42 (train 3,921 / dev 838 / test 846); manifest + SHA-256; index BM25 (title + stopwords, lihat ADR-011) dan dense 384d; smoke 10 query di `docs/w1-a-smoke.json`; 22 unit test lulus; ruff bersih.
 - **Belum:** konfirmasi dosen untuk Use Case C (ADR-002); keputusan tim soal akses file besar ke B/C/D; verifikasi apakah index harus dipisah per split (Q3).
 - **Berikutnya untuk B:** baca `data/processed/passages.jsonl`, `data/processed/source_register.csv`, dan `data/processed/split.json`; tulis 115 query tanpa memakai passage `test` untuk few-shot/training.
 
@@ -17,7 +17,8 @@
 `data/processed/split.json`, `data/processed/manifest.json`,
 `data/processed/manifest.sha256`, `data/processed/dedup_log.jsonl` (5 entri),
 `indexes/bm25/`, `indexes/dense.npy` (11,266 x 384),
-`indexes/dense_meta.parquet`, `indexes/manifest.json`.
+`indexes/dense_meta.parquet`, `indexes/manifest.json`,
+`docs/w1-a-smoke.json`, `docs/w1-a-smoke.md`.
 
 **Catatan dedup:** 5 near-duplicate dalam buku yang sama dicatat dan
 dikeluarkan dari index; `docs.jsonl` tetap 5,605 baris. Duplikat antar-buku

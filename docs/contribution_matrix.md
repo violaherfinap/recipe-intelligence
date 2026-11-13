@@ -15,6 +15,8 @@
 | ADR-001 corpus | `docs/adr/001-corpus.md` | Vio |
 | ADR-002 use case | `docs/adr/002-use-case-mapping.md` | Vio |
 | ADR-008 chunking | `docs/adr/008-chunking.md` | Vio |
+| ADR-011 BM25 preprocessing | `docs/adr/011-bm25-preprocessing.md` | Vio |
+| Retrieval smoke (10 queries) | `docs/w1-a-smoke.md` | Vio |
 | Parser | `src/recipe_qa/corpus/build.py` | Vio |
 | Docs + passages + split | `data/processed/` | Vio |
 | BM25 + dense index | `indexes/` | Vio |
