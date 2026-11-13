@@ -92,8 +92,33 @@ Tugas B tidak diulang di sini; ikuti `RENCANA_MINGGUAN.md` blok 2.
 - A tidak menulis query, qrels, atau metrik evaluasi.
 - Jangan mengubah passage, split, atau hash tanpa menjalankan ulang build dan
   memperbarui `manifest.json` / `manifest.sha256`.
-- File besar tidak di-commit. Di mesin lain, rebuild dengan
-  `.\scripts\tasks.ps1 corpus` lalu `.\scripts\tasks.ps1 index`.
+- File besar tidak di-commit. Kalau memakai laptop lain, ikuti langkah rebuild
+  di bawah ini dari root repo.
+
+### Rebuild di laptop lain
+
+```powershell
+# 1. Environment
+uv sync --extra dev
+
+# 2. Clone korpus dan checkout commit yang sudah dipin
+git clone https://github.com/AdamBouhmad/open-recipe-archive.git data/raw/open-recipe-archive
+$sha = Get-Content data/corpus_commit.txt
+git -C data/raw/open-recipe-archive checkout $sha
+
+# 3. Bangun docs.jsonl, passages.jsonl, source_register.csv, split.json, manifest
+.\scripts\tasks.ps1 corpus
+
+# 4. Bangun index (opsional untuk B, perlu kalau mau cek retrieval/no-evidence)
+.\scripts\tasks.ps1 index
+
+# 5. Cek apakah hasil rebuild identik dengan artefak A
+git diff --stat -- data/processed
+```
+
+Kalau `make` tersedia, `make corpus` dan `make index` setara dengan langkah 3
+dan 4. Kalau `git diff --stat -- data/processed` kosong, hasil rebuild sama
+dengan artefak yang di-commit.
 
 ## Referensi
 

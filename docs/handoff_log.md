@@ -27,5 +27,5 @@ dikeluarkan dari index; `docs.jsonl` tetap 5,605 baris. Duplikat antar-buku
 dipertahankan. Lihat `docs/adr/001-corpus.md` dan `docs/adr/008-chunking.md`.
 
 **Catatan akses:** file besar tidak di-commit. B harus memakai mesin yang sama,
-shared drive, atau rebuild dengan `make corpus && make index` (Windows:
-`.\scripts\tasks.ps1 corpus`, lalu `.\scripts\tasks.ps1 index`).
+shared drive, atau rebuild. Langkah lengkapnya ada di `docs/handoff/w1-a.md`
+bagian **Rebuild di laptop lain**.
