@@ -1,0 +1,83 @@
+{
+  "chunking": {
+    "max_tokens": 350,
+    "mode": "section",
+    "overlap": 40,
+    "tokenizer": "BAAI/bge-small-en-v1.5"
+  },
+  "corpus": {
+    "collection": "ye-old-american",
+    "commit_sha": "ae3bd2c009a8899dfe63b9166fa98ae3fa8041a8",
+    "raw_count": 5605,
+    "source": "https://github.com/AdamBouhmad/open-recipe-archive"
+  },
+  "counts": {
+    "docs": 5605,
+    "docs_indexed": 5600,
+    "docs_raw": 5605,
+    "duplicates_removed": 5,
+    "errors": 0,
+    "passages": 11266
+  },
+  "created_at": "2026-11-13T17:27:44Z",
+  "dedup": {
+    "enabled": true,
+    "log": "dedup_log.jsonl",
+    "max_hamming": 3,
+    "mode": "log_only_excluded_from_index",
+    "scope": "same source_title (book)"
+  },
+  "errors": [],
+  "files": {
+    "dedup_log.jsonl": "b821c22469699f6e8c2e93b70a8538d64071f32cfcf85112b5137bd0c2835ba2",
+    "docs.jsonl": "32e485b41fffba635dbd935754ca5d6c38accf18db4ee6c15dac586053c2d13b",
+    "passages.jsonl": "df561b669e3cf5f33a81075cfdd85d737a0fcc07c04671e647980233ba46e63b",
+    "source_register.csv": "cb662530a06758c8fe1034d819bd44fc7010251c95ea53daae632b3bda0aaaba",
+    "split.json": "b7875a733c2ca54db0be72835ff5318dd705e6251ae7e8e37a7ccd1f6e3b6611"
+  },
+  "split": {
+    "by_year": {
+      "1796": {
+        "dev": 18,
+        "test": 19,
+        "train": 85
+      },
+      "1824": {
+        "dev": 66,
+        "test": 68,
+        "train": 311
+      },
+      "1851": {
+        "dev": 125,
+        "test": 126,
+        "train": 584
+      },
+      "1871": {
+        "dev": 139,
+        "test": 140,
+        "train": 649
+      },
+      "1887": {
+        "dev": 224,
+        "test": 226,
+        "train": 1049
+      },
+      "1896": {
+        "dev": 266,
+        "test": 267,
+        "train": 1243
+      }
+    },
+    "counts": {
+      "dev": 838,
+      "test": 846,
+      "train": 3921
+    },
+    "ratios": {
+      "dev": 0.15,
+      "test": 0.15,
+      "train": 0.7
+    },
+    "seed": 42
+  }
+}

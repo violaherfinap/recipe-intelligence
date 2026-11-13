@@ -1,0 +1,32 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment / secrets
+.env
+
+# Raw corpus and large derived artefacts
+data/raw/
+data/processed/*.jsonl
+data/processed/*.parquet
+indexes/
+artifacts/runs/
+artifacts/cache/
+
+# Keep small, reviewable manifests
+!data/processed/manifest.json
+!data/processed/split.json
+!data/processed/manifest.sha256
+!data/processed/source_register.csv
+!data/processed/dedup_log.jsonl
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
