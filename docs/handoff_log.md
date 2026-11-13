@@ -9,7 +9,7 @@
 - **Belum:** konfirmasi dosen untuk Use Case C (ADR-002); keputusan tim soal akses file besar ke B/C/D; verifikasi apakah index harus dipisah per split (Q3).
 - **Berikutnya untuk B:** baca `data/processed/passages.jsonl`, `data/processed/source_register.csv`, dan `data/processed/split.json`; tulis 115 query tanpa memakai passage `test` untuk few-shot/training.
 
-**Commit kode:** `0940e32` — tag `w1-a-ok` menunjuk ke commit handoff ini.
+**Commit kode:** `0940e32` — tag `w1-a-ok` menunjuk ke commit evidence terakhir di branch ini.
 
 **Artefak:** `data/processed/docs.jsonl` (5,605 baris),
 `data/processed/passages.jsonl` (11,266 baris),
