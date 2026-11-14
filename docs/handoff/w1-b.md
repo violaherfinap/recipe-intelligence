@@ -47,6 +47,10 @@ Split: train 3.921 / dev 838 / test 846. Test per tahun: 1796=19, 1824=68,
 train/dev; tidak ada dokumen test yang hilang dari index. Index: BM25 11.266
 passage dan dense 11.266 × 384 (`BAAI/bge-small-en-v1.5`).
 
+Catatan: `split.json` yang di-commit A berisi assignment yang sama tetapi
+representasi encoding-nya berbeda dari hash manifest; B menggantinya dengan
+representasi yang cocok dengan `manifest.sha256` (semantik identik).
+
 ## Artefak
 
 | Artefak | Path |
