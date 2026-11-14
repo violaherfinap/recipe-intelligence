@@ -34,3 +34,10 @@ Thumbs.db
 /benchmark/work/
 benchmark/pool_v1.jsonl
 benchmark/pool_v1_meta.jsonl
+
+# W1-C local annotation artifacts (not committed)
+/benchmark/qrels_c_draft.jsonl
+/benchmark/qrels_c_reviewed.jsonl
+/benchmark/qrels_c_pass1_*.jsonl
+/benchmark/verdict_c_prompt.txt
+/benchmark/verdict_c_answers.txt
