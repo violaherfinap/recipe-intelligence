@@ -4,3 +4,4 @@ benchmark/queries.jsonl text eol=lf
 benchmark/gold_candidates.jsonl text eol=lf
 benchmark/no_evidence_check.csv text eol=lf
 benchmark/queries.sha256 text eol=lf
+data/processed/split.json text eol=crlf
