@@ -1,5 +1,3 @@
-"""Build a blinded annotation pool from gold evidence and dense retrieval."""
-
 from __future__ import annotations
 
 import random
@@ -16,8 +14,6 @@ from .validate import load_passages, load_queries, read_jsonl, write_jsonl
 
 @dataclass
 class PoolBuildResult:
-    """Counts returned by :func:`build_pool`."""
-
     queries: int
     candidates: int
     gold: int
@@ -44,7 +40,6 @@ def build_pool(
     seed: int = 42,
     batch_size: int = 32,
 ) -> PoolBuildResult:
-    """Create the blinded pool and its separate provenance file."""
     queries = load_queries(queries_path)
     gold = _load_gold(gold_path)
     passages = load_passages(passages_path)
@@ -52,9 +47,7 @@ def build_pool(
     dense_path = dense_dir / "dense.npy"
     meta_file = dense_dir / "dense_meta.parquet"
     if not dense_path.exists() or not meta_file.exists():
-        raise FileNotFoundError(
-            f"dense index not found in {dense_dir}; run `make index` first"
-        )
+        raise FileNotFoundError(f"dense index not found in {dense_dir}; run `make index` first")
 
     embeddings = np.load(dense_path)
     meta = pd.read_parquet(meta_file).reset_index(drop=True)

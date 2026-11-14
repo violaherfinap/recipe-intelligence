@@ -1,5 +1,3 @@
-"""Validate benchmark queries, gold candidates, and no-evidence checks."""
-
 from __future__ import annotations
 
 import argparse
@@ -10,24 +8,14 @@ from recipe_qa.benchmark.validate import validate_benchmark
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description="Validate benchmark queries and gold candidates.")
     parser.add_argument("--queries", type=Path, default=Path("benchmark/queries.jsonl"))
-    parser.add_argument(
-        "--gold", type=Path, default=Path("benchmark/gold_candidates.jsonl")
-    )
-    parser.add_argument(
-        "--passages", type=Path, default=Path("data/processed/passages.jsonl")
-    )
+    parser.add_argument("--gold", type=Path, default=Path("benchmark/gold_candidates.jsonl"))
+    parser.add_argument("--passages", type=Path, default=Path("data/processed/passages.jsonl"))
     parser.add_argument("--split", type=Path, default=Path("data/processed/split.json"))
-    parser.add_argument(
-        "--no-evidence", type=Path, default=Path("benchmark/no_evidence_check.csv")
-    )
-    parser.add_argument(
-        "--docs", type=Path, default=Path("data/processed/docs.jsonl")
-    )
-    parser.add_argument(
-        "--strict", action="store_true", help="treat warnings as errors"
-    )
+    parser.add_argument("--no-evidence", type=Path, default=Path("benchmark/no_evidence_check.csv"))
+    parser.add_argument("--docs", type=Path, default=Path("data/processed/docs.jsonl"))
+    parser.add_argument("--strict", action="store_true", help="treat warnings as errors")
     return parser
 
 

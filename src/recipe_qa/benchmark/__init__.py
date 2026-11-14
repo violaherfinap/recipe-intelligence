@@ -1,5 +1,3 @@
-"""Benchmark contracts and helpers."""
-
 from .schema import (
     GoldCandidate,
     PoolCandidate,

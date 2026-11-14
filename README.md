@@ -8,6 +8,7 @@ yang dijaga dapat meningkatkan jawaban faktual dengan sitasi dibanding LLM biasa
 
 Repo ini mengikuti `RENCANA_LENGKAP.md` dan `RENCANA_MINGGUAN.md`.
 Week 1 blok A membangun fondasi data: korpus, passage, split, dan index retrieval.
+Indeks dokumentasi: [`docs/README.md`](docs/README.md).
 
 ## Kebutuhan
 

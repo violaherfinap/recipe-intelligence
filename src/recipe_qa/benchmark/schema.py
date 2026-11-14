@@ -1,5 +1,3 @@
-"""Pydantic contracts for the human benchmark and qrels."""
-
 from __future__ import annotations
 
 from typing import Literal
@@ -12,8 +10,6 @@ Verdict = Literal["SUPPORTED", "REFUTED", "NOT_ENOUGH_EVIDENCE"]
 
 
 class QueryFilter(BaseModel):
-    """Machine-readable retrieval filter attached to a benchmark query."""
-
     model_config = ConfigDict(extra="forbid")
 
     year_min: int | None = None
@@ -23,8 +19,6 @@ class QueryFilter(BaseModel):
 
 
 class Query(BaseModel):
-    """One benchmark query plus the claims an answer should contain."""
-
     model_config = ConfigDict(extra="forbid")
 
     query_id: str = Field(pattern=r"^q\d{3}$")
@@ -47,8 +41,6 @@ class Query(BaseModel):
 
 
 class GoldCandidate(BaseModel):
-    """Passages the query author used as evidence while writing the query."""
-
     model_config = ConfigDict(extra="forbid")
 
     query_id: str = Field(pattern=r"^q\d{3}$")
@@ -58,8 +50,6 @@ class GoldCandidate(BaseModel):
 
 
 class PoolCandidate(BaseModel):
-    """A blinded candidate shown to annotators."""
-
     model_config = ConfigDict(extra="forbid")
 
     query_id: str = Field(pattern=r"^q\d{3}$")
@@ -68,8 +58,6 @@ class PoolCandidate(BaseModel):
 
 
 class PoolMeta(BaseModel):
-    """Provenance for a pool candidate. Never shown to annotators."""
-
     model_config = ConfigDict(extra="forbid")
 
     query_id: str = Field(pattern=r"^q\d{3}$")
@@ -80,8 +68,6 @@ class PoolMeta(BaseModel):
 
 
 class Qrel(BaseModel):
-    """One relevance judgment."""
-
     model_config = ConfigDict(extra="forbid")
 
     query_id: str = Field(pattern=r"^q\d{3}$")
@@ -94,8 +80,6 @@ class Qrel(BaseModel):
 
 
 class VerdictQrel(BaseModel):
-    """One claim-level verdict judgment."""
-
     model_config = ConfigDict(extra="forbid")
 
     query_id: str = Field(pattern=r"^q\d{3}$")

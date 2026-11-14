@@ -1,22 +1,3 @@
-"""Blind annotation CLI for the historical recipe benchmark.
-
-Examples
---------
-Relevance pass::
-
-    uv run python tools/annotate.py relevance --annotator C \
-        --queries benchmark/queries.jsonl --pool benchmark/pool_v1.jsonl \
-        --passages data/processed/passages.jsonl \
-        --out benchmark/qrels_c.jsonl
-
-Verdict pass::
-
-    uv run python tools/annotate.py verdict --annotator C \
-        --queries benchmark/queries.jsonl --qrels benchmark/qrels_c.jsonl \
-        --passages data/processed/passages.jsonl \
-        --out benchmark/verdict_qrels_c.jsonl
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -88,10 +69,7 @@ def _relevance(args: argparse.Namespace) -> int:
             todo = todo[: args.limit]
 
         print("\n" + "=" * 78)
-        print(
-            f"{query.query_id} | {query.slice} | as_of={query.as_of} | "
-            f"scope={query.scope}"
-        )
+        print(f"{query.query_id} | {query.slice} | as_of={query.as_of} | scope={query.scope}")
         print(f"Q: {query.text}")
         print(f"candidates left: {len(todo)}")
 
@@ -212,9 +190,7 @@ def _status(args: argparse.Namespace) -> int:
         total_done = sum(done for done, _ in progress.values())
         total = sum(total for _, total in progress.values())
         print(f"judgments: {total_done}/{total}")
-    incomplete = [
-        query_id for query_id, (done, total) in progress.items() if done < total
-    ]
+    incomplete = [query_id for query_id, (done, total) in progress.items() if done < total]
     print(f"queries incomplete: {len(incomplete)}")
     if incomplete:
         print(" ".join(incomplete[:20]))
@@ -222,7 +198,7 @@ def _status(args: argparse.Namespace) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description="Annotate benchmark relevance and claim verdicts.")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     common = argparse.ArgumentParser(add_help=False)
@@ -235,9 +211,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     relevance = subparsers.add_parser("relevance", parents=[common])
     relevance.add_argument("--pool", type=Path, default=Path("benchmark/pool_v1.jsonl"))
-    relevance.add_argument(
-        "--commit-file", type=Path, default=Path("data/corpus_commit.txt")
-    )
+    relevance.add_argument("--commit-file", type=Path, default=Path("data/corpus_commit.txt"))
     relevance.set_defaults(func=_relevance)
 
     verdict = subparsers.add_parser("verdict", parents=[common])

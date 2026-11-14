@@ -1,5 +1,3 @@
-"""Build a blinded annotation pool for the benchmark."""
-
 from __future__ import annotations
 
 import argparse
@@ -10,28 +8,18 @@ from recipe_qa.benchmark.pool import build_pool
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description="Build a blinded annotation pool.")
     parser.add_argument("--queries", type=Path, default=Path("benchmark/queries.jsonl"))
-    parser.add_argument(
-        "--gold", type=Path, default=Path("benchmark/gold_candidates.jsonl")
-    )
-    parser.add_argument(
-        "--passages", type=Path, default=Path("data/processed/passages.jsonl")
-    )
+    parser.add_argument("--gold", type=Path, default=Path("benchmark/gold_candidates.jsonl"))
+    parser.add_argument("--passages", type=Path, default=Path("data/processed/passages.jsonl"))
     parser.add_argument("--dense-dir", type=Path, default=Path("indexes"))
-    parser.add_argument(
-        "--out", type=Path, default=Path("benchmark/pool_v1.jsonl")
-    )
-    parser.add_argument(
-        "--meta", type=Path, default=Path("benchmark/pool_v1_meta.jsonl")
-    )
+    parser.add_argument("--out", type=Path, default=Path("benchmark/pool_v1.jsonl"))
+    parser.add_argument("--meta", type=Path, default=Path("benchmark/pool_v1_meta.jsonl"))
     parser.add_argument("--split", default="test")
     parser.add_argument("--dense-k", type=int, default=10)
     parser.add_argument("--negatives", type=int, default=5)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument(
-        "--model", default="BAAI/bge-small-en-v1.5"
-    )
+    parser.add_argument("--model", default="BAAI/bge-small-en-v1.5")
     return parser
 
 

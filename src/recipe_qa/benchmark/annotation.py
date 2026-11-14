@@ -1,5 +1,3 @@
-"""Blind annotation helpers shared by the CLI and tests."""
-
 from __future__ import annotations
 
 import json
@@ -20,7 +18,6 @@ class JudgmentKey:
 
 
 def load_pool(path: Path) -> dict[str, list[PoolCandidate]]:
-    """Group the blinded pool by query while preserving the file order."""
     grouped: dict[str, list[PoolCandidate]] = {}
     for row in read_jsonl(path):
         candidate = PoolCandidate.model_validate(row)
@@ -28,10 +25,7 @@ def load_pool(path: Path) -> dict[str, list[PoolCandidate]]:
     return grouped
 
 
-def order_candidates(
-    candidates: Iterable[PoolCandidate], annotator: str
-) -> list[PoolCandidate]:
-    """Return a deterministic shuffle so annotators do not see pool provenance."""
+def order_candidates(candidates: Iterable[PoolCandidate], annotator: str) -> list[PoolCandidate]:
     ordered = list(candidates)
     query_id = ordered[0].query_id if ordered else ""
     random.Random(f"{annotator}:{query_id}").shuffle(ordered)
@@ -39,17 +33,12 @@ def order_candidates(
 
 
 def load_judged(path: Path) -> set[JudgmentKey]:
-    """Return the keys already written to an annotator output file."""
     if not path.exists():
         return set()
-    return {
-        JudgmentKey(row.query_id, row.passage_id)
-        for row in load_qrels(path)
-    }
+    return {JudgmentKey(row.query_id, row.passage_id) for row in load_qrels(path)}
 
 
 def append_qrel(path: Path, qrel: Qrel) -> None:
-    """Append one judgment immediately so a crash does not lose work."""
     path.parent.mkdir(parents=True, exist_ok=True)
     line = json.dumps(qrel.model_dump(), ensure_ascii=False) + "\n"
     with path.open("a", encoding="utf-8") as handle:
@@ -72,7 +61,6 @@ def relevance_progress(
     pool: dict[str, list[PoolCandidate]],
     judged: set[JudgmentKey],
 ) -> dict[str, tuple[int, int]]:
-    """Return judged/total candidate counts per query."""
     progress: dict[str, tuple[int, int]] = {}
     for query in queries:
         candidates = pool.get(query.query_id, [])
@@ -85,10 +73,7 @@ def relevance_progress(
     return progress
 
 
-def verdict_progress(
-    queries: list[Query], judged_path: Path
-) -> dict[str, tuple[int, int]]:
-    """Return judged/total claim counts per query."""
+def verdict_progress(queries: list[Query], judged_path: Path) -> dict[str, tuple[int, int]]:
     done: dict[str, set[str]] = {}
     if judged_path.exists():
         with judged_path.open(encoding="utf-8") as handle:
@@ -105,7 +90,6 @@ def verdict_progress(
 
 
 def evidence_passages(query_id: str, qrels_path: Path, min_relevance: int = 2) -> list[str]:
-    """Return passage IDs judged relevant enough for claim verification."""
     if not qrels_path.exists():
         return []
     return [

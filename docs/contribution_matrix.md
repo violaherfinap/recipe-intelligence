@@ -36,5 +36,5 @@
 | Query validator | `tools/validate_benchmark.py` | B |
 | Benchmark schema/validators | `src/recipe_qa/benchmark/` | B |
 | Tests | `tests/unit/test_annotate.py`, `test_benchmark_schema.py` | B |
-| Bootstrap verification | `docs/w1-b-bootstrap.md` | B |
+| Bootstrap verification | `docs/handoff/w1-b.md` | B |
 | Handoff | `docs/handoff/w1-b.md` | B |

@@ -1,5 +1,3 @@
-"""Tests for benchmark schema contracts."""
-
 from __future__ import annotations
 
 import pytest
