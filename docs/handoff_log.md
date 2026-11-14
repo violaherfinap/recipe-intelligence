@@ -29,3 +29,15 @@ dipertahankan. Lihat `docs/adr/001-corpus.md` dan `docs/adr/008-chunking.md`.
 **Catatan akses:** file besar tidak di-commit. B harus memakai mesin yang sama,
 shared drive, atau rebuild. Langkah lengkapnya ada di `docs/handoff/w1-a.md`
 bagian **Rebuild di laptop lain**.
+
+## Week 1 — Block B (Orang B) — 2026-11-14
+
+- **Selesai:** benchmark v1 freeze — 115 query (35 easy / 25 multi-hop / 30 temporal / 25 no-evidence), guideline anotasi, tool anotasi blind + pool builder + validator, gold candidate test-only, verifikasi no-evidence 25/25, hash query di `benchmark/queries.sha256`; rebuild korpus/index identik dengan hash A; 33 unit test lulus; ruff bersih.
+- **Belum:** pool v1 + qrels pass 1 + metrics library (C); qrels pass 2, κ, adjudikasi, dan `benchmark/manifest.sha256` (D); konfirmasi Q1 (approval dosen) dan Q8 (gate 5.605 vs 5.600).
+- **Berikutnya untuk C:** baca `benchmark/guidelines.md`; bangun pool test-only dengan `tools/build_pool.py`; anotasi relevance pass 1 ke `benchmark/qrels_c.jsonl`; jangan mengubah query dan jangan membuka `pool_v1_meta.jsonl`.
+
+**Commit kode:** `6fde121` di branch `feat/w1-b-benchmark` (belum di-merge ke `dev`).
+
+**Status lengkap:** `docs/handoff/w1-b.md`.
+
+**Artefak:** `benchmark/queries.jsonl`, `gold_candidates.jsonl`, `no_evidence_check.csv`, `guidelines.md`, `queries.sha256`, `tools/annotate.py`, `tools/build_pool.py`, `tools/validate_benchmark.py`, `src/recipe_qa/benchmark/`, `tests/unit/test_annotate.py`, `tests/unit/test_benchmark_schema.py`, `docs/w1-b-bootstrap.md`.

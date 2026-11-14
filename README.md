@@ -77,10 +77,29 @@ build bisa diverifikasi.
 - **Week 1, blok A:** selesai — 5.605 resep dibersihkan, 11.266 passage
   (5.600 dokumen kanonik), split 70/15/15 (seed 42), index BM25 dan dense 384d,
   22 unit test lulus, ruff bersih.
-- **Handoff A → B:** lihat [`docs/handoff/w1-a.md`](docs/handoff/w1-a.md) untuk
-  status, artefak, dan keputusan yang masih terbuka.
-- **Week 1, blok B:** guideline anotasi dan 115 query benchmark.
+- **Week 1, blok B:** selesai — guideline anotasi, tool anotasi blind, 115 query
+  (35 easy / 25 multi-hop / 30 temporal / 25 no-evidence), gold evidence
+  test-only, verifikasi no-evidence 25/25, hash query di
+  `benchmark/queries.sha256`.
+- **Handoff A → B:** lihat [`docs/handoff/w1-a.md`](docs/handoff/w1-a.md).
+- **Handoff B → C:** lihat [`docs/handoff/w1-b.md`](docs/handoff/w1-b.md).
 - **Week 1, blok C/D:** qrels blind, adjudikasi, dan benchmark frozen.
+
+## Benchmark
+
+```powershell
+# validasi 115 query + gold + no-evidence
+uv run python tools/validate_benchmark.py --strict
+
+# bangun pool anotasi test-only (C)
+uv run python tools/build_pool.py
+
+# anotasi relevance (C atau D)
+uv run python tools/annotate.py relevance --annotator C --out benchmark/qrels_c.jsonl
+```
+
+Aturan anotasi ada di [`benchmark/guidelines.md`](benchmark/guidelines.md).
+File `benchmark/` tidak boleh dibaca oleh pipeline agent/training.
 
 ## Lisensi
 
