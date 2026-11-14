@@ -4,7 +4,7 @@
 | --- | --- | --- | ---: | ---: | --- | --- |
 | 1 | A | Vio | 14 | ≈16 | Corpus, passages, split, BM25 + dense indexes, manifests, tests | done |
 | 1 | B | B | 14 | — | Guideline, tool anotasi blind, 115 query, no-evidence check | done |
-| 1 | C | — | 10 | — | Qrels pass 1, metrics library | not started |
+| 1 | C | C | 10 | 11.47 | Qrels pass 1 (1.789), metrics library | done |
 | 1 | D | — | 12 | — | Qrels pass 2, κ, adjudication, freeze | not started |
 
 ## Block A detail
@@ -38,3 +38,23 @@
 | Tests | `tests/unit/test_annotate.py`, `test_benchmark_schema.py` | B |
 | Bootstrap verification | `docs/handoff/w1-b.md` | B |
 | Handoff | `docs/handoff/w1-b.md` | B |
+
+## Block C detail
+
+| Item | Artefact | Owner |
+| --- | --- | --- |
+| Final relevance qrels | `benchmark/qrels_c.jsonl` (1.789 baris) | C |
+| Verdict pass 1 | `benchmark/verdict_qrels_c.jsonl` (145 klaim) | C |
+| Reviewed draft q009–q115 | `benchmark/qrels_c_reviewed.jsonl` (1.666 baris; arsip lokal) | C |
+| Preannotation draft | `benchmark/qrels_c_draft.jsonl` (1.666 baris; arsip lokal, LLM-assisted) | C |
+| Manual qrels backup | `benchmark/qrels_c_pass1_2026-11-14.jsonl` (123 baris; arsip lokal) | C |
+| Local audit archive | `benchmark/work/w1-c-audit-2026-11-14/` (gitignored) | C |
+| Review CLI | `tools/review_preannotation.py` | C |
+| Finalize + validation CLI | `tools/finalize_qrels.py` | C |
+| Batch verdict CLI (`dump`/`fill`/`review`) | `tools/review_verdicts.py` | C |
+| Review/finalize helpers | `src/recipe_qa/benchmark/review.py`, `finalize.py` | C |
+| Verdict parser | `src/recipe_qa/benchmark/verdict_review.py` | C |
+| Retrieval metrics | `src/recipe_qa/eval/metrics/retrieval.py` | C |
+| Claim metrics | `src/recipe_qa/eval/metrics/claims.py` | C |
+| Tests | `tests/unit/test_review.py`, `test_finalize.py`, `test_verdict_review.py`, `test_metrics_*.py` | C |
+| Handoff | `docs/handoff/w1-c.md` | C |

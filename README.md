@@ -82,9 +82,13 @@ build bisa diverifikasi.
   (35 easy / 25 multi-hop / 30 temporal / 25 no-evidence), gold evidence
   test-only, verifikasi no-evidence 25/25, hash query di
   `benchmark/queries.sha256`.
+- **Week 1, blok C:** selesai — qrels relevance pass 1 (1.789 baris), verdict
+  pass 1 (145/145 klaim), metrics library, 75 unit test lulus, ruff bersih,
+  actual 11,47 jam.
 - **Handoff A → B:** lihat [`docs/handoff/w1-a.md`](docs/handoff/w1-a.md).
 - **Handoff B → C:** lihat [`docs/handoff/w1-b.md`](docs/handoff/w1-b.md).
-- **Week 1, blok C/D:** qrels blind, adjudikasi, dan benchmark frozen.
+- **Handoff C → D:** lihat [`docs/handoff/w1-c.md`](docs/handoff/w1-c.md).
+- **Week 1, blok D:** relevance pass 2, κ, adjudikasi, dan benchmark frozen.
 
 ## Benchmark
 

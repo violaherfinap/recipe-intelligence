@@ -41,3 +41,17 @@ bagian **Rebuild di laptop lain**.
 **Status lengkap:** `docs/handoff/w1-b.md`.
 
 **Artefak:** `benchmark/queries.jsonl`, `gold_candidates.jsonl`, `no_evidence_check.csv`, `guidelines.md`, `queries.sha256`, `tools/annotate.py`, `tools/build_pool.py`, `tools/validate_benchmark.py`, `src/recipe_qa/benchmark/`, `tests/unit/test_annotate.py`, `tests/unit/test_benchmark_schema.py`.
+
+## Week 1 — Block C (Orang C) — 2026-11-14
+
+- **Selesai:** pool test-only 1.789 kandidat; qrels relevance pass 1 final 1.789 baris (1.608×0 / 12×1 / 169×2) untuk 115 query; review q009–q115 1.666 baris dengan 3 override; 25 query no-evidence semuanya 0; metrics library (Recall@k, nDCG@k, MRR@k, macro-F1, citation precision/recall, unsupported claim rate); batch verdict tool (`dump`/`fill`/`review`); verdict C pass 1 145/145 klaim (144 SUPPORTED, 0 REFUTED, 1 NOT_ENOUGH_EVIDENCE); actual 11,47 jam; 75 unit test lulus; ruff bersih.
+- **Belum:** q048 pool gap (`chocolate-charlotte-russe` tidak ada di pool, hanya satu label 2; q048 c2 = NOT_ENOUGH_EVIDENCE); verdict D pass 2.
+- **Berikutnya untuk D:** relevance pass 2 blind ke `benchmark/qrels_d.jsonl` tanpa membuka `qrels_c.jsonl`/`qrels_c_reviewed.jsonl`/`benchmark/work/w1-c-audit-2026-11-14/`; verdict C sudah selesai, lanjut verdict pass 2 blind dengan `tools/review_verdicts.py` (`dump`/`fill`/`review`, `--annotator D`); hitung κ dan adjudikasi.
+
+**Commit kode:** `79dd9fb` di branch `feat/w1-c-qrels-metrics`.
+
+**Status lengkap:** `docs/handoff/w1-c.md`.
+
+**Artefak final:** `benchmark/qrels_c.jsonl` (1.789 baris), `benchmark/qrels_c.sha256`, `benchmark/verdict_qrels_c.jsonl` (145 klaim), `tools/review_preannotation.py`, `tools/finalize_qrels.py`, `tools/review_verdicts.py`, `src/recipe_qa/benchmark/review.py`, `src/recipe_qa/benchmark/finalize.py`, `src/recipe_qa/benchmark/verdict_review.py`, `src/recipe_qa/eval/metrics/`, `tests/unit/test_review.py`, `test_finalize.py`, `test_verdict_review.py`, `test_metrics_retrieval.py`, `test_metrics_claims.py`.
+
+**Arsip lokal (tidak di-commit):** `benchmark/work/w1-c-audit-2026-11-14/` berisi draft LLM, reviewed, backup manual, prompt/answer verdict, pool, dan `SHA256SUMS.txt`.
