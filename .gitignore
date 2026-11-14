@@ -30,3 +30,7 @@ artifacts/cache/
 Thumbs.db
 .vscode/
 .idea/
+
+/benchmark/work/
+benchmark/pool_v1.jsonl
+benchmark/pool_v1_meta.jsonl

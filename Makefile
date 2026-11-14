@@ -21,7 +21,7 @@ test:
 	uv run pytest
 
 lint:
-	uv run ruff check src tests
+	uv run ruff check src tests tools
 
 smoke:
 	$(PYTHON) -m recipe_qa.index.cli smoke --query "tomato soup"
