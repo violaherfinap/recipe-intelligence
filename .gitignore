@@ -41,3 +41,9 @@ benchmark/pool_v1_meta.jsonl
 /benchmark/qrels_c_pass1_*.jsonl
 /benchmark/verdict_c_prompt.txt
 /benchmark/verdict_c_answers.txt
+
+# W1-D local annotation artifacts (not committed)
+/benchmark/answer_sheet_d*.csv
+/benchmark/verdict_answer_sheet_d*.csv
+/benchmark/qrels_d.jsonl.bak
+/benchmark/verdict_qrels_d.jsonl.bak

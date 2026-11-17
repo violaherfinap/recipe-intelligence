@@ -11,6 +11,7 @@ Dokumen sumber (tidak diubah): [`spek.md`](../spek.md),
 | Aturan anotasi benchmark | [`../benchmark/guidelines.md`](../benchmark/guidelines.md) |
 | Handoff B → C | [`handoff/w1-b.md`](handoff/w1-b.md) |
 | Handoff C → D | [`handoff/w1-c.md`](handoff/w1-c.md) |
+| Laporan Week 1 (block D) | [`../reports/week1.md`](../reports/week1.md) |
 | Status 3 baris per blok | [`handoff_log.md`](handoff_log.md) |
 | Pembagian kerja dan jam | [`contribution_matrix.md`](contribution_matrix.md) |
 | Pertanyaan/keputusan terbuka | [`open_questions.md`](open_questions.md) |
@@ -25,9 +26,14 @@ Dokumen sumber (tidak diubah): [`spek.md`](../spek.md),
 - Verifikasi no-evidence: `benchmark/no_evidence_check.csv`
 - Qrels relevance pass 1: `benchmark/qrels_c.jsonl` + `benchmark/qrels_c.sha256`
 - Verdict pass 1: `benchmark/verdict_qrels_c.jsonl`
+- Final qrels: `benchmark/qrels.jsonl` + `benchmark/manifest.sha256`
+- Final verdict: `benchmark/verdict_qrels.jsonl`
+- Agreement/adjudikasi: `benchmark/kappa.json`, `benchmark/conflicts.jsonl`,
+  `benchmark/adjudication.jsonl`, `benchmark/annotation_log.csv`
 - Tool: `tools/annotate.py`, `tools/build_pool.py`, `tools/validate_benchmark.py`,
   `tools/review_preannotation.py`, `tools/finalize_qrels.py`,
-  `tools/review_verdicts.py`
+  `tools/review_verdicts.py`, `tools/compute_agreement.py`, `tools/adjudicate.py`,
+  `tools/finalize_benchmark.py`
 - Aturan lengkap: `benchmark/guidelines.md`
 
 ## Data dan index

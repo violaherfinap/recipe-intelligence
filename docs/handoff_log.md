@@ -55,3 +55,16 @@ bagian **Rebuild di laptop lain**.
 **Artefak final:** `benchmark/qrels_c.jsonl` (1.789 baris), `benchmark/qrels_c.sha256`, `benchmark/verdict_qrels_c.jsonl` (145 klaim), `tools/review_preannotation.py`, `tools/finalize_qrels.py`, `tools/review_verdicts.py`, `src/recipe_qa/benchmark/review.py`, `src/recipe_qa/benchmark/finalize.py`, `src/recipe_qa/benchmark/verdict_review.py`, `src/recipe_qa/eval/metrics/`, `tests/unit/test_review.py`, `test_finalize.py`, `test_verdict_review.py`, `test_metrics_retrieval.py`, `test_metrics_claims.py`.
 
 **Arsip lokal (tidak di-commit):** `benchmark/work/w1-c-audit-2026-11-14/` berisi draft LLM, reviewed, backup manual, prompt/answer verdict, pool, dan `SHA256SUMS.txt`.
+
+## Week 1 — Block D (Orang D) — 2026-11-18
+
+- **Selesai:** relevance pass 2 1.789 baris; verdict pass 2 145/145 klaim; κ relevance 0.9607 dan verdict 0.4983; 13 konflik relevance + 1 konflik verdict diadjudikasi; annotation log 14 baris; benchmark frozen (`benchmark/qrels.jsonl`, `benchmark/verdict_qrels.jsonl`, `benchmark/test_docs.txt`, `benchmark/manifest.sha256`); `validate_benchmark.py --strict` valid; 100 test lulus; ruff bersih.
+- **Belum:** commit/merge D; actual hours tidak dilacak; q048 tetap partial multi-hop (hanya satu relevance-2); pass 2 D AI-assisted, bukan human inter-annotator murni.
+- **Berikutnya:** review commit D, merge ke `dev`, lalu pakai benchmark frozen untuk Week 2; pertimbangkan human re-annotation jika rubrik membutuhkan human κ, dan backfill q048 jika B/C setuju.
+- **Catatan:** relevance dan verdict D disusun dengan bantuan AI; lihat deviasi di `reports/week1.md`.
+
+**Commit kode:** — (diisi setelah commit).
+
+**Status lengkap:** `reports/week1.md`.
+
+**Artefak final:** `benchmark/qrels_d.jsonl`, `benchmark/verdict_qrels_d.jsonl`, `benchmark/kappa.json`, `benchmark/conflicts.jsonl`, `benchmark/adjudication.jsonl`, `benchmark/annotation_log.csv`, `benchmark/qrels.jsonl`, `benchmark/verdict_qrels.jsonl`, `benchmark/test_docs.txt`, `benchmark/manifest.sha256`, `tools/compute_agreement.py`, `tools/adjudicate.py`, `tools/finalize_benchmark.py`, `tests/unit/test_agreement.py`, `tests/unit/test_adjudication.py`, `tests/unit/test_answer_sheet.py`, `reports/week1.md`.

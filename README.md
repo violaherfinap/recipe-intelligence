@@ -88,7 +88,11 @@ build bisa diverifikasi.
 - **Handoff A → B:** lihat [`docs/handoff/w1-a.md`](docs/handoff/w1-a.md).
 - **Handoff B → C:** lihat [`docs/handoff/w1-b.md`](docs/handoff/w1-b.md).
 - **Handoff C → D:** lihat [`docs/handoff/w1-c.md`](docs/handoff/w1-c.md).
-- **Week 1, blok D:** relevance pass 2, κ, adjudikasi, dan benchmark frozen.
+- **Laporan Week 1:** lihat [`reports/week1.md`](reports/week1.md).
+- **Week 1, blok D:** selesai — relevance pass 2 (1.789 baris), verdict pass 2
+  (145 klaim), κ relevance 0.9607 / verdict 0.4983, 14 konflik diadjudikasi,
+  annotation log 14 baris, benchmark frozen, 100 test lulus, ruff bersih.
+  Laporan: [`reports/week1.md`](reports/week1.md).
 
 ## Benchmark
 
@@ -101,6 +105,13 @@ uv run python tools/build_pool.py
 
 # anotasi relevance (C atau D)
 uv run python tools/annotate.py relevance --annotator C --out benchmark/qrels_c.jsonl
+
+# hitung agreement, adjudikasi, lalu freeze
+uv run python tools/compute_agreement.py
+uv run python tools/adjudicate.py status
+uv run python tools/finalize_benchmark.py --dry-run
+uv run python tools/finalize_benchmark.py
+uv run python tools/validate_benchmark.py --strict
 ```
 
 Aturan anotasi ada di [`benchmark/guidelines.md`](benchmark/guidelines.md).
