@@ -3,7 +3,7 @@
 **Owner:** D (dengan bantuan assistant)
 **Tanggal:** 2026-11-18
 **Branch:** `feat/w1-d-pass2`
-**Status:** selesai; siap commit
+**Status:** selesai; commit `f0a436d`
 
 ## Ringkasan
 

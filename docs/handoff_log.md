@@ -63,7 +63,7 @@ bagian **Rebuild di laptop lain**.
 - **Berikutnya:** review commit D, merge ke `dev`, lalu pakai benchmark frozen untuk Week 2; pertimbangkan human re-annotation jika rubrik membutuhkan human κ, dan backfill q048 jika B/C setuju.
 - **Catatan:** relevance dan verdict D disusun dengan bantuan AI; lihat deviasi di `reports/week1.md`.
 
-**Commit kode:** — (diisi setelah commit).
+**Commit kode:** `f0a436d` di branch `feat/w1-d-pass2`.
 
 **Status lengkap:** `reports/week1.md`.
 
