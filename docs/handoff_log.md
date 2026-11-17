@@ -59,11 +59,11 @@ bagian **Rebuild di laptop lain**.
 ## Week 1 — Block D (Orang D) — 2026-11-18
 
 - **Selesai:** relevance pass 2 1.789 baris; verdict pass 2 145/145 klaim; κ relevance 0.9607 dan verdict 0.4983; 13 konflik relevance + 1 konflik verdict diadjudikasi; annotation log 14 baris; benchmark frozen (`benchmark/qrels.jsonl`, `benchmark/verdict_qrels.jsonl`, `benchmark/test_docs.txt`, `benchmark/manifest.sha256`); `validate_benchmark.py --strict` valid; 100 test lulus; ruff bersih.
-- **Belum:** commit/merge D; actual hours tidak dilacak; q048 tetap partial multi-hop (hanya satu relevance-2); pass 2 D AI-assisted, bukan human inter-annotator murni.
+- **Belum:** merge D ke `dev`; actual hours tidak dilacak; q048 tetap partial multi-hop (hanya satu relevance-2); pass 2 D AI-assisted, bukan human inter-annotator murni.
 - **Berikutnya:** review commit D, merge ke `dev`, lalu pakai benchmark frozen untuk Week 2; pertimbangkan human re-annotation jika rubrik membutuhkan human κ, dan backfill q048 jika B/C setuju.
 - **Catatan:** relevance dan verdict D disusun dengan bantuan AI; lihat deviasi di `reports/week1.md`.
 
-**Commit kode:** `f0a436d` di branch `feat/w1-d-pass2`.
+**Commit kode:** `f0a436d` di branch `feat/w1-d-pass2`; sudah di-push ke `origin/feat/w1-d-pass2`.
 
 **Status lengkap:** `reports/week1.md`.
 
