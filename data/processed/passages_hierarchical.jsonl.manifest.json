@@ -1,0 +1,14 @@
+{
+  "docs": 5600,
+  "duplicates_excluded": 5,
+  "max_tokens": 350,
+  "mode": "hierarchical",
+  "out": "data\\processed\\passages_hierarchical.jsonl",
+  "overlap": 40,
+  "passages": 37754,
+  "sections": {
+    "step": 32153,
+    "summary": 5601
+  },
+  "tokenizer": "BAAI/bge-small-en-v1.5"
+}

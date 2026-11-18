@@ -6,6 +6,7 @@
 | 1 | B | B | 14 | — | Guideline, tool anotasi blind, 115 query, no-evidence check | done |
 | 1 | C | C | 10 | 11.47 | Qrels pass 1 (1.789), metrics library | done |
 | 1 | D | D | 12 | — (tidak dilacak) | Qrels pass 2, κ, adjudication, freeze | done |
+| 2 | A | Vio | 14 | ≈10 | B2/B3, A1 chunking, A2 retrieval configs, prompt registry B0/B1 | done |
 
 ## Block A detail
 
@@ -75,3 +76,21 @@
 | Tool agreement/adjudikasi/finalisasi | `tools/compute_agreement.py`, `tools/adjudicate.py`, `tools/finalize_benchmark.py` | D |
 | Laporan | `reports/week1.md` | D |
 | Tests | `tests/unit/test_agreement.py`, `test_adjudication.py`, `test_answer_sheet.py` | D |
+
+## Block A — Week 2 detail
+
+| Item | Artefak | Owner |
+| --- | --- | --- |
+| B2 pipeline + config | `src/recipe_qa/pipeline/b2.py`, `configs/b2.yaml` | Vio |
+| B3 pipeline + config | `src/recipe_qa/pipeline/b3.py`, `configs/b3.yaml` | Vio |
+| Retrieval primitives | `src/recipe_qa/retrieval/` | Vio |
+| A1 section index | `indexes/` (11.266 passage) | Vio |
+| A1 fixed index | `indexes/fixed/` (5.738 passage) | Vio |
+| A1 hierarchical index | `indexes/hierarchical/` (37.754 passage) | Vio |
+| A2 retrieval configs | `configs/retrieval_*.yaml` | Vio |
+| A2 runner | `src/recipe_qa/retrieval/cli.py` | Vio |
+| B0/B1 configs + prompt | `configs/b0.yaml`, `b1.yaml`, `prompts/registry/structured_v1.yaml` | Vio |
+| Generation + parser | `src/recipe_qa/generation/` | Vio |
+| Config schema | `src/recipe_qa/config.py`, `configs/schema.py` | Vio |
+| Tests | `tests/unit/test_chunking_modes.py`, `test_fusion.py`, `test_filters.py`, `test_config_equality.py`, `test_prompt.py`, `test_generation_parse.py` | Vio |
+| Handoff | `docs/handoff/w2-a.md` | Vio |

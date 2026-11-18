@@ -93,6 +93,10 @@ build bisa diverifikasi.
   (145 klaim), κ relevance 0.9607 / verdict 0.4983, 14 konflik diadjudikasi,
   annotation log 14 baris, benchmark frozen, 100 test lulus, ruff bersih.
   Laporan: [`reports/week1.md`](reports/week1.md).
+- **Week 2, blok A:** selesai — B2/B3 pipeline, tiga index A1 (section 11.266 /
+  fixed 5.738 / hierarchical 37.754 passage), empat config retrieval A2,
+  prompt registry B0/B1, 120 test lulus, ruff bersih.
+  Handoff: [`docs/handoff/w2-a.md`](docs/handoff/w2-a.md).
 
 ## Benchmark
 
@@ -116,6 +120,26 @@ uv run python tools/validate_benchmark.py --strict
 
 Aturan anotasi ada di [`benchmark/guidelines.md`](benchmark/guidelines.md).
 File `benchmark/` tidak boleh dibaca oleh pipeline agent/training.
+
+## Week 2 — Retrieval
+
+```powershell
+# Bangun passage + index untuk A1 (sekali saja)
+.\scripts\tasks.ps1 passages-fixed
+.\scripts\tasks.ps1 passages-hierarchical
+.\scripts\tasks.ps1 index-fixed
+.\scripts\tasks.ps1 index-hierarchical
+
+# B2 (dense + fixed chunk + top-5) / B3 (hybrid + rerank)
+uv run python -m recipe_qa.pipeline.b2 --query-id q002 --no-generate
+uv run python -m recipe_qa.pipeline.b3 --query-id q002 --no-generate
+
+# A2 smoke: dense / bm25 / hybrid / hybrid+rerank
+uv run python -m recipe_qa.retrieval.cli --config configs/retrieval_hybrid_rerank.yaml --limit 10
+```
+
+Detail pipeline, config, dan temuan ada di
+[`docs/handoff/w2-a.md`](docs/handoff/w2-a.md).
 
 ## Lisensi
 

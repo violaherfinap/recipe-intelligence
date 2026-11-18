@@ -1,0 +1,2 @@
+{"example_id": "ex_001", "query_id": "ex_001", "query": "How long is the 1851 baked apple pudding baked?", "answer": "About half an hour.", "abstain": false, "abstain_reason": null, "confidence": 0.8}
+{"example_id": "ex_002", "query_id": "ex_002", "query": "How long is the 1796 bread pudding baked?", "answer": "Three quarters of an hour.", "abstain": false, "abstain_reason": null, "confidence": 0.8}

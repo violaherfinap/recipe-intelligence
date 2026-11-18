@@ -1,0 +1,12 @@
+id: a2_hybrid_rerank
+retrieval:
+  mode: hybrid_rerank
+  chunking: section
+  top_k_dense: 50
+  top_k_bm25: 50
+  fusion: rrf
+  rrf_k: 60
+  rerank: true
+  rerank_top_n: 50
+  final_k: 10
+  filters: true
