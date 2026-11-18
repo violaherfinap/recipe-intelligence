@@ -8,7 +8,7 @@ param(
     [string]$Task = "all"
 )
 
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Continue"
 
 switch ($Task) {
     "setup"  { uv sync --extra dev }
