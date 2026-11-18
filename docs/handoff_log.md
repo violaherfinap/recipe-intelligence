@@ -75,6 +75,6 @@ bagian **Rebuild di laptop lain**.
 - **Belum:** evaluasi penuh B2/B3/A2 dan Gate 2 (itu B/C/D); reranker q001 perlu diperiksa; B2 belum memakai filter/title; kualitas jawaban generator belum diaudit manusia; config B1 vs B2 berbeda juga di `prompt.few_shot` (deviasi pragmatis, lihat handoff).
 - **Berikutnya untuk B:** jalankan smoke B0/B1, evaluasi B2/B3 di dev, evaluasi A2 dengan qrels, lalu isi `reports/b2b3_dev.md` dan `reports/a2_dev.md`. C mengevaluasi A1; D menyiapkan qrels v2 + error taxonomy.
 
-**Branch:** `feat/w2-a-retrieval` (w2-a). **Status lengkap:** `docs/handoff/w2-a.md`.
+**Branch:** `feat/w2-a-retrieval` (w2-a). **Commit:** `bf77125`. **Status lengkap:** `docs/handoff/w2-a.md`.
 
 **Artefak:** `src/recipe_qa/retrieval/`, `src/recipe_qa/pipeline/`, `src/recipe_qa/generation/`, `configs/b0.yaml`–`configs/b3.yaml`, `configs/retrieval_*.yaml`, `prompts/registry/structured_v1.yaml`, `prompts/examples.jsonl`, `indexes/fixed/`, `indexes/hierarchical/`, `data/processed/passages_fixed.jsonl`, `data/processed/passages_hierarchical.jsonl`.

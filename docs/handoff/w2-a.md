@@ -2,6 +2,7 @@
 
 - **Owner:** Vio
 - **Branch:** `feat/w2-a-retrieval`
+- **Commit:** `bf77125`
 - **Base:** `origin/feat/w1-d-pass2` (`922c624`) + fix freeze manifest
 - **Tanggal:** 2026-11-19
 - **Handoff ke:** B (lalu C/D untuk evaluasi)
@@ -90,6 +91,9 @@ evaluasi A2 lengkap.
 - Perbedaan config B1 vs B2 sekarang mencakup `prompt.few_shot` (B1 few-shot,
   B2/B3 zero-shot RAG). Ini deviasi pragmatis dari §12.3; dicatat agar B tidak
   mengira confound-nya hilang. Model dan parameter retrieval lain tetap sama.
+- `max_new_tokens` diset **320** (plan: 220) dan `max_examples` **2** (plan: 5)
+  supaya JSON dari model 0.5B tidak terpotong. Parameter model lain tetap sama
+  di B0–B3.
 
 ## Yang dibutuhkan B/C/D
 
