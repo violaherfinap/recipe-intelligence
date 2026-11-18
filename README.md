@@ -95,7 +95,8 @@ build bisa diverifikasi.
   Laporan: [`reports/week1.md`](reports/week1.md).
 - **Week 2, blok A:** selesai — B2/B3 pipeline, tiga index A1 (section 11.266 /
   fixed 5.738 / hierarchical 37.754 passage), empat config retrieval A2,
-  prompt registry B0/B1, 120 test lulus, ruff bersih.
+  prompt registry B0/B1, 120 test lulus, ruff bersih. Branch
+  `feat/w2-a-retrieval` **belum di-merge** ke `dev`/`main`.
   Handoff: [`docs/handoff/w2-a.md`](docs/handoff/w2-a.md).
 
 ## Benchmark

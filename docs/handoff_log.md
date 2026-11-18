@@ -77,4 +77,8 @@ bagian **Rebuild di laptop lain**.
 
 **Branch:** `feat/w2-a-retrieval` (w2-a). **Commit:** `bf77125`. **Status lengkap:** `docs/handoff/w2-a.md`.
 
+**Status merge:** branch ini **belum di-merge** ke `dev`/`main`; B harus pull branch ini atau merge ke `dev` dulu.
+
+**Config equality:** test `tests/unit/test_config_equality.py` mengizinkan `prompt.few_shot` pada B1 vs B2; lihat test sebelum mengubah config.
+
 **Artefak:** `src/recipe_qa/retrieval/`, `src/recipe_qa/pipeline/`, `src/recipe_qa/generation/`, `configs/b0.yaml`–`configs/b3.yaml`, `configs/retrieval_*.yaml`, `prompts/registry/structured_v1.yaml`, `prompts/examples.jsonl`, `indexes/fixed/`, `indexes/hierarchical/`, `data/processed/passages_fixed.jsonl`, `data/processed/passages_hierarchical.jsonl`.
