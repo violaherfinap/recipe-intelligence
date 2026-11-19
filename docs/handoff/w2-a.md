@@ -2,7 +2,7 @@
 
 - **Owner:** Vio
 - **Branch:** `feat/w2-a-retrieval`
-- **Commit:** `bf77125`
+- **Commit:** head branch ini (lihat `git log --oneline`); benchmark state: tag `benchmark-v1.1`
 - **Base:** `origin/feat/w1-d-pass2` (`922c624`) + fix freeze manifest
 - **Tanggal:** 2026-11-19
 - **Status merge:** branch ini **belum di-merge** ke `dev`/`main`; B harus pull branch ini atau merge ke `dev` dulu.
@@ -75,6 +75,11 @@ uv run python -m recipe_qa.retrieval.cli --config configs/retrieval_hybrid_reran
 
 Angka ini hanya 10 query awal, bukan evaluasi dev penuh. B yang menjalankan
 evaluasi A2 lengkap.
+
+**Catatan qrels:** smoke di atas dihitung dengan qrels v1.0. Benchmark sudah
+direvisi ke v1.1 (dua label `q083` `0` → `1`; lihat `benchmark/changes_v1_1.jsonl`
+dan bagian v1.1 di `reports/week1.md`). Jalankan ulang evaluasi dengan qrels
+v1.1; selisihnya kecil tetapi angka final harus memakai v1.1.
 
 ## Temuan
 
