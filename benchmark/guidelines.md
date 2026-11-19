@@ -217,11 +217,53 @@ Aturan:
 - Unjudged = non-relevan (0). Semua kandidat pool harus dinilai.
 - Jangan menambah kandidat dari luar pool saat anotasi; jika menemukan passage relevan yang tidak ada di pool, catat di `notes` dan laporkan ke D.
 
+### Pool v2 (Week 2)
+
+Pool v2 dipakai untuk menilai B2 (fixed chunk) dan A2 (BM25/hybrid) yang tidak
+tercakup pool v1. Pool v2 adalah **union** dari:
+
+- seluruh kandidat pool v1 (gold + dense section top-10 + negatif),
+- top-10 B2 pada index fixed,
+- top-10 B3 pada index section,
+- top-10 A2 BM25 dan hybrid pada index section.
+
+Semua kandidat wajib `split=test`; kandidat train/dev dibuang oleh builder.
+`pool_v2.jsonl` tetap blinded (hanya `query_id`, `passage_id`, `doc_id`).
+`pool_v2_meta.jsonl` menyimpan `source`, `run_id`, `chunking`, `rank`, `score`
+dan **tidak boleh dibuka anotator**.
+
+```powershell
+uv run python tools/build_pool_v2.py `
+  --pool benchmark/pool_v1.jsonl `
+  --meta benchmark/pool_v1_meta.jsonl `
+  --rankings b2=artifacts/runs/retrieval_b2_full.json `
+  --rankings b3=artifacts/runs/retrieval_b3_full.json `
+  --rankings a2_bm25=artifacts/runs/a2_bm25_full.json `
+  --rankings a2_hybrid=artifacts/runs/a2_hybrid_full.json `
+  --passages data/processed/passages.jsonl data/processed/passages_fixed.jsonl `
+  --test-docs benchmark/test_docs.txt `
+  --out benchmark/pool_v2.jsonl `
+  --meta-out benchmark/pool_v2_meta.jsonl
+```
+
+Karena pool v2 mencampur chunking, anotasi harus memuat **dua file passage**:
+
+```powershell
+uv run python tools/annotate.py relevance --annotator C `
+  --queries benchmark/queries.jsonl `
+  --pool benchmark/pool_v2.jsonl `
+  --passages data/processed/passages.jsonl data/processed/passages_fixed.jsonl `
+  --out benchmark/qrels_v2_c.jsonl
+```
+
+Passage `#fixed#` dan `#ingredients#`/`#directions#` diberi label dengan skala
+yang sama; nilailah passage terhadap klaim, bukan berdasarkan chunking-nya.
+
 ---
 
 ## 8. Blinding
 
-- C tidak boleh melihat `qrels_d.jsonl`, `verdict_qrels_d.jsonl`, atau `pool_v1_meta.jsonl`.
+- C tidak boleh melihat `qrels_d.jsonl`, `verdict_qrels_d.jsonl`, atau `pool_*_meta.jsonl`.
 - D tidak boleh melihat `qrels_c.jsonl`, `verdict_qrels_c.jsonl`, atau catatan C sampai pass 2 selesai.
 - Tool tidak menampilkan `source`, `rank`, `score`, gold claim, atau label anotator lain.
 - Urutan kandidat diacak deterministik per `(query_id, annotator)`.
@@ -269,6 +311,11 @@ uv run python tools/annotate.py status --annotator C --out benchmark/qrels_c.jso
 ```
 
 Target: semua kandidat di pool dinilai. C/D tidak boleh mengubah `queries.jsonl`.
+
+Untuk pool v2 (Week 2), gunakan perintah di §7 dengan
+`--passages data/processed/passages.jsonl data/processed/passages_fixed.jsonl`
+dan seed `benchmark/qrels.jsonl` v1.1 ke file output sebelum mulai. Tool akan
+melewati item yang sudah dinilai dan hanya menampilkan kandidat baru.
 
 ---
 
@@ -413,6 +460,7 @@ uv run ruff check src tests tools
 | --- | --- | --- |
 | 1.0 | 2026-11-14 | Versi awal: 115 query, aturan 0/1/2, pooling, verdict, no-evidence, adjudikasi |
 | 1.1 | 2026-11-19 | Klarifikasi relevance per passage/per klaim (multi-hop dan passage `ingredients`); adjudikasi v1.1 oleh A, bukan anotator; 2 label q083 `0` -> `1` |
+| 1.2 | 2026-11-19 | Pool v2: union pool v1 + B2 fixed + B3/A2 section top-10; anotasi multi-file passage (`section` + `fixed`) |
 
 Perubahan aturan harus disetujui B + C + D dan dicatat di tabel ini.
 

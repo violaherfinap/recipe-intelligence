@@ -107,3 +107,21 @@
 | Config schema | `src/recipe_qa/config.py`, `configs/schema.py` | Vio |
 | Tests | `tests/unit/test_chunking_modes.py`, `test_fusion.py`, `test_filters.py`, `test_config_equality.py`, `test_prompt.py`, `test_generation_parse.py` | Vio |
 | Handoff | `docs/handoff/w2-a.md` | Vio |
+
+## Block B - Week 2 detail
+
+| Item | Artefak | Owner |
+| --- | --- | --- |
+| Retrieval evaluation tool | `tools/eval_retrieval.py`, `src/recipe_qa/eval/metrics/coverage.py` | B |
+| Batch smoke tool | `tools/run_config.py` | B |
+| Smoke B0/B1 | `artifacts/runs/smoke/b0/`, `artifacts/runs/smoke/b1/` (lokal) | B |
+| A2 evaluation | `reports/a2_dev.md`, `artifacts/runs/a2_*_full.json` | B |
+| B2/B3 evaluation | `reports/b2b3_dev.md`, `artifacts/runs/retrieval_b2_full.json`, `retrieval_b3_full.json` | B |
+| Diagnostic rerank tanpa filter | `configs/retrieval_hybrid_rerank_nofilter.yaml`, `artifacts/runs/a2_hybrid_rerank_nofilter_full.json` | B |
+| Pool v2 builder | `tools/build_pool_v2.py`, `src/recipe_qa/benchmark/pool_v2.py` | B |
+| Pool v2 blinded | `benchmark/pool_v2.jsonl`, `benchmark/pool_v2.sha256` | B |
+| Pool v2 provenance | `benchmark/pool_v2_meta.jsonl` (tidak di-commit) | B |
+| Multi-passage annotation | `tools/annotate.py`, `src/recipe_qa/benchmark/validate.py` | B |
+| Guidelines v1.2 | `benchmark/guidelines.md` | B |
+| Tests | `tests/unit/test_coverage_metrics.py`, `test_pool_v2.py` | B |
+| Handoff | `docs/handoff/w2-b.md` | B |

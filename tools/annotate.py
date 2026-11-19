@@ -15,7 +15,7 @@ from recipe_qa.benchmark.annotation import (
     verdict_progress,
 )
 from recipe_qa.benchmark.schema import Qrel, VerdictQrel
-from recipe_qa.benchmark.validate import load_passages, load_queries
+from recipe_qa.benchmark.validate import load_passages_many, load_queries
 
 
 def _ask(prompt: str) -> str:
@@ -45,7 +45,7 @@ def _relevance(args: argparse.Namespace) -> int:
     if args.query_id:
         queries = [query for query in queries if query.query_id == args.query_id]
     pool = load_pool(args.pool)
-    passages = load_passages(args.passages)
+    passages = load_passages_many(args.passages)
     judged = load_judged(args.out)
     commit = _commit_sha(args.commit_file)
 
@@ -114,7 +114,7 @@ def _verdict(args: argparse.Namespace) -> int:
     queries = load_queries(args.queries)
     if args.query_id:
         queries = [query for query in queries if query.query_id == args.query_id]
-    passages = load_passages(args.passages)
+    passages = load_passages_many(args.passages)
     done: set[tuple[str, str]] = set()
     if args.out.exists():
         from recipe_qa.benchmark.validate import load_verdict_qrels
@@ -202,9 +202,14 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     common = argparse.ArgumentParser(add_help=False)
-    common.add_argument("--annotator", required=True, choices=["C", "D"])
+    common.add_argument("--annotator", required=True, choices=["A", "C", "D"])
     common.add_argument("--queries", type=Path, default=Path("benchmark/queries.jsonl"))
-    common.add_argument("--passages", type=Path, default=Path("data/processed/passages.jsonl"))
+    common.add_argument(
+        "--passages",
+        type=Path,
+        nargs="+",
+        default=[Path("data/processed/passages.jsonl")],
+    )
     common.add_argument("--out", type=Path, required=True)
     common.add_argument("--query-id", default=None)
     common.add_argument("--limit", type=int, default=None)

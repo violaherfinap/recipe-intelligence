@@ -62,7 +62,9 @@ class PoolMeta(BaseModel):
 
     query_id: str = Field(pattern=r"^q\d{3}$")
     passage_id: str
-    source: Literal["gold", "dense", "negative"]
+    source: Literal["gold", "dense", "negative", "retrieval"]
+    run_id: str | None = None
+    chunking: str | None = None
     rank: int | None = None
     score: float | None = None
 

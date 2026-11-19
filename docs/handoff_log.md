@@ -95,3 +95,15 @@ bagian **Rebuild di laptop lain**.
 **Config equality:** test `tests/unit/test_config_equality.py` mengizinkan `prompt.few_shot` pada B1 vs B2; lihat test sebelum mengubah config.
 
 **Artefak:** `src/recipe_qa/retrieval/`, `src/recipe_qa/pipeline/`, `src/recipe_qa/generation/`, `configs/b0.yaml`–`configs/b3.yaml`, `configs/retrieval_*.yaml`, `prompts/registry/structured_v1.yaml`, `prompts/examples.jsonl`, `indexes/fixed/`, `indexes/hierarchical/`, `data/processed/passages_fixed.jsonl`, `data/processed/passages_hierarchical.jsonl`.
+
+## Week 2 — Block B (Orang B) — 2026-11-19
+
+- **Selesai:** smoke B0/B1 20 query (B0 20/20 schema valid, B1 18/20); A2 penuh 115 query dengan qrels v1.1 (dense 0,3019; BM25 0,3917; hybrid 0,4324; hybrid+rerank+filter 0,7120; rerank tanpa filter 0,4102); evaluasi B2/B3 (B2 passage 0 secara struktural, doc recall 0,2889; B3 passage 0,7120, doc 0,7833); pool v2 2.237 kandidat / 448 baru / median 19 per query; tool `eval_retrieval.py`, `run_config.py`, `build_pool_v2.py`, coverage metrics; guidelines v1.2; laporan A2 dan B2/B3; 127 test lulus, ruff bersih, validator lulus.
+- **Belum:** Gate 2 passage-level (B2 butuh qrels fixed); qrels v2 dan anotasi 448 kandidat baru ada di C/D; dev query set terpisah (Q10); keputusan 2 vs 3 anotator (Q12).
+- **Berikutnya untuk C:** seed `benchmark/qrels.jsonl` ke `qrels_v2_c.jsonl`, lalu anotasi 448 kandidat baru dari `benchmark/pool_v2.jsonl` dengan `--passages data/processed/passages.jsonl data/processed/passages_fixed.jsonl`; jangan membuka `pool_v2_meta.jsonl`.
+
+**Branch:** `feat/w2-b-eval-pool`. **Status lengkap:** `docs/handoff/w2-b.md`.
+
+**Gate 2:** qrels v2 belum; Recall@10 B3 > B2 lulus di doc-level (0,7833 > 0,2889), passage-level menunggu qrels v2.
+
+**Artefak:** `reports/a2_dev.md`, `reports/b2b3_dev.md`, `benchmark/pool_v2.jsonl`, `benchmark/pool_v2.sha256`, `benchmark/guidelines.md` v1.2, `tools/eval_retrieval.py`, `tools/run_config.py`, `tools/build_pool_v2.py`, `tools/summarize_runs.py`, `src/recipe_qa/benchmark/pool_v2.py`, `src/recipe_qa/eval/metrics/coverage.py`, `artifacts/runs/` (lokal).

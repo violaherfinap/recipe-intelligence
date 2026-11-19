@@ -48,6 +48,17 @@ def load_passages(path: Path) -> dict[str, dict]:
     return {row["passage_id"]: row for row in read_jsonl(path)}
 
 
+def load_passages_many(paths: Iterable[Path]) -> dict[str, dict]:
+    merged: dict[str, dict] = {}
+    for path in paths:
+        for passage_id, row in load_passages(path).items():
+            existing = merged.get(passage_id)
+            if existing is not None and existing != row:
+                raise ValueError(f"conflicting rows for passage {passage_id} in {path}")
+            merged[passage_id] = row
+    return merged
+
+
 def load_split(path: Path) -> dict[str, str]:
     payload = json.loads(path.read_text(encoding="utf-8"))
     return payload["assignments"]
