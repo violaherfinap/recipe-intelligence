@@ -167,3 +167,9 @@ uv run python tools/annotate.py relevance --annotator C `
 4. Regenerate `benchmark/manifest.sha256`.
 5. Jalankan ulang B2/B3 dengan qrels v2, lalu tutup Gate 2.
 6. Spot-check 5 query no-evidence di pool v2.
+
+## Laporan terkait
+
+- [`a2_dev.md`](a2_dev.md) — evaluasi A2 dense/BM25/hybrid/rerank.
+- [`../docs/handoff/w2-b.md`](../docs/handoff/w2-b.md) — handoff B ke C/D.
+- [`README.md`](README.md) — indeks laporan.

@@ -137,3 +137,9 @@ uv run python tools/eval_retrieval.py --config configs/retrieval_hybrid.yaml --l
 uv run python tools/eval_retrieval.py --config configs/retrieval_hybrid_rerank.yaml --limit 0 --out artifacts/runs/a2_hybrid_rerank_full.json
 uv run python tools/eval_retrieval.py --config configs/retrieval_hybrid_rerank_nofilter.yaml --limit 0 --out artifacts/runs/a2_hybrid_rerank_nofilter_full.json
 ```
+
+## Laporan terkait
+
+- [`b2b3_dev.md`](b2b3_dev.md) — B2/B3, smoke B0/B1, pool v2.
+- [`../docs/handoff/w2-b.md`](../docs/handoff/w2-b.md) — handoff B ke C/D.
+- [`README.md`](README.md) — indeks laporan.
