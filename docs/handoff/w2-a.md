@@ -76,10 +76,11 @@ uv run python -m recipe_qa.retrieval.cli --config configs/retrieval_hybrid_reran
 Angka ini hanya 10 query awal, bukan evaluasi dev penuh. B yang menjalankan
 evaluasi A2 lengkap.
 
-**Catatan qrels:** smoke di atas dihitung dengan qrels v1.0. Benchmark sudah
-direvisi ke v1.1 (dua label `q083` `0` → `1`; lihat `benchmark/changes_v1_1.jsonl`
-dan bagian v1.1 di `reports/week1.md`). Jalankan ulang evaluasi dengan qrels
-v1.1; selisihnya kecil tetapi angka final harus memakai v1.1.
+**Catatan qrels:** smoke di atas dihitung dengan qrels v1.0, tetapi isinya
+q001–q010, sedangkan dua label yang berubah di v1.1 ada di `q083`. Jadi angka
+smoke ini **tetap valid dan tidak perlu diulang**. Yang wajib memakai qrels
+v1.1 adalah evaluasi **penuh 115 query** milik B (`benchmark/qrels.jsonl` di
+branch ini sudah v1.1; lihat `benchmark/changes_v1_1.jsonl`).
 
 ## Temuan
 
@@ -107,10 +108,44 @@ v1.1; selisihnya kecil tetapi angka final harus memakai v1.1.
 ## Yang dibutuhkan B/C/D
 
 - **B:** jalankan smoke B0/B1; evaluasi B2/B3 di dev; evaluasi A2 (4 config)
-  dengan qrels; isi `reports/b2b3_dev.md` dan `reports/a2_dev.md`.
+  dengan qrels v1.1; isi `reports/b2b3_dev.md` dan `reports/a2_dev.md`.
 - **C:** evaluasi A1 pada tiga index (`indexes/`, `indexes/fixed/`,
   `indexes/hierarchical/`); isi `reports/a1_dev.md`.
 - **D:** qrels v2, error taxonomy, dan catatan kegagalan retrieval/verifier.
+
+### Brief B — urutan perintah
+
+```powershell
+# 0. pastikan benchmark yang dipakai sudah v1.1
+uv run python tools/validate_benchmark.py --strict
+uv run python tools/audit_qrels.py compare
+
+# 1. smoke B0 (tanpa retrieval) dan B1 (few-shot), satu query dulu
+uv run python -m recipe_qa.pipeline.b2 --config configs/b0.yaml --query-id q002
+uv run python -m recipe_qa.pipeline.b2 --config configs/b1.yaml --query-id q002
+
+# 2. cek retrieval B2/B3 tanpa generator (cepat)
+uv run python -m recipe_qa.pipeline.b2 --query-id q001 --no-generate
+uv run python -m recipe_qa.pipeline.b3 --query-id q001 --no-generate
+
+# 3. evaluasi A2 penuh, 115 query, qrels v1.1
+foreach ($c in "dense","bm25","hybrid","hybrid_rerank") {
+  uv run python -m recipe_qa.retrieval.cli `
+    --config "configs/retrieval_$c.yaml" --limit 0 `
+    --out "artifacts/runs/a2_${c}_full.json"
+}
+```
+
+Batasan yang harus ikut ditulis di laporan B:
+
+- B2/B3 memakai prompt RAG **zero-shot**; B1 **few-shot**. Jadi B1 vs B2 bukan
+  perbandingan retrieval murni — ada confound `prompt.few_shot` (§12.3).
+- `max_new_tokens=320` (plan 220) dan `max_examples=2` (plan 5), demi JSON valid.
+- Generator Qwen 0.5B butuh ~40–60 detik/query. Untuk metrik retrieval pakai
+  `--no-generate`; evaluasi penuh dengan generator bisa 1–2 jam per config.
+- `benchmark/qrels.jsonl` adalah final v1.1. Jangan memakai `qrels_c.jsonl` atau
+  `qrels_d.jsonl` sebagai ground truth, dan jangan mengubah `queries.jsonl`.
+- `--limit 0` berarti semua query; `--limit 10` hanya q001–q010 (smoke A).
 
 ## Yang belum / terbuka
 

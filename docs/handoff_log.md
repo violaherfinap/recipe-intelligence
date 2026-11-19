@@ -86,7 +86,7 @@ bagian **Rebuild di laptop lain**.
 
 - **Selesai:** B2 (dense + fixed chunk + top-5) dan B3 (BM25 + dense + RRF + reranker + filter) berjalan end-to-end sampai JSON answer; A1 tiga index (section 11.266, fixed 5.738, hierarchical 37.754 passage); A2 empat config retrieval; prompt registry B0/B1 + config equality; 120 unit test lulus; ruff bersih. Smoke: B0/B2/B3 schema-valid; A2 10 query hybrid+rerank Recall@10 0.80 vs dense 0.45.
 - **Belum:** evaluasi penuh B2/B3/A2 dan Gate 2 (itu B/C/D); reranker q001 perlu diperiksa; B2 belum memakai filter/title; kualitas jawaban generator belum diaudit manusia; config B1 vs B2 berbeda juga di `prompt.few_shot` (deviasi pragmatis, lihat handoff).
-- **Berikutnya untuk B:** jalankan smoke B0/B1, evaluasi B2/B3 di dev, evaluasi A2 dengan qrels, lalu isi `reports/b2b3_dev.md` dan `reports/a2_dev.md`. C mengevaluasi A1; D menyiapkan qrels v2 + error taxonomy.
+- **Berikutnya untuk B:** jalankan smoke B0/B1, evaluasi B2/B3 di dev, evaluasi A2 dengan **qrels v1.1**, lalu isi `reports/b2b3_dev.md` dan `reports/a2_dev.md`. C mengevaluasi A1; D menyiapkan qrels v2 + error taxonomy.
 
 **Branch:** `feat/w2-a-retrieval` (w2-a). **Commit:** `bf77125`. **Status lengkap:** `docs/handoff/w2-a.md`.
 
