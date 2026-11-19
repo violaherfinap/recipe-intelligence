@@ -6,6 +6,7 @@
 | 1 | B | B | 14 | — | Guideline, tool anotasi blind, 115 query, no-evidence check | done |
 | 1 | C | C | 10 | 11.47 | Qrels pass 1 (1.789), metrics library | done |
 | 1 | D | D | 12 | — (tidak dilacak) | Qrels pass 2, κ, adjudication, freeze | done |
+| 1 | A (revisi v1.1) | Vio | 3 | ≈3 | Adjudikasi ulang 14 konflik, audit 183 item, klarifikasi §6, qrels v1.1 | done |
 | 2 | A | Vio | 14 | ≈10 | B2/B3, A1 chunking, A2 retrieval configs, prompt registry B0/B1 | done |
 
 ## Block A detail
@@ -77,7 +78,19 @@
 | Laporan | `reports/week1.md` | D |
 | Tests | `tests/unit/test_agreement.py`, `test_adjudication.py`, `test_answer_sheet.py` | D |
 
-## Block A — Week 2 detail
+## Revisi v1.1 detail (Week 1, dikerjakan A)
+
+| Item | Artefak | Owner |
+| --- | --- | --- |
+| Klarifikasi aturan relevance | `benchmark/guidelines.md` (§6, §13, §16) | Vio |
+| Adjudikasi ulang 14 konflik | `benchmark/adjudication_v1_1.jsonl` | Vio |
+| Sensus 183 item non-zero | `benchmark/audit_v1_1.jsonl`, `benchmark/audit_v1_1_summary.json` | Vio |
+| Perubahan label | `benchmark/changes_v1_1.jsonl` (2 item) | Vio |
+| Tool audit | `tools/audit_qrels.py` | Vio |
+| Freeze ulang | `benchmark/manifest.sha256` | Vio |
+| Laporan | `reports/week1.md` bagian v1.1 | Vio |
+
+## Block A - Week 2 detail
 
 | Item | Artefak | Owner |
 | --- | --- | --- |

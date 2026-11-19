@@ -166,6 +166,17 @@ Aturan tambahan:
 - Jangan memberi `2` hanya karena tahun/buku cocok.
 - Jangan memakai pengetahuan luar korpus.
 
+**Klarifikasi v1.1 (2026-11-19): relevance dinilai per passage terhadap klaim, bukan terhadap query sebagai satu kesatuan.**
+
+Ini hanya menegaskan kalimat pertama §6 ("nilailah passage, bukan dokumen"). Dipakai untuk memutus 13 konflik C/D yang semuanya berada di pita `1` vs `2`.
+
+- Query multi-hop punya ≥2 klaim, satu per dokumen. Passage yang **menyelesaikan salah satu klaim** tetap `2`, walaupun query secara keseluruhan butuh dua passage. Contoh: q040 menanyakan dua resep 1824 yang memakai butter dan citron; passage `arrow-root-pudding#directions#0` memuat butter dan citron untuk resep itu, jadi `2`.
+- Passage `ingredients` yang **memuat nilai yang ditanyakan** (takaran, jumlah, atau daftar bahan yang diminta) → `2`. Contoh: query "how much butter", passage berisi "four ounces of butter".
+- Passage `ingredients` yang hanya **menyebut bahan terkait** ketika query menanyakan prosedur, sifat, atau fungsi → `1`. Contoh: query menanyakan cara mengaduk; passage hanya mendaftar bahan.
+- Passage dari resep/dokumen lain → `0`.
+
+Konsekuensi: "bahan terkait" pada tabel di atas berarti `1`, bukan `0`. Label `0` hanya untuk passage yang tidak membahas resep yang ditanyakan.
+
 Contoh (ilustratif, bukan passage test):
 
 ```text
@@ -334,10 +345,16 @@ D menghitung:
 - Cohen's κ untuk relevance (C vs D).
 - Cohen's κ untuk verdict (C vs D).
 - Disagreement log: query, passage/claim, label C, label D, alasan, keputusan.
-- Adjudikasi oleh D (atau A jika D terlibat konflik):
-  - pilih label yang didukung passage;
+- Adjudikasi oleh **A**, bukan oleh C atau D: keduanya anotator pass 1/2, sehingga memutuskan konfliknya sendiri bukan adjudikasi pihak ketiga. D tetap menghitung κ dan menyiapkan log.
+  - pilih label yang didukung passage dan klarifikasi §6;
   - catat alasan;
   - tulis qrels final `benchmark/qrels.jsonl`.
+
+Sejak v1.1, keputusan adjudikasi ditulis ke file terpisah supaya keputusan lama tidak men-anchor penilai baru:
+
+- `benchmark/adjudication.jsonl` — v1.0 (diputus D).
+- `benchmark/adjudication_v1_1.jsonl` — v1.1 (diputus A, 14 konflik).
+- `benchmark/changes_v1_1.jsonl` — daftar label final yang berubah, beserta alasan.
 
 Aturan adjudikasi:
 
@@ -395,5 +412,8 @@ uv run ruff check src tests tools
 | Versi | Tanggal | Perubahan |
 | --- | --- | --- |
 | 1.0 | 2026-11-14 | Versi awal: 115 query, aturan 0/1/2, pooling, verdict, no-evidence, adjudikasi |
+| 1.1 | 2026-11-19 | Klarifikasi relevance per passage/per klaim (multi-hop dan passage `ingredients`); adjudikasi v1.1 oleh A, bukan anotator; 2 label q083 `0` -> `1` |
 
 Perubahan aturan harus disetujui B + C + D dan dicatat di tabel ini.
+
+Catatan v1.1: baris ini adalah **klarifikasi** §6, bukan aturan baru — dipakai A untuk memutus 14 konflik. Kalau B/C/D tidak setuju dengan klarifikasinya, buka kembali di v1.2 dan jalankan ulang `tools/audit_qrels.py compare`; label yang berubah tercatat di `benchmark/changes_v1_1.jsonl` sehingga bisa dibalik satu per satu.

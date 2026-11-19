@@ -93,6 +93,10 @@ build bisa diverifikasi.
   (145 klaim), κ relevance 0.9607 / verdict 0.4983, 14 konflik diadjudikasi,
   annotation log 14 baris, benchmark frozen, 100 test lulus, ruff bersih.
   Laporan: [`reports/week1.md`](reports/week1.md).
+- **Revisi v1.1 (Week 1):** adjudikasi ulang 14 konflik oleh A (12 sama, 2
+  berubah), audit 183 item non-zero (181 dipertahankan), klarifikasi relevance
+  per passage/per klaim di `benchmark/guidelines.md`. κ pada 183 item penentu:
+  0.6333, bukan 0.9607 (pool penuh).
 - **Week 2, blok A:** selesai — B2/B3 pipeline, tiga index A1 (section 11.266 /
   fixed 5.738 / hierarchical 37.754 passage), empat config retrieval A2,
   prompt registry B0/B1, 120 test lulus, ruff bersih. Branch

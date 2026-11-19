@@ -69,6 +69,19 @@ bagian **Rebuild di laptop lain**.
 
 **Artefak final:** `benchmark/qrels_d.jsonl`, `benchmark/verdict_qrels_d.jsonl`, `benchmark/kappa.json`, `benchmark/conflicts.jsonl`, `benchmark/adjudication.jsonl`, `benchmark/annotation_log.csv`, `benchmark/qrels.jsonl`, `benchmark/verdict_qrels.jsonl`, `benchmark/test_docs.txt`, `benchmark/manifest.sha256`, `tools/compute_agreement.py`, `tools/adjudicate.py`, `tools/finalize_benchmark.py`, `tests/unit/test_agreement.py`, `tests/unit/test_adjudication.py`, `tests/unit/test_answer_sheet.py`, `reports/week1.md`.
 
+## Week 1 — Revisi v1.1 (Orang A / Vio) — 2026-11-19
+
+- **Selesai:** adjudikasi ulang 14 konflik oleh A, blind ke keputusan lama — 12 sama, 2 berubah (`q083` x2, `0` → `1`); sensus 183 item non-zero — 181 dipertahankan, 2 dikoreksi; klarifikasi §6 (relevance per passage/per klaim) ditulis di `benchmark/guidelines.md` v1.1; artefak baru `benchmark/adjudication_v1_1.jsonl`, `benchmark/audit_v1_1.jsonl`, `benchmark/audit_v1_1_summary.json`, `benchmark/changes_v1_1.jsonl`, `tools/audit_qrels.py`; manifest di-regenerate; `validate_benchmark.py --strict` valid.
+- **Alasan:** D tidak yakin dengan pass 2-nya sendiri. Guideline §13 meminta adjudikasi pihak ketiga, tetapi D yang memutus konflik C vs D, dan 12 dari 13 keputusan jatuh ke label C. κ pool penuh (0.9607) juga menyesatkan karena 1.606 dari 1.789 item bernilai `0`.
+- **Belum:** dua item yang berubah belum di-spot-check manusia; pass ketiga penuh (1.789 item) tidak dilakukan; qrels v2 dengan 3 anotator belum dimulai; `benchmark/kappa.json` masih berisi κ C vs D pada pool penuh, belum κ subset 183 item (0.6333).
+- **Berikutnya:** B/C/D meninjau klarifikasi §6. Kalau setuju, pakai qrels v1.1 untuk evaluasi Week 2; kalau tidak, kembalikan label satu per satu lewat `benchmark/changes_v1_1.jsonl`. Untuk qrels v2, anotasi dilakukan 3 orang (C, D, A) dengan Fleiss κ + adjudikasi sisa seri.
+
+**Status lengkap:** bagian **v1.1** di `reports/week1.md`.
+
+**Commit:** tag `benchmark-v1.1` (lokal; belum di-push).
+
+**Artefak v1.1:** `benchmark/guidelines.md`, `benchmark/adjudication_v1_1.jsonl`, `benchmark/audit_v1_1.jsonl`, `benchmark/audit_v1_1_summary.json`, `benchmark/changes_v1_1.jsonl`, `benchmark/qrels.jsonl`, `benchmark/manifest.sha256`, `tools/audit_qrels.py`, `reports/week1.md`.
+
 ## Week 2 — Block A (Orang A / Vio) — 2026-11-19
 
 - **Selesai:** B2 (dense + fixed chunk + top-5) dan B3 (BM25 + dense + RRF + reranker + filter) berjalan end-to-end sampai JSON answer; A1 tiga index (section 11.266, fixed 5.738, hierarchical 37.754 passage); A2 empat config retrieval; prompt registry B0/B1 + config equality; 120 unit test lulus; ruff bersih. Smoke: B0/B2/B3 schema-valid; A2 10 query hybrid+rerank Recall@10 0.80 vs dense 0.45.
