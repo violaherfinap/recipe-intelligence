@@ -107,3 +107,13 @@ bagian **Rebuild di laptop lain**.
 **Gate 2:** qrels v2 belum; Recall@10 B3 > B2 lulus di doc-level (0,7833 > 0,2889), passage-level menunggu qrels v2.
 
 **Artefak:** `reports/a2_dev.md`, `reports/b2b3_dev.md`, `benchmark/pool_v2.jsonl`, `benchmark/pool_v2.sha256`, `benchmark/guidelines.md` v1.2, `tools/eval_retrieval.py`, `tools/run_config.py`, `tools/build_pool_v2.py`, `tools/summarize_runs.py`, `src/recipe_qa/benchmark/pool_v2.py`, `src/recipe_qa/eval/metrics/coverage.py`, `artifacts/runs/` (lokal).
+
+## Week 2 - Block C (Orang C) - 2026-11-22
+
+- **Selesai:** qrels v2 pass 1 - 448/448 kandidat baru direview (LLM preannotation + 100% human review, 5 override), `qrels_v2_c.jsonl` 2.237 baris/115 query (SHA-256 `6523382a21df...`); A1 tiga chunking dengan dense-only - doc recall@10 fixed 0,3889, section 0,3500, hierarchical 0,5778; section passage R@10 0,3019; `reports/a1_dev.md`; 130 test lulus, ruff bersih, validator v1.1 lulus.
+- **Belum:** audit provenance verdict C 145 klaim; Q12 (2 vs 3 anotator) belum diputuskan; q048 warning multi-hop 3 relevance-2 dalam 1 dokumen diterima sebagai known pool gap; qrels v2 belum diadjudikasi D.
+- **Berikutnya untuk D:** jangan buka `qrels_v2_c.jsonl`/reviewed/draft sebelum pass 2; seed `benchmark/qrels.jsonl` v1.1 ke `qrels_v2_d.jsonl`, anotasi 448 kandidat baru blind, hitung agreement, adjudikasi, freeze qrels v2, lalu rerun A1/B2/B3 dan tutup Gate 2.
+
+**Branch:** `feat/w2-c-qrels-v2-a1`. **Status lengkap:** `docs/handoff/w2-c.md`.
+
+**Artefak:** `benchmark/qrels_v2_c.jsonl` (commit; jangan dibuka D sebelum pass 2), `benchmark/qrels_v2_c.sha256`, `benchmark/work/w2-c/` (lokal), `reports/a1_dev.md`, `configs/a1_*.yaml`, `tools/a1_context_stats.py`, `artifacts/runs/a1_*.json` (lokal), `tools/finalize_qrels_v2.py`, `tools/export_preannotation.py`, `tools/import_preannotation.py`, `src/recipe_qa/benchmark/preannotation.py`, `tests/unit/test_preannotation.py`.

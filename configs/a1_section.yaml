@@ -1,0 +1,12 @@
+id: a1_section
+retrieval:
+  mode: dense
+  chunking: section
+  top_k_dense: 50
+  top_k_bm25: 0
+  fusion: none
+  rrf_k: 60
+  rerank: false
+  rerank_top_n: 50
+  final_k: 10
+  filters: false

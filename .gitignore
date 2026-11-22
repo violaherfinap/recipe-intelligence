@@ -38,7 +38,7 @@ benchmark/pool_v2_meta.jsonl
 
 # W2 local annotation artifacts (not committed)
 /benchmark/qrels_v2_a.jsonl
-/benchmark/qrels_v2_c.jsonl
+/benchmark/qrels_v2_c.jsonl.bak
 /benchmark/qrels_v2_d.jsonl
 
 # W1-C local annotation artifacts (not committed)

@@ -13,7 +13,7 @@ from recipe_qa.benchmark.review import (
     reviewed_progress,
 )
 from recipe_qa.benchmark.schema import Qrel
-from recipe_qa.benchmark.validate import load_passages, load_qrels, load_queries
+from recipe_qa.benchmark.validate import load_passages_many, load_qrels, load_queries
 
 HELP_TEXT = """\
 a / accept   setujui label draft
@@ -138,7 +138,7 @@ def _ask_decisions(count: int) -> list[str] | None:
 
 def _review_query(args: argparse.Namespace) -> int:
     queries = {query.query_id: query for query in load_queries(args.queries)}
-    passages = load_passages(args.passages)
+    passages = load_passages_many(args.passages)
     draft = _load_draft(args.draft, args.query_id)
     if args.limit is not None:
         draft = draft[: args.limit]
@@ -231,7 +231,7 @@ def _review_query(args: argparse.Namespace) -> int:
 
 def _review_one_by_one(args: argparse.Namespace) -> int:
     queries = {query.query_id: query for query in load_queries(args.queries)}
-    passages = load_passages(args.passages)
+    passages = load_passages_many(args.passages)
     draft = _load_draft(args.draft, args.query_id)
     if args.limit is not None:
         draft = draft[: args.limit]
@@ -363,7 +363,12 @@ def build_parser() -> argparse.ArgumentParser:
     common.add_argument("--draft", type=Path, default=Path("benchmark/qrels_c_draft.jsonl"))
     common.add_argument("--out", type=Path, default=Path("benchmark/qrels_c_reviewed.jsonl"))
     common.add_argument("--queries", type=Path, default=Path("benchmark/queries.jsonl"))
-    common.add_argument("--passages", type=Path, default=Path("data/processed/passages.jsonl"))
+    common.add_argument(
+        "--passages",
+        type=Path,
+        nargs="+",
+        default=[Path("data/processed/passages.jsonl")],
+    )
     common.add_argument("--annotator", default="C")
     common.add_argument("--query-id", default=None)
     common.add_argument("--limit", type=int, default=None)
