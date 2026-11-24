@@ -117,3 +117,14 @@ bagian **Rebuild di laptop lain**.
 **Branch:** `feat/w2-c-qrels-v2-a1`. **Status lengkap:** `docs/handoff/w2-c.md`.
 
 **Artefak:** `benchmark/qrels_v2_c.jsonl` (commit; jangan dibuka D sebelum pass 2), `benchmark/qrels_v2_c.sha256`, `benchmark/work/w2-c/` (lokal), `reports/a1_dev.md`, `configs/a1_*.yaml`, `tools/a1_context_stats.py`, `artifacts/runs/a1_*.json` (lokal), `tools/finalize_qrels_v2.py`, `tools/export_preannotation.py`, `tools/import_preannotation.py`, `src/recipe_qa/benchmark/preannotation.py`, `tests/unit/test_preannotation.py`.
+
+## Week 2 - Block D (Orang D) - 2026-11-24
+
+- **Selesai:** qrels v2 pass 2 - 448/448 kandidat baru; A final 448/448; C/D kappa 0.9629 (6 konflik); Fleiss A/C/D 0.9223; 1 tie q013 diputuskan final 1; verdict C/D kappa 0.4983, q048 final REFUTED; qrels v2 frozen 2.237 baris (label 0=1955, 1=38, 2=244), verdict 145 (SUPPORTED=144, REFUTED=1); manifest dan test_docs di-regenerate; B3 R@10 0.5369 vs B2 0.1515; Gate 2 lulus; error taxonomy final 162 kegagalan/83 query (E1=134, E2=6, E3=14, E5=8; E4=0; E6-E8 NE); spot-check 5 no-evidence; A1 v2 tiga mode; 139 test lulus, ruff bersih, validator strict valid.
+- **Belum:** E6-E8 sengaja Not Evaluated; E3/E5 hanya sampel 24 query generation; A1 hierarchical passage-level tidak valid secara struktural; audit provenance verdict C (145 klaim) masih C-owned; branch belum di-push.
+- **Berikutnya untuk A:** pakai qrels v2 dan `artifacts/runs/retrieval_b3_v2.json` untuk test B0-B3; jangan tuning pada 115 query test; jangan ubah query/qrels tanpa versi baru.
+- **Catatan:** `benchmark/pool_v1.jsonl` hanya 1.789 key; finalisasi wajib memakai `benchmark/pool_v2.jsonl`. Keputusan relevance lama di `benchmark/adjudication.jsonl` tidak dipakai lagi setelah majority A/C/D; keputusan aktif ada di `benchmark/adjudication_v2.jsonl`.
+
+**Branch:** `feat/w2-d-finalize-qrels-v2`. **Commit:** `0497de8` (qrels/tooling) dan `c674d28` (taxonomy/A1 v2); commit dokumentasi adalah HEAD branch.
+
+**Artefak final:** `benchmark/qrels.jsonl` (SHA-256 `8ed07e8e...`), `benchmark/verdict_qrels.jsonl` (SHA-256 `b86d1d39...`), `benchmark/manifest.sha256`, `benchmark/archive/`, `benchmark/kappa_v2.json`, `benchmark/adjudication_v2.jsonl`, `benchmark/no_evidence_spotcheck_v2.csv`, `error_analysis.csv`, `docs/error_taxonomy.md`, `reports/a1_dev.md`, `reports/b2b3_dev.md`, `artifacts/runs/retrieval_b2_v2.json`, `artifacts/runs/retrieval_b3_v2.json` (lokal), `docs/handoff/w2-d.md`.

@@ -10,6 +10,8 @@ Dokumen sumber (tidak diubah): [`spek.md`](../spek.md),
 | --- | --- |
 | Handoff A → B | [`handoff/w2-a.md`](handoff/w2-a.md) |
 | Handoff B → C/D | [`handoff/w2-b.md`](handoff/w2-b.md) |
+| Handoff C → D | [`handoff/w2-c.md`](handoff/w2-c.md) |
+| Closeout D | [`handoff/w2-d.md`](handoff/w2-d.md) |
 | Indeks laporan | [`../reports/README.md`](../reports/README.md) |
 | Laporan A2 | [`../reports/a2_dev.md`](../reports/a2_dev.md) |
 | Laporan B2/B3 + pool | [`../reports/b2b3_dev.md`](../reports/b2b3_dev.md) |
@@ -40,14 +42,19 @@ Dokumen sumber (tidak diubah): [`spek.md`](../spek.md),
 - Query: `benchmark/queries.jsonl` + `benchmark/queries.sha256`
 - Gold evidence: `benchmark/gold_candidates.jsonl`
 - Verifikasi no-evidence: `benchmark/no_evidence_check.csv`
-- Qrels relevance pass 1: `benchmark/qrels_c.jsonl` + `benchmark/qrels_c.sha256`
-- Verdict pass 1: `benchmark/verdict_qrels_c.jsonl`
+- Spot-check no-evidence v2: `benchmark/no_evidence_spotcheck_v2.csv`
+- Qrels relevance pass 1 v2: `benchmark/qrels_v2_c.jsonl` + `benchmark/qrels_v2_c.sha256`
+- Qrels relevance pass 2 v2: `benchmark/qrels_v2_d.jsonl` (lokal, gitignored)
+- Qrels relevance A v2: `benchmark/qrels_v2_a.jsonl` (lokal, gitignored)
+- Verdict pass 1/2: `benchmark/verdict_qrels_c.jsonl`, `benchmark/verdict_qrels_d.jsonl`
 - Final qrels: `benchmark/qrels.jsonl` + `benchmark/manifest.sha256`
 - Final verdict: `benchmark/verdict_qrels.jsonl`
 - Pool v2: `benchmark/pool_v2.jsonl` + `benchmark/pool_v2.sha256`;
   provenance `benchmark/pool_v2_meta.jsonl` (tidak di-commit)
-- Agreement/adjudikasi: `benchmark/kappa.json`, `benchmark/conflicts.jsonl`,
-  `benchmark/adjudication.jsonl`, `benchmark/annotation_log.csv`
+- Agreement/adjudikasi v2: `benchmark/kappa.json`, `benchmark/kappa_v2.json`,
+  `benchmark/adjudication_v2.jsonl`
+- Log konflik final: `benchmark/conflicts.jsonl`, `benchmark/annotation_log.csv`;
+  arsip v1.1 di `benchmark/archive/`
 
 ## Tool
 

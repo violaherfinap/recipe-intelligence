@@ -8,6 +8,12 @@
 | 1 | D | D | 12 | — (tidak dilacak) | Qrels pass 2, κ, adjudication, freeze | done |
 | 1 | A (revisi v1.1) | Vio | 3 | ≈3 | Adjudikasi ulang 14 konflik, audit 183 item, klarifikasi §6, qrels v1.1 | done |
 | 2 | A | Vio | 14 | ≈10 | B2/B3, A1 chunking, A2 retrieval configs, prompt registry B0/B1 | done |
+| 2 | B | B | 13 | ≈13 | Smoke B0/B1, evaluasi A2/B2/B3, pool v2, laporan | done |
+| 2 | C | C | 10 | ≈10 | Qrels v2 pass 1, evaluasi A1, handoff | done |
+| 2 | D | D | 13 | ≈16 (termasuk closeout) | Qrels v2 pass 2, adjudikasi, Gate 2, taxonomy, A1 v2, handoff | done |
+
+`≈` berarti estimasi jam kerja, bukan timer otomatis. Nilai D mencakup
+2-3 jam closeout qrels v2, A1 v2, dan dokumentasi.
 
 ## Block A detail
 
@@ -125,3 +131,29 @@
 | Guidelines v1.2 | `benchmark/guidelines.md` | B |
 | Tests | `tests/unit/test_coverage_metrics.py`, `test_pool_v2.py` | B |
 | Handoff | `docs/handoff/w2-b.md` | B |
+
+## Block C - Week 2 detail
+
+| Item | Artefak | Owner |
+| --- | --- | --- |
+| Qrels v2 pass 1 | `benchmark/qrels_v2_c.jsonl` (2.237 baris), `benchmark/qrels_v2_c.sha256` | C |
+| Draft/review lokal | `benchmark/work/w2-c/` (gitignored) | C |
+| A1 evaluation v1.1 | `reports/a1_dev.md`, `configs/a1_*.yaml`, `tools/a1_context_stats.py` | C |
+| Run A1 v1.1 | `artifacts/runs/a1_*_full.json` (lokal) | C |
+| Handoff | `docs/handoff/w2-c.md` | C |
+
+## Block D - Week 2 detail
+
+| Item | Artefak | Owner |
+| --- | --- | --- |
+| Qrels v2 pass 2 | `benchmark/qrels_v2_d.jsonl` (lokal, gitignored) | D |
+| Qrels A v2 | `benchmark/qrels_v2_a.jsonl` (lokal, gitignored) | D |
+| Agreement v2 | `benchmark/kappa_v2.json` | D |
+| Keputusan adjudikasi v2 | `benchmark/adjudication_v2.jsonl` | D |
+| Log konflik + annotation log | `benchmark/conflicts.jsonl`, `benchmark/annotation_log.csv` | D |
+| Final qrels/verdict v2 | `benchmark/qrels.jsonl`, `benchmark/verdict_qrels.jsonl`, `benchmark/manifest.sha256` | D |
+| Spot-check no-evidence | `benchmark/no_evidence_spotcheck_v2.csv` | D |
+| Error taxonomy | `docs/error_taxonomy.md`, `error_analysis.csv`, `tools/analyze_retrieval_errors.py` | D |
+| A1 v2 rerun | `reports/a1_dev.md`, `artifacts/runs/a1_context_stats_v2.json` (lokal) | D |
+| Gate 2 report | `reports/b2b3_dev.md`, `artifacts/runs/retrieval_b2_v2.json`, `retrieval_b3_v2.json` (lokal) | D |
+| Handoff | `docs/handoff/w2-d.md` | D |
