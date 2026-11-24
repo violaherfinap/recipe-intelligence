@@ -1,17 +1,18 @@
 # Week 2 - A1 chunking evaluation
 
-- **Owner:** C
-- **Tanggal:** 2026-11-22
-- **Branch:** `feat/w2-c-qrels-v2-a1`
-- **Base commit:** `ee8f270`
-- **Status:** selesai untuk qrels v1.1; passage recall fixed/hierarchical tidak comparable
-- **Handoff ke:** D
+- **Owner:** C (v1.1); D (v2 rerun)
+- **Tanggal:** 2026-11-22 (v1.1); 2026-11-24 (v2)
+- **Branch:** `feat/w2-d-finalize-qrels-v2`
+- **Base commit:** `a7491cb`
+- **Status:** selesai untuk qrels v2; passage hierarchical tidak terukur
+- **Handoff ke:** A/B
 
 ## Ringkasan
 
 Tiga index A1 dijalankan dengan **dense retrieval yang sama** (tanpa BM25,
 reranker, atau filter metadata) pada 115 query beku. Satu-satunya variabel yang
-berubah adalah `chunking`: fixed, section, hierarchical.
+berubah adalah `chunking`: fixed, section, hierarchical. Rerun v2 memakai
+`benchmark/qrels.jsonl` final 2.237 baris setelah adjudikasi A/C/D.
 
 Hasil utama:
 
@@ -20,9 +21,11 @@ Hasil utama:
 - **Fixed 0,3889**, di atas section **0,3500**, tetapi konteksnya paling mahal:
   rata-rata **1.822 token**, p95 **2.740**, dan **38/115** query melewati budget
   2.000 token.
-- **Section passage recall@10 0,3019** dan mereproduksi angka dense A2 persis.
-- Passage recall fixed/hierarchical **tidak valid** karena qrels v1.1 hanya
-  berisi passage ID section. Dokumen-level recall adalah metrik utama A1.
+- **Fixed passage R@10 0,1515**; angka ini sejalan dengan B2 pada qrels v2.
+- **Section passage R@10 0,1633**, berbeda dari laporan v1.1 karena population
+  qrels v2 lebih besar; bukan penurunan performa retrieval.
+- Passage hierarchical **tidak valid** karena qrels v2 tidak memuat passage ID
+  hierarchical. Dokumen-level recall adalah metrik utama A1.
 - Tidak ada varian yang jelas menang di semua metrik: hierarchical unggul
   recall dokumen, section paling hemat konteks, fixed index paling kecil.
 
@@ -32,7 +35,7 @@ Hasil utama:
 | --- | --- |
 | Query | 115 (35 easy / 25 multi-hop / 30 temporal / 25 no-evidence) |
 | Query dinilai doc recall | 90 answerable; 25 no-evidence tidak punya qrels relevan |
-| Qrels | `benchmark/qrels.jsonl` v1.1, SHA-256 `e11ca2cbf56b...` |
+| Qrels | `benchmark/qrels.jsonl` v2 final, SHA-256 `8ed07e8ebcbefdea332a6a1555b320d0d8c6553f6bffd978cd22894338171926` |
 | Query hash | `d5128e484131...` |
 | Retrieval | dense, `BAAI/bge-small-en-v1.5`, `top_k_dense=50` |
 | Reranker | tidak aktif |
@@ -55,21 +58,25 @@ Artifact:
 | fixed | `artifacts/runs/a1_fixed_full.json` |
 | section | `artifacts/runs/a1_section_full.json` |
 | hierarchical | `artifacts/runs/a1_hierarchical_full.json` |
-| context/index stats | `artifacts/runs/a1_context_stats.json` |
+| context/index stats | `artifacts/runs/a1_context_stats_v2.json` |
 | config | `configs/a1_fixed.yaml`, `a1_section.yaml`, `a1_hierarchical.yaml` |
 
-## Overall
+## Overall - qrels v2
 
 | Run | Passage R@5 | Passage R@10 | nDCG@10 | MRR@10 | Doc recall@10 | Judged@10 | Test split | p50 ms | p95 ms |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| fixed | n/a* | n/a* | n/a* | n/a* | 0,3889 | n/a* | 0,1843 | 37,0 | 69,3 |
-| section | 0,2222 | **0,3019** | **0,2134** | **0,2271** | 0,3500 | 0,1870 | 0,1870 | 39,8 | 60,2 |
-| hierarchical | n/a* | n/a* | n/a* | n/a* | **0,5778** | n/a* | 0,2217 | 46,2 | 69,9 |
+| fixed | 0,1052 | 0,1515 | 0,1385 | 0,2187 | 0,3889 | 0,1843 | 0,1843 | 26,6 | 36,4 |
+| section | 0,1183 | 0,1633 | 0,1432 | **0,2271** | 0,3500 | 0,1870 | 0,1870 | 24,6 | 33,1 |
+| hierarchical | n/a* | n/a* | n/a* | n/a* | **0,5778** | n/a* | 0,2217 | 28,3 | 45,9 |
 
-\* qrels v1.1 hanya punya passage ID section. Angka passage/nDCG/MRR/judged
-untuk fixed dan hierarchical secara struktural 0 karena tidak ada passage ID
-yang cocok, bukan karena retrieval gagal. Doc recall memakai `doc_id`, sehingga
-tetap valid lintas chunking.
+\* Qrels v2 tidak punya passage ID hierarchical. Angka passage/nDCG/MRR/judged
+hierarchical secara struktural 0 karena tidak ada passage ID yang cocok, bukan
+karena retrieval gagal. Doc recall memakai `doc_id`, sehingga tetap valid lintas
+chunking.
+
+Passage fixed dan section memakai population label yang berbeda karena qrels v2
+menambahkan 448 kandidat baru; bandingkan angka passage antar-mode dengan
+hati-hati. Doc recall memakai dokumen gold yang sama dan tetap comparable.
 
 ## Per slice - doc recall@10
 
@@ -106,22 +113,27 @@ section juga memuat index BM25 yang tidak dipakai pada A1.
 3. **Fixed memberi recall lebih tinggi dari section dengan biaya konteks.**
    Doc recall 0,3889 vs 0,3500, tetapi rata-rata 1.822 token dan 38/115 query
    melewati 2.000 token. Untuk budget 2.000 token, fixed berisiko terpotong.
-4. **Section adalah baseline passage-level yang valid.** Passage R@10 0,3019,
-   nDCG@10 0,2134, MRR@10 0,2271; hasil ini sama persis dengan dense A2,
-   sehingga jalur evaluasi konsisten.
-5. **Latency ketiga mode sebanding.** p50 37-46 ms tanpa reranker; perbedaan
+4. **Fixed passage R@10 0,1515 sejalan dengan B2.** Qrels v2 akhirnya memuat
+   passage fixed, sehingga fixed passage-level dapat diukur; hasilnya sama
+   dengan retrieval B2 yang memakai index fixed.
+5. **Section passage R@10 0,1633 tidak sebanding dengan v1.1 (0,3019).**
+   Population qrels v2 bertambah dari 1.789 menjadi 2.237 judgment, sehingga
+   denominator passage berubah. Konfigurasi retrieval tidak berubah.
+6. **Latency ketiga mode sebanding.** p50 24-28 ms tanpa reranker; perbedaan
    index size tidak diterjemahkan ke latency besar pada 115 query. Biaya
    terbesar tetap reranker/generation, bukan chunking retrieval dense.
 
 ## Batasan
 
-- qrels v1.1 hanya menilai passage section. Passage recall, nDCG, MRR, dan
-  judged rate fixed/hierarchical **tidak boleh** dibandingkan; gunakan doc
-  recall untuk klaim lintas chunking.
+- Qrels v2 tidak menilai passage hierarchical. Passage recall, nDCG, MRR, dan
+  judged rate hierarchical **tidak boleh** dibandingkan; gunakan doc recall
+  untuk klaim lintas chunking.
+- Passage fixed dan section memakai population label yang berbeda; jangan
+  membandingkan passage R@10 fixed vs section sebagai perbedaan performa murni.
 - A1 ini retrieval-only. **Groundedness dan kualitas jawaban belum diukur**;
   itu membutuhkan pipeline generation B2/B3 dan penilaian klaim.
-- qrels v2 final C sudah dibentuk, tetapi adjudikasi D belum selesai. Setelah
-  qrels v2 freeze, ulangi doc-level recall dan metrik passage yang relevan.
+- Hasil v1.1 dipertahankan sebagai riwayat, bukan angka final. Gunakan tabel
+  qrels v2 untuk laporan Week 2.
 - Tidak ada dev query set terpisah; 115 query ini adalah benchmark test (Q10),
   jadi hasil dipakai untuk evaluasi, bukan tuning.
 - Latency diukur CPU secara sekuensial; model load tidak termasuk timing per
@@ -130,18 +142,30 @@ section juga memuat index BM25 yang tidak dipakai pada A1.
   step); unique doc/query tetap 9,71 dari 10, tetapi redundancy perlu
   dipertimbangkan saat memilih konteks generation.
 
+## Riwayat v1.1
+
+Angka di bawah adalah hasil sebelum qrels v2 freeze; hanya untuk jejak historis.
+
+| Run | Passage R@10 | nDCG@10 | MRR@10 | Doc recall@10 | p50 ms | p95 ms |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| fixed | n/a* | n/a* | n/a* | 0,3889 | 37,0 | 69,3 |
+| section | 0,3019 | 0,2134 | 0,2271 | 0,3500 | 39,8 | 60,2 |
+| hierarchical | n/a* | n/a* | n/a* | 0,5778 | 46,2 | 69,9 |
+
 ## Perintah reproduksi
 
 ```powershell
+uv run python -m recipe_qa.corpus.cli passages --mode hierarchical --out data/processed/passages_hierarchical.jsonl
+uv run python -m recipe_qa.index.cli all --passages data/processed/passages_hierarchical.jsonl --out indexes/hierarchical
 uv run python tools/eval_retrieval.py --config configs/a1_fixed.yaml --limit 0 --out artifacts/runs/a1_fixed_full.json
 uv run python tools/eval_retrieval.py --config configs/a1_section.yaml --limit 0 --out artifacts/runs/a1_section_full.json
 uv run python tools/eval_retrieval.py --config configs/a1_hierarchical.yaml --limit 0 --out artifacts/runs/a1_hierarchical_full.json
-uv run python tools/a1_context_stats.py --out artifacts/runs/a1_context_stats.json
+uv run python tools/a1_context_stats.py --runs artifacts/runs --out artifacts/runs/a1_context_stats_v2.json
 ```
 
 ## Laporan terkait
 
 - [`a2_dev.md`](a2_dev.md) - A2 retrieval; section dense menjadi baseline A1.
 - [`b2b3_dev.md`](b2b3_dev.md) - B2/B3 dan pool v2.
-- [`../docs/handoff/w2-c.md`](../docs/handoff/w2-c.md) - handoff C ke D.
+- [`../docs/handoff/w2-d.md`](../docs/handoff/w2-d.md) - closeout D dan qrels v2.
 - [`../docs/adr/008-chunking.md`](../docs/adr/008-chunking.md) - keputusan chunking.

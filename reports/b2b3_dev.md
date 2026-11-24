@@ -1,55 +1,73 @@
-# Week 2 — B2/B3 evaluation, smoke B0/B1, dan pool v2
+# Week 2 - B2/B3 evaluation, qrels v2, dan Gate 2
 
-- **Owner:** B
-- **Tanggal:** 2026-11-19
-- **Branch:** `feat/w2-b-eval-pool`
-- **Base commit:** `75942de` (`feat/w2-a-retrieval`)
-- **Status:** B3 dan pool v2 selesai; B2 passage-level menunggu qrels v2
-- **Handoff ke:** C (anotasi pool v2), lalu D (qrels v2 + Gate 2)
+- **Owner:** B (evaluasi), C/D (anotasi dan freeze)
+- **Tanggal final:** 2026-11-24
+- **Branch:** `feat/w2-d-finalize-qrels-v2`
+- **Status:** qrels v2 frozen; B2/B3 final; Gate 2 lulus
+- **Handoff ke:** A (test B0-B3)
 
 ## Ringkasan
 
-- B3 (hybrid + rerank + filter, section) mencapai Recall@10 **0,7120**.
-- B2 (dense + fixed, top-5) tidak bisa diukur passage-level dengan qrels v1.1;
-  semua passage `#fixed#` belum punya label. Doc-level B2 = **0,2889**.
-- Smoke B0 20/20 schema-valid; B1 18/20 (2 gagal parse karena few-shot).
-- Pool v2 selesai: **2.237 kandidat**, **448 kandidat baru**, median
-  **19 kandidat/query**, semua `split=test`.
+- Qrels v2 frozen: **2.237 baris**, 115 query, label final `0=1955`, `1=38`, `2=244`.
+- Agreement relevance: C/D **kappa 0.9629** (6 konflik); Fleiss A/C/D **0.9223**; 1 tie `q013` diputuskan final `1`.
+- Verdict: **145 klaim**, C/D kappa **0.4983** (1 konflik, `q048` final `REFUTED`); label final `SUPPORTED=144`, `REFUTED=1`.
+- B3 final Recall@10 **0.5369**; B2 final Recall@10 **0.1515**. Gate 2 lulus.
+- B3 tetap jauh lebih baik pada doc recall: **0.7833** vs **0.3889**.
+- Error taxonomy final memuat **162 kegagalan/83 query**; lihat `docs/error_taxonomy.md`.
 
 ## Setup
 
 | Item | Nilai |
 | --- | --- |
 | Query | 115 (35 easy / 25 multi-hop / 30 temporal / 25 no-evidence) |
-| Qrels | v1.1, SHA-256 `e11ca2cbf56b...` |
-| Query hash | `d5128e484131...` |
+| Qrels | v2 frozen, 2.237 baris, SHA-256 `8ed07e8ebcbefdea332a6a1555b320d0d8c6553f6bffd978cd22894338171926` |
+| Query hash | `d5128e48413125b1383e4946580a08f133964fbb8e0d1a7e988f0a143a27b2ac` |
 | B2 index | fixed, 5.738 passage |
 | B3 index | section, 11.266 passage |
-| B2 output | top-5, tanpa filter |
-| B3 output | top-10, filter tahun/buku + rerank |
-| Artifact B2 | `artifacts/runs/retrieval_b2_full.json` |
-| Artifact B3 | `artifacts/runs/retrieval_b3_full.json` |
+| B2 output | top-5, dense, tanpa filter |
+| B3 output | top-10, hybrid RRF + rerank, filter tahun/buku |
+| Artifact B2 | `artifacts/runs/retrieval_b2_v2.json` |
+| Artifact B3 | `artifacts/runs/retrieval_b3_v2.json` |
+| Evaluasi | `--eval-k 10 --retain-k 10 --limit 0` |
+
+B2 memakai `final_k=5` sesuai config. `--eval-k 10` dipakai agar Recall@10 B2 dan B3 dibandingkan pada cutoff yang sama; tanpa flag ini, B2 hanya dievaluasi pada top-5.
 
 ## B2 vs B3
 
 | Run | n | R@5 | R@10 | nDCG@10 | MRR@10 | Doc recall | Judged | Test split | p50 ms | p95 ms |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| B2 fixed top-5 | 90 | 0,0000 | 0,0000 | 0,0000 | 0,0000 | 0,2889 | 0,0000 | 0,1861 | 211,9 | 559,2 |
-| B3 section top-10 | 90 | 0,5426 | 0,7120 | 0,5270 | 0,5228 | 0,7833 | 0,1791 | 0,2539 | 1.984,8 | 2.820,4 |
+| B2 fixed top-5 | 90 | 0,1052 | 0,1515 | 0,1385 | 0,2187 | 0,3889 | 0,1843 | 0,1843 | 29,4 | 55,1 |
+| B3 section top-10 | 90 | 0,3844 | 0,5369 | 0,4531 | 0,5627 | 0,7833 | 0,2539 | 0,2539 | 1.698,6 | 2.509,8 |
 
-**B2 passage-level = 0 bukan karena B2 tidak menemukan apa pun.** qrels v1.1
-hanya berisi passage section (`#ingredients#`, `#directions#`), sedangkan B2
-mengembalikan passage fixed (`#fixed#`). Tidak ada satu pun ID B2 yang cocok
-dengan qrels, sehingga `judged=0` dan seluruh Recall dihitung 0.
+### Recall@10 per slice
 
-Doc-level recall memetakan passage ke `doc_id`; dengan cara ini B2 = 0,2889
-dan B3 = 0,7833. Perbandingan doc-level sudah menunjukkan B3 jauh lebih baik,
-tetapi belum bisa menggantikan Recall@10 passage-level.
+| Slice | B2 | B3 |
+| --- | ---: | ---: |
+| easy | 0,2238 | 0,5571 |
+| multi-hop | 0,0627 | 0,7060 |
+| temporal | 0,1411 | 0,3722 |
+| no-evidence | 0,0000 | 0,0000 |
+
+Slice no-evidence tidak punya passage relevan; Recall@10 selalu 0 secara desain dan bukan ukuran kegagalan retrieval.
+
+## Agreement dan freeze qrels v2
+
+| Item | Nilai |
+| --- | --- |
+| Relevance C/D | n=448, kappa=0.9629, conflicts=6 |
+| Relevance Fleiss A/C/D | n=448, kappa=0.9223 |
+| Verdict C/D | n=145, kappa=0.4983, conflicts=1 |
+| Majority relevance | 18 item |
+| Tie | 1 (`q013`, final `1`) |
+| Missing labels | A=0, C=0, D=0 |
+
+`q013 / ye-old-american:a-boiled-bread-pudding#fixed#1` memiliki `A=2, C=0, D=1`. Passage masih dalam resep yang sama dan memberi konteks proses memasak, tetapi tidak menyebut durasi `steep`; label partial `1` dipilih.
+
+Finalisasi memakai `benchmark/pool_v2.jsonl` (2.237 key), bukan `pool_v1.jsonl` (1.789 key), agar seluruh kandidat baru ikut masuk.
 
 ## Smoke B0/B1
 
-20 query stratifikasi: q001–q005 (easy), q036–q040 (multi-hop), q061–q065
-(temporal), q091–q095 (no-evidence).
+20 query stratifikasi: q001-q005 (easy), q036-q040 (multi-hop), q061-q065 (temporal), q091-q095 (no-evidence).
 
 | Config | n | Schema valid | Abstain | p50 | p95 |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -60,40 +78,38 @@ Artifact: `artifacts/runs/smoke/b0/`, `artifacts/runs/smoke/b1/`.
 
 Temuan kualitatif:
 
-- B0 dan B1 **mengarang** jawaban untuk topik yang tidak ada di korpus:
-  gas oven, aluminium foil, microwave, food processor, dan kalori. Contoh:
-  `q094` dijawab “microwave-safe container, 10 minutes”; `q095` dijawab
-  “food processor”.
-- B1 gagal schema pada `q001` dan `q005`: model menyalin header contoh
-  (`query_id: ex_003`) dan menulis `schema_valid: false`, satu di antaranya
-  dibungkus markdown fence. Ini bukti bahwa few-shot pada model 0,5B justru
-  menurunkan kepatuhan format.
-- B0 menjawab `q001` “about 1 hour” padahal gold “one and a half hours”;
-  `q005` “20 eggs” padahal gold “four eggs”. Tanpa retrieval, jawaban tidak
-  dapat dipercaya.
-- B0/B1 tidak menghasilkan claims/sitasi; itu memang desain baseline.
+- B0 dan B1 mengarang jawaban untuk topik yang tidak ada di korpus: gas oven, aluminium foil, microwave, food processor, dan kalori.
+- B1 gagal schema pada `q001` dan `q005`: model menyalin header contoh dan menulis `schema_valid: false`.
+- B0 menjawab `q001` "about 1 hour" padahal gold "one and a half hours"; `q005` "20 eggs" padahal gold "four eggs".
+- B0/B1 tidak menghasilkan claims/sitasi; itu desain baseline.
 
 ## Gate 2
 
 | Kriteria | Status | Bukti |
 | --- | --- | --- |
-| qrels v2 frozen | **belum** | milik C/D |
-| Recall@10 B3 > B2 (passage) | **provisional pass** 0,7120 > 0,0000, tetapi B2 tidak terukur | qrels v1.1 tidak punya `#fixed#` |
-| Recall@10 B3 > B2 (doc-level) | **pass** 0,7833 > 0,2889 | artifact B2/B3 |
-| Config equality B0–B3 | **pass** | `tests/unit/test_config_equality.py` |
+| qrels v2 frozen | **pass** | `benchmark/qrels.jsonl`, 2.237 baris; manifest ter-regenerate |
+| Recall@10 B3 > B2 (passage) | **pass** | 0,5369 > 0,1515 |
+| Recall@10 B3 > B2 (doc-level) | **pass** | 0,7833 > 0,3889 |
+| Config equality B0-B3 | **pass** | `tests/unit/test_config_equality.py` |
 
-Gate 2 belum boleh ditutup sebagai “B3 mengalahkan B2” sampai qrels v2 memuat
-label passage fixed. Setelah qrels v2, jalankan ulang:
+Gate 2 ditutup. Perbandingan final memakai qrels v2 yang sudah memuat label passage `#fixed#`.
+
+## Reproduksi
 
 ```powershell
-uv run python tools/eval_retrieval.py --config configs/b2.yaml --limit 0 --retain-k 10 --out artifacts/runs/retrieval_b2_v2.json
-uv run python tools/eval_retrieval.py --config configs/b3.yaml --limit 0 --out artifacts/runs/retrieval_b3_v2.json
+uv run python tools/eval_retrieval.py --config configs/b2.yaml --qrels benchmark/qrels.jsonl --eval-k 10 --retain-k 10 --limit 0 --out artifacts/runs/retrieval_b2_v2.json
+uv run python tools/eval_retrieval.py --config configs/b3.yaml --qrels benchmark/qrels.jsonl --eval-k 10 --retain-k 10 --limit 0 --out artifacts/runs/retrieval_b3_v2.json
+```
+
+Finalisasi qrels:
+
+```powershell
+uv run python tools/finalize_benchmark.py --qrels-a benchmark/qrels_v2_a.jsonl --a-keys benchmark/work/w2-d/keys.jsonl --qrels-c benchmark/qrels_v2_c.jsonl --qrels-d benchmark/qrels_v2_d.jsonl --verdict-c benchmark/verdict_qrels_c.jsonl --verdict-d benchmark/verdict_qrels_d.jsonl --decisions benchmark/adjudication_v2.jsonl --pool benchmark/pool_v2.jsonl --annotator consensus
 ```
 
 ## Pool v2
 
-Dibangun dari pool v1 + top-10 B2 (fixed) + top-10 B3 (section) + top-10
-A2 dense/BM25/hybrid (section). Semua kandidat wajib `split=test`.
+Dibangun dari pool v1 + top-10 B2 (fixed) + top-10 B3 (section) + top-10 A2 dense/BM25/hybrid (section). Semua kandidat wajib `split=test`.
 
 | Item | Nilai |
 | --- | ---: |
@@ -110,66 +126,30 @@ A2 dense/BM25/hybrid (section). Semua kandidat wajib `split=test`.
 
 Artifact:
 
-- `benchmark/pool_v2.jsonl` — blinded, hanya `query_id`, `passage_id`, `doc_id`.
-- `benchmark/pool_v2_meta.jsonl` — provenance; **jangan dibuka anotator**.
+- `benchmark/pool_v2.jsonl`: blinded, hanya `query_id`, `passage_id`, `doc_id`.
+- `benchmark/pool_v2_meta.jsonl`: provenance; tidak boleh dibuka anotator.
 - `benchmark/pool_v2.sha256`.
-
-**4.492 kandidat dibuang karena bukan test.** Ini angka penting: sebagian besar
-hasil retrieval lintas split adalah passage train/dev. Pool v2 hanya
-mengizinkan kandidat test agar qrels tetap test-only.
 
 ## Temuan
 
-1. **B3 jauh lebih baik dari B2**, tetapi perbandingan passage-level belum sah
-   sampai qrels v2 ada. Doc-level sudah jelas: 0,7833 vs 0,2889.
-2. **Filter metadata adalah faktor utama.** B3 memakai filter tahun/buku;
-   B2 tidak. Ini konsisten dengan A2: hybrid+rerank tanpa filter hanya 0,4102.
-3. **B2 retrieve lintas split dan lintas tahun.** Hanya 18,61% hasil B2 yang
-   berasal dari test split. Baseline naive memang begini; ini alasan B3 ada.
-4. **Few-shot bukan otomatis lebih baik.** B1 menurunkan schema validity dari
-   100% ke 90% pada model 0,5B.
-5. **Tanpa retrieval, model berhalusinasi anachronistically** (microwave,
-   aluminium foil, food processor). Slice no-evidence adalah ujian langsung
-   untuk abstain; B0/B1 gagal abstain di 5/5 query no-evidence.
+1. **B3 jauh lebih baik dari B2** pada passage-level: R@10 0,5369 vs 0,1515, sekitar 3,5x.
+2. **Filter metadata adalah faktor utama.** B3 memakai filter tahun/buku; B2 tidak.
+3. **B2 masih retrieve lintas split dan lintas tahun.** Hanya 18,43% hasil B2 dari test split; B3 25,39%.
+4. **Few-shot bukan otomatis lebih baik.** B1 menurunkan schema validity dari 100% ke 90% pada model 0,5B.
+5. **Tanpa retrieval, model berhalusinasi anachronistically** (microwave, aluminium foil, food processor). Slice no-evidence adalah ujian langsung untuk abstain; B0/B1 gagal abstain di 5/5 query no-evidence.
+6. **Generation tetap bermasalah meski retrieval B3 membaik.** Audit 24 query menemukan 22 error E3/E5; lihat `docs/error_taxonomy.md`.
 
 ## Batasan
 
-- qrels v1.1 belum mencakup passage fixed; B2 passage-level = 0 secara
-  struktural, bukan kualitas retrieval sebenarnya.
-- Pool v2 menambah 448 kandidat baru; angka B3/A2 final dapat berubah setelah
-  qrels v2.
-- B2 dan B3 berbeda pada chunking, mode retrieval, filter, dan `final_k`.
-  Perbandingan ini system-level, bukan ablasi satu variabel.
+- B2 dan B3 berbeda pada chunking, mode retrieval, filter, dan `final_k`. Perbandingan ini system-level, bukan ablasi satu variabel.
+- B2 top-5 dievaluasi pada cutoff 10; angka R@10-nya bergantung pada perilaku ranking setelah top-5.
 - Smoke B0/B1 hanya 20 query; schema validity belum diuji pada 115 query.
-
-## Instruksi untuk C
-
-Seed qrels v1.1, lalu anotasi hanya kandidat baru:
-
-```powershell
-Copy-Item benchmark/qrels.jsonl benchmark/qrels_v2_c.jsonl
-
-uv run python tools/annotate.py relevance --annotator C `
-  --queries benchmark/queries.jsonl `
-  --pool benchmark/pool_v2.jsonl `
-  --passages data/processed/passages.jsonl data/processed/passages_fixed.jsonl `
-  --out benchmark/qrels_v2_c.jsonl
-```
-
-`pool_v2_meta.jsonl` tidak boleh dibuka. Passage `#fixed#` dinilai dengan skala
-0/1/2 yang sama; nilailah passage terhadap klaim, bukan berdasarkan chunking.
-
-## Instruksi untuk D
-
-1. Seed qrels v1.1, anotasi pass 2 blind ke `qrels_v2_d.jsonl`.
-2. Hitung κ pada 448 item baru (relevance).
-3. Adjudikasi, tulis `benchmark/qrels.jsonl` v2.
-4. Regenerate `benchmark/manifest.sha256`.
-5. Jalankan ulang B2/B3 dengan qrels v2, lalu tutup Gate 2.
-6. Spot-check 5 query no-evidence di pool v2.
+- Qrels v2 tetap memiliki 1 tie yang diputuskan manual; label A ditulis dengan notes, bukan anotasi human murni tanpa bantuan.
+- E6-E8 tidak dievaluasi pada taxonomy; statusnya Not Evaluated.
 
 ## Laporan terkait
 
-- [`a2_dev.md`](a2_dev.md) — evaluasi A2 dense/BM25/hybrid/rerank.
-- [`../docs/handoff/w2-b.md`](../docs/handoff/w2-b.md) — handoff B ke C/D.
-- [`README.md`](README.md) — indeks laporan.
+- [`a2_dev.md`](a2_dev.md): evaluasi A2 dense/BM25/hybrid/rerank.
+- [`../docs/error_taxonomy.md`](../docs/error_taxonomy.md): taxonomy final.
+- [`../docs/handoff/w2-b.md`](../docs/handoff/w2-b.md): handoff B ke C/D.
+- [`README.md`](README.md): indeks laporan.
