@@ -1,0 +1,15 @@
+﻿kind,query_id,item_id,label_c,label_d,reason,decision
+relevance,q040,ye-old-american:arrow-root-pudding#directions#0,2,1,Directions passage explicitly names both target ingredients; C=2 selected.,2
+relevance,q043,ye-old-american:pound-cake-4#directions#0,2,1,Directions passage explicitly names both target ingredients; C=2 selected.,2
+relevance,q044,ye-old-american:mulled-wine#directions#0,2,1,Directions passage explicitly names both target ingredients; C=2 selected.,2
+relevance,q046,ye-old-american:peach-leather#directions#0,2,1,Directions passage explicitly names both target ingredients; C=2 selected.,2
+relevance,q050,ye-old-american:flummery-2#directions#0,2,1,Directions passage explicitly names both target ingredients; C=2 selected.,2
+relevance,q055,ye-old-american:strawberry-charlotte#directions#0,2,1,Directions passage explicitly names both target ingredients; C=2 selected.,2
+relevance,q056,ye-old-american:scalloped-apples#directions#0,2,1,Directions passage explicitly names both target ingredients; C=2 selected.,2
+relevance,q058,ye-old-american:chicken-in-baskets#directions#0,2,1,Directions passage explicitly names both target ingredients; C=2 selected.,2
+relevance,q060,ye-old-american:mushrooms-l-algonquin#directions#0,2,1,Directions passage explicitly names both target ingredients; C=2 selected.,2
+relevance,q060,ye-old-american:oysters-la-somerset#directions#0,2,1,Directions passage explicitly names both target ingredients; C=2 selected.,2
+relevance,q076,ye-old-american:lobster-croquettes-2#ingredients#0,2,1,"1887 ingredients list names bread crumbs, but does not explicitly identify it as the binder; D=1 selected under the 1-vs-2 doubt rule. The 1887 directions passage and 1896 ingredients passage remain 2.",1
+relevance,q083,ye-old-american:raspberry-cream#ingredients#0,0,1,Ingredients-only passage does not address the asked stirring method; C=0 selected.,0
+relevance,q083,ye-old-american:raspberry-cream-3#ingredients#0,0,1,Ingredients-only passage does not address the asked stirring method; C=0 selected.,0
+verdict,q048,c2,NOT_ENOUGH_EVIDENCE,REFUTED,"Marbled Cake 1871 memakai cream-tartar dan sweet milk, bukan cream; klaim komparatif 'both chocolate and cream' REFUTED sesuai guidelines bagian 10.",REFUTED

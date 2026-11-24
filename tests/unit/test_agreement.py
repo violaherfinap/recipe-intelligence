@@ -3,7 +3,12 @@ from __future__ import annotations
 import pytest
 
 from recipe_qa.benchmark.schema import Qrel, VerdictQrel
-from recipe_qa.eval.agreement import cohen_kappa, compare_relevance, compare_verdict
+from recipe_qa.eval.agreement import (
+    cohen_kappa,
+    compare_relevance,
+    compare_verdict,
+    fleiss_kappa,
+)
 
 DOC_VERSION = "a" * 40
 
@@ -56,6 +61,26 @@ def test_cohen_kappa_undefined_for_single_class() -> None:
 def test_cohen_kappa_rejects_length_mismatch() -> None:
     with pytest.raises(ValueError, match="same length"):
         cohen_kappa([0, 1], [0])
+
+
+def test_fleiss_kappa_known_disagreement() -> None:
+    result = fleiss_kappa([[0, 0, 1], [0, 1, 1], [0, 1, 2]])
+    assert result.n == 3
+    assert result.observed == pytest.approx(2 / 9)
+    assert result.expected == pytest.approx(11 / 27)
+    assert result.kappa == pytest.approx(-5 / 16)
+    assert result.labels == {"0": 4, "1": 4, "2": 1}
+
+
+def test_fleiss_kappa_undefined_for_single_class() -> None:
+    result = fleiss_kappa([[0, 0, 0], [0, 0, 0]])
+    assert result.kappa is None
+    assert not result.defined
+
+
+def test_fleiss_kappa_rejects_mismatched_raters() -> None:
+    with pytest.raises(ValueError, match="same number of raters"):
+        fleiss_kappa([[0, 1], [0, 1, 2]])
 
 
 def test_compare_relevance_reports_conflicts_and_missing() -> None:

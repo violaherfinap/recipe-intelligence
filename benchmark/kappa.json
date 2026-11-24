@@ -1,100 +1,58 @@
 {
   "relevance": {
     "kind": "relevance",
-    "n": 1789,
-    "observed": 0.9927333705980995,
-    "expected": 0.8153203806505253,
-    "kappa": 0.9606527811379684,
+    "n": 448,
+    "observed": 0.9866071428571429,
+    "expected": 0.638866191007653,
+    "kappa": 0.9629144189511736,
     "labels_c": {
-      "0": 1608,
-      "1": 12,
-      "2": 169
+      "0": 349,
+      "1": 26,
+      "2": 73
     },
     "labels_d": {
-      "0": 1606,
-      "1": 25,
-      "2": 158
+      "0": 350,
+      "1": 23,
+      "2": 75
     },
     "only_c": [],
     "only_d": [],
     "disagreements": [
       {
-        "query_id": "q040",
-        "item_id": "ye-old-american:arrow-root-pudding#directions#0",
-        "label_c": "2",
-        "label_d": "1"
-      },
-      {
-        "query_id": "q043",
-        "item_id": "ye-old-american:pound-cake-4#directions#0",
-        "label_c": "2",
-        "label_d": "1"
-      },
-      {
-        "query_id": "q044",
-        "item_id": "ye-old-american:mulled-wine#directions#0",
-        "label_c": "2",
-        "label_d": "1"
-      },
-      {
-        "query_id": "q046",
-        "item_id": "ye-old-american:peach-leather#directions#0",
-        "label_c": "2",
-        "label_d": "1"
-      },
-      {
-        "query_id": "q050",
-        "item_id": "ye-old-american:flummery-2#directions#0",
-        "label_c": "2",
-        "label_d": "1"
-      },
-      {
-        "query_id": "q055",
-        "item_id": "ye-old-american:strawberry-charlotte#directions#0",
-        "label_c": "2",
-        "label_d": "1"
-      },
-      {
-        "query_id": "q056",
-        "item_id": "ye-old-american:scalloped-apples#directions#0",
-        "label_c": "2",
-        "label_d": "1"
-      },
-      {
-        "query_id": "q058",
-        "item_id": "ye-old-american:chicken-in-baskets#directions#0",
-        "label_c": "2",
-        "label_d": "1"
-      },
-      {
-        "query_id": "q060",
-        "item_id": "ye-old-american:mushrooms-l-algonquin#directions#0",
-        "label_c": "2",
-        "label_d": "1"
-      },
-      {
-        "query_id": "q060",
-        "item_id": "ye-old-american:oysters-la-somerset#directions#0",
-        "label_c": "2",
-        "label_d": "1"
-      },
-      {
-        "query_id": "q076",
-        "item_id": "ye-old-american:lobster-croquettes-2#ingredients#0",
-        "label_c": "2",
-        "label_d": "1"
-      },
-      {
-        "query_id": "q083",
-        "item_id": "ye-old-american:raspberry-cream#ingredients#0",
+        "query_id": "q013",
+        "item_id": "ye-old-american:a-boiled-bread-pudding#fixed#1",
         "label_c": "0",
         "label_d": "1"
       },
       {
-        "query_id": "q083",
-        "item_id": "ye-old-american:raspberry-cream-3#ingredients#0",
-        "label_c": "0",
-        "label_d": "1"
+        "query_id": "q024",
+        "item_id": "ye-old-american:apple-butter-2#ingredients#0",
+        "label_c": "1",
+        "label_d": "0"
+      },
+      {
+        "query_id": "q035",
+        "item_id": "ye-old-american:macaroni-with-white-sauce#fixed#0",
+        "label_c": "2",
+        "label_d": "0"
+      },
+      {
+        "query_id": "q061",
+        "item_id": "ye-old-american:baked-apples#directions#0",
+        "label_c": "1",
+        "label_d": "2"
+      },
+      {
+        "query_id": "q061",
+        "item_id": "ye-old-american:baked-apples-3#fixed#0",
+        "label_c": "1",
+        "label_d": "2"
+      },
+      {
+        "query_id": "q084",
+        "item_id": "ye-old-american:raspberry-vinegar-3#fixed#0",
+        "label_c": "1",
+        "label_d": "2"
       }
     ]
   },
@@ -122,5 +80,19 @@
         "label_d": "REFUTED"
       }
     ]
+  },
+  "relevance_fleiss": {
+    "n": 448,
+    "observed": 0.9709821428571425,
+    "expected": 0.6267682203089568,
+    "kappa": 0.9222524481519816,
+    "labels": {
+      "0": 1037,
+      "1": 84,
+      "2": 223
+    },
+    "missing_a": [],
+    "missing_c": [],
+    "missing_d": []
   }
 }

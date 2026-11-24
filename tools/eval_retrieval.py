@@ -152,12 +152,19 @@ def main(argv: list[str] | None = None) -> int:
         default=10,
         help="store at least this many hits per query for pooling",
     )
+    parser.add_argument(
+        "--eval-k",
+        type=int,
+        default=0,
+        help="evaluation cutoff; 0 uses the config final_k",
+    )
     parser.add_argument("--out", type=Path, default=None)
     args = parser.parse_args(argv)
 
     config_id, retrieval = load_config(args.config)
     final_k = retrieval.final_k
-    retain_k = max(final_k, args.retain_k)
+    eval_k = args.eval_k or final_k
+    retain_k = max(final_k, eval_k, args.retain_k)
     retrieval = retrieval.model_copy(update={"final_k": retain_k})
 
     queries = list(read_jsonl(args.queries))
@@ -182,7 +189,7 @@ def main(argv: list[str] | None = None) -> int:
     test_docs = load_test_docs(args.test_docs)
 
     overall = evaluate_slice(
-        query_ids, qrels, doc_by_passage, rankings, hits_by_query, final_k, test_docs
+        query_ids, qrels, doc_by_passage, rankings, hits_by_query, eval_k, test_docs
     )
     slices: dict[str, dict] = {}
     by_slice: dict[str, set[str]] = defaultdict(set)
@@ -190,7 +197,7 @@ def main(argv: list[str] | None = None) -> int:
         by_slice[row.get("slice", "unknown")].add(row["query_id"])
     for slice_name, ids in sorted(by_slice.items()):
         slices[slice_name] = evaluate_slice(
-            ids, qrels, doc_by_passage, rankings, hits_by_query, final_k, test_docs
+            ids, qrels, doc_by_passage, rankings, hits_by_query, eval_k, test_docs
         )
 
     payload = {
@@ -199,6 +206,7 @@ def main(argv: list[str] | None = None) -> int:
         "mode": retrieval.mode,
         "chunking": retrieval.chunking,
         "final_k": final_k,
+        "eval_k": eval_k,
         "retain_k": retain_k,
         "queries": len(queries),
         "qrels": str(args.qrels),
@@ -223,6 +231,7 @@ def main(argv: list[str] | None = None) -> int:
         "config": config_id,
         "queries": len(queries),
         "final_k": final_k,
+        "eval_k": eval_k,
         "metrics": overall,
         "latency_ms": payload["latency_ms"],
     }

@@ -27,6 +27,19 @@ class AgreementResult:
 
 
 @dataclass(frozen=True)
+class FleissResult:
+    n: int
+    observed: float | None
+    expected: float | None
+    kappa: float | None
+    labels: dict[str, int] = field(default_factory=dict)
+
+    @property
+    def defined(self) -> bool:
+        return self.kappa is not None
+
+
+@dataclass(frozen=True)
 class Disagreement:
     query_id: str
     item_id: str
@@ -106,6 +119,40 @@ def cohen_kappa(labels_a: Sequence[Any], labels_b: Sequence[Any]) -> AgreementRe
         kappa=kappa,
         labels_a=dict(sorted(counts_a.items())),
         labels_b=dict(sorted(counts_b.items())),
+    )
+
+
+def fleiss_kappa(ratings: Sequence[Sequence[Any]]) -> FleissResult:
+    if not ratings:
+        return FleissResult(n=0, observed=None, expected=None, kappa=None)
+
+    raters = len(ratings[0])
+    if raters < 2:
+        raise ValueError("Fleiss kappa needs at least two raters")
+    if any(len(row) != raters for row in ratings):
+        raise ValueError("all rating rows must have the same number of raters")
+
+    n = len(ratings)
+    counts = Counter(_label(label) for row in ratings for label in row)
+    totals = {label: count for label, count in counts.items()}
+
+    agreement: list[float] = []
+    for row in ratings:
+        row_counts = Counter(_label(label) for label in row)
+        numerator = sum(count * count for count in row_counts.values()) - raters
+        agreement.append(numerator / (raters * (raters - 1)))
+
+    observed = sum(agreement) / n
+    expected = sum((count / (n * raters)) ** 2 for count in totals.values())
+    denominator = 1.0 - expected
+    kappa = None if abs(denominator) < 1e-12 else (observed - expected) / denominator
+
+    return FleissResult(
+        n=n,
+        observed=observed,
+        expected=expected,
+        kappa=kappa,
+        labels=dict(sorted(totals.items())),
     )
 
 

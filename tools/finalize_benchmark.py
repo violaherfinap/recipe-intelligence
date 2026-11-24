@@ -13,7 +13,7 @@ from recipe_qa.benchmark.adjudication import (
     write_test_docs,
 )
 from recipe_qa.benchmark.validate import (
-    load_passages,
+    load_passages_many,
     load_qrels,
     load_queries,
     load_verdict_qrels,
@@ -29,8 +29,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Apply adjudication decisions and freeze the final benchmark."
     )
+    parser.add_argument("--qrels-a", type=Path, default=None)
     parser.add_argument("--qrels-c", type=Path, default=Path("benchmark/qrels_c.jsonl"))
     parser.add_argument("--qrels-d", type=Path, default=Path("benchmark/qrels_d.jsonl"))
+    parser.add_argument("--a-keys", type=Path, default=None)
     parser.add_argument(
         "--verdict-c",
         type=Path,
@@ -47,7 +49,15 @@ def build_parser() -> argparse.ArgumentParser:
         default=Path("benchmark/adjudication.jsonl"),
     )
     parser.add_argument("--queries", type=Path, default=Path("benchmark/queries.jsonl"))
-    parser.add_argument("--passages", type=Path, default=Path("data/processed/passages.jsonl"))
+    parser.add_argument(
+        "--passages",
+        type=Path,
+        nargs="+",
+        default=[
+            Path("data/processed/passages.jsonl"),
+            Path("data/processed/passages_fixed.jsonl"),
+        ],
+    )
     parser.add_argument("--pool", type=Path, default=Path("benchmark/pool_v1.jsonl"))
     parser.add_argument("--commit", type=Path, default=Path("data/corpus_commit.txt"))
     parser.add_argument("--out-qrels", type=Path, default=Path("benchmark/qrels.jsonl"))
@@ -70,6 +80,12 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    passages = load_passages_many(args.passages)
+    required_a_keys = None
+    if args.a_keys is not None:
+        required_a_keys = {
+            (row["query_id"], row["passage_id"]) for row in read_jsonl(args.a_keys)
+        }
     report = build_final_benchmark(
         rows_qrels_c=load_qrels(args.qrels_c),
         rows_qrels_d=load_qrels(args.qrels_d),
@@ -77,11 +93,13 @@ def main(argv: list[str] | None = None) -> int:
         rows_verdict_d=load_verdict_qrels(args.verdict_d),
         pool_rows=read_jsonl(args.pool),
         queries=load_queries(args.queries),
-        passages=load_passages(args.passages),
+        passages=passages,
         doc_version=args.commit.read_text(encoding="utf-8").strip(),
         decisions=load_decisions(args.decisions),
         annotator=args.annotator,
         allow_missing=args.allow_missing,
+        rows_qrels_a=load_qrels(args.qrels_a) if args.qrels_a is not None else None,
+        required_a_keys=required_a_keys,
     )
 
     if report.relevance is not None:
@@ -99,8 +117,13 @@ def main(argv: list[str] | None = None) -> int:
             f"only_c={len(report.verdict.only_c)} only_d={len(report.verdict.only_d)}"
         )
     print(f"final: qrels={len(report.qrels)} verdicts={len(report.verdicts)}")
-    print(f"resolved: {report.resolved}/{report.conflicts}")
-    print(f"missing: C={report.missing_c} D={report.missing_d}")
+    print(
+        f"resolved: {report.resolved}/{report.conflicts} "
+        f"ties={report.ties} majority={report.majority}"
+    )
+    print(
+        f"missing: A={report.missing_a} C={report.missing_c} D={report.missing_d}"
+    )
     print(
         "relevance labels: "
         + ", ".join(f"{label}={count}" for label, count in report.relevance_labels.items())
@@ -125,7 +148,7 @@ def main(argv: list[str] | None = None) -> int:
 
     write_jsonl_atomic(args.out_qrels, [row.model_dump() for row in report.qrels])
     write_jsonl_atomic(args.out_verdict, [row.model_dump() for row in report.verdicts])
-    write_test_docs(args.test_docs, split_doc_ids(load_passages(args.passages)))
+    write_test_docs(args.test_docs, split_doc_ids(passages))
     manifest_lines = write_manifest(
         args.manifest,
         [args.queries, args.out_qrels, args.out_verdict, args.test_docs],

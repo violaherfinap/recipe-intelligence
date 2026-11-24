@@ -1,10 +1,10 @@
-# Benchmark & Annotation Guidelines — v1
+# Benchmark & Annotation Guidelines — v2
 
 **Proyek:** Historical Recipe Evidence QA
 **Use case:** C (temporal fact-checking) pada korpus `ye-old-american`
-**Versi:** 1.0 — 2026-11-14
+**Versi:** 2.0 — 2026-11-24
 **Pemilik:** B (penulis query)
-**Anotator:** C (pass 1) dan D (pass 2)
+**Anotator:** A, C (pass 1), dan D (pass 2)
 **Corpus commit:** `ae3bd2c009a8899dfe63b9166fa98ae3fa8041a8`
 
 Dokumen ini adalah aturan resmi untuk:
@@ -26,7 +26,9 @@ Semua angka dan label harus bisa dilacak ke file di `benchmark/`.
 | B | Menulis query, gold claim, gold candidate; membangun tool; memverifikasi no-evidence | Menilai qrels, mengubah query setelah freeze |
 | C | Anotasi relevance pass 1; verdict pass 1; metrik | Melihat label D; menilai query miliknya sendiri |
 | D | Anotasi relevance pass 2; verdict pass 2; κ; adjudikasi; freeze | Melihat label C sebelum pass 2 selesai |
-| A | Menyediakan korpus/index; audit teknis | Menulis query/qrels |
+| A | Anotasi relevance qrels v2 untuk 448 kandidat baru; menyediakan korpus/index; audit teknis | Menulis query; mengubah label C/D sebelum pass blind selesai |
+
+**Qrels v2 (2026-11-24):** relevance untuk 448 kandidat baru dianotasi A, C, dan D. Label final memakai majority 2 dari 3; jika ketiganya berbeda, D mengadjudikasi berdasarkan guidelines ini. Verdict tetap C/D dengan adjudikasi konflik. Hasil: Fleiss κ relevance 0.9223; C/D κ 0.9629; 1 tie (`q013`, final `1`).
 
 B adalah satu-satunya penulis query, sehingga C dan D dapat menjadi dua anotator blind.
 

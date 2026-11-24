@@ -14,7 +14,11 @@ from recipe_qa.benchmark.answer_sheet import (
     build_verdict_rows,
     write_sheet,
 )
-from recipe_qa.benchmark.validate import load_passages, load_qrels, load_queries
+from recipe_qa.benchmark.validate import (
+    load_passages_many,
+    load_qrels,
+    load_queries,
+)
 
 
 def _backup_existing(path: Path) -> None:
@@ -42,7 +46,7 @@ def _relevance(args: argparse.Namespace) -> int:
     rows = build_relevance_rows(
         queries=load_queries(args.queries),
         pool=load_pool(args.pool),
-        passages=load_passages(args.passages),
+        passages=load_passages_many(args.passages),
         annotator=args.annotator,
     )
     if args.prefill is not None:
@@ -69,7 +73,7 @@ def _verdict(args: argparse.Namespace) -> int:
     rows = build_verdict_rows(
         queries=load_queries(args.queries),
         qrels=load_qrels(args.qrels),
-        passages=load_passages(args.passages),
+        passages=load_passages_many(args.passages),
     )
     write_sheet(out, rows, VERDICT_FIELDS)
     print(f"verdict rows: {len(rows)}")
@@ -84,13 +88,21 @@ def build_parser() -> argparse.ArgumentParser:
 
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--queries", type=Path, default=Path("benchmark/queries.jsonl"))
-    common.add_argument("--passages", type=Path, default=Path("data/processed/passages.jsonl"))
+    common.add_argument(
+        "--passages",
+        type=Path,
+        nargs="+",
+        default=[
+            Path("data/processed/passages.jsonl"),
+            Path("data/processed/passages_fixed.jsonl"),
+        ],
+    )
     common.add_argument("--out", type=Path, default=None)
     common.add_argument("--force", action="store_true", help="backup and overwrite an existing sheet")
 
     relevance = subparsers.add_parser("relevance", parents=[common])
     relevance.add_argument("--pool", type=Path, default=Path("benchmark/pool_v1.jsonl"))
-    relevance.add_argument("--annotator", default="D", choices=["C", "D"])
+    relevance.add_argument("--annotator", default="D", choices=["A", "C", "D"])
     relevance.add_argument(
         "--prefill",
         type=Path,

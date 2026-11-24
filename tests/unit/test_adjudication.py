@@ -47,8 +47,9 @@ def _decision(
     label_c: str,
     label_d: str,
     final: str,
+    label_a: str | None = None,
 ) -> dict:
-    return {
+    row = {
         "kind": kind,
         "query_id": query_id,
         "item_id": item_id,
@@ -57,6 +58,9 @@ def _decision(
         "final": final,
         "notes": "checked passage",
     }
+    if label_a is not None:
+        row["label_a"] = label_a
+    return row
 
 
 def _query(query_id: str, slice_name: str = "easy") -> Query:
@@ -139,6 +143,117 @@ def test_build_final_qrels_rejects_stale_decision() -> None:
         pool_rows=[{"query_id": "q001", "passage_id": "p1", "doc_id": "doc:p1"}],
         doc_version=DOC_VERSION,
         decisions=decisions,
+    )
+    assert rows == []
+    assert any("stale decision" in error for error in report.errors)
+
+
+def test_build_final_qrels_three_way_majority() -> None:
+    rows, report = build_final_qrels(
+        rows_c=[_qrel("q001", "p1", 0, "C")],
+        rows_d=[_qrel("q001", "p1", 2, "D")],
+        rows_a=[_qrel("q001", "p1", 0, "A")],
+        pool_rows=[{"query_id": "q001", "passage_id": "p1", "doc_id": "doc:p1"}],
+        doc_version=DOC_VERSION,
+        annotator="consensus",
+        required_a_keys={("q001", "p1")},
+    )
+    assert report.ok
+    assert report.majority == 1
+    assert report.ties == 0
+    assert len(rows) == 1
+    assert rows[0].relevance == 0
+    assert rows[0].annotator == "consensus"
+    assert "consensus A=0; C=0; D=2; majority=0" in rows[0].notes
+
+
+def test_build_final_qrels_three_way_tie_needs_decision() -> None:
+    rows, report = build_final_qrels(
+        rows_c=[_qrel("q001", "p1", 0, "C")],
+        rows_d=[_qrel("q001", "p1", 2, "D")],
+        rows_a=[_qrel("q001", "p1", 1, "A")],
+        pool_rows=[{"query_id": "q001", "passage_id": "p1", "doc_id": "doc:p1"}],
+        doc_version=DOC_VERSION,
+        required_a_keys={("q001", "p1")},
+    )
+    assert rows == []
+    assert report.ties == 1
+    assert any("unresolved tie" in error for error in report.errors)
+
+
+def test_build_final_qrels_three_way_tie_decision() -> None:
+    decisions = {
+        ("relevance", "q001", "p1"): AdjudicationDecision(
+            kind="relevance",
+            query_id="q001",
+            item_id="p1",
+            label_a="1",
+            label_c="0",
+            label_d="2",
+            final="1",
+            notes="A is right",
+        )
+    }
+    rows, report = build_final_qrels(
+        rows_c=[_qrel("q001", "p1", 0, "C")],
+        rows_d=[_qrel("q001", "p1", 2, "D")],
+        rows_a=[_qrel("q001", "p1", 1, "A")],
+        pool_rows=[{"query_id": "q001", "passage_id": "p1", "doc_id": "doc:p1"}],
+        doc_version=DOC_VERSION,
+        decisions=decisions,
+        required_a_keys={("q001", "p1")},
+    )
+    assert report.ok
+    assert report.resolved == 1
+    assert rows[0].relevance == 1
+    assert "adjudicated: A=1; C=0; D=2; final=1" in rows[0].notes
+
+
+def test_build_final_qrels_requires_a_for_new_keys() -> None:
+    rows, report = build_final_qrels(
+        rows_c=[_qrel("q001", "p1", 0, "C")],
+        rows_d=[_qrel("q001", "p1", 0, "D")],
+        pool_rows=[{"query_id": "q001", "passage_id": "p1", "doc_id": "doc:p1"}],
+        doc_version=DOC_VERSION,
+        required_a_keys={("q001", "p1")},
+    )
+    assert rows == []
+    assert report.missing_a == 1
+    assert any("missing required A label" in error for error in report.errors)
+
+
+def test_build_final_qrels_seed_falls_back_without_a() -> None:
+    rows, report = build_final_qrels(
+        rows_c=[_qrel("q001", "p1", 2, "C")],
+        rows_d=[_qrel("q001", "p1", 2, "D")],
+        pool_rows=[{"query_id": "q001", "passage_id": "p1", "doc_id": "doc:p1"}],
+        doc_version=DOC_VERSION,
+    )
+    assert report.ok
+    assert len(rows) == 1
+    assert rows[0].relevance == 2
+
+
+def test_build_final_qrels_rejects_stale_three_way_decision() -> None:
+    decisions = {
+        ("relevance", "q001", "p1"): AdjudicationDecision(
+            kind="relevance",
+            query_id="q001",
+            item_id="p1",
+            label_a="0",
+            label_c="0",
+            label_d="2",
+            final="0",
+        )
+    }
+    rows, report = build_final_qrels(
+        rows_c=[_qrel("q001", "p1", 0, "C")],
+        rows_d=[_qrel("q001", "p1", 2, "D")],
+        rows_a=[_qrel("q001", "p1", 1, "A")],
+        pool_rows=[{"query_id": "q001", "passage_id": "p1", "doc_id": "doc:p1"}],
+        doc_version=DOC_VERSION,
+        decisions=decisions,
+        required_a_keys={("q001", "p1")},
     )
     assert rows == []
     assert any("stale decision" in error for error in report.errors)

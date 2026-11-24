@@ -12,7 +12,7 @@ from recipe_qa.benchmark.answer_sheet import (
     import_verdict_sheet,
 )
 from recipe_qa.benchmark.validate import (
-    load_passages,
+    load_passages_many,
     load_queries,
     write_jsonl,
 )
@@ -65,7 +65,7 @@ def _relevance(args: argparse.Namespace) -> int:
     rows, report = import_relevance_sheet(
         sheet_path=args.input,
         pool=load_pool(args.pool),
-        passages=load_passages(args.passages),
+        passages=load_passages_many(args.passages),
         doc_version=args.commit.read_text(encoding="utf-8").strip(),
         annotator=args.annotator,
     )
@@ -109,9 +109,17 @@ def build_parser() -> argparse.ArgumentParser:
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--input", type=Path, required=True)
     common.add_argument("--queries", type=Path, default=Path("benchmark/queries.jsonl"))
-    common.add_argument("--passages", type=Path, default=Path("data/processed/passages.jsonl"))
+    common.add_argument(
+        "--passages",
+        type=Path,
+        nargs="+",
+        default=[
+            Path("data/processed/passages.jsonl"),
+            Path("data/processed/passages_fixed.jsonl"),
+        ],
+    )
     common.add_argument("--out", type=Path, default=None)
-    common.add_argument("--annotator", default="D", choices=["C", "D"])
+    common.add_argument("--annotator", default="D", choices=["A", "C", "D"])
     common.add_argument("--force", action="store_true", help="backup and overwrite existing output")
     common.add_argument("--dry-run", action="store_true")
 
