@@ -25,6 +25,9 @@ artifacts/cache/
 !data/processed/source_register.csv
 !data/processed/dedup_log.jsonl
 
+# Local presentation artifacts (not committed)
+/docs/presentasi/
+
 # OS / editors
 .DS_Store
 Thumbs.db
@@ -40,6 +43,7 @@ benchmark/pool_v2_meta.jsonl
 /benchmark/qrels_v2_a.jsonl
 /benchmark/qrels_v2_c.jsonl.bak
 /benchmark/qrels_v2_d.jsonl
+/benchmark/qrels_v2_d.jsonl.bak
 
 # W1-C local annotation artifacts (not committed)
 /benchmark/qrels_c_draft.jsonl
