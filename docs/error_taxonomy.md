@@ -1,6 +1,6 @@
 # Error Taxonomy
 
-**Status: final.** Memakai qrels v2 frozen (`benchmark/qrels.jsonl`, 2.237 baris, SHA-256 `8ed07e8e...`) dan run final `artifacts/runs/retrieval_b3_v2.json`.
+**Status: final untuk Week 2; re-check post-P0 2026-11-25.** Memakai qrels v2 frozen (`benchmark/qrels.jsonl`, 2.237 baris, SHA-256 `8ed07e8e...`) dan run final `artifacts/runs/retrieval_b3_v2.json`.
 
 ## Definisi
 
@@ -62,3 +62,55 @@ E6–E8 sengaja tidak dilaporkan sebagai nol; statusnya **Not Evaluated**. Satu 
 | Doc recall | 0.3889 | 0.7833 |
 
 B2 memakai `final_k=5`; evaluasi memakai `--eval-k 10` agar perbandingan passage-level adil. B3 mengalahkan B2 pada seluruh metrik.
+
+## Re-check post-P0 (2026-11-25)
+
+P0 grounding gate (verifier NLI + abstain + repair) sudah diimplementasikan;
+lihat `reports/a3_verify_dev.md`. Re-check ini **tidak mengubah angka final
+Week 2**, hanya menambahkan pembacaan ulang dan hasil setelah mitigasi.
+
+### Retrieval (dihitung ulang)
+
+`tools/analyze_retrieval_errors.py` mereproduksi **140 baris identik**:
+
+| Kode | Baris |
+| --- | ---: |
+| E1 | 134 |
+| E2 | 6 |
+| E4 | 0 |
+
+Rincian E1:
+
+| Pecahan | Baris |
+| --- | ---: |
+| Label relevansi 2 / 1 | 106 / 28 |
+| Gold `#fixed#` (struktural untuk B3 section) | 50 |
+| Gold section (`#ingredients#` + `#directions#`) | 84 |
+| E1 genuine: temporal / easy / multi-hop | 49 / 19 / 16 |
+
+**50 E1 `#fixed#` tidak boleh dihitung sebagai kegagalan yang bisa
+"diperbaiki"** tanpa mengganti chunking; target perbaikan riil adalah 84 E1
+section.
+
+### Generation (24 query audit, post-P0)
+
+| Item | Baseline | Setelah P0 |
+| --- | ---: | ---: |
+| Error E3/E5 | 22 | **1 residual** (`q071`) |
+| Error diblokir (abstain) | 0 | **21 / 22** |
+| Jawaban benar (`q021`) | dijawab | tetap dijawab |
+| NE `q060` (format) | NE | abstain `format_error` |
+| No-evidence abstain | 0 / 6 | **6 / 6** |
+| Latency p50 / p95 | - | 29,2 s / 55,2 s |
+
+`q071` residual adalah entity swap (brandy vs soda) yang tidak terdeteksi NLI;
+ini batas verifier, bukan E5. Angka generation ini hanya sample 24 query, bukan
+115 query.
+
+### Artefak re-check
+
+- `artifacts/runs/error_taxonomy_recheck.csv` (140 baris retrieval, identik).
+- `artifacts/runs/error_taxonomy_recheck_summary.json` (ringkasan gabungan).
+- `artifacts/runs/a3_verify_sample14_v2/`, `a3_verify_generation_rest/`,
+  `a3_verify_check2/` (hasil generation post-P0).
+- `reports/a3_verify_dev.md` (detail implementasi dan batasan).

@@ -51,12 +51,16 @@ class RetrievalConfig(_Model):
 
 class VerificationConfig(_Model):
     enabled: bool = False
+    nli_model: str = "cross-encoder/nli-deberta-v3-base"
     nli_threshold: float = 0.5
     max_repair_rounds: int = 2
+    keep_refuted: bool = False
+    abstain_on_unsupported: bool = True
 
 
 class AbstainConfig(_Model):
     enabled: bool = False
+    sufficiency: bool = False
     sufficiency_threshold: float = 0.35
 
 

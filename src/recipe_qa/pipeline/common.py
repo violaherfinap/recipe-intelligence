@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import time
 from pathlib import Path
 
@@ -13,6 +14,8 @@ from ..generation.generate import AnswerGenerator
 from ..generation.prompt import format_evidence, load_examples, render_prompt
 from ..generation.schema import AnswerPayload, Claim, EvidenceItem
 from ..retrieval.search import Retriever
+from ..verify.claims import verify_claims
+from ..verify.sufficiency import should_abstain, sufficiency
 
 
 def registry_path(config: SystemConfig) -> Path:
@@ -30,11 +33,55 @@ def load_query_row(path: Path, query_id: str) -> dict:
     raise SystemExit(f"query_id {query_id!r} not found in {path}")
 
 
+_SENTENCE_RE = re.compile(r"(?<=[.!?])\s+")
+
+
+def _meaningful_sentence(sentence: str) -> bool:
+    return len(sentence) >= 4 and bool(re.search(r"[A-Za-z]", sentence))
+
+
+def _sentence_claims(
+    answer_text: str,
+    query_text: str,
+    hits: list,
+    as_of: int | None,
+    limit: int = 4,
+) -> list[Claim]:
+    text = answer_text.strip() or query_text
+    sentences = [
+        part.strip()
+        for part in _SENTENCE_RE.split(text)
+        if part.strip() and _meaningful_sentence(part.strip())
+    ]
+    sentences = sentences[:limit] or [query_text]
+    evidence = [
+        EvidenceItem(
+            passage_id=hit.passage_id,
+            doc_id=hit.doc_id,
+            source_year=hit.passage.get("source_year"),
+            span=str(hit.passage.get("text", ""))[:500],
+        )
+        for hit in hits[:3]
+    ]
+    return [
+        Claim(
+            claim_id=f"c{index}",
+            claim=sentence,
+            verdict="SUPPORTED",
+            as_of=as_of,
+            evidence_for=evidence,
+            evidence_against=[],
+        )
+        for index, sentence in enumerate(sentences, start=1)
+    ]
+
+
 def run_query(
     config: SystemConfig,
     query_row: dict,
     retriever: Retriever | None = None,
     generator: AnswerGenerator | None = None,
+    verifier=None,
 ) -> dict:
     started = time.perf_counter()
     query_text = query_row["text"]
@@ -64,7 +111,31 @@ def run_query(
 
     answer: AnswerPayload | None = None
     raw_output: str | None = None
-    if config.retrieval.mode != "none" and not hits and config.abstain.enabled:
+    repairs = 0
+    sufficiency_meta: dict | None = None
+    verification_meta: dict | None = None
+
+    if hits and config.abstain.enabled and config.abstain.sufficiency:
+        result = sufficiency(query_text, hits)
+        abstained = should_abstain(result, config.abstain.sufficiency_threshold)
+        sufficiency_meta = {
+            "score": result.score,
+            "top_score": result.top_score,
+            "coverage": result.coverage,
+            "top_passage_id": result.top_passage_id,
+            "threshold": config.abstain.sufficiency_threshold,
+            "abstained": abstained,
+        }
+        if abstained:
+            answer = AnswerPayload(
+                query_id=query_id,
+                abstain=True,
+                abstain_reason="not_specified",
+                confidence=0.0,
+                schema_valid=True,
+            )
+
+    if answer is None and config.retrieval.mode != "none" and not hits and config.abstain.enabled:
         answer = AnswerPayload(
             query_id=query_id,
             abstain=True,
@@ -72,31 +143,58 @@ def run_query(
             confidence=0.0,
             schema_valid=True,
         )
-    elif generator is not None:
-        answer, raw_output = generator.answer(prompt, query_id)
-        if answer is not None and not answer.abstain and not answer.claims and hits:
-            top = hits[0]
-            answer = answer.model_copy(
-                update={
-                    "claims": [
-                        Claim(
-                            claim_id="c1",
-                            claim=answer.answer or query_text,
-                            verdict="SUPPORTED",
-                            as_of=as_of,
-                            evidence_for=[
-                                EvidenceItem(
-                                    passage_id=top.passage_id,
-                                    doc_id=top.doc_id,
-                                    source_year=top.passage.get("source_year"),
-                                    span=str(top.passage.get("text", ""))[:500],
-                                )
-                            ],
-                            evidence_against=[],
-                        )
-                    ]
-                }
+    elif answer is None and generator is not None:
+        max_repairs = (
+            config.verification.max_repair_rounds if config.verification.enabled else 0
+        )
+        if max_repairs:
+            answer, raw_output, repairs = generator.answer_with_repair(
+                prompt,
+                query_id,
+                max_repairs,
             )
+        else:
+            answer, raw_output = generator.answer(prompt, query_id)
+
+    if answer is not None and not answer.abstain and not answer.claims and hits:
+        if config.verification.enabled:
+            claims = _sentence_claims(answer.answer, query_text, hits, as_of)
+        else:
+            top = hits[0]
+            claims = [
+                Claim(
+                    claim_id="c1",
+                    claim=answer.answer or query_text,
+                    verdict="SUPPORTED",
+                    as_of=as_of,
+                    evidence_for=[
+                        EvidenceItem(
+                            passage_id=top.passage_id,
+                            doc_id=top.doc_id,
+                            source_year=top.passage.get("source_year"),
+                            span=str(top.passage.get("text", ""))[:500],
+                        )
+                    ],
+                    evidence_against=[],
+                )
+            ]
+        answer = answer.model_copy(update={"claims": claims})
+
+    if config.verification.enabled and answer is not None and not answer.abstain:
+        if verifier is None:
+            from ..verify.nli import NliVerifier
+
+            verifier = NliVerifier(config.verification.nli_model)
+        answer, report = verify_claims(
+            answer,
+            hits,
+            verifier.score,
+            threshold=config.verification.nli_threshold,
+            model=config.verification.nli_model,
+            keep_refuted=config.verification.keep_refuted,
+            abstain_on_unsupported=config.verification.abstain_on_unsupported,
+        )
+        verification_meta = report.to_dict()
 
     latency_ms = (time.perf_counter() - started) * 1000.0
     return {
@@ -107,6 +205,9 @@ def run_query(
         "prompt": prompt_meta,
         "answer": answer.model_dump() if answer else None,
         "raw_output": raw_output,
+        "repairs": repairs,
+        "sufficiency": sufficiency_meta,
+        "verification": verification_meta,
         "schema_valid": answer.schema_valid if answer else None,
         "latency_ms": round(latency_ms, 2),
     }

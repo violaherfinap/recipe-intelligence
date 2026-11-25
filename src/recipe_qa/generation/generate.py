@@ -165,6 +165,33 @@ def parse_answer(text: str, query_id: str) -> AnswerPayload:
     return payload
 
 
+def build_repair_prompt(prompt: str, invalid_output: str, max_chars: int = 2000) -> str:
+    snippet = invalid_output.strip()[:max_chars]
+    return (
+        f"{prompt.rstrip()}\n\n"
+        "The previous response could not be parsed as the required JSON object. "
+        "Return ONLY one valid JSON object matching the schema. "
+        "Do not use markdown fences or add explanations.\n"
+        f"Previous response:\n{snippet}\n"
+    )
+
+
+def generate_with_repair(
+    generate_fn,
+    prompt: str,
+    query_id: str,
+    max_repairs: int = 0,
+) -> tuple[AnswerPayload, str, int]:
+    raw = generate_fn(prompt)
+    payload = parse_answer(raw, query_id)
+    repairs = 0
+    while not payload.schema_valid and repairs < max_repairs:
+        raw = generate_fn(build_repair_prompt(prompt, raw))
+        payload = parse_answer(raw, query_id)
+        repairs += 1
+    return payload, raw, repairs
+
+
 class AnswerGenerator:
     def __init__(self, config: ModelConfig) -> None:
         import torch
@@ -206,3 +233,11 @@ class AnswerGenerator:
     def answer(self, prompt: str, query_id: str) -> tuple[AnswerPayload, str]:
         raw = self.generate(prompt)
         return parse_answer(raw, query_id), raw
+
+    def answer_with_repair(
+        self,
+        prompt: str,
+        query_id: str,
+        max_repairs: int = 0,
+    ) -> tuple[AnswerPayload, str, int]:
+        return generate_with_repair(self.generate, prompt, query_id, max_repairs)

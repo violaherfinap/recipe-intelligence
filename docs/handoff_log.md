@@ -128,3 +128,12 @@ bagian **Rebuild di laptop lain**.
 **Branch:** `feat/w2-d-finalize-qrels-v2`. **Commit:** `0497de8` (qrels/tooling) dan `c674d28` (taxonomy/A1 v2); commit dokumentasi adalah HEAD branch.
 
 **Artefak final:** `benchmark/qrels.jsonl` (SHA-256 `8ed07e8e...`), `benchmark/verdict_qrels.jsonl` (SHA-256 `b86d1d39...`), `benchmark/manifest.sha256`, `benchmark/archive/`, `benchmark/kappa_v2.json`, `benchmark/adjudication_v2.jsonl`, `benchmark/no_evidence_spotcheck_v2.csv`, `error_analysis.csv`, `docs/error_taxonomy.md`, `reports/a1_dev.md`, `reports/b2b3_dev.md`, `artifacts/runs/retrieval_b2_v2.json`, `artifacts/runs/retrieval_b3_v2.json` (lokal), `docs/handoff/w2-d.md`.
+
+## Week 3 - P0 Grounding Gate (Orang D) - 2026-11-25
+
+- **Selesai:** prioritas P0 error taxonomy - verifier NLI per klaim (`cross-encoder/nli-deberta-v3-base`, threshold 0.5), claim splitting, repair JSON, kebijakan drop/abstain, metadata verifikasi di pipeline; sufficiency gate diimplementasikan tetapi dimatikan karena belum terkalibrasi; config `a3_verify` (verifier-only) dan `a3_verify_suff` (eksperimen); 161 test lulus, ruff bersih, validator v2 valid.
+- **Belum:** kalibrasi NLI/τ di dev (dev set belum ada, Q10); A3 penuh 115 query; sufficiency masih over-abstain (easy 17/35, multi-hop 23/25, temporal 27/30); residual `q071` (entity swap) butuh planner; `keep_refuted=false` membuang klaim REFUTED.
+- **Berikutnya untuk A/B:** buat dev query+label, bekukan baseline B0-B3 test seed 1, lalu kalibrasi threshold dan lanjut planner/E1.
+- **Bukti sample:** 6/6 no-evidence abstain (baseline 0/6); 24 query generation audit -> 21/22 error diblokir, `q021` benar dipertahankan, `q060` NE jadi abstain `format_error`; latency p50 29,2 s / p95 55,2 s.
+
+**Artefak:** `src/recipe_qa/verify/`, `src/recipe_qa/generation/generate.py`, `src/recipe_qa/pipeline/common.py`, `tools/run_config.py`, `configs/a3_verify.yaml`, `configs/a3_verify_suff.yaml`, `tests/unit/test_verify_*.py`, `tests/unit/test_generation_repair.py`, `tests/unit/test_pipeline_verify.py`, `reports/a3_verify_dev.md`, `docs/handoff/w3-notes.md`, `artifacts/runs/a3_verify_*` (lokal).
