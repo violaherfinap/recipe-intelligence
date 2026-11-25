@@ -1,5 +1,23 @@
-* text=auto eol=lf
-*.pdf binary
-*.docx binary
-*.npy binary
-*.parquet binary
+# Keep benchmark artefacts byte-stable across Windows/Linux checkouts so
+# benchmark/queries.sha256 can be verified everywhere.
+benchmark/queries.jsonl text eol=lf
+benchmark/gold_candidates.jsonl text eol=lf
+benchmark/no_evidence_check.csv text eol=lf
+benchmark/queries.sha256 text eol=lf
+benchmark/pool_v2.jsonl text eol=lf
+benchmark/pool_v2.sha256 text eol=lf
+benchmark/qrels.jsonl text eol=lf
+benchmark/qrels_d.jsonl text eol=lf
+benchmark/verdict_qrels.jsonl text eol=lf
+benchmark/verdict_qrels_d.jsonl text eol=lf
+benchmark/test_docs.txt text eol=lf
+benchmark/manifest.sha256 text eol=lf
+benchmark/kappa.json text eol=lf
+benchmark/conflicts.jsonl text eol=lf
+benchmark/adjudication.jsonl text eol=lf
+benchmark/adjudication_v1_1.jsonl text eol=lf
+benchmark/changes_v1_1.jsonl text eol=lf
+benchmark/audit_v1_1.jsonl text eol=lf
+benchmark/audit_v1_1_summary.json text eol=lf
+benchmark/annotation_log.csv text eol=lf
+data/processed/split.json text eol=crlf

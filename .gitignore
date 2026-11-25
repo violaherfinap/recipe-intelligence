@@ -25,8 +25,35 @@ artifacts/cache/
 !data/processed/source_register.csv
 !data/processed/dedup_log.jsonl
 
+# Local presentation artifacts (not committed)
+/docs/presentasi/
+
 # OS / editors
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
+
+/benchmark/work/
+benchmark/pool_v1.jsonl
+benchmark/pool_v1_meta.jsonl
+benchmark/pool_v2_meta.jsonl
+
+# W2 local annotation artifacts (not committed)
+/benchmark/qrels_v2_a.jsonl
+/benchmark/qrels_v2_c.jsonl.bak
+/benchmark/qrels_v2_d.jsonl
+/benchmark/qrels_v2_d.jsonl.bak
+
+# W1-C local annotation artifacts (not committed)
+/benchmark/qrels_c_draft.jsonl
+/benchmark/qrels_c_reviewed.jsonl
+/benchmark/qrels_c_pass1_*.jsonl
+/benchmark/verdict_c_prompt.txt
+/benchmark/verdict_c_answers.txt
+
+# W1-D local annotation artifacts (not committed)
+/benchmark/answer_sheet_d*.csv
+/benchmark/verdict_answer_sheet_d*.csv
+/benchmark/qrels_d.jsonl.bak
+/benchmark/verdict_qrels_d.jsonl.bak

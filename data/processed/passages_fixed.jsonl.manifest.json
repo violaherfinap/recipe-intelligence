@@ -1,0 +1,13 @@
+{
+  "docs": 5600,
+  "duplicates_excluded": 5,
+  "max_tokens": 350,
+  "mode": "fixed",
+  "out": "data\\processed\\passages_fixed.jsonl",
+  "overlap": 40,
+  "passages": 5738,
+  "sections": {
+    "fixed": 5738
+  },
+  "tokenizer": "BAAI/bge-small-en-v1.5"
+}

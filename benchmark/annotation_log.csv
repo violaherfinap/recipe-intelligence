@@ -1,0 +1,8 @@
+﻿kind,query_id,item_id,label_a,label_c,label_d,reason,decision
+relevance,q013,ye-old-american:a-boiled-bread-pudding#fixed#1,2,0,1,"Tie A/C/D; passage gives boiling and process context but not the steep time, so partial label 1 selected.",1
+relevance,q024,ye-old-american:apple-butter-2#ingredients#0,0,1,0,"A/D majority; ingredients-only passage does not give the boiling time.",0
+relevance,q035,ye-old-american:macaroni-with-white-sauce#fixed#0,2,2,0,"A/C majority; fixed passage states the twenty-minute cooking time.",2
+relevance,q061,ye-old-american:baked-apples#directions#0,2,1,2,"A/D majority; 1851 passage identifies white sugar for the comparison.",2
+relevance,q061,ye-old-american:baked-apples-3#fixed#0,2,1,2,"A/D majority; 1871 passage identifies powdered sugar and cream.",2
+relevance,q084,ye-old-american:raspberry-vinegar-3#fixed#0,2,1,2,"A/D majority; 1851 passage mentions vinegar for the comparison.",2
+verdict,q048,c2,,NOT_ENOUGH_EVIDENCE,REFUTED,"Marbled Cake 1871 uses cream-tartar and sweet milk rather than cream; comparative claim REFUTED per guidelines section 10.",REFUTED

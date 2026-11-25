@@ -1,0 +1,2129 @@
+﻿error_id,source,query_id,slice,query,as_of,code,evidence_passage_id,evidence_doc_id,evidence_text,retrieved_rank,retrieved_passage_id,retrieved_doc_id,retrieved_year,retrieved_text,relevance_label,justification,notes
+ERR0001,retrieval,q001,easy,How long is the 1796 cheap seed cake baked?,1796,E1,ye-old-american:a-cheap-seed-cake#directions#0,ye-old-american:a-cheap-seed-cake,"1. rub one pound sugar, half an ounce allspice into four quarts flour
+2. into which pour one pound butter, melted in one pint milk
+3. nine eggs, one gill emptins
+4. make into two loaves
+5. bake one and half hour",1,ye-old-american:loaf-cakes#directions#0,ye-old-american:loaf-cakes,1796,"1. Rub 6 pound of sugar, 2 pound of lard, 3 pound of butter into 12 pound of flour, add 18 eggs, 1 quart of milk, 2 ounces of cinnamon, 2 small nutmegs, a tea cup of coriander seed, each pounded fine and sifted, add one pint of brandy, half a pint of wine, 6 pound of stoned raisins, 1 pint of emptins, first having dried your flour in the oven, dry and roll the sugar fine, rub your shortning and sugar half an hour, it will render the cake much whiter and lighter, heat the oven with dry wood, for 1 and a half hours, if large pans be used, it will then require 2 hours baking, and in proportion for smaller loaves. To frost it. Whip 6 whites, during the baking, add 3 pound of sifted loaf sugar and put on thick, as it comes hot from the oven. Some return the frosted loaf into the oven, it injures and yellows it, if the frosting be put on immediately it does best without being returned into the oven",2,Passage relevan ye-old-american:a-cheap-seed-cake#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0002,retrieval,q001,easy,How long is the 1796 cheap seed cake baked?,1796,E1,ye-old-american:a-cheap-seed-cake#ingredients#0,ye-old-american:a-cheap-seed-cake,"- one pound sugar
+- half an ounce allspice
+- four quarts flour
+- one pound butter
+- melted in one pint milk
+- nine eggs
+- one gill emptins
+- carroway seed and currants, or raisins if you please",1,ye-old-american:loaf-cakes#directions#0,ye-old-american:loaf-cakes,1796,"1. Rub 6 pound of sugar, 2 pound of lard, 3 pound of butter into 12 pound of flour, add 18 eggs, 1 quart of milk, 2 ounces of cinnamon, 2 small nutmegs, a tea cup of coriander seed, each pounded fine and sifted, add one pint of brandy, half a pint of wine, 6 pound of stoned raisins, 1 pint of emptins, first having dried your flour in the oven, dry and roll the sugar fine, rub your shortning and sugar half an hour, it will render the cake much whiter and lighter, heat the oven with dry wood, for 1 and a half hours, if large pans be used, it will then require 2 hours baking, and in proportion for smaller loaves. To frost it. Whip 6 whites, during the baking, add 3 pound of sifted loaf sugar and put on thick, as it comes hot from the oven. Some return the frosted loaf into the oven, it injures and yellows it, if the frosting be put on immediately it does best without being returned into the oven",1,Passage relevan ye-old-american:a-cheap-seed-cake#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0003,generation,q001,easy,How long is the 1796 cheap seed cake baked?,1796,E5,ye-old-american:loaf-cakes#directions#0,ye-old-american:loaf-cakes,"1. Rub 6 pound of sugar, 2 pound of lard, 3 pound of butter into 12 pound of flour, add 18 eggs, 1 quart of milk, 2 ounces of cinnamon, 2 small nutmegs, a tea cup of coriander seed, each pounded fine and sifted, add one pint of brandy, half a pint of wine, 6 pound of stoned raisins, 1 pint of emptins, first having dried your flour in the oven, dry and roll the sugar fine, rub your shortning and sugar half an hour, it will render the cake much whiter and lighter, heat the oven with dry wood, for ",,,,,,,Jawaban mengarang estimasi 15-20 menit; bukti yang dikutip tidak memuat durasi dan bukan resep seed cake.,"schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The recipe for the 1796 cheap seed cake is not provided in the given text. However, based on the information provided, we can estimate that it would take approximately 15 to 20 minutes to bake.; answer=The recipe for the 1796 cheap seed cake is not provided in the given text. However, based on the information provided, we can estimate that it would take approximately 15 to 20 minutes to bake.; gold=The 1796 cheap seed cake is baked for one and a half hours."
+ERR0004,retrieval,q002,easy,How long should beef be roasted per pound in the 1796 recipe?,1796,E1,ye-old-american:to-roast-beef#fixed#0,ye-old-american:to-roast-beef,"## Ingredients
+- a brisk hot fire
+- salt and water for basting
+- one quarter of an hour to every pound of beef
+- pricking with a fork to determine doneness
+
+## Directions
+1. Have a brisk hot fire.
+2. Hang down rather than to spit.
+3. Baste with salt and water.
+4. One quarter of an hour to every pound of beef, though tender beef will require less, while old tough beef will require more roasting.
+5. Pricking with a fork will determine you whether done or not.
+6. Rare done is the healthiest and the taste of this age.",1,ye-old-american:roast-veal#directions#0,ye-old-american:roast-veal,1796,"1. As it is more tender than beef or mutton, and easily scorched, paper it, especially the fat parts.
+2. Lay it some distance from the fire a while to heat gently.
+3. Baste it well.
+4. A 15 pound piece requires one hour and a quarter roasting.
+5. Garnish with green-parsley and sliced lemon.",2,Passage relevan ye-old-american:to-roast-beef#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0005,retrieval,q003,easy,How long are the sealed bottles of damsons kept in slowly boiling water?,1796,E1,ye-old-american:to-keep-damsons#fixed#0,ye-old-american:to-keep-damsons,"## Ingredients
+- damsons (when they are first ripe)
+- snuff bottles
+- plumbs
+- water
+
+## Directions
+1. Take damsons when they are first ripe, pick them off carefully, wipe them clean
+2. Put them into snuff bottles, stop them up tight so that no air can get to them, nor water
+3. Put nothing into the bottles but plumbs
+4. Put the bottles into cold water, hang them over the fire
+5. Let them heat slowly, let the water boil slowly for half an hour
+6. When the water is cold, take out the bottles
+7. Set the bottles into a cold place
+8. They will keep twelve months if the bottles are stopped tight, so as",1,ye-old-american:to-keep-damsons-2#directions#0,ye-old-american:to-keep-damsons-2,1796,"1. Take damsons when they are first ripe, pick them off carefully, wipe them clean, put them into snuff bottles, stop them up tight so that no air can get to them, nor water; put nothing into the bottles but plumbs, put the bottles into cold water, hang them over the fire, let them heat slowly, let the water boil slowly for half an hour, when the water is, take out the bottles, set the bottles into a cold place, they will keep twelve months if the bottles are stopped tight, so as no air nor water can get to them. They will not keep long after the bottles are opened; the plumbs must be hard.",2,Passage relevan ye-old-american:to-keep-damsons#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0006,retrieval,q005,easy,How many eggs are used in the 1796 rich custard?,1796,E1,ye-old-american:a-rich-custard#directions#0,ye-old-american:a-rich-custard,"1. Four eggs beat and put to one quart cream, sweetened to your taste, half a nutmeg, and a little cinnamon--baked.",1,ye-old-american:a-sunderland-pudding#ingredients#0,ye-old-american:a-sunderland-pudding,1796,"- 6 eggs
+- half the whites
+- half a nutmeg
+- one pint cream
+- a little salt
+- 4 spoons fine flour
+- oil or butter pans, cups, or bowls",2,Passage relevan ye-old-american:a-rich-custard#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=0
+ERR0007,retrieval,q005,easy,How many eggs are used in the 1796 rich custard?,1796,E2,ye-old-american:a-rich-custard#directions#0,ye-old-american:a-rich-custard,"1. Four eggs beat and put to one quart cream, sweetened to your taste, half a nutmeg, and a little cinnamon--baked.",1,ye-old-american:a-sunderland-pudding#ingredients#0,ye-old-american:a-sunderland-pudding,1796,"- 6 eggs
+- half the whites
+- half a nutmeg
+- one pint cream
+- a little salt
+- 4 spoons fine flour
+- oil or butter pans, cups, or bowls",0,Peringkat 1 berasal dari dokumen yang tidak memuat passage relevan mana pun untuk query ini.,wrong_doc=ye-old-american:a-sunderland-pudding
+ERR0008,retrieval,q006,easy,Which spices does the 1796 apple pie use?,1796,E1,ye-old-american:apple-pie-3#directions#0,ye-old-american:apple-pie-3,"1. Stew and strain the apples
+2. bake in paste No. 3",1,ye-old-american:apple-pie-3#ingredients#0,ye-old-american:apple-pie-3,1796,"- three pints apples
+- grate of a fresh lemon
+- cinnamon
+- mace
+- rose-water
+- sugar to your taste",1,Passage relevan ye-old-american:apple-pie-3#directions#0 (label 1) tidak muncul di top-10.,top-1 relevance=2
+ERR0009,generation,q006,easy,Which spices does the 1796 apple pie use?,1796,E5,ye-old-american:apple-pie-3#ingredients#0,ye-old-american:apple-pie-3,"- three pints apples
+- grate of a fresh lemon
+- cinnamon
+- mace
+- rose-water
+- sugar to your taste",,,,,,,"Jawaban memasukkan rose-water, sugar, dan paste No. 3 sebagai 'spices'; bukti hanya mendukung cinnamon dan mace.","schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The 1796 apple pie uses the following spices: cinnamon, mace, rose-water, sugar, and paste No. 3.; answer=The 1796 apple pie uses the following spices: cinnamon, mace, rose-water, sugar, and paste No. 3.; gold=The 1796 apple pie uses cinnamon and mace."
+ERR0010,retrieval,q007,easy,How many onions does the 1824 onion soup use?,1824,E1,ye-old-american:onion-soup#fixed#0,ye-old-american:onion-soup,"## Ingredients
+- twelve large onions
+- three quarts of milk and water equally mixed
+- a bit of veal or fowl
+- a piece of bacon
+- pepper and salt
+
+## Directions
+1. Chop up twelve large onions
+2. boil them in three quarts of milk and water equally mixed
+3. put in a bit of veal or fowl
+4. and a piece of bacon with pepper and salt
+5. When the onions are boiled to pulp
+6. thicken it with a large spoonful of butter mixed with one of flour
+7. Take out the meat
+8. and serve it up with toasted bread cut in small pieces in the soup",1,ye-old-american:onion-soup#directions#0,ye-old-american:onion-soup,1824,"1. Chop up twelve large onions
+2. boil them in three quarts of milk and water equally mixed
+3. put in a bit of veal or fowl
+4. and a piece of bacon with pepper and salt
+5. When the onions are boiled to pulp
+6. thicken it with a large spoonful of butter mixed with one of flour
+7. Take out the meat
+8. and serve it up with toasted bread cut in small pieces in the soup",2,Passage relevan ye-old-american:onion-soup#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0011,retrieval,q008,easy,How much rice goes into the 1824 rice bread?,1824,E1,ye-old-american:rice-bread#fixed#0,ye-old-american:rice-bread,"## Ingredients
+- six ounces of rice
+- a quart of water
+- two pounds of flour
+- two tea-spoonsful of salt
+- two large spoonsful of yeast
+
+## Directions
+1. Boil six ounces of rice in a quart of water, till it is dry and soft
+2. put it into two pounds of flour
+3. mix it in well
+4. add two tea-spoonsful of salt, two large spoonsful of yeast, and as much water as will make it the consistence of bread
+5. when well risen, bake it in moulds",1,ye-old-american:rice-bread#directions#0,ye-old-american:rice-bread,1824,"1. Boil six ounces of rice in a quart of water, till it is dry and soft
+2. put it into two pounds of flour
+3. mix it in well
+4. add two tea-spoonsful of salt, two large spoonsful of yeast, and as much water as will make it the consistence of bread
+5. when well risen, bake it in moulds",2,Passage relevan ye-old-american:rice-bread#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0012,retrieval,q009,easy,How much butter is added to a pound of mashed potatoes in the 1824 recipe?,1824,E1,ye-old-american:potatos-mashed#ingredients#0,ye-old-american:potatos-mashed,"- potatos
+- butter
+- milk",1,ye-old-american:potatos-mashed#directions#0,ye-old-american:potatos-mashed,1824,"1. When the potatos are thoroughly boiled, drain and dry them perfectly, pick out every speck, and rub them through a colander into a clean stew-pan
+2. To a pound of potatos put half an ounce of butter, and a table-spoonful of milk
+3. Do not make them too moist; mix them well together
+4. You may put them into shapes, touch them over with yelk of egg, and brown them very slightly before a slow fire",1,Passage relevan ye-old-american:potatos-mashed#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=2
+ERR0013,retrieval,q010,easy,How long does the 1824 ginger beer stand before it is fit to bottle?,1824,E1,ye-old-american:ginger-beer#fixed#0,ye-old-american:ginger-beer,"## Ingredients
+- 2 gallons boiling water
+- 2 pounds brown sugar
+- 1 and a half ounce cream of tartar
+- 1 and a half ounce pounded ginger
+- half a pint good yeast
+
+## Directions
+1. Pour two gallons of boiling water on two pounds brown sugar, one and a half ounce of cream of tartar, and the same of pounded ginger
+2. Stir them well, and put it in a small cask
+3. When milk warm, put in half a pint of good yeast
+4. Shake the cask well, and stop it close
+5. In twenty-four hours it will be fit to bottle
+6. Cork it very well, and in ten days it will sparkle like Champaigne",1,ye-old-american:ginger-wine#directions#0,ye-old-american:ginger-wine,1824,"1. To three gallons of water, put three pounds of sugar, and four ounces of race ginger, washed in many waters to cleanse it
+2. Boil them together for one hour, and strain it through a sieve
+3. When lukewarm, put it in a cask with three lemons cut in slices, and two gills of beer yeast
+4. Shake it well, and stop the cask very tight
+5. Let it stand a week to ferment
+6. If not clear enough to bottle, it must remain until it becomes so
+7. It will be fit to drink in ten days after bottling",2,Passage relevan ye-old-american:ginger-beer#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=0
+ERR0014,retrieval,q010,easy,How long does the 1824 ginger beer stand before it is fit to bottle?,1824,E1,ye-old-american:ginger-beer#ingredients#0,ye-old-american:ginger-beer,"- 2 gallons boiling water
+- 2 pounds brown sugar
+- 1 and a half ounce cream of tartar
+- 1 and a half ounce pounded ginger
+- half a pint good yeast",1,ye-old-american:ginger-wine#directions#0,ye-old-american:ginger-wine,1824,"1. To three gallons of water, put three pounds of sugar, and four ounces of race ginger, washed in many waters to cleanse it
+2. Boil them together for one hour, and strain it through a sieve
+3. When lukewarm, put it in a cask with three lemons cut in slices, and two gills of beer yeast
+4. Shake it well, and stop the cask very tight
+5. Let it stand a week to ferment
+6. If not clear enough to bottle, it must remain until it becomes so
+7. It will be fit to drink in ten days after bottling",1,Passage relevan ye-old-american:ginger-beer#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=0
+ERR0015,retrieval,q010,easy,How long does the 1824 ginger beer stand before it is fit to bottle?,1824,E2,ye-old-american:ginger-beer#directions#0,ye-old-american:ginger-beer,"1. Pour two gallons of boiling water on two pounds brown sugar, one and a half ounce of cream of tartar, and the same of pounded ginger
+2. Stir them well, and put it in a small cask
+3. When milk warm, put in half a pint of good yeast
+4. Shake the cask well, and stop it close
+5. In twenty-four hours it will be fit to bottle
+6. Cork it very well, and in ten days it will sparkle like Champaigne",1,ye-old-american:ginger-wine#directions#0,ye-old-american:ginger-wine,1824,"1. To three gallons of water, put three pounds of sugar, and four ounces of race ginger, washed in many waters to cleanse it
+2. Boil them together for one hour, and strain it through a sieve
+3. When lukewarm, put it in a cask with three lemons cut in slices, and two gills of beer yeast
+4. Shake it well, and stop the cask very tight
+5. Let it stand a week to ferment
+6. If not clear enough to bottle, it must remain until it becomes so
+7. It will be fit to drink in ten days after bottling",0,Peringkat 1 berasal dari dokumen yang tidak memuat passage relevan mana pun untuk query ini.,wrong_doc=ye-old-american:ginger-wine
+ERR0016,generation,q011,easy,How much butter goes into the 1824 chocolate cakes?,1824,E3,ye-old-american:chocolate-cakes#directions#0,ye-old-american:chocolate-cakes,"1. Put half a pound of nice brown sugar into a quart of flour, sift it
+2. Make it into a paste, with four ounces of butter melted in as much milk as will wet it
+3. Knead it till light, roll it tolerably thin
+4. Cut it in strips an inch wide, and just long enough to lay in a plate
+5. Bake them on a griddle, put them in the plate in rows to checker each other
+6. Serve them to eat with chocolate",,,,,,,"Bukti menyebut four ounces of butter, jawaban menyimpulkan 1 pound.",schema_valid=True; abstain=False; verdict=SUPPORTED; claim=1 pound of butter; answer=1 pound of butter; gold=The 1824 chocolate cakes use four ounces of butter.
+ERR0017,retrieval,q013,easy,How long does the bread steep in hot steam in the 1851 boiled bread pudding?,1851,E1,ye-old-american:a-boiled-bread-pudding#fixed#0,ye-old-american:a-boiled-bread-pudding,"## Ingredients
+- a quart of rich milk
+- a small loaf of baker's bread
+- four eggs
+- a table-spoonful and a half of fine wheat flour
+- half a pound of whole raisins (optional)
+- wine sauce, or sugar and butter, or molasses
+
+## Directions
+1. Boil a quart of rich milk.
+2. While it is boiling, take a small loaf of baker's bread, such as is sold for five or six cents.
+3. Pare off all the crust, and cut up the crumb into very small pieces.
+4. Put the bread into a pan; and when the milk boils, pour it scalding hot over the bread.
+5. Cover the pan closely, and let it steep in the hot steam for about three quarters of an hour.
+6. Remove the cover, and allow the bread and milk to cool.
+7. Beat four eggs till they are thick and smooth.
+8. Beat into them a table-spoonful and a half of fine wheat flour.
+9. Beat the egg and flour into the bread and milk, and continue to beat hard till the mixture is as light as possible.
+10. Have ready over the fire a pot of boiling water.
+11. Dip your pudding-cloth into it, and shake it out.
+12. Spread out the cloth in a deep dish or pan, and dredge it well with flour.
+13. Pour in the mixture, and tie up the cloth, leaving room for it to swell.
+14. Tie the string firmly and plaster up the opening with flour moistened with water.
+15. See that the water boils when you put in the pudding, and keep it boiling hard.
+16",1,ye-old-american:a-boiled-bread-pudding#directions#0,ye-old-american:a-boiled-bread-pudding,1851,"1. Boil a quart of rich milk.
+2. While it is boiling, take a small loaf of baker's bread, such as is sold for five or six cents.
+3. Pare off all the crust, and cut up the crumb into very small pieces.
+4. Put the bread into a pan; and when the milk boils, pour it scalding hot over the bread.
+5. Cover the pan closely, and let it steep in the hot steam for about three quarters of an hour.
+6. Remove the cover, and allow the bread and milk to cool.
+7. Beat four eggs till they are thick and smooth.
+8. Beat into them a table-spoonful and a half of fine wheat flour.
+9. Beat the egg and flour into the bread and milk, and continue to beat hard till the mixture is as light as possible.
+10. Have ready over the fire a pot of boiling water.
+11. Dip your pudding-cloth into it, and shake it out.
+12. Spread out the cloth in a deep dish or pan, and dredge it well with flour.
+13. Pour in the mixture, and tie up the cloth, leaving room for it to swell.
+14. Tie the string firmly and plaster up the opening with flour moistened with water.
+15. See that the water boils when you put in the pudding, and keep it boiling hard.
+16. If the pot wants replenishing, do it with boiling water from a kettle.
+17. Boil it an hour and a half.
+18. Turn it out of the bag the minute before you send it to table.
+19. Eat it with wine sauce, or with sugar and butter, or molasses",2,Passage relevan ye-old-american:a-boiled-bread-pudding#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0018,retrieval,q013,easy,How long does the bread steep in hot steam in the 1851 boiled bread pudding?,1851,E1,ye-old-american:a-boiled-bread-pudding#fixed#1,ye-old-american:a-boiled-bread-pudding,"14. Tie the string firmly and plaster up the opening with flour moistened with water.
+15. See that the water boils when you put in the pudding, and keep it boiling hard.
+16. If the pot wants replenishing, do it with boiling water from a kettle.
+17. Boil it an hour and a half.
+18. Turn it out of the bag the minute before you send it to table.
+19. Eat it with wine sauce, or with sugar and butter, or molasses.",1,ye-old-american:a-boiled-bread-pudding#directions#0,ye-old-american:a-boiled-bread-pudding,1851,"1. Boil a quart of rich milk.
+2. While it is boiling, take a small loaf of baker's bread, such as is sold for five or six cents.
+3. Pare off all the crust, and cut up the crumb into very small pieces.
+4. Put the bread into a pan; and when the milk boils, pour it scalding hot over the bread.
+5. Cover the pan closely, and let it steep in the hot steam for about three quarters of an hour.
+6. Remove the cover, and allow the bread and milk to cool.
+7. Beat four eggs till they are thick and smooth.
+8. Beat into them a table-spoonful and a half of fine wheat flour.
+9. Beat the egg and flour into the bread and milk, and continue to beat hard till the mixture is as light as possible.
+10. Have ready over the fire a pot of boiling water.
+11. Dip your pudding-cloth into it, and shake it out.
+12. Spread out the cloth in a deep dish or pan, and dredge it well with flour.
+13. Pour in the mixture, and tie up the cloth, leaving room for it to swell.
+14. Tie the string firmly and plaster up the opening with flour moistened with water.
+15. See that the water boils when you put in the pudding, and keep it boiling hard.
+16. If the pot wants replenishing, do it with boiling water from a kettle.
+17. Boil it an hour and a half.
+18. Turn it out of the bag the minute before you send it to table.
+19. Eat it with wine sauce, or with sugar and butter, or molasses",1,Passage relevan ye-old-american:a-boiled-bread-pudding#fixed#1 (label 1) tidak muncul di top-10.,top-1 relevance=2
+ERR0019,retrieval,q014,easy,How long is the 1851 boiled Indian pudding boiled?,1851,E1,ye-old-american:a-boiled-indian-pudding#fixed#0,ye-old-american:a-boiled-indian-pudding,"## Ingredients
+- a quarter of a pound of beef suet
+- a quart of sifted Indian meal
+- a quart of milk
+- cinnamon
+- half a pint of molasses
+- six eggs
+- a grated nutmeg
+- the grated peel of a lemon
+
+## Directions
+1. Chop very fine a quarter of a pound of beef suet.
+2. Mix it with a quart of sifted Indian meal.
+3. Boil a quart of milk with some pieces of cinnamon broken up.
+4. Strain it, and while it is hot, stir in gradually the meal and suet.
+5. Add half a pint of molasses.
+6. Cover the mixture and set it away for an hour; then put it to cool.
+7. Beat six eggs, and stir them gradually into the mixture when it is cold.
+8. Add a grated nutmeg, and the grated peel of a lemon.
+9. Tie the pudding in a cloth that has been dipped in hot water and floured; and leave plenty of room for it to swell.
+10. Secure it well at the tying place lest the water should get in.
+11. Put it into a pot of boiling water, (which must be replenished as it boils away,) and boil it four hours at least; but five or six will be better.
+12. Do not take it out of the pot till immediately before it is wanted.
+13. Eat it with wine sauce, or with molasses and butter.",1,ye-old-american:batter-pudding-2#directions#0,ye-old-american:batter-pudding-2,1851,"1. Take a quart of milk and stir into it gradually eight large table-spoonfuls of flour, carefully pressing out all the lumps with the back of the spoon
+2. Beat eight eggs very light and add them by degrees to the milk and flour
+3. Stir the whole very well together
+4. Dip your pudding-cloth into boiling water and then dredge it with flour
+5. Pour in the pudding and tie it tightly, leaving room for it to swell
+6. Put it into a pot full of boiling water and boil it hard for two hours
+7. Keep it in the pot till it is time to send it to table
+8. Serve it up with wine-sauce, butter and sugar, or molasses and cold butter",2,Passage relevan ye-old-american:a-boiled-indian-pudding#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0020,retrieval,q014,easy,How long is the 1851 boiled Indian pudding boiled?,1851,E1,ye-old-american:a-boiled-indian-pudding#ingredients#0,ye-old-american:a-boiled-indian-pudding,"- a quarter of a pound of beef suet
+- a quart of sifted Indian meal
+- a quart of milk
+- cinnamon
+- half a pint of molasses
+- six eggs
+- a grated nutmeg
+- the grated peel of a lemon",1,ye-old-american:batter-pudding-2#directions#0,ye-old-american:batter-pudding-2,1851,"1. Take a quart of milk and stir into it gradually eight large table-spoonfuls of flour, carefully pressing out all the lumps with the back of the spoon
+2. Beat eight eggs very light and add them by degrees to the milk and flour
+3. Stir the whole very well together
+4. Dip your pudding-cloth into boiling water and then dredge it with flour
+5. Pour in the pudding and tie it tightly, leaving room for it to swell
+6. Put it into a pot full of boiling water and boil it hard for two hours
+7. Keep it in the pot till it is time to send it to table
+8. Serve it up with wine-sauce, butter and sugar, or molasses and cold butter",1,Passage relevan ye-old-american:a-boiled-indian-pudding#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0021,retrieval,q016,easy,How long are the 1851 baked clams baked?,1851,E1,ye-old-american:baked-clams#fixed#0,ye-old-american:baked-clams,"## Ingredients
+- several dozen of the largest and finest clam shells
+- clams
+- powdered mace and nutmeg
+- butter
+- grated bread-crumbs
+
+## Directions
+1. Save several dozen of the largest and finest shells, which must afterwards be washed clean, and wiped dry
+2. Chop the clams fine, and mix with them some powdered mace and nutmeg
+3. Butter the sides and bottom of a large, deep dish, and cover the bottom with a layer of grated bread-crumbs
+4. Over this scatter some very small bits of the best fresh butter
+5. Put in a thick layer of the chopped clams
+6. Add another layer of grated bread-crumbs, and little bits of butter
+7. Add a layer of chopped clams, and proceed in this manner till the dish is full, finishing at the top with a layer of crumbs
+8. Set the dish in the oven, and bake it about a quarter of an hour
+9. Have ready the clam-shells and fill them with the baked mixture, either leaving them open, or covering each with another clam-shell
+10. Place them on large dishes, and send them to table hot",1,ye-old-american:baked-clams#directions#0,ye-old-american:baked-clams,1851,"1. Save several dozen of the largest and finest shells, which must afterwards be washed clean, and wiped dry
+2. Chop the clams fine, and mix with them some powdered mace and nutmeg
+3. Butter the sides and bottom of a large, deep dish, and cover the bottom with a layer of grated bread-crumbs
+4. Over this scatter some very small bits of the best fresh butter
+5. Put in a thick layer of the chopped clams
+6. Add another layer of grated bread-crumbs, and little bits of butter
+7. Add a layer of chopped clams, and proceed in this manner till the dish is full, finishing at the top with a layer of crumbs
+8. Set the dish in the oven, and bake it about a quarter of an hour
+9. Have ready the clam-shells and fill them with the baked mixture, either leaving them open, or covering each with another clam-shell
+10. Place them on large dishes, and send them to table hot",2,Passage relevan ye-old-american:baked-clams#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0022,generation,q016,easy,How long are the 1851 baked clams baked?,1851,E3,ye-old-american:baked-clams#directions#0,ye-old-american:baked-clams,"1. Save several dozen of the largest and finest shells, which must afterwards be washed clean, and wiped dry
+2. Chop the clams fine, and mix with them some powdered mace and nutmeg
+3. Butter the sides and bottom of a large, deep dish, and cover the bottom with a layer of grated bread-crumbs
+4. Over this scatter some very small bits of the best fresh butter
+5. Put in a thick layer of the chopped clams
+6. Add another layer of grated bread-crumbs, and little bits of butter
+7. Add a layer of chopped",,,,,,,"Bukti menyebut bake about a quarter of an hour, jawaban menyatakan durasi tidak dispesifikasi.",schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The recipe for baking clams does not specify a specific baking time or duration. The instructions provided are general guidelines that can vary slightly depending on the size and type of clam used.; answer=The recipe for baking clams does not specify a specific baking time or duration. The instructions provided are general guidelines that can vary slightly depending on the size and type of clam used.; gold=The 1851 baked clams are baked for about a quarter of an hour.
+ERR0023,retrieval,q017,easy,How long is the 1851 cabbage boiled?,1851,E1,ye-old-american:boiled-cabbage#ingredients#0,ye-old-american:boiled-cabbage,"- cabbage
+- water
+- butter",1,ye-old-american:boiled-cabbage#directions#0,ye-old-american:boiled-cabbage,1851,"1. Remove the outer leaves, and pare and trim the stalk, cutting it close and short. If the cabbage is large, quarter it; if small, cut it in half; and let it stand for a while in a deep pan of cold water with the large end downwards. Put it into a pot with plenty of water, (having first tied it together to keep it whole while boiling,) and, taking off the scum, boil it two hours, or till the stalk is quite tender. When done, drain and squeeze it well. Before you send it to table introduce a little fresh butter between the leaves; or have melted butter in a boat.",1,Passage relevan ye-old-american:boiled-cabbage#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=2
+ERR0024,retrieval,q018,easy,How long is the dough kneaded in the 1851 bread recipe?,1851,E1,ye-old-american:bread-2#fixed#1,ye-old-american:bread-2,"to make the flour mix with the batter
+12. Knead it hard, turning it over, pressing it, folding it, and working it thoroughly with your clenched hands for twenty minutes or half an hour, till it becomes perfectly light and stiff
+13. Form the dough into a lump in the middle of the trough or pan, and scatter a little dry flour thinly over it
+14. Cover it, and set it again in a warm place to undergo a farther fermentation for about twenty minutes or half an hour
+15. Heat the oven with faggots or small light wood
+16. When the bread is ready, clear out the coals, and sweep and wipe the floor of the oven clean
+17. Try the heat of the bottom by throwing in some flour
+18. Put the dough on the paste-board, which must be sprinkled with flour
+19. Divide it into loaves, forming them of a good shape
+20. Place them in the oven, and close up the door
+21. Bake for two hours and a half to three hours, or more, according to their size
+22. When the loaves are done, wrap each in a clean coarse towel, and stand them up on end to cool slowly",1,ye-old-american:cinnamon-cake#directions#0,ye-old-american:cinnamon-cake,1851,"1. Take as much of the very best and lightest bread-dough as will weigh a pound
+2. The dough must have risen perfectly, so as to have cracked all over the surface
+3. Put it into a pan, and mix into it a quarter of a pound of fresh butter, melted in half a pint of milk, adding a well-beaten egg, and sufficient flour to enable you to knead the dough over again
+4. Mix in a heaping tea-spoonful of powdered cinnamon
+5. Melt the soda or contents of the blue paper in as much lukewarm water as will cover it
+6. When thoroughly melted, mix it into the dough
+7. Dissolve in another cup the tartaric acid, or contents of the white paper, and stir that in also
+8. Knead the dough a little while, till the whole is well mixed
+9. Spread the dough thick and evenly in a square pan greased with lard or fresh butter
+10. With a knife make deep cuts all through it
+11. Prepare in a bowl a mixture of brown sugar, moistened with butter, and highly flavoured with powdered cinnamon, in the proportion of four heaping table-spoonfuls of sugar to two large spoonfuls of butter and one heaped tea-spoonful of cinnamon
+12. Fill the cuts with this mixture, pressing it down well into the dough
+13. Bake the cake half an hour or more, in a rather quick oven
+14. When done, set it to cool
+15. When cold, cut it in squares, and sift powdered white sugar over it",2,Passage relevan ye-old-american:bread-2#fixed#1 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0025,retrieval,q019,easy,How long does the cooked apple mixture stand before boiling again?,1871,E1,ye-old-american:apple-butter-2#fixed#0,ye-old-american:apple-butter-2,"## Ingredients
+- cider
+- juicy apples
+- spices (optional)
+
+## Directions
+1. Boil down a kettleful of cider to two-thirds the original quantity
+2. Pare, core, and slice juicy apples, and put as many into the cider as it will cover
+3. Boil slowly, stirring often with a flat stick, and when the apples are tender to breaking, take them out with a perforated skimmer, draining well against the sides of the kettle
+4. Put in a second supply of apples and stew them soft, as many as the cider will hold
+5. Take from the fire, pour all together into a tub or large crock; cover and let it stand twelve hours
+6. Return to the kettle and boil down, stirring all the while until it is the consistency of soft soap, and brown in color
+7. You may spice to taste if you please
+8. Keep in stone jars in a dry, cool place",1,ye-old-american:mince-pies-no-2#directions#0,ye-old-american:mince-pies-no-2,1871,"1. Mix all ingredients together.
+2. Let the mixture stand at least twenty-four hours after it is made before it is used.
+3. Keep in stone jars, tied over with double covers in a cool place.
+4. Add a little more liquor (if it should dry out), when you make up a batch of pies.",2,Passage relevan ye-old-american:apple-butter-2#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0026,retrieval,q020,easy,How long is the arrowroot cooked after it begins to thicken?,1871,E1,ye-old-american:arrowroot-blanc-mange#fixed#0,ye-old-american:arrowroot-blanc-mange,"## Ingredients
+- 3 cups of new milk
+- 21⁄2 tablespoonfuls of arrowroot, wet up with cold milk
+- 3⁄4 cup of sugar
+- Vanilla, lemon, or bitter almond flavoring, with a little white wine
+
+## Directions
+1. Mix the arrowroot to a smooth batter with one cup of the milk.
+2. Heat the remainder to boiling; add the arrowroot, stirring constantly.
+3. When it begins to thicken put in the sugar, and cook ten minutes longer, still stirring it well from the sides and bottom.
+4. Take it off; beat well five minutes; flavor with the essence and a small wineglass of white wine.
+5. Give a hard final stir before putting it into a mould wet with cold water.",1,ye-old-american:arrowroot-blanc-mange#directions#0,ye-old-american:arrowroot-blanc-mange,1871,"1. Mix the arrowroot to a smooth batter with one cup of the milk.
+2. Heat the remainder to boiling; add the arrowroot, stirring constantly.
+3. When it begins to thicken put in the sugar, and cook ten minutes longer, still stirring it well from the sides and bottom.
+4. Take it off; beat well five minutes; flavor with the essence and a small wineglass of white wine.
+5. Give a hard final stir before putting it into a mould wet with cold water.",2,Passage relevan ye-old-american:arrowroot-blanc-mange#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0027,retrieval,q021,easy,How long are the 1871 quinces steamed in the oven?,1871,E1,ye-old-american:baked-quinces#fixed#0,ye-old-american:baked-quinces,"## Ingredients
+- quinces
+- water
+- sugar
+
+## Directions
+1. Pare and quarter; extract the seeds and stew the fruit in clear water until a straw will pierce them
+2. Put into a baking-dish with a half cupful of sugar to every eight quinces
+3. Pour over them the liquor in which they were boiled
+4. Cover closely, and steam in the oven one hour
+5. Take out the quinces, lay them in a covered bowl to keep warm
+6. Return the syrup to the saucepan, and boil twenty minutes
+7. Pour over the quinces, and set away covered, to cool
+8. Eat cold",1,ye-old-american:baked-quinces#directions#0,ye-old-american:baked-quinces,1871,"1. Pare and quarter; extract the seeds and stew the fruit in clear water until a straw will pierce them
+2. Put into a baking-dish with a half cupful of sugar to every eight quinces
+3. Pour over them the liquor in which they were boiled
+4. Cover closely, and steam in the oven one hour
+5. Take out the quinces, lay them in a covered bowl to keep warm
+6. Return the syrup to the saucepan, and boil twenty minutes
+7. Pour over the quinces, and set away covered, to cool
+8. Eat cold",2,Passage relevan ye-old-american:baked-quinces#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0028,retrieval,q022,easy,How long are eggs boiled for hard eggs in the 1871 recipe?,1871,E1,ye-old-american:boiled-eggs#fixed#0,ye-old-american:boiled-eggs,"## Ingredients
+- eggs
+- water
+
+## Directions
+1. Put into a saucepan of boiling water with a tablespoon, not to break or crack them.
+2. Boil steadily three minutes, if you want them soft—ten, if hard.",1,ye-old-american:boiled-spinach-2#directions#0,ye-old-american:boiled-spinach-2,1871,"1. Pick it over very carefully; it is apt to be gritty.
+2. Wash in several waters, and let it lie in the last half an hour at least.
+3. Take out with your hands, shaking each bunch well, and put into boiling water, with a little salt.
+4. Boil from fifteen to twenty minutes.
+5. When tender, drain thoroughly, chop very fine.
+6. Put into a saucepan with a piece of butter the size of an egg, and pepper to taste.
+7. Stir until very hot, turn into a dish and shape into a flat-topped mound with a silver or wooden spoon.
+8. Slice some hard-boiled eggs and lay on top.",2,Passage relevan ye-old-american:boiled-eggs#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0029,retrieval,q023,easy,How long is the 1871 hominy boiled?,1871,E1,ye-old-american:boiled-hominy#fixed#0,ye-old-american:boiled-hominy,"## Ingredients
+- large hominy
+- cold water
+- water for boiling
+- butter
+- pepper
+- salt
+
+## Directions
+1. Soak the large hominy over night in cold water.
+2. Next day put it into a pot with at least two quarts of water to a quart of the hominy.
+3. Boil slowly three hours, or until it is soft.
+4. Drain in a cullender, heap in a root-dish, and stir in butter, pepper, and salt.",1,ye-old-american:boiled-hominy#directions#0,ye-old-american:boiled-hominy,1871,"1. Soak the large hominy over night in cold water.
+2. Next day put it into a pot with at least two quarts of water to a quart of the hominy.
+3. Boil slowly three hours, or until it is soft.
+4. Drain in a cullender, heap in a root-dish, and stir in butter, pepper, and salt.",2,Passage relevan ye-old-american:boiled-hominy#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0030,retrieval,q025,easy,How long is the 1887 cocoanut custard baked?,1887,E1,ye-old-american:baked-cocoanut-custard#fixed#0,ye-old-american:baked-cocoanut-custard,"## Ingredients
+- one pound of cocoanut, grated
+- half a pound of powdered white sugar
+- the milk of the cocoanut, or a pint of cream
+- two tablespoonfuls of rose-water
+- a pint of rich milk
+- whites of eight eggs
+- a teaspoonful of powdered nutmeg and cinnamon
+- loaf sugar
+
+## Directions
+1. Grate as much cocoanut as will weigh a pound
+2. Mix half a pound of powdered white sugar with the milk of the cocoanut, or with a pint of cream, adding two tablespoonfuls of rose-water
+3. Stir in gradually a pint of rich milk
+4. Beat to a stiff froth the whites of eight eggs
+5. Stir them into the milk and sugar, a little at a time, alternately with the grated cocoanut
+6. Add a teaspoonful of powdered nutmeg and cinnamon
+7. Put the mixture into cups and bake them twenty minutes in a moderate oven, set in a pan half filled with boiling water
+8. When cold, grate loaf sugar over them",1,ye-old-american:cocoanut-caramels#directions#0,ye-old-american:cocoanut-caramels,1887,"1. Soak the cocoanut, if desiccated, in milk enough to cover it
+2. Beat the whites of the eggs, add gradually the sugar, cocoanut and flour
+3. With your fingers make, by rolling the mixture, into cone shapes
+4. Place them on buttered sheets of tin covered with buttered letter paper
+5. Bake in a moderate heat about fifteen or twenty minutes
+6. They should cool before removing from the tins",2,Passage relevan ye-old-american:baked-cocoanut-custard#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0031,retrieval,q025,easy,How long is the 1887 cocoanut custard baked?,1887,E1,ye-old-american:baked-cocoanut-custard#ingredients#0,ye-old-american:baked-cocoanut-custard,"- one pound of cocoanut, grated
+- half a pound of powdered white sugar
+- the milk of the cocoanut, or a pint of cream
+- two tablespoonfuls of rose-water
+- a pint of rich milk
+- whites of eight eggs
+- a teaspoonful of powdered nutmeg and cinnamon
+- loaf sugar",1,ye-old-american:cocoanut-caramels#directions#0,ye-old-american:cocoanut-caramels,1887,"1. Soak the cocoanut, if desiccated, in milk enough to cover it
+2. Beat the whites of the eggs, add gradually the sugar, cocoanut and flour
+3. With your fingers make, by rolling the mixture, into cone shapes
+4. Place them on buttered sheets of tin covered with buttered letter paper
+5. Bake in a moderate heat about fifteen or twenty minutes
+6. They should cool before removing from the tins",1,Passage relevan ye-old-american:baked-cocoanut-custard#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0032,retrieval,q026,easy,How long is the 1887 lemon pudding baked?,1887,E1,ye-old-american:baked-lemon-pudding-queen-of-puddings#directions#0,ye-old-american:baked-lemon-pudding-queen-of-puddings,"1. Heat the milk and pour over the bread crumbs
+2. Add the butter, cover and let it get soft
+3. When cool, beat the sugar and yolks and add to the mixture, also the grated rind
+4. Bake in a buttered dish until firm and slightly brown, from a half to three-quarters of an hour
+5. When done, draw it to the door of the oven and cover with a meringue made of the whites of the eggs, whipped to a froth with four tablespoonfuls of powdered sugar and the lemon juice
+6. Put it back in the oven and brown a light straw color
+7. Eat warm, with lemon sauce",1,ye-old-american:sunderland-pudding#directions#0,ye-old-american:sunderland-pudding,1887,"1. Make the milk hot
+2. Stir in the butter and let it cool before the other ingredients are added to it
+3. Stir in the sugar, flour and eggs, which should be well whisked and omit the whites of two
+4. Flavor with a little grated lemon rind
+5. Beat the mixture well
+6. Butter some small cups, rather more than half fill them
+7. Bake from twenty minutes to half an hour according to the size of the puddings
+8. Serve with fruit, custard or wine sauce, a little of which may be poured over them
+9. They may be dropped by spoonfuls on buttered tins and baked if cups are not convenient",2,Passage relevan ye-old-american:baked-lemon-pudding-queen-of-puddings#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0033,retrieval,q026,easy,How long is the 1887 lemon pudding baked?,1887,E1,ye-old-american:baked-lemon-pudding-queen-of-puddings#ingredients#0,ye-old-american:baked-lemon-pudding-queen-of-puddings,"- one quart of milk
+- two cupfuls of bread crumbs
+- four eggs
+- butter the size of an egg
+- one cupful of white sugar
+- one large lemon (juice and grated rind)
+- four tablespoonfuls of powdered sugar",1,ye-old-american:sunderland-pudding#directions#0,ye-old-american:sunderland-pudding,1887,"1. Make the milk hot
+2. Stir in the butter and let it cool before the other ingredients are added to it
+3. Stir in the sugar, flour and eggs, which should be well whisked and omit the whites of two
+4. Flavor with a little grated lemon rind
+5. Beat the mixture well
+6. Butter some small cups, rather more than half fill them
+7. Bake from twenty minutes to half an hour according to the size of the puddings
+8. Serve with fruit, custard or wine sauce, a little of which may be poured over them
+9. They may be dropped by spoonfuls on buttered tins and baked if cups are not convenient",1,Passage relevan ye-old-american:baked-lemon-pudding-queen-of-puddings#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0034,generation,q026,easy,How long is the 1887 lemon pudding baked?,1887,E3,ye-old-american:sunderland-pudding#directions#0,ye-old-american:sunderland-pudding,"1. Make the milk hot
+2. Stir in the butter and let it cool before the other ingredients are added to it
+3. Stir in the sugar, flour and eggs, which should be well whisked and omit the whites of two
+4. Flavor with a little grated lemon rind
+5. Beat the mixture well
+6. Butter some small cups, rather more than half fill them
+7. Bake from twenty minutes to half an hour according to the size of the puddings
+8. Serve with fruit, custard or wine sauce, a little of which may be poured over them
+9. They ",,,,,,,Jawaban memakai 20 menit dari resep Sunderland pudding; bukti berkisar 20-30 menit dan bukan lemon pudding.,schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The 1887 lemon pudding was baked for 20 minutes.; answer=The 1887 lemon pudding was baked for 20 minutes.; gold=The 1887 lemon pudding is baked from half to three-quarters of an hour.
+ERR0035,retrieval,q027,easy,How long are the 1887 quinces baked in the oven?,1887,E1,ye-old-american:baked-quinces-2#fixed#0,ye-old-american:baked-quinces-2,"## Ingredients
+- ripe quinces
+- loaf sugar
+- clear water
+
+## Directions
+1. Take ripe quinces, pare and quarter them, cut out the seeds
+2. Stew them in clear water until a straw will pierce them
+3. Put into a baking dish with half a cupful of loaf sugar to every eight quinces
+4. Pour over them the liquor in which they were boiled
+5. Cover closely and bake in the oven one hour
+6. Take out the quinces and put them into a covered dish
+7. Return the syrup to the saucepan and boil twenty minutes
+8. Pour over the quinces and set them away to cool",1,ye-old-american:baked-quinces-2#directions#0,ye-old-american:baked-quinces-2,1887,"1. Take ripe quinces, pare and quarter them, cut out the seeds
+2. Stew them in clear water until a straw will pierce them
+3. Put into a baking dish with half a cupful of loaf sugar to every eight quinces
+4. Pour over them the liquor in which they were boiled
+5. Cover closely and bake in the oven one hour
+6. Take out the quinces and put them into a covered dish
+7. Return the syrup to the saucepan and boil twenty minutes
+8. Pour over the quinces and set them away to cool",2,Passage relevan ye-old-american:baked-quinces-2#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0036,retrieval,q027,easy,How long are the 1887 quinces baked in the oven?,1887,E1,ye-old-american:baked-quinces-2#ingredients#0,ye-old-american:baked-quinces-2,"- ripe quinces
+- loaf sugar
+- clear water",1,ye-old-american:baked-quinces-2#directions#0,ye-old-american:baked-quinces-2,1887,"1. Take ripe quinces, pare and quarter them, cut out the seeds
+2. Stew them in clear water until a straw will pierce them
+3. Put into a baking dish with half a cupful of loaf sugar to every eight quinces
+4. Pour over them the liquor in which they were boiled
+5. Cover closely and bake in the oven one hour
+6. Take out the quinces and put them into a covered dish
+7. Return the syrup to the saucepan and boil twenty minutes
+8. Pour over the quinces and set them away to cool",1,Passage relevan ye-old-american:baked-quinces-2#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=2
+ERR0037,retrieval,q029,easy,How long do the 1887 broiled mutton chops take to cook?,1887,E1,ye-old-american:broiled-mutton-chops#fixed#0,ye-old-american:broiled-mutton-chops,"## Ingredients
+- loin of mutton
+- pepper
+- salt
+- butter
+
+## Directions
+1. Cut the chops from a tenderloin of mutton, remove a portion of the fat, and trim them into a nice shape; slightly beat and level them.
+2. Place the gridiron over a bright clear fire, rub the bars with a little fat, and lay on the chops.
+3. While broiling frequently turn them, and in about eight minutes they will be done.
+4. Season with pepper and salt, dish them on a very hot dish, rub a small piece of butter on each chop, and serve very hot and expeditiously.",1,ye-old-american:broiled-mutton-chops#directions#0,ye-old-american:broiled-mutton-chops,1887,"1. Cut the chops from a tenderloin of mutton, remove a portion of the fat, and trim them into a nice shape; slightly beat and level them.
+2. Place the gridiron over a bright clear fire, rub the bars with a little fat, and lay on the chops.
+3. While broiling frequently turn them, and in about eight minutes they will be done.
+4. Season with pepper and salt, dish them on a very hot dish, rub a small piece of butter on each chop, and serve very hot and expeditiously.",2,Passage relevan ye-old-american:broiled-mutton-chops#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0038,retrieval,q029,easy,How long do the 1887 broiled mutton chops take to cook?,1887,E1,ye-old-american:broiled-mutton-chops#ingredients#0,ye-old-american:broiled-mutton-chops,"- loin of mutton
+- pepper
+- salt
+- butter",1,ye-old-american:broiled-mutton-chops#directions#0,ye-old-american:broiled-mutton-chops,1887,"1. Cut the chops from a tenderloin of mutton, remove a portion of the fat, and trim them into a nice shape; slightly beat and level them.
+2. Place the gridiron over a bright clear fire, rub the bars with a little fat, and lay on the chops.
+3. While broiling frequently turn them, and in about eight minutes they will be done.
+4. Season with pepper and salt, dish them on a very hot dish, rub a small piece of butter on each chop, and serve very hot and expeditiously.",1,Passage relevan ye-old-american:broiled-mutton-chops#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=2
+ERR0039,retrieval,q030,easy,How long are the 1887 Brunswick jelly cakes baked?,1887,E1,ye-old-american:brunswick-jelly-cakes#ingredients#0,ye-old-american:brunswick-jelly-cakes,"- one cup of powdered white sugar
+- one-half cup of butter
+- three eggs
+- three cups of flour
+- one teaspoonful of mixed spice (nutmeg, mace and cinnamon)
+- half a glass of rose-water or wine
+- fruit jelly or marmalade
+- powdered loaf sugar
+- strong essence of lemon",1,ye-old-american:baked-corn-meal-pudding-without-eggs#directions#0,ye-old-american:baked-corn-meal-pudding-without-eggs,1887,"1. Take a large cupful of yellow meal and a teacupful of cooking molasses and beat them well together
+2. Add to them a quart of boiling milk, some salt and a large tablespoonful of powdered ginger
+3. Add a cupful of finely-chopped suet or a piece of butter the size of an egg
+4. Butter a brown earthen pan and turn the pudding in, let it stand until it thickens
+5. As you put it into the oven, turn over it a pint of cold milk, but do not stir it, as this makes the jelly
+6. Bake three hours
+7. Serve warm with hard sauce",1,Passage relevan ye-old-american:brunswick-jelly-cakes#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0040,retrieval,q031,easy,How long is the 1896 apple pie baked?,1896,E1,ye-old-american:apple-pie-i#fixed#0,ye-old-american:apple-pie-i,"## Ingredients
+- 4 or 5 sour apples
+- 1⁄3 cup sugar
+- 1⁄4 teaspoon grated nutmeg
+- 1⁄8 teaspoon salt
+- 1 teaspoon butter
+- 1 teaspoon lemon juice
+- Few gratings lemon rind
+
+## Directions
+1. Line pie plate with paste.
+2. Pare, core, and cut the apples into eighths, put row around plate one-half inch from edge, and work towards centre until plate is covered; then pile on remainder.
+3. Mix sugar, nutmeg, salt, lemon juice, and grated rind, and sprinkle over apples.
+4. Dot over with butter.
+5. Wet edges of under crust, cover with upper crust, and press edges together.
+6. Bake forty to forty-five minutes in moderate oven.",1,ye-old-american:apple-pie-i#directions#0,ye-old-american:apple-pie-i,1896,"1. Line pie plate with paste.
+2. Pare, core, and cut the apples into eighths, put row around plate one-half inch from edge, and work towards centre until plate is covered; then pile on remainder.
+3. Mix sugar, nutmeg, salt, lemon juice, and grated rind, and sprinkle over apples.
+4. Dot over with butter.
+5. Wet edges of under crust, cover with upper crust, and press edges together.
+6. Bake forty to forty-five minutes in moderate oven.",2,Passage relevan ye-old-american:apple-pie-i#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0041,retrieval,q032,easy,How long are the 1896 baked tomatoes baked?,1896,E1,ye-old-american:baked-tomatoes-i#fixed#0,ye-old-american:baked-tomatoes-i,"## Ingredients
+- six smooth, medium-sized tomatoes
+- cracker crumbs
+- salt
+- pepper
+- onion juice
+- butter
+
+## Directions
+1. Wipe, and remove a thin slice from stem end of six smooth, medium-sized tomatoes.
+2. Take out seeds and pulp, and drain off most of the liquid.
+3. Add an equal quantity of cracker crumbs, season with salt, pepper, and a few drops onion juice.
+4. Refill tomatoes with mixture.
+5. Place in a buttered pan, sprinkle with buttered crumbs.
+6. Bake twenty minutes in a hot oven.",1,ye-old-american:tomato-cream-sauce#directions#0,ye-old-american:tomato-cream-sauce,1896,"1. Cook tomatoes twenty minutes with seasonings; rub through a strainer, add soda, then White Sauce.
+2. Serve with Baked Fish or Lobster Cutlets.",2,Passage relevan ye-old-american:baked-tomatoes-i#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=0
+ERR0042,retrieval,q032,easy,How long are the 1896 baked tomatoes baked?,1896,E1,ye-old-american:baked-tomatoes-i#ingredients#0,ye-old-american:baked-tomatoes-i,"- six smooth, medium-sized tomatoes
+- cracker crumbs
+- salt
+- pepper
+- onion juice
+- butter",1,ye-old-american:tomato-cream-sauce#directions#0,ye-old-american:tomato-cream-sauce,1896,"1. Cook tomatoes twenty minutes with seasonings; rub through a strainer, add soda, then White Sauce.
+2. Serve with Baked Fish or Lobster Cutlets.",1,Passage relevan ye-old-american:baked-tomatoes-i#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=0
+ERR0043,retrieval,q032,easy,How long are the 1896 baked tomatoes baked?,1896,E2,ye-old-american:baked-tomatoes-i#directions#0,ye-old-american:baked-tomatoes-i,"1. Wipe, and remove a thin slice from stem end of six smooth, medium-sized tomatoes.
+2. Take out seeds and pulp, and drain off most of the liquid.
+3. Add an equal quantity of cracker crumbs, season with salt, pepper, and a few drops onion juice.
+4. Refill tomatoes with mixture.
+5. Place in a buttered pan, sprinkle with buttered crumbs.
+6. Bake twenty minutes in a hot oven.",1,ye-old-american:tomato-cream-sauce#directions#0,ye-old-american:tomato-cream-sauce,1896,"1. Cook tomatoes twenty minutes with seasonings; rub through a strainer, add soda, then White Sauce.
+2. Serve with Baked Fish or Lobster Cutlets.",0,Peringkat 1 berasal dari dokumen yang tidak memuat passage relevan mana pun untuk query ini.,wrong_doc=ye-old-american:tomato-cream-sauce
+ERR0044,retrieval,q033,easy,How long is the 1896 blackberry pie baked?,1896,E1,ye-old-american:blackberry-pie#fixed#0,ye-old-american:blackberry-pie,"## Ingredients
+- 11⁄2 cups berries
+- water
+- sugar to taste
+- 1⁄8 teaspoon salt
+
+## Directions
+1. Pick over and wash berries.
+2. Stew until soft with enough water to prevent burning.
+3. Add sugar to taste, and one-eighth teaspoon salt.
+4. Line plate with paste, put on a rim, fill with berries (which have been cooled).
+5. Arrange six strips pastry across the top, cut same width as rim; put on an upper rim.
+6. Bake thirty minutes in moderate oven.",1,ye-old-american:apple-pie-i#directions#0,ye-old-american:apple-pie-i,1896,"1. Line pie plate with paste.
+2. Pare, core, and cut the apples into eighths, put row around plate one-half inch from edge, and work towards centre until plate is covered; then pile on remainder.
+3. Mix sugar, nutmeg, salt, lemon juice, and grated rind, and sprinkle over apples.
+4. Dot over with butter.
+5. Wet edges of under crust, cover with upper crust, and press edges together.
+6. Bake forty to forty-five minutes in moderate oven.",2,Passage relevan ye-old-american:blackberry-pie#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=0
+ERR0045,retrieval,q033,easy,How long is the 1896 blackberry pie baked?,1896,E1,ye-old-american:blackberry-pie#ingredients#0,ye-old-american:blackberry-pie,"- 11⁄2 cups berries
+- water
+- sugar to taste
+- 1⁄8 teaspoon salt",1,ye-old-american:apple-pie-i#directions#0,ye-old-american:apple-pie-i,1896,"1. Line pie plate with paste.
+2. Pare, core, and cut the apples into eighths, put row around plate one-half inch from edge, and work towards centre until plate is covered; then pile on remainder.
+3. Mix sugar, nutmeg, salt, lemon juice, and grated rind, and sprinkle over apples.
+4. Dot over with butter.
+5. Wet edges of under crust, cover with upper crust, and press edges together.
+6. Bake forty to forty-five minutes in moderate oven.",1,Passage relevan ye-old-american:blackberry-pie#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=0
+ERR0046,retrieval,q033,easy,How long is the 1896 blackberry pie baked?,1896,E2,ye-old-american:blackberry-pie#directions#0,ye-old-american:blackberry-pie,"1. Pick over and wash berries.
+2. Stew until soft with enough water to prevent burning.
+3. Add sugar to taste, and one-eighth teaspoon salt.
+4. Line plate with paste, put on a rim, fill with berries (which have been cooled).
+5. Arrange six strips pastry across the top, cut same width as rim; put on an upper rim.
+6. Bake thirty minutes in moderate oven.",1,ye-old-american:apple-pie-i#directions#0,ye-old-american:apple-pie-i,1896,"1. Line pie plate with paste.
+2. Pare, core, and cut the apples into eighths, put row around plate one-half inch from edge, and work towards centre until plate is covered; then pile on remainder.
+3. Mix sugar, nutmeg, salt, lemon juice, and grated rind, and sprinkle over apples.
+4. Dot over with butter.
+5. Wet edges of under crust, cover with upper crust, and press edges together.
+6. Bake forty to forty-five minutes in moderate oven.",0,Peringkat 1 berasal dari dokumen yang tidak memuat passage relevan mana pun untuk query ini.,wrong_doc=ye-old-american:apple-pie-i
+ERR0047,retrieval,q034,easy,How long is the 1896 blueberry pie baked?,1896,E1,ye-old-american:blueberry-pie#ingredients#0,ye-old-american:blueberry-pie,"- 21⁄2 cups berries
+- Flour
+- 1⁄2 cup sugar
+- 1⁄8 teaspoon salt",1,ye-old-american:blueberry-pie#directions#0,ye-old-american:blueberry-pie,1896,"1. Line a deep plate with Plain Paste.
+2. Fill with berries slightly dredged with flour.
+3. Sprinkle with sugar and salt.
+4. Cover and bake forty-five to fifty minutes in a moderate oven.",1,Passage relevan ye-old-american:blueberry-pie#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=2
+ERR0048,retrieval,q035,easy,How long is the macaroni cooked in the 1896 recipe?,1896,E1,ye-old-american:boiled-macaroni#fixed#0,ye-old-american:boiled-macaroni,"## Ingredients
+- 3/4 cup macaroni broken in inch pieces
+- 2 quarts boiling water
+- 1 tablespoon salt
+- 1/2 cup cream
+
+## Directions
+1. Cook macaroni in boiling salted water twenty minutes or until soft
+2. Drain in strainer
+3. Pour over it cold water to prevent pieces from adhering
+4. Add cream
+5. Reheat
+6. Season with salt",1,ye-old-american:baked-macaroni-2#directions#0,ye-old-american:baked-macaroni-2,1896,"1. Cook macaroni in boiling salted water twenty minutes or until soft
+2. Drain in strainer
+3. Pour over it cold water to prevent pieces from adhering
+4. Reheat in White Sauce
+5. Put in buttered baking dish
+6. Cover with buttered crumbs
+7. Bake until crumbs are brown",2,Passage relevan ye-old-american:boiled-macaroni#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0049,retrieval,q035,easy,How long is the macaroni cooked in the 1896 recipe?,1896,E1,ye-old-american:boiled-macaroni#ingredients#0,ye-old-american:boiled-macaroni,"- 3/4 cup macaroni broken in inch pieces
+- 2 quarts boiling water
+- 1 tablespoon salt
+- 1/2 cup cream",1,ye-old-american:baked-macaroni-2#directions#0,ye-old-american:baked-macaroni-2,1896,"1. Cook macaroni in boiling salted water twenty minutes or until soft
+2. Drain in strainer
+3. Pour over it cold water to prevent pieces from adhering
+4. Reheat in White Sauce
+5. Put in buttered baking dish
+6. Cover with buttered crumbs
+7. Bake until crumbs are brown",1,Passage relevan ye-old-american:boiled-macaroni#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0050,retrieval,q035,easy,How long is the macaroni cooked in the 1896 recipe?,1896,E1,ye-old-american:macaroni-with-white-sauce#fixed#0,ye-old-american:macaroni-with-white-sauce,"## Ingredients
+- 3/4 cup macaroni broken in inch pieces
+- 2 quarts boiling water
+- 1 tablespoon salt
+- 1 1/2 cups White Sauce
+- 2 tablespoons butter
+- 2 tablespoons flour
+- 1/2 teaspoon salt
+- 1 1/2 cups scalded milk
+
+## Directions
+1. Cook macaroni in boiling salted water twenty minutes or until soft
+2. Drain in strainer
+3. Pour over it cold water to prevent pieces from adhering
+4. Reheat in White Sauce
+5. For White Sauce: Melt two tablespoons butter
+6. Add two tablespoons flour with one-half teaspoon salt
+7. Pour on slowly one and one-half cups scalded milk",1,ye-old-american:baked-macaroni-2#directions#0,ye-old-american:baked-macaroni-2,1896,"1. Cook macaroni in boiling salted water twenty minutes or until soft
+2. Drain in strainer
+3. Pour over it cold water to prevent pieces from adhering
+4. Reheat in White Sauce
+5. Put in buttered baking dish
+6. Cover with buttered crumbs
+7. Bake until crumbs are brown",2,Passage relevan ye-old-american:macaroni-with-white-sauce#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0051,retrieval,q035,easy,How long is the macaroni cooked in the 1896 recipe?,1896,E1,ye-old-american:macaroni-with-white-sauce#ingredients#0,ye-old-american:macaroni-with-white-sauce,"- 3/4 cup macaroni broken in inch pieces
+- 2 quarts boiling water
+- 1 tablespoon salt
+- 1 1/2 cups White Sauce
+- 2 tablespoons butter
+- 2 tablespoons flour
+- 1/2 teaspoon salt
+- 1 1/2 cups scalded milk",1,ye-old-american:baked-macaroni-2#directions#0,ye-old-american:baked-macaroni-2,1896,"1. Cook macaroni in boiling salted water twenty minutes or until soft
+2. Drain in strainer
+3. Pour over it cold water to prevent pieces from adhering
+4. Reheat in White Sauce
+5. Put in buttered baking dish
+6. Cover with buttered crumbs
+7. Bake until crumbs are brown",1,Passage relevan ye-old-american:macaroni-with-white-sauce#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0052,generation,q036,multi-hop,Which two 1796 recipes use both cinnamon and mace?,1796,E3,ye-old-american:apple-pie-2#ingredients#0,ye-old-american:apple-pie-2,"- apples
+- lemon
+- cinnamon
+- mace
+- rose-water
+- sugar
+- paste No. 3",,,,,,,"Entitas kedua salah: 'Plum pie'; bukti hanya mendukung apple pie, gold menuntut Plumb Cake.","schema_valid=True; abstain=False; verdict=SUPPORTED; claim=['Apple pie', 'Plum pie']; answer=['Apple pie', 'Plum pie']; gold=The 1796 Apple Pie recipe uses both cinnamon and mace. | The 1796 Plumb Cake recipe uses both cinnamon and mace."
+ERR0053,retrieval,q037,multi-hop,Which two 1796 recipes use both cream and flour?,1796,E1,ye-old-american:a-sunderland-pudding#ingredients#0,ye-old-american:a-sunderland-pudding,"- 6 eggs
+- half the whites
+- half a nutmeg
+- one pint cream
+- a little salt
+- 4 spoons fine flour
+- oil or butter pans, cups, or bowls",1,ye-old-american:gingerbread-cakes-or-butter-and-sugar-gingerbread#ingredients#0,ye-old-american:gingerbread-cakes-or-butter-and-sugar-gingerbread,1796,"- three pounds of flour
+- a grated nutmeg
+- two ounces ginger
+- one pound sugar
+- three small spoons pearl ash dissolved in cream
+- one pound butter
+- four eggs",2,Passage relevan ye-old-american:a-sunderland-pudding#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0054,retrieval,q037,multi-hop,Which two 1796 recipes use both cream and flour?,1796,E1,ye-old-american:plumb-cake#ingredients#0,ye-old-american:plumb-cake,"- one pound currants
+- one drachm nutmeg
+- mace and cinnamon each
+- a little salt
+- one pound of citron
+- orange peel candied
+- and almonds bleach'd
+- 6 pound of flour (well dry'd)
+- beat 21 eggs
+- add with 1 quart new ale yeast
+- half pint of wine
+- 3 half pints of cream
+- raisins, q: s",1,ye-old-american:gingerbread-cakes-or-butter-and-sugar-gingerbread#ingredients#0,ye-old-american:gingerbread-cakes-or-butter-and-sugar-gingerbread,1796,"- three pounds of flour
+- a grated nutmeg
+- two ounces ginger
+- one pound sugar
+- three small spoons pearl ash dissolved in cream
+- one pound butter
+- four eggs",2,Passage relevan ye-old-american:plumb-cake#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0055,retrieval,q038,multi-hop,Which two 1796 recipes use both milk and sugar?,1796,E1,ye-old-american:another-christmas-cookey#ingredients#0,ye-old-american:another-christmas-cookey,"- three pound flour
+- a tea cup of fine powdered coriander seed
+- one pound butter
+- one and half pound sugar
+- three tea spoonfuls of pearl ash dissolved in a tea cup of milk
+- three quarters of an inch thick
+- shape you please",1,ye-old-american:cookies#ingredients#0,ye-old-american:cookies,1796,"- one pound sugar
+- half pint water
+- two tea spoons pearl ash dissolved in milk
+- two and half pounds flour
+- 4 ounces butter
+- two large spoons of finely powdered coriander seed
+- melted butter
+- wine
+- sugar",2,Passage relevan ye-old-american:another-christmas-cookey#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0056,retrieval,q040,multi-hop,Which two 1824 recipes use both butter and citron?,1824,E1,ye-old-american:a-curd-pudding#fixed#0,ye-old-american:a-curd-pudding,"## Ingredients
+- two quarts of milk
+- half a pint of white wine
+- six ounces of butter
+- half a pound of loaf sugar
+- half a pint of rice flour or crackers
+- six eggs
+- half a grated nutmeg
+- slices of citron
+- melted butter
+- sugar
+- wine
+
+## Directions
+1. Put two quarts of milk on the fire
+2. When it boils, pour in half a pint of white wine
+3. Strain the curd from the whey, and pound it in a mortar
+4. Mix with six ounces of butter, half a pound of loaf sugar, and half a pint of rice flour, or as much crackers beaten as fine as flour
+5. Add six eggs made light, and half a grated nutmeg
+6. Beat all well together, and bake them in saucers in a moderate oven
+7. Turn them out carefully in your dish
+8. Stick thin slices of citron in them, and pour on rich melted butter, with sugar and wine",1,ye-old-american:an-arrow-root-pudding#directions#0,ye-old-american:an-arrow-root-pudding,1824,"1. Boil a quart of milk, and make it into a thick batter, with arrow root
+2. Add six eggs, half a pound of butter, the same of pounded sugar, half a nutmeg, and a little grated lemon peel
+3. Put a paste in the dish, and bake it nicely
+4. When done, sift sugar over it, and stick slips of citron all over the top",2,Passage relevan ye-old-american:a-curd-pudding#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0057,retrieval,q040,multi-hop,Which two 1824 recipes use both butter and citron?,1824,E1,ye-old-american:arrow-root-pudding#fixed#0,ye-old-american:arrow-root-pudding,"## Ingredients
+- a quart of milk
+- arrow root
+- six eggs
+- half a pound of butter
+- half a pound of pounded sugar
+- half a nutmeg
+- grated lemon peel
+- paste
+- sugar for sifting
+- slips of citron
+
+## Directions
+1. Boil a quart of milk, and make it into a thick batter, with arrow root
+2. Add six eggs, half a pound of butter, the same of pounded sugar, half a nutmeg, and a little grated lemon peel
+3. Put a paste in the dish, and bake it nicely
+4. When done, sift sugar over it, and stick slips of citron all over the top",1,ye-old-american:an-arrow-root-pudding#directions#0,ye-old-american:an-arrow-root-pudding,1824,"1. Boil a quart of milk, and make it into a thick batter, with arrow root
+2. Add six eggs, half a pound of butter, the same of pounded sugar, half a nutmeg, and a little grated lemon peel
+3. Put a paste in the dish, and bake it nicely
+4. When done, sift sugar over it, and stick slips of citron all over the top",2,Passage relevan ye-old-american:arrow-root-pudding#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0058,generation,q040,multi-hop,Which two 1824 recipes use both butter and citron?,1824,E3,ye-old-american:an-arrow-root-pudding#directions#0,ye-old-american:an-arrow-root-pudding,"1. Boil a quart of milk, and make it into a thick batter, with arrow root
+2. Add six eggs, half a pound of butter, the same of pounded sugar, half a nutmeg, and a little grated lemon peel
+3. Put a paste in the dish, and bake it nicely
+4. When done, sift sugar over it, and stick slips of citron all over the top",,,,,,,Jawaban memilih marrow pudding dan menyertakan abstain reason yang kontradiktif; bukti hanya arrow-root pudding.,"schema_valid=True; abstain=False; verdict=SUPPORTED; claim=['The two 1824 recipes that use both butter and citron are the arrow-root pudding from the Virginia Housewife book and the marrow pudding from the Virginia Housewife book.', 'Abstain Reason: The evidence provided does not specify which specific recipes use both butter and citron, so we cannot definitively say which one is correct without additional information.']; answer=['The two 1824 recipes that use both butter and citron are the arrow-root pudding from the Virginia Housewife book and the marrow pudding from the Virginia Housewife book.', 'Abstain Reason: The evidence provided does not specify which specific recipes use both butter and citron, so we cannot definitively say which one is correct without additional information.']; gold=The 1824 A Curd Pudding recipe uses both butter and citron. | The 1824 Arrow Root Pudding recipe uses both butter and citron."
+ERR0059,retrieval,q042,multi-hop,Which two 1824 recipes use both peaches and sugar?,1824,E1,ye-old-american:peach-cordial#ingredients#0,ye-old-american:peach-cordial,"- ripe cling-stone peaches
+- peach brandy
+- water
+- brown sugar",1,ye-old-american:peach-marmalade#directions#0,ye-old-american:peach-marmalade,1824,"1. Take the ripest soft peaches, (the yellow ones make the prettiest marmalade,) pare them, and take out the stones
+2. put them in the pan with one pound of dry light coloured brown sugar to two of peaches
+3. when they are juicy, they do not require water
+4. with a silver or wooden spoon, chop them with the sugar
+5. continue to do this, and let them boil gently till they are a transparent pulp, that will be a jelly when cold",2,Passage relevan ye-old-american:peach-cordial#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0060,retrieval,q043,multi-hop,Which two 1851 recipes use both cinnamon and mace?,1851,E1,ye-old-american:election-cake#ingredients#0,ye-old-american:election-cake,"- 2 pounds and a half flour
+- 1 pound flour
+- 2 table-spoonfuls West India molasses
+- 5 jills strong fresh yeast
+- 1 jill water
+- 2 pounds fresh butter
+- 2 pounds powdered sugar
+- 1 table-spoonful powdered cinnamon
+- 1 tea-spoonful powdered mace
+- 2 powdered nutmegs
+- 1⁄2 pint rich milk
+- 14 eggs",1,ye-old-american:pound-cake-4#ingredients#0,ye-old-american:pound-cake-4,1851,"- table-spoonful of powdered cinnamon
+- tea-spoonful of powdered mace
+- two nutmegs
+- glass of white wine
+- glass of brandy
+- glass of rose water
+- one pound of finest flour
+- one pound of loaf-sugar
+- one pound of fresh butter
+- ten eggs
+- juice of two lemons or three large oranges",2,Passage relevan ye-old-american:election-cake#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0061,retrieval,q043,multi-hop,Which two 1851 recipes use both cinnamon and mace?,1851,E1,ye-old-american:pound-cake-4#fixed#0,ye-old-american:pound-cake-4,"## Ingredients
+- table-spoonful of powdered cinnamon
+- tea-spoonful of powdered mace
+- two nutmegs
+- glass of white wine
+- glass of brandy
+- glass of rose water
+- one pound of finest flour
+- one pound of loaf-sugar
+- one pound of fresh butter
+- ten eggs
+- juice of two lemons or three large oranges
+
+## Directions
+1. Prepare a table-spoonful of powdered cinnamon, a tea-spoonful of powdered mace, and two nutmegs grated or powdered.
+2. Mix together in a tumbler, a glass of white wine, a glass of brandy, and a glass of rose water.
+3. Sift a pound of the finest flour into a broad pan, and powder a pound of loaf-sugar.
+4. Put the sugar into a deep pan, and cut up in it a pound of fresh butter.
+5. Warm them by the fire till soft; and then stir them to a cream.
+6. When they are perfectly light, add gradually the spice and liquor, a little at a time.
+7. Beat ten eggs as light as possible, and stir them by degrees into the mixture alternately with the flour.
+8. Then add the juice of two lemons or three large oranges.
+9. Stir the whole very hard; put it into a deep tin pan with straight or upright sides, and bake it in a moderate oven from two to three hours.",1,ye-old-american:pound-cake-4#ingredients#0,ye-old-american:pound-cake-4,1851,"- table-spoonful of powdered cinnamon
+- tea-spoonful of powdered mace
+- two nutmegs
+- glass of white wine
+- glass of brandy
+- glass of rose water
+- one pound of finest flour
+- one pound of loaf-sugar
+- one pound of fresh butter
+- ten eggs
+- juice of two lemons or three large oranges",2,Passage relevan ye-old-american:pound-cake-4#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0062,retrieval,q044,multi-hop,Which two 1851 recipes use both cloves and nutmeg?,1851,E1,ye-old-american:quince-cordial#ingredients#0,ye-old-american:quince-cordial,"- the finest and ripest quinces
+- six quarts of juice
+- a quart of cold water
+- three pounds of loaf-sugar
+- a quart of white brandy
+- grated nutmeg
+- powdered mace
+- powdered cloves",1,ye-old-american:mulled-wine#directions#0,ye-old-american:mulled-wine,1851,"1. Boil together in a pint of water a beaten nutmeg, two sticks of cinnamon broken up, and a table-spoonful of cloves slightly pounded
+2. When reduced to one-half, strain the liquid into a quart of wine
+3. Set it on hot coals
+4. Take it off as soon as it comes to a boil
+5. Sweeten it
+6. Serve it up hot in a pitcher, surrounded by glass cups, and with it a plate of rusk",2,Passage relevan ye-old-american:quince-cordial#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0063,retrieval,q045,multi-hop,Which two 1851 recipes use both brandy and mace?,1851,E1,ye-old-american:pound-cake-4#fixed#0,ye-old-american:pound-cake-4,"## Ingredients
+- table-spoonful of powdered cinnamon
+- tea-spoonful of powdered mace
+- two nutmegs
+- glass of white wine
+- glass of brandy
+- glass of rose water
+- one pound of finest flour
+- one pound of loaf-sugar
+- one pound of fresh butter
+- ten eggs
+- juice of two lemons or three large oranges
+
+## Directions
+1. Prepare a table-spoonful of powdered cinnamon, a tea-spoonful of powdered mace, and two nutmegs grated or powdered.
+2. Mix together in a tumbler, a glass of white wine, a glass of brandy, and a glass of rose water.
+3. Sift a pound of the finest flour into a broad pan, and powder a pound of loaf-sugar.
+4. Put the sugar into a deep pan, and cut up in it a pound of fresh butter.
+5. Warm them by the fire till soft; and then stir them to a cream.
+6. When they are perfectly light, add gradually the spice and liquor, a little at a time.
+7. Beat ten eggs as light as possible, and stir them by degrees into the mixture alternately with the flour.
+8. Then add the juice of two lemons or three large oranges.
+9. Stir the whole very hard; put it into a deep tin pan with straight or upright sides, and bake it in a moderate oven from two to three hours.",1,ye-old-american:pound-cake-4#ingredients#0,ye-old-american:pound-cake-4,1851,"- table-spoonful of powdered cinnamon
+- tea-spoonful of powdered mace
+- two nutmegs
+- glass of white wine
+- glass of brandy
+- glass of rose water
+- one pound of finest flour
+- one pound of loaf-sugar
+- one pound of fresh butter
+- ten eggs
+- juice of two lemons or three large oranges",2,Passage relevan ye-old-american:pound-cake-4#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0064,retrieval,q045,multi-hop,Which two 1851 recipes use both brandy and mace?,1851,E1,ye-old-american:quince-cordial#ingredients#0,ye-old-american:quince-cordial,"- the finest and ripest quinces
+- six quarts of juice
+- a quart of cold water
+- three pounds of loaf-sugar
+- a quart of white brandy
+- grated nutmeg
+- powdered mace
+- powdered cloves",1,ye-old-american:pound-cake-4#ingredients#0,ye-old-american:pound-cake-4,1851,"- table-spoonful of powdered cinnamon
+- tea-spoonful of powdered mace
+- two nutmegs
+- glass of white wine
+- glass of brandy
+- glass of rose water
+- one pound of finest flour
+- one pound of loaf-sugar
+- one pound of fresh butter
+- ten eggs
+- juice of two lemons or three large oranges",2,Passage relevan ye-old-american:quince-cordial#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0065,generation,q045,multi-hop,Which two 1851 recipes use both brandy and mace?,1851,E3,ye-old-american:pound-cake-4#ingredients#0,ye-old-american:pound-cake-4,"- table-spoonful of powdered cinnamon
+- tea-spoonful of powdered mace
+- two nutmegs
+- glass of white wine
+- glass of brandy
+- glass of rose water
+- one pound of finest flour
+- one pound of loaf-sugar
+- one pound of fresh butter
+- ten eggs
+- juice of two lemons or three large oranges",,,,,,,Entitas kedua salah: Queen Cake; bukti hanya mendukung Pound Cake.,schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The two 1851 recipes that use both brandy and mace are the Ye Olde American Pound Cake and the Ye Olde American Queen Cake.; answer=The two 1851 recipes that use both brandy and mace are the Ye Olde American Pound Cake and the Ye Olde American Queen Cake.; gold=The 1851 Pound Cake recipe uses both brandy and mace. | The 1851 Quince Cordial recipe uses both brandy and mace.
+ERR0066,retrieval,q046,multi-hop,Which two 1851 recipes use both peaches and sugar?,1851,E1,ye-old-american:peach-jelly#ingredients#0,ye-old-american:peach-jelly,"- fine juicy free-stone peaches
+- loaf-sugar
+- peach-kernels
+- water",1,ye-old-american:peaches-for-common-use#directions#0,ye-old-american:peaches-for-common-use,1851,"1. Pare, stone, and quarter the peaches
+2. To six pounds of the cut peaches allow three pounds of the best brown sugar
+3. Strew the sugar among the peaches and set them away
+4. Next morning add a handful of the kernels
+5. Put the whole into a preserving kettle and boil it slowly about an hour and three quarters, or two hours, skimming it well
+6. When cold, put it up in jars for pies or any common purpose",2,Passage relevan ye-old-american:peach-jelly#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0067,retrieval,q048,multi-hop,Which two 1871 recipes use both chocolate and cream?,1871,E1,ye-old-american:chocolate-ice-cream#fixed#0,ye-old-american:chocolate-ice-cream,"## Ingredients
+- 1 quart of cream
+- 1 pint new milk
+- 2 cups sugar
+- 2 eggs beaten very light
+- 5 tablespoonfuls chocolate rubbed smooth in a little milk
+
+## Directions
+1. Heat the milk almost to boiling, and pour, by degrees, in with the beaten egg and sugar
+2. Stir in the chocolate, beat well three minutes, and return to the inner kettle
+3. Heat until it thickens well, stirring constantly
+4. Take from the fire and set aside to cool
+5. When the custard is cold, beat in the cream
+6. Freeze",1,ye-old-american:chocolate-ice-cream#ingredients#0,ye-old-american:chocolate-ice-cream,1871,"- 1 quart of cream
+- 1 pint new milk
+- 2 cups sugar
+- 2 eggs beaten very light
+- 5 tablespoonfuls chocolate rubbed smooth in a little milk",2,Passage relevan ye-old-american:chocolate-ice-cream#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0068,generation,q050,multi-hop,Which two 1871 recipes use both almonds and cream?,1871,E3,ye-old-american:almond-custards#ingredients#0,ye-old-american:almond-custards,"- 1 pint milk
+- 1⁄2 pint cream
+- 1⁄4 lb. almonds, blanched and pounded to a paste
+- 2 tablespoonfuls of rose-water
+- Yolks of three eggs and whites of four
+- 4 tablespoonfuls sugar
+- 1 teaspoonful extract bitter almond in méringue",,,,,,,"Jawaban memilih almond custards, bukan Flummery, dan menyertakan abstain reason kontradiktif.","schema_valid=True; abstain=False; verdict=SUPPORTED; claim=['The two 1871 recipes that use both almonds and cream are the almond custards and the cream sauce.', 'Abstain Reason: The evidence provided does not mention any specific recipes that use both almonds and cream, so we cannot determine if these are the correct answer.']; answer=['The two 1871 recipes that use both almonds and cream are the almond custards and the cream sauce.', 'Abstain Reason: The evidence provided does not mention any specific recipes that use both almonds and cream, so we cannot determine if these are the correct answer.']; gold=The 1871 Cream Sauce recipe uses both almonds and cream. | The 1871 Flummery recipe uses both almonds and cream."
+ERR0069,retrieval,q051,multi-hop,Which two 1887 recipes use both allspice and mace?,1887,E1,ye-old-american:spiced-beef-excellent#ingredients#0,ye-old-american:spiced-beef-excellent,"- a round of beef weighing twenty or twenty-four pounds
+- one-quarter of a pound of saltpetre
+- one-quarter of a pound of coarse brown sugar
+- two pounds of salt
+- one ounce of cloves
+- one ounce of allspice
+- half an ounce of mace
+- broad tape
+- flour
+- water
+- suet",1,ye-old-american:pickled-white-cabbage#ingredients#0,ye-old-american:pickled-white-cabbage,1887,"- a peck of quartered cabbage
+- salt
+- four chopped onions
+- vinegar
+- one ounce of turmeric
+- one gill of black pepper
+- one gill of celery seed
+- a few cloves
+- one tablespoonful of allspice
+- a few pieces of ginger
+- half an ounce of mace
+- two pounds of brown sugar
+- four tablespoonfuls of made mustard",2,Passage relevan ye-old-american:spiced-beef-excellent#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0070,retrieval,q054,multi-hop,Which two 1887 recipes use both butter and rose-water?,1887,E1,ye-old-american:brunswick-jelly-cakes#ingredients#0,ye-old-american:brunswick-jelly-cakes,"- one cup of powdered white sugar
+- one-half cup of butter
+- three eggs
+- three cups of flour
+- one teaspoonful of mixed spice (nutmeg, mace and cinnamon)
+- half a glass of rose-water or wine
+- fruit jelly or marmalade
+- powdered loaf sugar
+- strong essence of lemon",1,ye-old-american:almond-jumbles-2#ingredients#0,ye-old-american:almond-jumbles-2,1887,"- three cupfuls of soft sugar
+- two cupfuls of flour
+- half a cupful of butter
+- one teacupful of loppered milk
+- five eggs
+- two tablespoonfuls of rose-water
+- three-quarters of a pound of almonds, blanched and chopped
+- one teaspoonful of soda",2,Passage relevan ye-old-american:brunswick-jelly-cakes#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0071,retrieval,q055,multi-hop,Which two 1887 recipes use both cream and strawberries?,1887,E1,ye-old-american:strawberry-charlotte#ingredients#0,ye-old-american:strawberry-charlotte,"- One quart of milk
+- Yolks of six eggs
+- Three-quarters of a cupful of sugar
+- Slices of sponge cake
+- Sweet cream
+- Ripe strawberries
+- Whites of six eggs
+- One tablespoonful of sugar per egg",1,ye-old-american:berry-tarts#ingredients#0,ye-old-american:berry-tarts,1887,"- pie crust
+- strawberries, blackberries, raspberries, or whatever berries are in season
+- sugar
+- sweet cream",2,Passage relevan ye-old-american:strawberry-charlotte#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0072,generation,q055,multi-hop,Which two 1887 recipes use both cream and strawberries?,1887,E3,ye-old-american:berry-tarts#ingredients#0,ye-old-american:berry-tarts,"- pie crust
+- strawberries, blackberries, raspberries, or whatever berries are in season
+- sugar
+- sweet cream",,,,,,,Jawaban memilih bavarian/ice cream; bukti berry tarts tidak mendukung dua resep gold.,"schema_valid=True; abstain=False; verdict=SUPPORTED; claim=[""The two 1887 recipes that use both cream and strawberries are the 'strawberry-bavarian-cream' and 'strawberry-ice-cream-2' from The Whitehouse Cookbook."", 'Abstain: No', 'Confidence: 100%', 'Schema_valid: true']; answer=[""The two 1887 recipes that use both cream and strawberries are the 'strawberry-bavarian-cream' and 'strawberry-ice-cream-2' from The Whitehouse Cookbook."", 'Abstain: No', 'Confidence: 100%', 'Schema_valid: true']; gold=The 1887 Strawberry Charlotte recipe uses both cream and strawberries. | The 1887 Strawberry Short-Cake recipe uses both cream and strawberries."
+ERR0073,retrieval,q056,multi-hop,Which two 1896 recipes use both apples and nutmeg?,1896,E1,ye-old-american:scalloped-apples#directions#0,ye-old-american:scalloped-apples,"1. Cut loaf in halves, remove soft part, and crumb by rubbing through a colander; melt butter and stir in lightly with fork; cover bottom of buttered pudding-dish with crumbs and spread over one-half the apples, sprinkle with one-half sugar, nutmeg, lemon juice, and rind mixed together; repeat cover with remaining crumbs, and bake forty minutes in moderate oven. Cover at first to prevent crumbs browning too rapidly. Serve with sugar and cream.",1,ye-old-american:baked-apples-6#directions#0,ye-old-american:baked-apples-6,1896,"1. Wipe and core sour apples.
+2. Put in a baking-dish, and fill cavities with sugar and spice. Allow one-half cup sugar and one-fourth teaspoon cinnamon or nutmeg to eight apples. If nutmeg is used, add a few drops lemon juice and few gratings from rind of lemon to each apple.
+3. Cover bottom of dish with boiling water, and bake in a hot oven until soft, basting often with syrup in dish.
+4. Serve hot or cold with cream.",2,Passage relevan ye-old-american:scalloped-apples#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0074,retrieval,q056,multi-hop,Which two 1896 recipes use both apples and nutmeg?,1896,E1,ye-old-american:scalloped-apples#ingredients#0,ye-old-american:scalloped-apples,"- 1 small baker's stale loaf
+- 1⁄4 cup butter
+- 1 quart sliced apples
+- 1⁄4 cup sugar
+- 1⁄4 teaspoon grated nutmeg
+- Grated rind and juice of 1⁄2 lemon",1,ye-old-american:baked-apples-6#directions#0,ye-old-american:baked-apples-6,1896,"1. Wipe and core sour apples.
+2. Put in a baking-dish, and fill cavities with sugar and spice. Allow one-half cup sugar and one-fourth teaspoon cinnamon or nutmeg to eight apples. If nutmeg is used, add a few drops lemon juice and few gratings from rind of lemon to each apple.
+3. Cover bottom of dish with boiling water, and bake in a hot oven until soft, basting often with syrup in dish.
+4. Serve hot or cold with cream.",2,Passage relevan ye-old-american:scalloped-apples#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0075,retrieval,q057,multi-hop,Which two 1896 recipes use both butter and mace?,1896,E1,ye-old-american:duchess-soup#ingredients#0,ye-old-american:duchess-soup,"- 4 cups White Stock III
+- 2 slices carrot, cut in cubes
+- 2 slices onion
+- 2 blades mace
+- 1⁄2 cup grated mild cheese
+- 1⁄3 cup butter
+- 1⁄4 cup flour
+- 1 teaspoon salt
+- 1⁄8 teaspoon pepper
+- 2 cups scalded milk",1,ye-old-american:blanquette-of-lamb#ingredients#0,ye-old-american:blanquette-of-lamb,1896,"- cooked lamb
+- two cups sauce
+- one-fourth cup butter
+- one-fourth cup flour
+- one cup White Stock
+- one cup milk
+- two blades of mace
+- salt and pepper
+- one tablespoon Mushroom Catsup
+- large croûtons
+- green peas
+- potato border
+- finely chopped parsley",2,Passage relevan ye-old-american:duchess-soup#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0076,retrieval,q057,multi-hop,Which two 1896 recipes use both butter and mace?,1896,E1,ye-old-american:mulligatawny-soup#ingredients#0,ye-old-american:mulligatawny-soup,"- 5 cups White Stock II
+- 1 cup tomatoes
+- 1⁄4 cup onion, cut in slices
+- 1⁄4 cup carrot, cut in cubes
+- 1⁄4 cup celery, cut in cubes
+- 1 pepper, finely chopped
+- 1 apple, sliced
+- 1 cup raw chicken, cut in dice
+- 1⁄4 cup butter
+- 1⁄3 cup flour
+- 1 teaspoon curry powder
+- Blade of mace
+- 2 cloves
+- Sprig of parsley
+- Salt and pepper",1,ye-old-american:blanquette-of-lamb#ingredients#0,ye-old-american:blanquette-of-lamb,1896,"- cooked lamb
+- two cups sauce
+- one-fourth cup butter
+- one-fourth cup flour
+- one cup White Stock
+- one cup milk
+- two blades of mace
+- salt and pepper
+- one tablespoon Mushroom Catsup
+- large croûtons
+- green peas
+- potato border
+- finely chopped parsley",2,Passage relevan ye-old-american:mulligatawny-soup#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0077,retrieval,q058,multi-hop,Which two 1896 recipes use both chicken and potatoes?,1896,E1,ye-old-american:chicken-in-baskets#fixed#0,ye-old-american:chicken-in-baskets,"## Ingredients
+- Three cups hot mashed potatoes
+- Three tablespoons butter
+- One teaspoon salt
+- Yolks of three eggs, slightly beaten
+- Milk
+- White of egg, slightly beaten
+- Creamed Chicken
+- Parsley
+
+## Directions
+1. To mashed potatoes add butter, salt, yolks of eggs, and enough milk to moisten.
+2. Shape in form of small baskets, using a pastry bag and tube.
+3. Brush over with white of egg slightly beaten, and brown in oven.
+4. Fill with Creamed Chicken.
+5. Form handles for baskets of parsley.",1,ye-old-american:chicken-in-baskets#directions#0,ye-old-american:chicken-in-baskets,1896,"1. To mashed potatoes add butter, salt, yolks of eggs, and enough milk to moisten.
+2. Shape in form of small baskets, using a pastry bag and tube.
+3. Brush over with white of egg slightly beaten, and brown in oven.
+4. Fill with Creamed Chicken.
+5. Form handles for baskets of parsley.",2,Passage relevan ye-old-american:chicken-in-baskets#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0078,retrieval,q058,multi-hop,Which two 1896 recipes use both chicken and potatoes?,1896,E1,ye-old-american:chicken-la-mcdonald#ingredients#0,ye-old-american:chicken-la-mcdonald,"- 1 cup cold cooked chicken, cut in strips
+- 3 cold boiled potatoes, cut in one-third inch slices
+- 1 truffle cut in strips
+- 3 tablespoons butter
+- 3 tablespoons flour
+- 1 1/2 cups scalded milk
+- salt
+- pepper",1,ye-old-american:chicken-in-baskets#directions#0,ye-old-american:chicken-in-baskets,1896,"1. To mashed potatoes add butter, salt, yolks of eggs, and enough milk to moisten.
+2. Shape in form of small baskets, using a pastry bag and tube.
+3. Brush over with white of egg slightly beaten, and brown in oven.
+4. Fill with Creamed Chicken.
+5. Form handles for baskets of parsley.",2,Passage relevan ye-old-american:chicken-la-mcdonald#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0079,retrieval,q060,multi-hop,Which two 1896 recipes use both mushrooms and oysters?,1896,E1,ye-old-american:oysters-la-somerset#fixed#0,ye-old-american:oysters-la-somerset,"## Ingredients
+- 1 pint selected oysters
+- 1 tablespoon chopped onion
+- 2 tablespoons chopped mushrooms
+- 3 tablespoons butter
+- 1⁄3 cup oyster liquor
+- 1⁄3 cup Chicken Stock
+- Salt
+- Pepper
+- Cayenne
+- 4 tablespoons flour
+
+## Directions
+1. Parboil and drain oysters.
+2. Reserve liquor, strain, and set aside for sauce.
+3. Cook onion and mushroom in butter five minutes, add flour, and pour on gradually oyster liquor and chicken stock.
+4. Season with salt, pepper, and cayenne.
+5. Remove tough muscles from oysters, and discard.
+6. Shape oysters, cover with sauce, and cool on a plate covered with stale bread crumbs.
+7. Dip in egg and stale bread crumbs, fry in deep fat, and drain on brown paper.",1,ye-old-american:mushrooms-l-algonquin#directions#0,ye-old-american:mushrooms-l-algonquin,1896,"1. Wash large selected mushrooms.
+2. Remove stems, peel caps, and sauté caps in butter.
+3. Place in a small buttered shallow pan, cap side being up.
+4. Place on each a large oyster, sprinkle with salt and pepper, and place on each a bit of butter.
+5. Cook in a hot oven until oysters are plump.
+6. Serve with Brown or Béchamel Sauce.",2,Passage relevan ye-old-american:oysters-la-somerset#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0080,retrieval,q061,temporal,How did the sweetener used for baked apples change between the 1851 and 1871 recipes?,1871,E1,ye-old-american:baked-apples#ingredients#0,ye-old-american:baked-apples,"- a dozen fine large juicy apples
+- white sugar
+- lemon-juice or essence of lemon
+- lemon-peel
+- water",1,ye-old-american:baked-pears-2#directions#0,ye-old-american:baked-pears-2,1871,"1. Sweet pears may be baked just as sweet apples are—steamed without being pared or cored
+2. Alternatively, if large, cut in half, put into a deep dish, with a very little water
+3. Sprinkle them with sugar, and put a few cloves, or bits of cinnamon, or a pinch of ginger among them
+4. Cover closely, and bake until tender",2,Passage relevan ye-old-american:baked-apples#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0081,retrieval,q061,temporal,How did the sweetener used for baked apples change between the 1851 and 1871 recipes?,1871,E1,ye-old-american:baked-apples-3#fixed#0,ye-old-american:baked-apples-3,"## Ingredients
+- sweet apples
+- water
+- powdered sugar
+- cream
+
+## Directions
+1. Cut out the blossom end of sweet apples—Campfields or Pound Sweets—with a sharp penknife; wash, but do not pare them.
+2. Pack them in a large pudding-dish; pour a cupful of water in the bottom, cover closely with another dish or pan.
+3. Set in a moderate oven, and steam until tender all through.
+4. Pour the liquor over them while hot, and repeat this as they cool.
+5. Set on the ice several hours before tea, and, when you are ready, transfer them to a glass dish, pouring the juice over them again.
+6. Eat with powdered sugar and cream.",1,ye-old-american:baked-pears-2#directions#0,ye-old-american:baked-pears-2,1871,"1. Sweet pears may be baked just as sweet apples are—steamed without being pared or cored
+2. Alternatively, if large, cut in half, put into a deep dish, with a very little water
+3. Sprinkle them with sugar, and put a few cloves, or bits of cinnamon, or a pinch of ginger among them
+4. Cover closely, and bake until tender",2,Passage relevan ye-old-american:baked-apples-3#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0082,generation,q061,temporal,How did the sweetener used for baked apples change between the 1851 and 1871 recipes?,1871,E3,ye-old-american:baked-pears-2#directions#0,ye-old-american:baked-pears-2,"1. Sweet pears may be baked just as sweet apples are—steamed without being pared or cored
+2. Alternatively, if large, cut in half, put into a deep dish, with a very little water
+3. Sprinkle them with sugar, and put a few cloves, or bits of cinnamon, or a pinch of ginger among them
+4. Cover closely, and bake until tender",,,,,,,"Jawaban menyebut soda untuk 1871; bukti baked pears hanya mendukung sugar, bukan perubahan yang diminta.","schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The sweetener used for baked apples changed between the 1851 and 1871 recipes. In the 1851 recipe, sugar was used, while in the 1871 recipe, soda was added.; answer=The sweetener used for baked apples changed between the 1851 and 1871 recipes. In the 1851 recipe, sugar was used, while in the 1871 recipe, soda was added.; gold=The 1851 baked apples recipe uses white sugar. | The 1871 baked apples recipe uses powdered sugar."
+ERR0083,retrieval,q062,temporal,Did the 1851 and 1871 baked apple recipes both instruct the cook to peel the apples?,1871,E1,ye-old-american:baked-apples#ingredients#0,ye-old-american:baked-apples,"- a dozen fine large juicy apples
+- white sugar
+- lemon-juice or essence of lemon
+- lemon-peel
+- water",1,ye-old-american:apple-batter-pudding#directions#0,ye-old-american:apple-batter-pudding,1871,"1. Peel and core eight apples carefully, and range them closely together in a deep dish.
+2. Beat the batter very light and pour over them.
+3. Unless the apples are very ripe and sweet, fill the centre of each with white sugar.
+4. Bake an hour, and eat hot with sweet sauce.",1,Passage relevan ye-old-american:baked-apples#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=0
+ERR0084,retrieval,q062,temporal,Did the 1851 and 1871 baked apple recipes both instruct the cook to peel the apples?,1871,E1,ye-old-american:baked-apples-3#directions#0,ye-old-american:baked-apples-3,"1. Cut out the blossom end of sweet apples—Campfields or Pound Sweets—with a sharp penknife; wash, but do not pare them.
+2. Pack them in a large pudding-dish; pour a cupful of water in the bottom, cover closely with another dish or pan.
+3. Set in a moderate oven, and steam until tender all through.
+4. Pour the liquor over them while hot, and repeat this as they cool.
+5. Set on the ice several hours before tea, and, when you are ready, transfer them to a glass dish, pouring the juice over them again.
+6. Eat with powdered sugar and cream.",1,ye-old-american:apple-batter-pudding#directions#0,ye-old-american:apple-batter-pudding,1871,"1. Peel and core eight apples carefully, and range them closely together in a deep dish.
+2. Beat the batter very light and pour over them.
+3. Unless the apples are very ripe and sweet, fill the centre of each with white sugar.
+4. Bake an hour, and eat hot with sweet sauce.",2,Passage relevan ye-old-american:baked-apples-3#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=0
+ERR0085,retrieval,q062,temporal,Did the 1851 and 1871 baked apple recipes both instruct the cook to peel the apples?,1871,E2,ye-old-american:baked-apples#directions#0,ye-old-american:baked-apples,"1. Take a dozen fine large juicy apples, and pare and core them, but do not cut them in pieces.
+2. Put them side by side into a large baking-pan, and fill up with white sugar the holes from whence you have extracted the cores.
+3. Pour into each a little lemon-juice, or a few drops of essence of lemon, and stick in every one a long piece of lemon-peel evenly cut.
+4. Into the bottom of the pan put a very little water, just enough to prevent the apples from burning.
+5. Bake them about an hour, or till they are tender all through, but not till they break.
+6. When done, set them away to get cold. If closely covered they will keep two days.",1,ye-old-american:apple-batter-pudding#directions#0,ye-old-american:apple-batter-pudding,1871,"1. Peel and core eight apples carefully, and range them closely together in a deep dish.
+2. Beat the batter very light and pour over them.
+3. Unless the apples are very ripe and sweet, fill the centre of each with white sugar.
+4. Bake an hour, and eat hot with sweet sauce.",0,Peringkat 1 berasal dari dokumen yang tidak memuat passage relevan mana pun untuk query ini.,wrong_doc=ye-old-american:apple-batter-pudding
+ERR0086,retrieval,q063,temporal,Did the 1851 and 1871 oyster sauces both use mace?,1871,E1,ye-old-american:oyster-sauce#fixed#0,ye-old-american:oyster-sauce,"## Ingredients
+- a pint of oysters
+- mace and nutmeg
+- drawn or melted butter
+- oyster liquor
+- celery
+
+## Directions
+1. Take a pint of oysters, and save out a little of their liquor.
+2. Put them with their remaining liquor, and some mace and nutmeg, into a covered saucepan, and simmer them on hot coals about ten minutes.
+3. Then drain them.
+4. Having prepared in another saucepan some drawn or melted butter, (mixed with oyster liquor instead of water,) pour it into a sauce-boat, add the oysters to it, and serve it up with boiled poultry, or with boiled fresh fish.
+5. Celery, first boiled and then chopped, is an improvement to oyster sauce.",1,ye-old-american:oyster-sauce#directions#0,ye-old-american:oyster-sauce,1851,"1. Take a pint of oysters, and save out a little of their liquor.
+2. Put them with their remaining liquor, and some mace and nutmeg, into a covered saucepan, and simmer them on hot coals about ten minutes.
+3. Then drain them.
+4. Having prepared in another saucepan some drawn or melted butter, (mixed with oyster liquor instead of water,) pour it into a sauce-boat, add the oysters to it, and serve it up with boiled poultry, or with boiled fresh fish.
+5. Celery, first boiled and then chopped, is an improvement to oyster sauce.",2,Passage relevan ye-old-american:oyster-sauce#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0087,retrieval,q063,temporal,Did the 1851 and 1871 oyster sauces both use mace?,1871,E1,ye-old-american:oyster-sauce#ingredients#0,ye-old-american:oyster-sauce,"- a pint of oysters
+- mace and nutmeg
+- drawn or melted butter
+- oyster liquor
+- celery",1,ye-old-american:oyster-sauce#directions#0,ye-old-american:oyster-sauce,1851,"1. Take a pint of oysters, and save out a little of their liquor.
+2. Put them with their remaining liquor, and some mace and nutmeg, into a covered saucepan, and simmer them on hot coals about ten minutes.
+3. Then drain them.
+4. Having prepared in another saucepan some drawn or melted butter, (mixed with oyster liquor instead of water,) pour it into a sauce-boat, add the oysters to it, and serve it up with boiled poultry, or with boiled fresh fish.
+5. Celery, first boiled and then chopped, is an improvement to oyster sauce.",2,Passage relevan ye-old-american:oyster-sauce#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0088,retrieval,q063,temporal,Did the 1851 and 1871 oyster sauces both use mace?,1871,E1,ye-old-american:oyster-sauce-2#ingredients#0,ye-old-american:oyster-sauce-2,"- 1 pint oysters
+- Half a lemon
+- 2 tablespoonfuls butter
+- 1 tablespoonful flour
+- 1 teacupful milk or cream
+- Cayenne and nutmeg to taste",1,ye-old-american:oyster-sauce#directions#0,ye-old-american:oyster-sauce,1851,"1. Take a pint of oysters, and save out a little of their liquor.
+2. Put them with their remaining liquor, and some mace and nutmeg, into a covered saucepan, and simmer them on hot coals about ten minutes.
+3. Then drain them.
+4. Having prepared in another saucepan some drawn or melted butter, (mixed with oyster liquor instead of water,) pour it into a sauce-boat, add the oysters to it, and serve it up with boiled poultry, or with boiled fresh fish.
+5. Celery, first boiled and then chopped, is an improvement to oyster sauce.",2,Passage relevan ye-old-american:oyster-sauce-2#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0089,retrieval,q064,temporal,How did the stuffing for baked shad differ between the 1851 and 1887 recipes?,1887,E1,ye-old-american:baked-shad#ingredients#0,ye-old-american:baked-shad,"- shad
+- grated bread crumbs
+- cold boiled ham or bacon
+- sweet marjoram
+- red pepper
+- powdered mace or cloves
+- yolk of egg
+- water
+- port wine
+- butter
+- flour
+- lemon",1,ye-old-american:dressing-for-baked-shad#directions#0,ye-old-american:dressing-for-baked-shad,1887,"1. Boil up the gravy in which the shad was baked
+2. Put in a large tablespoonful of catsup, a tablespoonful of brown flour which has been wet with cold water, the juice of a lemon, and a glass of sherry or Madeira wine
+3. Serve in a sauce boat",2,Passage relevan ye-old-american:baked-shad#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0090,retrieval,q064,temporal,How did the stuffing for baked shad differ between the 1851 and 1887 recipes?,1887,E1,ye-old-american:baked-shad-3#ingredients#0,ye-old-american:baked-shad-3,"- shad
+- bread crumbs
+- salt
+- pepper
+- butter
+- parsley
+- beaten yolk of egg
+- water
+- lemon
+- water cress",1,ye-old-american:dressing-for-baked-shad#directions#0,ye-old-american:dressing-for-baked-shad,1887,"1. Boil up the gravy in which the shad was baked
+2. Put in a large tablespoonful of catsup, a tablespoonful of brown flour which has been wet with cold water, the juice of a lemon, and a glass of sherry or Madeira wine
+3. Serve in a sauce boat",2,Passage relevan ye-old-american:baked-shad-3#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0091,retrieval,q065,temporal,"Which liquid did the 1851 baked shad add to the pan, and which did the 1887 recipe use?",1887,E1,ye-old-american:baked-shad#directions#0,ye-old-american:baked-shad,"1. Keep on the head and fins.
+2. Make a force-meat or stuffing of grated bread crumbs, cold boiled ham or bacon minced fine, sweet marjoram, red pepper, and a little powdered mace or cloves.
+3. Moisten it with beaten yolk of egg.
+4. Stuff the inside of the fish with it, reserving a little to rub over the outside, having first rubbed the fish all over with yolk of egg.
+5. Lay the fish in a deep pan, patting its tail to its mouth.
+6. Pour into the bottom of the pan a little water, and add a jill of port wine, and a piece of butter rolled in flour.
+7. Bake it well, and when it is done, send it to table with the gravy poured round it.
+8. Garnish with slices of lemon.",1,ye-old-american:dressing-for-baked-shad#directions#0,ye-old-american:dressing-for-baked-shad,1887,"1. Boil up the gravy in which the shad was baked
+2. Put in a large tablespoonful of catsup, a tablespoonful of brown flour which has been wet with cold water, the juice of a lemon, and a glass of sherry or Madeira wine
+3. Serve in a sauce boat",2,Passage relevan ye-old-american:baked-shad#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0092,retrieval,q065,temporal,"Which liquid did the 1851 baked shad add to the pan, and which did the 1887 recipe use?",1887,E1,ye-old-american:baked-shad#ingredients#0,ye-old-american:baked-shad,"- shad
+- grated bread crumbs
+- cold boiled ham or bacon
+- sweet marjoram
+- red pepper
+- powdered mace or cloves
+- yolk of egg
+- water
+- port wine
+- butter
+- flour
+- lemon",1,ye-old-american:dressing-for-baked-shad#directions#0,ye-old-american:dressing-for-baked-shad,1887,"1. Boil up the gravy in which the shad was baked
+2. Put in a large tablespoonful of catsup, a tablespoonful of brown flour which has been wet with cold water, the juice of a lemon, and a glass of sherry or Madeira wine
+3. Serve in a sauce boat",1,Passage relevan ye-old-american:baked-shad#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0093,retrieval,q065,temporal,"Which liquid did the 1851 baked shad add to the pan, and which did the 1887 recipe use?",1887,E1,ye-old-american:baked-shad-3#ingredients#0,ye-old-american:baked-shad-3,"- shad
+- bread crumbs
+- salt
+- pepper
+- butter
+- parsley
+- beaten yolk of egg
+- water
+- lemon
+- water cress",1,ye-old-american:dressing-for-baked-shad#directions#0,ye-old-american:dressing-for-baked-shad,1887,"1. Boil up the gravy in which the shad was baked
+2. Put in a large tablespoonful of catsup, a tablespoonful of brown flour which has been wet with cold water, the juice of a lemon, and a glass of sherry or Madeira wine
+3. Serve in a sauce boat",1,Passage relevan ye-old-american:baked-shad-3#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0094,retrieval,q066,temporal,Did the 1871 and 1887 blackberry cordials both include nutmeg?,1887,E1,ye-old-american:blackberry-cordial-2#directions#0,ye-old-american:blackberry-cordial-2,"1. Warm and squeeze the berries
+2. Add to one pint of juice one pound of white sugar, one-half ounce of powdered cinnamon, one-fourth ounce of mace, and two teaspoonfuls of cloves
+3. Boil all together for one-fourth of an hour
+4. Strain the syrup, and to each pint add a glass of French brandy",1,ye-old-american:blackberry-cordial#ingredients#0,ye-old-american:blackberry-cordial,1871,"- 1 quart of blackberry juice
+- 1 lb. white sugar
+- 1⁄2 oz. grated nutmeg
+- 1⁄2 oz. powdered cinnamon
+- 1⁄4 oz. allspice
+- 1⁄4 oz. cloves
+- 1 pint best brandy",2,Passage relevan ye-old-american:blackberry-cordial-2#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0095,retrieval,q066,temporal,Did the 1871 and 1887 blackberry cordials both include nutmeg?,1887,E1,ye-old-american:blackberry-cordial-2#ingredients#0,ye-old-american:blackberry-cordial-2,"- berries
+- one pint of juice
+- one pound of white sugar
+- one-half ounce of powdered cinnamon
+- one-fourth ounce of mace
+- two teaspoonfuls of cloves
+- a glass of French brandy per pint",1,ye-old-american:blackberry-cordial#ingredients#0,ye-old-american:blackberry-cordial,1871,"- 1 quart of blackberry juice
+- 1 lb. white sugar
+- 1⁄2 oz. grated nutmeg
+- 1⁄2 oz. powdered cinnamon
+- 1⁄4 oz. allspice
+- 1⁄4 oz. cloves
+- 1 pint best brandy",2,Passage relevan ye-old-american:blackberry-cordial-2#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0096,generation,q066,temporal,Did the 1871 and 1887 blackberry cordials both include nutmeg?,1887,E3,ye-old-american:blackberry-cordial#ingredients#0,ye-old-american:blackberry-cordial,"- 1 quart of blackberry juice
+- 1 lb. white sugar
+- 1⁄2 oz. grated nutmeg
+- 1⁄2 oz. powdered cinnamon
+- 1⁄4 oz. allspice
+- 1⁄4 oz. cloves
+- 1 pint best brandy",,,,,,,"Jawaban menyimpulkan kedua cordial memakai nutmeg; bukti hanya 1871, gold 1887 memakai mace.","schema_valid=True; abstain=False; verdict=SUPPORTED; claim=Yes, both the 1871 and 1887 blackberry cordials included nutmeg.; answer=Yes, both the 1871 and 1887 blackberry cordials included nutmeg.; gold=The 1871 blackberry cordial includes grated nutmeg. | The 1887 blackberry cordial includes mace."
+ERR0097,retrieval,q067,temporal,How long are the 1871 and 1887 blackberry cordials boiled?,1887,E1,ye-old-american:blackberry-cordial#directions#0,ye-old-american:blackberry-cordial,"1. Tie the spices in thin muslin bags
+2. Boil juice, sugar, and spices together fifteen minutes, skimming well
+3. Add the brandy
+4. Set aside in a closely covered vessel to cool
+5. When perfectly cold, strain out the spices, and bottle, sealing the corks",1,ye-old-american:blackberry-wine-no-2#directions#0,ye-old-american:blackberry-wine-no-2,1887,"1. Put berries into a large wood or stone vessel with a tap
+2. Pour on sufficient boiling water to cover them
+3. When cool enough to bear your hand, bruise well until all the berries are broken
+4. Cover up and let stand until berries begin to rise to top, which will occur in three or four days
+5. Draw off the clear juice in another vessel
+6. Add one pound of sugar to every ten quarts of the liquor and stir thoroughly
+7. Let stand six to ten days in first vessel with top
+8. Draw off through a jelly-bag
+9. Steep four ounces of isinglass in a pint of wine for twelve hours
+10. Boil it over a slow fire till all dissolved
+11. Place dissolved isinglass in a gallon of blackberry juice and boil them together
+12. Pour all into the vessel
+13. Let stand a few days to ferment and settle
+14. Draw off and keep in a cool place",2,Passage relevan ye-old-american:blackberry-cordial#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0098,retrieval,q067,temporal,How long are the 1871 and 1887 blackberry cordials boiled?,1887,E1,ye-old-american:blackberry-cordial#ingredients#0,ye-old-american:blackberry-cordial,"- 1 quart of blackberry juice
+- 1 lb. white sugar
+- 1⁄2 oz. grated nutmeg
+- 1⁄2 oz. powdered cinnamon
+- 1⁄4 oz. allspice
+- 1⁄4 oz. cloves
+- 1 pint best brandy",1,ye-old-american:blackberry-wine-no-2#directions#0,ye-old-american:blackberry-wine-no-2,1887,"1. Put berries into a large wood or stone vessel with a tap
+2. Pour on sufficient boiling water to cover them
+3. When cool enough to bear your hand, bruise well until all the berries are broken
+4. Cover up and let stand until berries begin to rise to top, which will occur in three or four days
+5. Draw off the clear juice in another vessel
+6. Add one pound of sugar to every ten quarts of the liquor and stir thoroughly
+7. Let stand six to ten days in first vessel with top
+8. Draw off through a jelly-bag
+9. Steep four ounces of isinglass in a pint of wine for twelve hours
+10. Boil it over a slow fire till all dissolved
+11. Place dissolved isinglass in a gallon of blackberry juice and boil them together
+12. Pour all into the vessel
+13. Let stand a few days to ferment and settle
+14. Draw off and keep in a cool place",1,Passage relevan ye-old-american:blackberry-cordial#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0099,retrieval,q067,temporal,How long are the 1871 and 1887 blackberry cordials boiled?,1887,E1,ye-old-american:blackberry-cordial-2#directions#0,ye-old-american:blackberry-cordial-2,"1. Warm and squeeze the berries
+2. Add to one pint of juice one pound of white sugar, one-half ounce of powdered cinnamon, one-fourth ounce of mace, and two teaspoonfuls of cloves
+3. Boil all together for one-fourth of an hour
+4. Strain the syrup, and to each pint add a glass of French brandy",1,ye-old-american:blackberry-wine-no-2#directions#0,ye-old-american:blackberry-wine-no-2,1887,"1. Put berries into a large wood or stone vessel with a tap
+2. Pour on sufficient boiling water to cover them
+3. When cool enough to bear your hand, bruise well until all the berries are broken
+4. Cover up and let stand until berries begin to rise to top, which will occur in three or four days
+5. Draw off the clear juice in another vessel
+6. Add one pound of sugar to every ten quarts of the liquor and stir thoroughly
+7. Let stand six to ten days in first vessel with top
+8. Draw off through a jelly-bag
+9. Steep four ounces of isinglass in a pint of wine for twelve hours
+10. Boil it over a slow fire till all dissolved
+11. Place dissolved isinglass in a gallon of blackberry juice and boil them together
+12. Pour all into the vessel
+13. Let stand a few days to ferment and settle
+14. Draw off and keep in a cool place",2,Passage relevan ye-old-american:blackberry-cordial-2#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0100,retrieval,q068,temporal,How much milk do the 1824 and 1871 boiled Indian meal puddings use?,1871,E1,ye-old-american:boiled-indian-meal-pudding#directions#0,ye-old-american:boiled-indian-meal-pudding,"1. Mix one quart of corn meal, with three quarts of milk; take care it be not lumpy
+2. add three eggs and a gill of molasses
+3. put it on at sun rise, to eat at three o'clock
+4. tie the bag properly, as the meal swells very much",1,ye-old-american:corn-meal-crumpets#ingredients#0,ye-old-american:corn-meal-crumpets,1871,"- 1 quart Indian meal
+- 1 quart boiled milk
+- 4 tablespoonfuls yeast
+- 2 tablespoonfuls white sugar
+- 2 heaping tablespoonfuls lard or butter or half-and-half
+- 1 saltspoonful salt",2,Passage relevan ye-old-american:boiled-indian-meal-pudding#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0101,retrieval,q068,temporal,How much milk do the 1824 and 1871 boiled Indian meal puddings use?,1871,E1,ye-old-american:boiled-indian-meal-pudding#ingredients#0,ye-old-american:boiled-indian-meal-pudding,"- one quart of corn meal
+- three quarts of milk
+- three eggs
+- one gill of molasses",1,ye-old-american:corn-meal-crumpets#ingredients#0,ye-old-american:corn-meal-crumpets,1871,"- 1 quart Indian meal
+- 1 quart boiled milk
+- 4 tablespoonfuls yeast
+- 2 tablespoonfuls white sugar
+- 2 heaping tablespoonfuls lard or butter or half-and-half
+- 1 saltspoonful salt",2,Passage relevan ye-old-american:boiled-indian-meal-pudding#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0102,retrieval,q068,temporal,How much milk do the 1824 and 1871 boiled Indian meal puddings use?,1871,E1,ye-old-american:boiled-indian-meal-pudding-2#directions#0,ye-old-american:boiled-indian-meal-pudding-2,"1. Scald the milk, and while boiling hot stir in the meal and suet with the salt.
+2. When cold add the yolks, beaten light with the sugar, then the whites.
+3. Dip your bag in hot water, flour it, and fill half-full with the mixture, as it will swell very much.
+4. Boil five hours.
+5. Eat very hot with butter and sugar.",1,ye-old-american:corn-meal-crumpets#ingredients#0,ye-old-american:corn-meal-crumpets,1871,"- 1 quart Indian meal
+- 1 quart boiled milk
+- 4 tablespoonfuls yeast
+- 2 tablespoonfuls white sugar
+- 2 heaping tablespoonfuls lard or butter or half-and-half
+- 1 saltspoonful salt",1,Passage relevan ye-old-american:boiled-indian-meal-pudding-2#directions#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0103,retrieval,q069,temporal,Did the 1824 and 1871 boiled Indian meal puddings use the same sweetener?,1871,E1,ye-old-american:boiled-indian-meal-pudding#ingredients#0,ye-old-american:boiled-indian-meal-pudding,"- one quart of corn meal
+- three quarts of milk
+- three eggs
+- one gill of molasses",1,ye-old-american:corn-meal-crumpets#ingredients#0,ye-old-american:corn-meal-crumpets,1871,"- 1 quart Indian meal
+- 1 quart boiled milk
+- 4 tablespoonfuls yeast
+- 2 tablespoonfuls white sugar
+- 2 heaping tablespoonfuls lard or butter or half-and-half
+- 1 saltspoonful salt",2,Passage relevan ye-old-american:boiled-indian-meal-pudding#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0104,retrieval,q069,temporal,Did the 1824 and 1871 boiled Indian meal puddings use the same sweetener?,1871,E1,ye-old-american:boiled-indian-meal-pudding-2#ingredients#0,ye-old-american:boiled-indian-meal-pudding-2,"- 1 quart milk
+- 1 quart Indian meal
+- 3 eggs
+- 3 heaping tablespoonfuls sugar
+- 1 teaspoonful salt
+- 1⁄2 lb. beef suet, chopped into powder",1,ye-old-american:corn-meal-crumpets#ingredients#0,ye-old-american:corn-meal-crumpets,1871,"- 1 quart Indian meal
+- 1 quart boiled milk
+- 4 tablespoonfuls yeast
+- 2 tablespoonfuls white sugar
+- 2 heaping tablespoonfuls lard or butter or half-and-half
+- 1 saltspoonful salt",2,Passage relevan ye-old-american:boiled-indian-meal-pudding-2#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0105,retrieval,q070,temporal,How many eggs do the 1824 and 1871 bread puddings use?,1871,E1,ye-old-american:bread-pudding-2#ingredients#0,ye-old-american:bread-pudding-2,"- a stale loaf
+- a pint of boiling milk
+- six eggs
+- half a pound of butter
+- half a pound of powdered sugar
+- half a nutmeg
+- a glass of brandy
+- grated lemon peel
+- paste",1,ye-old-american:eggs-a-la-creme#ingredients#0,ye-old-american:eggs-a-la-creme,1824,"- twelve eggs
+- crusts of bread
+- stale bread, grated
+- pepper
+- salt",2,Passage relevan ye-old-american:bread-pudding-2#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0106,retrieval,q070,temporal,How many eggs do the 1824 and 1871 bread puddings use?,1871,E1,ye-old-american:bread-pudding-3#ingredients#0,ye-old-american:bread-pudding-3,"- 1 quart of milk
+- 2 cups of fine bread crumbs—always stale and dry
+- 4 eggs
+- 2 tablespoonfuls melted butter
+- Nutmeg to taste
+- 1⁄4 teaspoonful soda dissolved in hot water",1,ye-old-american:eggs-a-la-creme#ingredients#0,ye-old-american:eggs-a-la-creme,1824,"- twelve eggs
+- crusts of bread
+- stale bread, grated
+- pepper
+- salt",2,Passage relevan ye-old-american:bread-pudding-3#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0107,retrieval,q071,temporal,Did the 1824 and 1871 bread puddings both add brandy?,1871,E1,ye-old-american:bread-pudding-2#ingredients#0,ye-old-american:bread-pudding-2,"- a stale loaf
+- a pint of boiling milk
+- six eggs
+- half a pound of butter
+- half a pound of powdered sugar
+- half a nutmeg
+- a glass of brandy
+- grated lemon peel
+- paste",1,ye-old-american:custard-sauce#directions#0,ye-old-american:custard-sauce,1871,"1. Heat the milk to boiling, and add by degrees to the beaten eggs and sugar; put in the nutmeg, and set within a saucepan of boiling water.
+2. Stir until it begins to thicken.
+3. Take it off and add the brandy gradually.
+4. Set, until it is wanted, within a pan of boiling water.
+5. Pour over the pudding when it comes from the mould.",2,Passage relevan ye-old-american:bread-pudding-2#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0108,retrieval,q071,temporal,Did the 1824 and 1871 bread puddings both add brandy?,1871,E1,ye-old-american:bread-pudding-3#ingredients#0,ye-old-american:bread-pudding-3,"- 1 quart of milk
+- 2 cups of fine bread crumbs—always stale and dry
+- 4 eggs
+- 2 tablespoonfuls melted butter
+- Nutmeg to taste
+- 1⁄4 teaspoonful soda dissolved in hot water",1,ye-old-american:custard-sauce#directions#0,ye-old-american:custard-sauce,1871,"1. Heat the milk to boiling, and add by degrees to the beaten eggs and sugar; put in the nutmeg, and set within a saucepan of boiling water.
+2. Stir until it begins to thicken.
+3. Take it off and add the brandy gradually.
+4. Set, until it is wanted, within a pan of boiling water.
+5. Pour over the pudding when it comes from the mould.",2,Passage relevan ye-old-american:bread-pudding-3#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0109,generation,q071,temporal,Did the 1824 and 1871 bread puddings both add brandy?,1871,E3,ye-old-american:custard-sauce#directions#0,ye-old-american:custard-sauce,"1. Heat the milk to boiling, and add by degrees to the beaten eggs and sugar; put in the nutmeg, and set within a saucepan of boiling water.
+2. Stir until it begins to thicken.
+3. Take it off and add the brandy gradually.
+4. Set, until it is wanted, within a pan of boiling water.
+5. Pour over the pudding when it comes from the mould.",,,,,,,"Jawaban menyimpulkan kedua resep memakai brandy; bukti custard sauce 1871 bukan bread pudding, gold 1871 memakai soda.","schema_valid=True; abstain=False; verdict=SUPPORTED; claim=Yes, both recipes contain brandy.; answer=Yes, both recipes contain brandy.; gold=The 1824 bread pudding adds a glass of brandy. | The 1871 bread pudding adds soda dissolved in hot water."
+ERR0110,retrieval,q072,temporal,How many eggs do the 1851 and 1887 French roll recipes use?,1887,E1,ye-old-american:french-rolls-3#ingredients#0,ye-old-american:french-rolls-3,"- a pound of flour
+- two ounces of butter
+- the whites only of three eggs
+- a table-spoonful of strong yeast
+- milk
+- a salt-spoonful of salt",1,ye-old-american:an-omelette-souffl#ingredients#0,ye-old-american:an-omelette-souffl,1851,"- eight eggs
+- three quarters of a pound of the finest powdered loaf-sugar
+- orange-flower water or lemon-juice
+- butter",2,Passage relevan ye-old-american:french-rolls-3#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0111,retrieval,q072,temporal,How many eggs do the 1851 and 1887 French roll recipes use?,1887,E1,ye-old-american:french-rolls-4#ingredients#0,ye-old-american:french-rolls-4,"- three cups of sweet milk
+- one cup of butter and lard, mixed in equal proportions
+- one-half cup of good yeast, or half a cake of compressed yeast
+- one teaspoonful of salt
+- flour
+- two well-beaten eggs",1,ye-old-american:an-omelette-souffl#ingredients#0,ye-old-american:an-omelette-souffl,1851,"- eight eggs
+- three quarters of a pound of the finest powdered loaf-sugar
+- orange-flower water or lemon-juice
+- butter",2,Passage relevan ye-old-american:french-rolls-4#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0112,retrieval,q073,temporal,How long are the 1851 and 1887 French roll doughs left to rise before baking?,1887,E1,ye-old-american:french-rolls-3#fixed#0,ye-old-american:french-rolls-3,"## Ingredients
+- a pound of flour
+- two ounces of butter
+- the whites only of three eggs
+- a table-spoonful of strong yeast
+- milk
+- a salt-spoonful of salt
+
+## Directions
+1. Sift a pound of flour into a pan, and rub into it two ounces of butter
+2. Mix in the whites only of three eggs, beaten to a stiff froth, and a table-spoonful of strong yeast
+3. Add sufficient milk to make a stiff dough, and a salt-spoonful of salt
+4. Cover it and set it before the fire to rise. It should be light in an hour
+5. Put it on a paste-board, divide it into rolls, or round cakes
+6. Lay them in a floured square pan, and bake them about ten minutes in a quick oven",1,ye-old-american:french-rolls-no-1#directions#0,ye-old-american:french-rolls-no-1,1871,"1. After adding and working in the risen sponge to kneading dough for the day's baking, set aside enough for a loaf of tea-rolls
+2. Work into this a heaping tablespoonful of lard or butter, and let it stand in a tolerably cool place (not a cold or draughty one) for four hours
+3. Knead it again and let it alone for three hours longer
+4. Make into rolls by rolling out, very lightly, pieces of the dough into round cakes and folding these not quite in the centre like turn-overs
+5. Let the third rising be for one hour, then bake steadily half an hour or less if the oven is quick",2,Passage relevan ye-old-american:french-rolls-3#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0113,retrieval,q075,temporal,"Which acid ingredient does the 1824 ginger beer use, and which does the 1851 recipe use?",1851,E1,ye-old-american:ginger-beer#ingredients#0,ye-old-american:ginger-beer,"- 2 gallons boiling water
+- 2 pounds brown sugar
+- 1 and a half ounce cream of tartar
+- 1 and a half ounce pounded ginger
+- half a pint good yeast",1,ye-old-american:ginger-beer-2#directions#0,ye-old-american:ginger-beer-2,1851,"1. Break up a pound and a half of loaf-sugar, and mix with it three ounces of strong white ginger, and the grated peel of two lemons
+2. Put these ingredients into a large stone jar, and pour over them two gallons of boiling water
+3. When it becomes milkwarm strain it, and add the juice of the lemons and two large table-spoonfuls of strong yeast
+4. Make this beer in the evening and let it stand all night
+5. Next morning bottle it in little half pint stone bottles, tying down the corks with twine",2,Passage relevan ye-old-american:ginger-beer#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0114,retrieval,q075,temporal,"Which acid ingredient does the 1824 ginger beer use, and which does the 1851 recipe use?",1851,E1,ye-old-american:ginger-beer-2#ingredients#0,ye-old-american:ginger-beer-2,"- 1 pound and a half of loaf-sugar
+- 3 ounces of strong white ginger
+- grated peel of 2 lemons
+- 2 gallons of boiling water
+- juice of the lemons
+- 2 large table-spoonfuls of strong yeast",1,ye-old-american:ginger-beer-2#directions#0,ye-old-american:ginger-beer-2,1851,"1. Break up a pound and a half of loaf-sugar, and mix with it three ounces of strong white ginger, and the grated peel of two lemons
+2. Put these ingredients into a large stone jar, and pour over them two gallons of boiling water
+3. When it becomes milkwarm strain it, and add the juice of the lemons and two large table-spoonfuls of strong yeast
+4. Make this beer in the evening and let it stand all night
+5. Next morning bottle it in little half pint stone bottles, tying down the corks with twine",2,Passage relevan ye-old-american:ginger-beer-2#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0115,retrieval,q076,temporal,How do the 1887 and 1896 lobster croquettes differ in their binder?,1896,E1,ye-old-american:lobster-croquettes-2#directions#0,ye-old-american:lobster-croquettes-2,"1. Take any lobster remaining from table and pound it until the dark, light meat and coral are well mixed
+2. Put with it not quite as much fine bread crumbs
+3. Season with pepper, salt and a very little cayenne pepper
+4. Add a little melted butter, about two tablespoonfuls if the bread is rather dry
+5. Form into egg-shaped or round balls
+6. Roll them in egg, then in fine crumbs
+7. Fry in boiling lard",1,ye-old-american:potato-croquettes-2#directions#0,ye-old-american:potato-croquettes-2,1896,"1. Mix ingredients in order given, and beat thoroughly.
+2. Shape, dip in crumbs, egg, and crumbs again, fry one minute in deep fat, and drain on brown paper.
+3. Croquettes are shaped in a variety of forms. The most common way is to first form a smooth ball by rolling one rounding tablespoon of mixture between hands.
+4. Then roll on a board until of desired length, and flatten ends.",2,Passage relevan ye-old-american:lobster-croquettes-2#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0116,retrieval,q076,temporal,How do the 1887 and 1896 lobster croquettes differ in their binder?,1896,E1,ye-old-american:lobster-croquettes-2#fixed#0,ye-old-american:lobster-croquettes-2,"## Ingredients
+- lobster
+- bread crumbs
+- pepper
+- salt
+- cayenne pepper
+- butter
+- egg
+- lard
+
+## Directions
+1. Take any lobster remaining from table and pound it until the dark, light meat and coral are well mixed
+2. Put with it not quite as much fine bread crumbs
+3. Season with pepper, salt and a very little cayenne pepper
+4. Add a little melted butter, about two tablespoonfuls if the bread is rather dry
+5. Form into egg-shaped or round balls
+6. Roll them in egg, then in fine crumbs
+7. Fry in boiling lard",1,ye-old-american:potato-croquettes-2#directions#0,ye-old-american:potato-croquettes-2,1896,"1. Mix ingredients in order given, and beat thoroughly.
+2. Shape, dip in crumbs, egg, and crumbs again, fry one minute in deep fat, and drain on brown paper.
+3. Croquettes are shaped in a variety of forms. The most common way is to first form a smooth ball by rolling one rounding tablespoon of mixture between hands.
+4. Then roll on a board until of desired length, and flatten ends.",2,Passage relevan ye-old-american:lobster-croquettes-2#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0117,retrieval,q076,temporal,How do the 1887 and 1896 lobster croquettes differ in their binder?,1896,E1,ye-old-american:lobster-croquettes-2#ingredients#0,ye-old-american:lobster-croquettes-2,"- lobster
+- bread crumbs
+- pepper
+- salt
+- cayenne pepper
+- butter
+- egg
+- lard",1,ye-old-american:potato-croquettes-2#directions#0,ye-old-american:potato-croquettes-2,1896,"1. Mix ingredients in order given, and beat thoroughly.
+2. Shape, dip in crumbs, egg, and crumbs again, fry one minute in deep fat, and drain on brown paper.
+3. Croquettes are shaped in a variety of forms. The most common way is to first form a smooth ball by rolling one rounding tablespoon of mixture between hands.
+4. Then roll on a board until of desired length, and flatten ends.",1,Passage relevan ye-old-american:lobster-croquettes-2#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0118,retrieval,q076,temporal,How do the 1887 and 1896 lobster croquettes differ in their binder?,1896,E1,ye-old-american:lobster-croquettes-3#directions#0,ye-old-american:lobster-croquettes-3,"1. Add seasonings to lobster, then add Thick White Sauce.
+2. Cool, shape, dip in crumbs, egg, and crumbs again, fry in deep fat, and drain.
+3. Serve with Tomato Cream Sauce.",1,ye-old-american:potato-croquettes-2#directions#0,ye-old-american:potato-croquettes-2,1896,"1. Mix ingredients in order given, and beat thoroughly.
+2. Shape, dip in crumbs, egg, and crumbs again, fry one minute in deep fat, and drain on brown paper.
+3. Croquettes are shaped in a variety of forms. The most common way is to first form a smooth ball by rolling one rounding tablespoon of mixture between hands.
+4. Then roll on a board until of desired length, and flatten ends.",2,Passage relevan ye-old-american:lobster-croquettes-3#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0119,retrieval,q076,temporal,How do the 1887 and 1896 lobster croquettes differ in their binder?,1896,E1,ye-old-american:lobster-croquettes-3#ingredients#0,ye-old-american:lobster-croquettes-3,"- 2 cups chopped lobster meat
+- 1⁄2 teaspoon salt
+- 1⁄4 teaspoon mustard
+- Few grains cayenne
+- 1 teaspoon lemon
+- 1 cup Thick White Sauce",1,ye-old-american:potato-croquettes-2#directions#0,ye-old-american:potato-croquettes-2,1896,"1. Mix ingredients in order given, and beat thoroughly.
+2. Shape, dip in crumbs, egg, and crumbs again, fry one minute in deep fat, and drain on brown paper.
+3. Croquettes are shaped in a variety of forms. The most common way is to first form a smooth ball by rolling one rounding tablespoon of mixture between hands.
+4. Then roll on a board until of desired length, and flatten ends.",2,Passage relevan ye-old-american:lobster-croquettes-3#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0120,generation,q076,temporal,How do the 1887 and 1896 lobster croquettes differ in their binder?,1896,E3,ye-old-american:potato-croquettes-2#directions#0,ye-old-american:potato-croquettes-2,"1. Mix ingredients in order given, and beat thoroughly.
+2. Shape, dip in crumbs, egg, and crumbs again, fry one minute in deep fat, and drain on brown paper.
+3. Croquettes are shaped in a variety of forms. The most common way is to first form a smooth ball by rolling one rounding tablespoon of mixture between hands.
+4. Then roll on a board until of desired length, and flatten ends.",,,,,,,"Jawaban menjelaskan cara membentuk croquette, bukan binder; bukti potato croquettes 1896 bukan lobster 1887.",schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The 1887 lobster croquettes were shaped in a smooth ball by rolling one tablespoon of mixture between hands.; answer=The 1887 lobster croquettes were shaped in a smooth ball by rolling one tablespoon of mixture between hands.; gold=The 1887 lobster croquettes use fine bread crumbs. | The 1896 lobster croquettes use Thick White Sauce.
+ERR0121,retrieval,q077,temporal,Did the 1887 and 1896 lobster croquettes both include mustard?,1896,E1,ye-old-american:lobster-croquettes-2#ingredients#0,ye-old-american:lobster-croquettes-2,"- lobster
+- bread crumbs
+- pepper
+- salt
+- cayenne pepper
+- butter
+- egg
+- lard",1,ye-old-american:devilled-lobster-2#ingredients#0,ye-old-american:devilled-lobster-2,1896,"- 2 lb. lobster
+- White Sauce II
+- salt
+- cayenne
+- lemon juice
+- buttered crumbs
+- mustard",2,Passage relevan ye-old-american:lobster-croquettes-2#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0122,retrieval,q077,temporal,Did the 1887 and 1896 lobster croquettes both include mustard?,1896,E1,ye-old-american:lobster-croquettes-3#directions#0,ye-old-american:lobster-croquettes-3,"1. Add seasonings to lobster, then add Thick White Sauce.
+2. Cool, shape, dip in crumbs, egg, and crumbs again, fry in deep fat, and drain.
+3. Serve with Tomato Cream Sauce.",1,ye-old-american:devilled-lobster-2#ingredients#0,ye-old-american:devilled-lobster-2,1896,"- 2 lb. lobster
+- White Sauce II
+- salt
+- cayenne
+- lemon juice
+- buttered crumbs
+- mustard",1,Passage relevan ye-old-american:lobster-croquettes-3#directions#0 (label 1) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0123,retrieval,q078,temporal,How much sugar do the 1871 and 1896 orange ices use?,1896,E1,ye-old-american:orange-ice#fixed#0,ye-old-american:orange-ice,"## Ingredients
+- 6 oranges—juice of all, and grated peel of three
+- 2 lemons—the juice only
+- 1 pint of sugar dissolved in 1 pint of water
+
+## Directions
+1. Prepare and freeze as you would lemon ice",1,ye-old-american:candied-oranges#ingredients#0,ye-old-american:candied-oranges,1887,"- oranges
+- one pound of sugar
+- one pint of water",2,Passage relevan ye-old-american:orange-ice#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0124,retrieval,q078,temporal,How much sugar do the 1871 and 1896 orange ices use?,1896,E1,ye-old-american:orange-ice#ingredients#0,ye-old-american:orange-ice,"- 6 oranges—juice of all, and grated peel of three
+- 2 lemons—the juice only
+- 1 pint of sugar dissolved in 1 pint of water",1,ye-old-american:candied-oranges#ingredients#0,ye-old-american:candied-oranges,1887,"- oranges
+- one pound of sugar
+- one pint of water",2,Passage relevan ye-old-american:orange-ice#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0125,retrieval,q079,temporal,Did the 1871 and 1896 orange ices both use lemon juice?,1896,E1,ye-old-american:orange-ice#fixed#0,ye-old-american:orange-ice,"## Ingredients
+- 6 oranges—juice of all, and grated peel of three
+- 2 lemons—the juice only
+- 1 pint of sugar dissolved in 1 pint of water
+
+## Directions
+1. Prepare and freeze as you would lemon ice",1,ye-old-american:orangeade-2#directions#0,ye-old-american:orangeade-2,1896,"1. Make syrup as for Lemonade.
+2. Sweeten orange juice with syrup, and dilute by pouring over crushed ice.",2,Passage relevan ye-old-american:orange-ice#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0126,retrieval,q079,temporal,Did the 1871 and 1896 orange ices both use lemon juice?,1896,E1,ye-old-american:orange-ice-2#fixed#0,ye-old-american:orange-ice-2,"## Ingredients
+- 4 cups water
+- 2 cups sugar
+- 2 cups orange juice
+- 1⁄4 cup lemon juice
+- Grated rind of two oranges
+
+## Directions
+1. Make syrup as for Lemon Ice
+2. add fruit juice and grated rind
+3. cool, strain, and freeze",1,ye-old-american:orangeade-2#directions#0,ye-old-american:orangeade-2,1896,"1. Make syrup as for Lemonade.
+2. Sweeten orange juice with syrup, and dilute by pouring over crushed ice.",2,Passage relevan ye-old-american:orange-ice-2#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0127,retrieval,q080,temporal,How much sugar do the 1851 and 1887 peach leathers use?,1887,E1,ye-old-american:peach-leather#fixed#0,ye-old-american:peach-leather,"## Ingredients
+- ripe peaches, pared and quartered
+- brown sugar
+- water
+
+## Directions
+1. To six pounds of ripe peaches, (pared and quartered,) allow three pounds of the best brown sugar.
+2. Mix them together, and put them into a preserving kettle, with barely water enough to keep them from burning.
+3. Pound and mash them a while with a wooden beetle.
+4. Then boil and skim them for three hours or more, stirring them nearly all the time.
+5. When done, spread them thinly on large dishes, and set them in the sun for three or four days.
+6. Finish the drying by loosening the peach leather on the dishes, and setting them in the oven after the bread is taken out, letting them remain till the oven is cold.
+7. Roll up the peach leather and put it away in a box.",1,ye-old-american:peach-leather#directions#0,ye-old-american:peach-leather,1851,"1. To six pounds of ripe peaches, (pared and quartered,) allow three pounds of the best brown sugar.
+2. Mix them together, and put them into a preserving kettle, with barely water enough to keep them from burning.
+3. Pound and mash them a while with a wooden beetle.
+4. Then boil and skim them for three hours or more, stirring them nearly all the time.
+5. When done, spread them thinly on large dishes, and set them in the sun for three or four days.
+6. Finish the drying by loosening the peach leather on the dishes, and setting them in the oven after the bread is taken out, letting them remain till the oven is cold.
+7. Roll up the peach leather and put it away in a box.",2,Passage relevan ye-old-american:peach-leather#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0128,retrieval,q080,temporal,How much sugar do the 1851 and 1887 peach leathers use?,1887,E1,ye-old-american:peach-leather#ingredients#0,ye-old-american:peach-leather,"- ripe peaches, pared and quartered
+- brown sugar
+- water",1,ye-old-american:peach-leather#directions#0,ye-old-american:peach-leather,1851,"1. To six pounds of ripe peaches, (pared and quartered,) allow three pounds of the best brown sugar.
+2. Mix them together, and put them into a preserving kettle, with barely water enough to keep them from burning.
+3. Pound and mash them a while with a wooden beetle.
+4. Then boil and skim them for three hours or more, stirring them nearly all the time.
+5. When done, spread them thinly on large dishes, and set them in the sun for three or four days.
+6. Finish the drying by loosening the peach leather on the dishes, and setting them in the oven after the bread is taken out, letting them remain till the oven is cold.
+7. Roll up the peach leather and put it away in a box.",1,Passage relevan ye-old-american:peach-leather#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=2
+ERR0129,retrieval,q080,temporal,How much sugar do the 1851 and 1887 peach leathers use?,1887,E1,ye-old-american:peach-leather-2#fixed#0,ye-old-american:peach-leather-2,"## Ingredients
+- peaches
+- a quarter of a pound of sugar to one of fruit
+- butter
+
+## Directions
+1. Stew as many peaches as you choose, allowing a quarter of a pound of sugar to one of fruit
+2. Mash it up smooth as it cooks
+3. When it is dry enough to spread in a thin sheet on a board greased with butter, set it out in the sun to dry
+4. When dry it can be rolled up like leather, wrapped up in a cloth, and will keep perfectly from season to season",1,ye-old-american:peach-leather#directions#0,ye-old-american:peach-leather,1851,"1. To six pounds of ripe peaches, (pared and quartered,) allow three pounds of the best brown sugar.
+2. Mix them together, and put them into a preserving kettle, with barely water enough to keep them from burning.
+3. Pound and mash them a while with a wooden beetle.
+4. Then boil and skim them for three hours or more, stirring them nearly all the time.
+5. When done, spread them thinly on large dishes, and set them in the sun for three or four days.
+6. Finish the drying by loosening the peach leather on the dishes, and setting them in the oven after the bread is taken out, letting them remain till the oven is cold.
+7. Roll up the peach leather and put it away in a box.",2,Passage relevan ye-old-american:peach-leather-2#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0130,retrieval,q081,temporal,Did the 1851 and 1887 peach leathers both use butter?,1887,E1,ye-old-american:peach-leather#fixed#0,ye-old-american:peach-leather,"## Ingredients
+- ripe peaches, pared and quartered
+- brown sugar
+- water
+
+## Directions
+1. To six pounds of ripe peaches, (pared and quartered,) allow three pounds of the best brown sugar.
+2. Mix them together, and put them into a preserving kettle, with barely water enough to keep them from burning.
+3. Pound and mash them a while with a wooden beetle.
+4. Then boil and skim them for three hours or more, stirring them nearly all the time.
+5. When done, spread them thinly on large dishes, and set them in the sun for three or four days.
+6. Finish the drying by loosening the peach leather on the dishes, and setting them in the oven after the bread is taken out, letting them remain till the oven is cold.
+7. Roll up the peach leather and put it away in a box.",1,ye-old-american:peach-leather-2#ingredients#0,ye-old-american:peach-leather-2,1887,"- peaches
+- a quarter of a pound of sugar to one of fruit
+- butter",2,Passage relevan ye-old-american:peach-leather#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0131,retrieval,q081,temporal,Did the 1851 and 1887 peach leathers both use butter?,1887,E1,ye-old-american:peach-leather#ingredients#0,ye-old-american:peach-leather,"- ripe peaches, pared and quartered
+- brown sugar
+- water",1,ye-old-american:peach-leather-2#ingredients#0,ye-old-american:peach-leather-2,1887,"- peaches
+- a quarter of a pound of sugar to one of fruit
+- butter",2,Passage relevan ye-old-american:peach-leather#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0132,retrieval,q081,temporal,Did the 1851 and 1887 peach leathers both use butter?,1887,E1,ye-old-american:peach-leather-2#directions#0,ye-old-american:peach-leather-2,"1. Stew as many peaches as you choose, allowing a quarter of a pound of sugar to one of fruit
+2. Mash it up smooth as it cooks
+3. When it is dry enough to spread in a thin sheet on a board greased with butter, set it out in the sun to dry
+4. When dry it can be rolled up like leather, wrapped up in a cloth, and will keep perfectly from season to season",1,ye-old-american:peach-leather-2#ingredients#0,ye-old-american:peach-leather-2,1887,"- peaches
+- a quarter of a pound of sugar to one of fruit
+- butter",2,Passage relevan ye-old-american:peach-leather-2#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0133,retrieval,q081,temporal,Did the 1851 and 1887 peach leathers both use butter?,1887,E1,ye-old-american:peach-leather-2#fixed#0,ye-old-american:peach-leather-2,"## Ingredients
+- peaches
+- a quarter of a pound of sugar to one of fruit
+- butter
+
+## Directions
+1. Stew as many peaches as you choose, allowing a quarter of a pound of sugar to one of fruit
+2. Mash it up smooth as it cooks
+3. When it is dry enough to spread in a thin sheet on a board greased with butter, set it out in the sun to dry
+4. When dry it can be rolled up like leather, wrapped up in a cloth, and will keep perfectly from season to season",1,ye-old-american:peach-leather-2#ingredients#0,ye-old-american:peach-leather-2,1887,"- peaches
+- a quarter of a pound of sugar to one of fruit
+- butter",2,Passage relevan ye-old-american:peach-leather-2#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0134,generation,q081,temporal,Did the 1851 and 1887 peach leathers both use butter?,1887,E3,ye-old-american:peach-leather-2#ingredients#0,ye-old-american:peach-leather-2,"- peaches
+- a quarter of a pound of sugar to one of fruit
+- butter",,,,,,,"Jawaban 'Yes, both use butter' salah; bukti hanya 1887 dan gold 1851 tidak memakai butter.","schema_valid=True; abstain=False; verdict=SUPPORTED; claim=Yes, both recipes use butter.; answer=Yes, both recipes use butter.; gold=The 1851 peach leather uses brown sugar and water. | The 1887 peach leather uses butter to grease the board."
+ERR0135,retrieval,q082,temporal,How did the raspberry base of raspberry cream change between 1796 and 1824?,1824,E1,ye-old-american:raspberry-cream#fixed#0,ye-old-american:raspberry-cream,"## Ingredients
+- a quart of thick sweet cream
+- raspberry juices to your taste
+- double refined sugar to your taste
+
+## Directions
+1. boil it two or three wallops
+2. take it off the fire and strain some juices of raspberries into it to your taste
+3. stir it a good while before you put your juice in, that it may be almost cold
+4. when you put it to it, and afterwards stir it one way for almost a quarter of an hour
+5. then sweeten it to your taste and when it is cold you may send it up",1,ye-old-american:strawberry-cream#directions#0,ye-old-american:strawberry-cream,1824,"1. Make in the same manner as Raspberry Cream
+2. The strawberries must be very ripe, and the stems picked out
+3. If rich cream can be procured, it will be infinitely better
+4. The custard is intended as a substitute, when cream cannot be had",2,Passage relevan ye-old-american:raspberry-cream#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0136,retrieval,q083,temporal,Did the 1796 and 1824 raspberry creams both require stirring the cream?,1824,E1,ye-old-american:raspberry-cream-3#fixed#0,ye-old-american:raspberry-cream-3,"## Ingredients
+- raspberry marmalade
+- a quart of cream
+
+## Directions
+1. Stir as much raspberry marmalade into a quart of cream, as will be sufficient to give a rich flavour of the fruit
+2. Strain it, and fill your glasses, leaving out a part to whip into froth for the top",1,ye-old-american:raspberry-cream-3#directions#0,ye-old-american:raspberry-cream-3,1824,"1. Stir as much raspberry marmalade into a quart of cream, as will be sufficient to give a rich flavour of the fruit
+2. Strain it, and fill your glasses, leaving out a part to whip into froth for the top",2,Passage relevan ye-old-american:raspberry-cream-3#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0137,retrieval,q084,temporal,What vinegar do the 1851 and 1871 raspberry vinegars use?,1871,E1,ye-old-american:raspberry-vinegar-3#fixed#0,ye-old-american:raspberry-vinegar-3,"## Ingredients
+- two quarts of ripe fresh-gathered raspberries
+- a quart of vinegar
+- two quarts of fresh raspberries
+- a pound of loaf sugar per pint of juice
+
+## Directions
+1. Put two quarts of ripe fresh-gathered raspberries into a stone or china vessel, and pour on them a quart of vinegar.
+2. Let it stand twenty-four hours, and then strain it through a sieve.
+3. Pour the liquid over two quarts of fresh raspberries, and let it again infuse for a day and a night.
+4. Then strain it a second time.
+5. Allow a pound of loaf sugar to every pint of juice.
+6. Break up the sugar, and let it melt in the liquor.
+7. Then put the whole into a stone jar, cover it closely, and set it in a kettle of boiling water, which must be kept on a quick boil for an hour.
+8. Take off all the scum, and when cold, bottle the vinegar for use.",1,ye-old-american:raspberry-vinegar-4#ingredients#0,ye-old-american:raspberry-vinegar-4,1871,"- raspberries
+- cider-vinegar
+- 1 pint of water
+- 5 lbs. of sugar (best white) for every 3 pints of this liquid, juice and water mingled",2,Passage relevan ye-old-american:raspberry-vinegar-3#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0138,retrieval,q084,temporal,What vinegar do the 1851 and 1871 raspberry vinegars use?,1871,E1,ye-old-american:raspberry-vinegar-4#fixed#0,ye-old-american:raspberry-vinegar-4,"## Ingredients
+- raspberries
+- cider-vinegar
+- 1 pint of water
+- 5 lbs. of sugar (best white) for every 3 pints of this liquid, juice and water mingled
+
+## Directions
+1. Put the raspberries into a stone vessel and mash them to a pulp
+2. Add cider-vinegar—no specious imitation, but the genuine article—enough to cover it well
+3. Stand in the sun twelve hours, and all night in the cellar
+4. Stir up well occasionally during this time
+5. Strain, and put as many fresh berries in the jar as you took out
+6. Pour the strained vinegar over them; mash and set in the sun all day
+7. Strain a second time next day
+8. Place over a gentle fire and stir until the sugar is dissolved
+9. Heat slowly to boiling, skimming off the scum, and as soon as it fairly boils take off and strain
+10. Bottle while warm, and seal the corks with sealing wax, or bees'-wax and rosin",1,ye-old-american:raspberry-vinegar-4#ingredients#0,ye-old-american:raspberry-vinegar-4,1871,"- raspberries
+- cider-vinegar
+- 1 pint of water
+- 5 lbs. of sugar (best white) for every 3 pints of this liquid, juice and water mingled",2,Passage relevan ye-old-american:raspberry-vinegar-4#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0139,retrieval,q085,temporal,How much sugar do the 1851 and 1871 raspberry vinegars use?,1871,E1,ye-old-american:raspberry-vinegar-3#fixed#0,ye-old-american:raspberry-vinegar-3,"## Ingredients
+- two quarts of ripe fresh-gathered raspberries
+- a quart of vinegar
+- two quarts of fresh raspberries
+- a pound of loaf sugar per pint of juice
+
+## Directions
+1. Put two quarts of ripe fresh-gathered raspberries into a stone or china vessel, and pour on them a quart of vinegar.
+2. Let it stand twenty-four hours, and then strain it through a sieve.
+3. Pour the liquid over two quarts of fresh raspberries, and let it again infuse for a day and a night.
+4. Then strain it a second time.
+5. Allow a pound of loaf sugar to every pint of juice.
+6. Break up the sugar, and let it melt in the liquor.
+7. Then put the whole into a stone jar, cover it closely, and set it in a kettle of boiling water, which must be kept on a quick boil for an hour.
+8. Take off all the scum, and when cold, bottle the vinegar for use.",1,ye-old-american:raspberry-vinegar-4#ingredients#0,ye-old-american:raspberry-vinegar-4,1871,"- raspberries
+- cider-vinegar
+- 1 pint of water
+- 5 lbs. of sugar (best white) for every 3 pints of this liquid, juice and water mingled",2,Passage relevan ye-old-american:raspberry-vinegar-3#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0140,retrieval,q085,temporal,How much sugar do the 1851 and 1871 raspberry vinegars use?,1871,E1,ye-old-american:raspberry-vinegar-4#fixed#0,ye-old-american:raspberry-vinegar-4,"## Ingredients
+- raspberries
+- cider-vinegar
+- 1 pint of water
+- 5 lbs. of sugar (best white) for every 3 pints of this liquid, juice and water mingled
+
+## Directions
+1. Put the raspberries into a stone vessel and mash them to a pulp
+2. Add cider-vinegar—no specious imitation, but the genuine article—enough to cover it well
+3. Stand in the sun twelve hours, and all night in the cellar
+4. Stir up well occasionally during this time
+5. Strain, and put as many fresh berries in the jar as you took out
+6. Pour the strained vinegar over them; mash and set in the sun all day
+7. Strain a second time next day
+8. Place over a gentle fire and stir until the sugar is dissolved
+9. Heat slowly to boiling, skimming off the scum, and as soon as it fairly boils take off and strain
+10. Bottle while warm, and seal the corks with sealing wax, or bees'-wax and rosin",1,ye-old-american:raspberry-vinegar-4#ingredients#0,ye-old-american:raspberry-vinegar-4,1871,"- raspberries
+- cider-vinegar
+- 1 pint of water
+- 5 lbs. of sugar (best white) for every 3 pints of this liquid, juice and water mingled",2,Passage relevan ye-old-american:raspberry-vinegar-4#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0141,retrieval,q086,temporal,How did the seasoning of scalloped clams differ between the 1871 and 1887 recipes?,1887,E1,ye-old-american:scalloped-clams#fixed#0,ye-old-american:scalloped-clams,"## Ingredients
+- clams
+- pepper
+- salt
+- cayenne pepper
+- powdered cracker
+- warm milk
+- clam liquor
+- beaten egg
+- melted butter
+- clam-shells
+
+## Directions
+1. Chop the clams fine, and season with pepper and salt.
+2. Mix in another dish some powdered cracker, moistened first with warm milk, then with the clam liquor, a beaten egg or two, and some melted butter.
+3. Stir in with this the chopped clams.
+4. Wash as many clam-shells as the mixture will fill; wipe and butter them; fill, heaping up and smoothing over with a silver knife or teaspoon.
+5. Range in rows in your baking-pan, and cook until nicely browned.
+6. Alternatively, if you do not care to be troubled with the shells, bake in patty-pans, sending to table hot in the tins.",1,ye-old-american:scalloped-clams#directions#0,ye-old-american:scalloped-clams,1871,"1. Chop the clams fine, and season with pepper and salt.
+2. Mix in another dish some powdered cracker, moistened first with warm milk, then with the clam liquor, a beaten egg or two, and some melted butter.
+3. Stir in with this the chopped clams.
+4. Wash as many clam-shells as the mixture will fill; wipe and butter them; fill, heaping up and smoothing over with a silver knife or teaspoon.
+5. Range in rows in your baking-pan, and cook until nicely browned.
+6. Alternatively, if you do not care to be troubled with the shells, bake in patty-pans, sending to table hot in the tins.",2,Passage relevan ye-old-american:scalloped-clams#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0142,retrieval,q086,temporal,How did the seasoning of scalloped clams differ between the 1871 and 1887 recipes?,1887,E1,ye-old-american:scalloped-clams#ingredients#0,ye-old-american:scalloped-clams,"- clams
+- pepper
+- salt
+- cayenne pepper
+- powdered cracker
+- warm milk
+- clam liquor
+- beaten egg
+- melted butter
+- clam-shells",1,ye-old-american:scalloped-clams#directions#0,ye-old-american:scalloped-clams,1871,"1. Chop the clams fine, and season with pepper and salt.
+2. Mix in another dish some powdered cracker, moistened first with warm milk, then with the clam liquor, a beaten egg or two, and some melted butter.
+3. Stir in with this the chopped clams.
+4. Wash as many clam-shells as the mixture will fill; wipe and butter them; fill, heaping up and smoothing over with a silver knife or teaspoon.
+5. Range in rows in your baking-pan, and cook until nicely browned.
+6. Alternatively, if you do not care to be troubled with the shells, bake in patty-pans, sending to table hot in the tins.",2,Passage relevan ye-old-american:scalloped-clams#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0143,retrieval,q086,temporal,How did the seasoning of scalloped clams differ between the 1871 and 1887 recipes?,1887,E1,ye-old-american:scalloped-clams-2#directions#0,ye-old-american:scalloped-clams-2,"1. Purchase a dozen large soft clams in the shell and three dozen opened clams
+2. Ask the dealer to open the first dozen, care being used not to injure the shells
+3. Clean the shells well, and put two soft clams on each half shell
+4. add to each a dash of white pepper, and half a teaspoonful of minced celery
+5. Cut a slice of fat bacon into the smallest dice, add four of these to each shell
+6. strew over the top a thin layer of cracker dust
+7. place a piece of table butter on top, and bake in the oven until brown",1,ye-old-american:scalloped-clams#directions#0,ye-old-american:scalloped-clams,1871,"1. Chop the clams fine, and season with pepper and salt.
+2. Mix in another dish some powdered cracker, moistened first with warm milk, then with the clam liquor, a beaten egg or two, and some melted butter.
+3. Stir in with this the chopped clams.
+4. Wash as many clam-shells as the mixture will fill; wipe and butter them; fill, heaping up and smoothing over with a silver knife or teaspoon.
+5. Range in rows in your baking-pan, and cook until nicely browned.
+6. Alternatively, if you do not care to be troubled with the shells, bake in patty-pans, sending to table hot in the tins.",2,Passage relevan ye-old-american:scalloped-clams-2#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0144,retrieval,q086,temporal,How did the seasoning of scalloped clams differ between the 1871 and 1887 recipes?,1887,E1,ye-old-american:scalloped-clams-2#ingredients#0,ye-old-american:scalloped-clams-2,"- a dozen large soft clams in the shell
+- three dozen opened clams
+- white pepper
+- minced celery
+- fat bacon
+- cracker dust
+- table butter",1,ye-old-american:scalloped-clams#directions#0,ye-old-american:scalloped-clams,1871,"1. Chop the clams fine, and season with pepper and salt.
+2. Mix in another dish some powdered cracker, moistened first with warm milk, then with the clam liquor, a beaten egg or two, and some melted butter.
+3. Stir in with this the chopped clams.
+4. Wash as many clam-shells as the mixture will fill; wipe and butter them; fill, heaping up and smoothing over with a silver knife or teaspoon.
+5. Range in rows in your baking-pan, and cook until nicely browned.
+6. Alternatively, if you do not care to be troubled with the shells, bake in patty-pans, sending to table hot in the tins.",2,Passage relevan ye-old-american:scalloped-clams-2#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0145,generation,q086,temporal,How did the seasoning of scalloped clams differ between the 1871 and 1887 recipes?,1887,E3,ye-old-american:scalloped-clams#directions#0,ye-old-american:scalloped-clams,"1. Chop the clams fine, and season with pepper and salt.
+2. Mix in another dish some powdered cracker, moistened first with warm milk, then with the clam liquor, a beaten egg or two, and some melted butter.
+3. Stir in with this the chopped clams.
+4. Wash as many clam-shells as the mixture will fill; wipe and butter them; fill, heaping up and smoothing over with a silver knife or teaspoon.
+5. Range in rows in your baking-pan, and cook until nicely browned.
+6. Alternatively, if you do not care to ",,,,,,,Jawaban gagal membandingkan seasoning dan justru menyatakan kedua resep sama; bukti hanya 1871.,"schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The seasoning of scalloped clams differed significantly between the 1871 and 1887 recipes. The 1871 recipe involved chopping the clams finely, adding powdered cracker, and mixing with clam liquor. In contrast, the 1887 recipe included chopping the clams fine, adding powdered cracker, and mixing with clam liquor. Both recipes used the same ingredients but varied in the final seasoning.; answer=The seasoning of scalloped clams differed significantly between the 1871 and 1887 recipes. The 1871 recipe involved chopping the clams finely, adding powdered cracker, and mixing with clam liquor. In contrast, the 1887 recipe included chopping the clams fine, adding powdered cracker, and mixing with clam liquor. Both recipes used the same ingredients but varied in the final seasoning.; gold=The 1871 scalloped clams are seasoned with pepper, salt, and cayenne. | The 1887 scalloped clams add minced celery and fat bacon."
+ERR0146,retrieval,q087,temporal,How did the 1851 and 1887 snowball custards differ in how they were set?,1887,E1,ye-old-american:snowball-custard#ingredients#0,ye-old-american:snowball-custard,"- boiled custard
+- four whites of eggs
+- eight or ten drops of oil of lemon
+- fresh rose leaf",1,ye-old-american:chocolate-custard-pie#directions#0,ye-old-american:chocolate-custard-pie,1871,"1. Dissolve the chocolate in a very little milk, stir into the boiling water, and boil three minutes.
+2. When nearly cold, beat up with this the yolks of all the eggs and the whites of three.
+3. Stir this mixture into the milk, season, and pour into shells of good paste.
+4. When the custard is ""set""—but not more than half done—spread over it the whites, whipped to a froth, with two tablespoonfuls sugar.",2,Passage relevan ye-old-american:snowball-custard#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0147,retrieval,q087,temporal,How did the 1851 and 1887 snowball custards differ in how they were set?,1887,E1,ye-old-american:snowball-custard-2#ingredients#0,ye-old-american:snowball-custard-2,"- half a package of Cox's gelatine
+- a teacupful of cold water
+- a pint of boiling water
+- whites of four eggs
+- two teacupfuls of sugar
+- one teaspoonful of vanilla extract, or the grated rind and the juice of a lemon
+- yolks of three eggs
+- half a cupful of sugar
+- a pint of milk",1,ye-old-american:chocolate-custard-pie#directions#0,ye-old-american:chocolate-custard-pie,1871,"1. Dissolve the chocolate in a very little milk, stir into the boiling water, and boil three minutes.
+2. When nearly cold, beat up with this the yolks of all the eggs and the whites of three.
+3. Stir this mixture into the milk, season, and pour into shells of good paste.
+4. When the custard is ""set""—but not more than half done—spread over it the whites, whipped to a froth, with two tablespoonfuls sugar.",2,Passage relevan ye-old-american:snowball-custard-2#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0148,retrieval,q088,temporal,Did the 1851 and 1887 snowball custards both use vanilla?,1887,E1,ye-old-american:snowball-custard-2#directions#0,ye-old-american:snowball-custard-2,"1. Soak half a package of Cox's gelatine in a teacupful of cold water one hour
+2. Add a pint of boiling water and stir it until the gelatine is thoroughly dissolved
+3. Beat the whites of four eggs to a stiff froth
+4. Put two teacupfuls of sugar in the gelatine water first, then the beaten white of egg and one teaspoonful of vanilla extract, or the grated rind and the juice of a lemon
+5. Whip it some time until it is all quite stiff and cold
+6. Dip some teacups or wine-glasses in cold water and fill them
+7. Set in a cold place
+8. Make a boiled custard of the yolks of three of the eggs, with half a cupful of sugar and a pint of milk
+9. Flavor with vanilla extract
+10. After the meringue in the cups has stood four or five hours, turn them out of the molds
+11. Place them in a glass dish and pour the custard around the base",1,ye-old-american:self-freezing-ice-cream#ingredients#0,ye-old-american:self-freezing-ice-cream,1871,"- 1 quart rich milk
+- 8 eggs—whites and yolks beaten separately and very light
+- 4 cups sugar
+- 3 pints rich sweet cream
+- 5 teaspoonfuls vanilla or other seasoning, or 1 vanilla bean, broken in two, boiled in the custard, and left in until it is cold",2,Passage relevan ye-old-american:snowball-custard-2#directions#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0149,retrieval,q088,temporal,Did the 1851 and 1887 snowball custards both use vanilla?,1887,E1,ye-old-american:snowball-custard-2#ingredients#0,ye-old-american:snowball-custard-2,"- half a package of Cox's gelatine
+- a teacupful of cold water
+- a pint of boiling water
+- whites of four eggs
+- two teacupfuls of sugar
+- one teaspoonful of vanilla extract, or the grated rind and the juice of a lemon
+- yolks of three eggs
+- half a cupful of sugar
+- a pint of milk",1,ye-old-american:self-freezing-ice-cream#ingredients#0,ye-old-american:self-freezing-ice-cream,1871,"- 1 quart rich milk
+- 8 eggs—whites and yolks beaten separately and very light
+- 4 cups sugar
+- 3 pints rich sweet cream
+- 5 teaspoonfuls vanilla or other seasoning, or 1 vanilla bean, broken in two, boiled in the custard, and left in until it is cold",2,Passage relevan ye-old-american:snowball-custard-2#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=unjudged
+ERR0150,retrieval,q089,temporal,How did the liquid in stewed oysters differ between the 1851 and 1871 recipes?,1871,E1,ye-old-american:stewed-oysters#fixed#0,ye-old-american:stewed-oysters,"## Ingredients
+- oysters
+- whole pepper
+- blades of mace
+- grated nutmeg
+- butter
+- flour
+- bread
+
+## Directions
+1. Put the oysters into a sieve, and set it on a pan to drain the liquor from them.
+2. Then cut off the hard part, and put the oysters into a stew-pan with some whole pepper, a few blades of mace, and some grated nutmeg.
+3. Add a small piece of butter rolled in flour.
+4. Then pour over them about half of the liquor, or a little more.
+5. Set the pan on hot coals, and simmer them gently about five minutes.
+6. Try one, and if it tastes raw cook them a little longer.
+7. Make some thin slices of toast, having cut off all the crust.
+8. Butter the toast and lay it in the bottom of a deep dish.
+9. Put the oysters upon it with the liquor in which they were stewed.",1,ye-old-american:oyster-sauce-2#directions#0,ye-old-american:oyster-sauce-2,1871,"1. Stew the oysters in their own liquor five minutes, and add the milk.
+2. When this boils, strain the liquor and return to the saucepan.
+3. Thicken with the flour when you have wet it with cold water; stir it well in; put in the butter, next the cayenne (if you like it), boil one minute; squeeze in the lemon-juice, shake it around well, and pour out.",2,Passage relevan ye-old-american:stewed-oysters#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=0
+ERR0151,retrieval,q089,temporal,How did the liquid in stewed oysters differ between the 1851 and 1871 recipes?,1871,E1,ye-old-american:stewed-oysters#ingredients#0,ye-old-american:stewed-oysters,"- oysters
+- whole pepper
+- blades of mace
+- grated nutmeg
+- butter
+- flour
+- bread",1,ye-old-american:oyster-sauce-2#directions#0,ye-old-american:oyster-sauce-2,1871,"1. Stew the oysters in their own liquor five minutes, and add the milk.
+2. When this boils, strain the liquor and return to the saucepan.
+3. Thicken with the flour when you have wet it with cold water; stir it well in; put in the butter, next the cayenne (if you like it), boil one minute; squeeze in the lemon-juice, shake it around well, and pour out.",1,Passage relevan ye-old-american:stewed-oysters#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=0
+ERR0152,retrieval,q089,temporal,How did the liquid in stewed oysters differ between the 1851 and 1871 recipes?,1871,E1,ye-old-american:stewed-oysters-2#ingredients#0,ye-old-american:stewed-oysters-2,"- oysters (two quarts)
+- water
+- salt
+- pepper
+- butter
+- milk
+- oyster or cream crackers",1,ye-old-american:oyster-sauce-2#directions#0,ye-old-american:oyster-sauce-2,1871,"1. Stew the oysters in their own liquor five minutes, and add the milk.
+2. When this boils, strain the liquor and return to the saucepan.
+3. Thicken with the flour when you have wet it with cold water; stir it well in; put in the butter, next the cayenne (if you like it), boil one minute; squeeze in the lemon-juice, shake it around well, and pour out.",2,Passage relevan ye-old-american:stewed-oysters-2#ingredients#0 (label 2) tidak muncul di top-10.,top-1 relevance=0
+ERR0153,retrieval,q089,temporal,How did the liquid in stewed oysters differ between the 1851 and 1871 recipes?,1871,E2,ye-old-american:stewed-oysters#directions#0,ye-old-american:stewed-oysters,"1. Put the oysters into a sieve, and set it on a pan to drain the liquor from them.
+2. Then cut off the hard part, and put the oysters into a stew-pan with some whole pepper, a few blades of mace, and some grated nutmeg.
+3. Add a small piece of butter rolled in flour.
+4. Then pour over them about half of the liquor, or a little more.
+5. Set the pan on hot coals, and simmer them gently about five minutes.
+6. Try one, and if it tastes raw cook them a little longer.
+7. Make some thin slices of toast, having cut off all the crust.
+8. Butter the toast and lay it in the bottom of a deep dish.
+9. Put the oysters upon it with the liquor in which they were stewed.",1,ye-old-american:oyster-sauce-2#directions#0,ye-old-american:oyster-sauce-2,1871,"1. Stew the oysters in their own liquor five minutes, and add the milk.
+2. When this boils, strain the liquor and return to the saucepan.
+3. Thicken with the flour when you have wet it with cold water; stir it well in; put in the butter, next the cayenne (if you like it), boil one minute; squeeze in the lemon-juice, shake it around well, and pour out.",0,Peringkat 1 berasal dari dokumen yang tidak memuat passage relevan mana pun untuk query ini.,wrong_doc=ye-old-american:oyster-sauce-2
+ERR0154,retrieval,q090,temporal,How long are the 1851 and 1871 stewed oysters simmered?,1871,E1,ye-old-american:stewed-oysters#fixed#0,ye-old-american:stewed-oysters,"## Ingredients
+- oysters
+- whole pepper
+- blades of mace
+- grated nutmeg
+- butter
+- flour
+- bread
+
+## Directions
+1. Put the oysters into a sieve, and set it on a pan to drain the liquor from them.
+2. Then cut off the hard part, and put the oysters into a stew-pan with some whole pepper, a few blades of mace, and some grated nutmeg.
+3. Add a small piece of butter rolled in flour.
+4. Then pour over them about half of the liquor, or a little more.
+5. Set the pan on hot coals, and simmer them gently about five minutes.
+6. Try one, and if it tastes raw cook them a little longer.
+7. Make some thin slices of toast, having cut off all the crust.
+8. Butter the toast and lay it in the bottom of a deep dish.
+9. Put the oysters upon it with the liquor in which they were stewed.",1,ye-old-american:stewed-oysters#directions#0,ye-old-american:stewed-oysters,1851,"1. Put the oysters into a sieve, and set it on a pan to drain the liquor from them.
+2. Then cut off the hard part, and put the oysters into a stew-pan with some whole pepper, a few blades of mace, and some grated nutmeg.
+3. Add a small piece of butter rolled in flour.
+4. Then pour over them about half of the liquor, or a little more.
+5. Set the pan on hot coals, and simmer them gently about five minutes.
+6. Try one, and if it tastes raw cook them a little longer.
+7. Make some thin slices of toast, having cut off all the crust.
+8. Butter the toast and lay it in the bottom of a deep dish.
+9. Put the oysters upon it with the liquor in which they were stewed.",2,Passage relevan ye-old-american:stewed-oysters#fixed#0 (label 2) tidak muncul di top-10.,top-1 relevance=2
+ERR0155,retrieval,q090,temporal,How long are the 1851 and 1871 stewed oysters simmered?,1871,E1,ye-old-american:stewed-oysters#ingredients#0,ye-old-american:stewed-oysters,"- oysters
+- whole pepper
+- blades of mace
+- grated nutmeg
+- butter
+- flour
+- bread",1,ye-old-american:stewed-oysters#directions#0,ye-old-american:stewed-oysters,1851,"1. Put the oysters into a sieve, and set it on a pan to drain the liquor from them.
+2. Then cut off the hard part, and put the oysters into a stew-pan with some whole pepper, a few blades of mace, and some grated nutmeg.
+3. Add a small piece of butter rolled in flour.
+4. Then pour over them about half of the liquor, or a little more.
+5. Set the pan on hot coals, and simmer them gently about five minutes.
+6. Try one, and if it tastes raw cook them a little longer.
+7. Make some thin slices of toast, having cut off all the crust.
+8. Butter the toast and lay it in the bottom of a deep dish.
+9. Put the oysters upon it with the liquor in which they were stewed.",1,Passage relevan ye-old-american:stewed-oysters#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=2
+ERR0156,retrieval,q090,temporal,How long are the 1851 and 1871 stewed oysters simmered?,1871,E1,ye-old-american:stewed-oysters-2#ingredients#0,ye-old-american:stewed-oysters-2,"- oysters (two quarts)
+- water
+- salt
+- pepper
+- butter
+- milk
+- oyster or cream crackers",1,ye-old-american:stewed-oysters#directions#0,ye-old-american:stewed-oysters,1851,"1. Put the oysters into a sieve, and set it on a pan to drain the liquor from them.
+2. Then cut off the hard part, and put the oysters into a stew-pan with some whole pepper, a few blades of mace, and some grated nutmeg.
+3. Add a small piece of butter rolled in flour.
+4. Then pour over them about half of the liquor, or a little more.
+5. Set the pan on hot coals, and simmer them gently about five minutes.
+6. Try one, and if it tastes raw cook them a little longer.
+7. Make some thin slices of toast, having cut off all the crust.
+8. Butter the toast and lay it in the bottom of a deep dish.
+9. Put the oysters upon it with the liquor in which they were stewed.",1,Passage relevan ye-old-american:stewed-oysters-2#ingredients#0 (label 1) tidak muncul di top-10.,top-1 relevance=2
+ERR0157,generation,q091,no-evidence,What does the 1796 book say about gas ovens?,1796,E5,ye-old-american:biscuit#directions#0,ye-old-american:biscuit,"1. wet with milk and break while oven is heating
+2. and in the same proportion",,,,,,,"Slice no-evidence; jawaban mengarang penggunaan gas ovens, bukti biscuit tidak mendukung.",schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The 1796 book mentions that gas ovens were used for baking bread and other baked goods.; answer=The 1796 book mentions that gas ovens were used for baking bread and other baked goods.; gold=
+ERR0158,generation,q096,no-evidence,What gluten-free flour does the 1824 book recommend?,1824,E5,ye-old-american:shoulder-of-mutton-with-celery-sauce#ingredients#0,ye-old-american:shoulder-of-mutton-with-celery-sauce,"- celery
+- milk
+- salt
+- butter
+- white flour",,,,,,,"Slice no-evidence; jawaban mengarang rekomendasi white flour, bukti potongan mutton tidak mendukung gluten-free.",schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The 1824 book recommends using white flour.; answer=The 1824 book recommends using white flour.; gold=
+ERR0159,generation,q101,no-evidence,How does the 1851 book use a slow cooker?,1851,E5,ye-old-american:to-preserve-pine-apples#directions#0,ye-old-american:to-preserve-pine-apples,"1. Take fine large pine-apples; pare them, and cut off a small round piece from the bottom of each; let the freshest and best of the top leaves remain on.
+2. Have ready on a slow fire, a large preserving kettle with a thin syrup barely sufficient to cover the fruit.
+3. Allow a pound of fine loaf-sugar to every quart of water, and half the white of a beaten egg; all to be mixed before it goes on the fire.
+4. Boil and skim the syrup, and when the scum ceases to rise, put in the pine-apples, and si",,,,,,,"Slice no-evidence; 'slow fire' disalahartikan sebagai slow cooker, bukti preserve pineapples tidak mendukung.","schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The 1851 book uses a slow cooker to preserve pine-apples, making them green and then simmering them for several days to enrich the syrup with green crab-apples. It also includes recipes for making a strong fresh syrup, stewing beef, and making a calve's foot jelly.; answer=The 1851 book uses a slow cooker to preserve pine-apples, making them green and then simmering them for several days to enrich the syrup with green crab-apples. It also includes recipes for making a strong fresh syrup, stewing beef, and making a calve's foot jelly.; gold="
+ERR0160,generation,q106,no-evidence,What is the carbohydrate content of the 1871 boiled hominy?,1871,E5,ye-old-american:baked-hominy#ingredients#0,ye-old-american:baked-hominy,"- cupful cold boiled hominy
+- two cups milk
+- heaping teaspoonful butter
+- teaspoonful white sugar
+- salt
+- three eggs",,,,,,,"Slice no-evidence; jawaban mengarang kandungan karbohidrat 10%, bukti hanya daftar bahan.",schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The carbohydrate content of the 1871 boiled hominy is approximately 10%.; answer=The carbohydrate content of the 1871 boiled hominy is approximately 10%.; gold=
+ERR0161,generation,q111,no-evidence,What internal temperature does the 1896 book require for roast chicken?,1896,E5,ye-old-american:chicken-salad-i#ingredients#0,ye-old-american:chicken-salad-i,"- cold boiled fowl or roast chicken
+- French Dressing
+- celery
+- cold or ice-water
+- Cream, Oil, or Mayonnaise Dressing
+- hard-boiled eggs
+- capers",,,,,,,"Slice no-evidence; jawaban tidak menjawab suhu internal dan mengarang requirement, bukti chicken salad tidak mendukung.",schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The 1896 book requires a roast chicken that is cold boiled or roast chicken.; answer=The 1896 book requires a roast chicken that is cold boiled or roast chicken.; gold=
+ERR0162,generation,q115,no-evidence,How does the 1896 book instruct cooks to use sous vide?,1896,E5,ye-old-american:terrapin-2#directions#0,ye-old-american:terrapin-2,"1. Plunge into boiling water and boil five minutes
+2. Lift out of water with skimmer, and remove skin from feet and tail by rubbing with a towel
+3. Draw out head with a skewer, and rub off skin
+4. Put in a kettle, cover with boiling salted water, add two slices each of carrot and onion, and a stalk of celery
+5. Cook until meat is tender, which may be determined by pressing feet-meat between thumb and finger, thirty-five to forty minutes
+6. Remove from water, cool, draw out nails from feet, cut u",,,,,,,"Slice no-evidence; jawaban mengarang penggunaan sous vide, bukti terrapin tidak mendukung.","schema_valid=True; abstain=False; verdict=SUPPORTED; claim=The 1896 book instructs cooks to use sous vide for various purposes such as cooking meats, vegetables, and seafood, ensuring that the food is cooked to perfection.; answer=The 1896 book instructs cooks to use sous vide for various purposes such as cooking meats, vegetables, and seafood, ensuring that the food is cooked to perfection.; gold="

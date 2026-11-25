@@ -1,0 +1,98 @@
+{
+  "relevance": {
+    "kind": "relevance",
+    "n": 448,
+    "observed": 0.9866071428571429,
+    "expected": 0.638866191007653,
+    "kappa": 0.9629144189511736,
+    "labels_c": {
+      "0": 349,
+      "1": 26,
+      "2": 73
+    },
+    "labels_d": {
+      "0": 350,
+      "1": 23,
+      "2": 75
+    },
+    "only_c": [],
+    "only_d": [],
+    "disagreements": [
+      {
+        "query_id": "q013",
+        "item_id": "ye-old-american:a-boiled-bread-pudding#fixed#1",
+        "label_c": "0",
+        "label_d": "1"
+      },
+      {
+        "query_id": "q024",
+        "item_id": "ye-old-american:apple-butter-2#ingredients#0",
+        "label_c": "1",
+        "label_d": "0"
+      },
+      {
+        "query_id": "q035",
+        "item_id": "ye-old-american:macaroni-with-white-sauce#fixed#0",
+        "label_c": "2",
+        "label_d": "0"
+      },
+      {
+        "query_id": "q061",
+        "item_id": "ye-old-american:baked-apples#directions#0",
+        "label_c": "1",
+        "label_d": "2"
+      },
+      {
+        "query_id": "q061",
+        "item_id": "ye-old-american:baked-apples-3#fixed#0",
+        "label_c": "1",
+        "label_d": "2"
+      },
+      {
+        "query_id": "q084",
+        "item_id": "ye-old-american:raspberry-vinegar-3#fixed#0",
+        "label_c": "1",
+        "label_d": "2"
+      }
+    ]
+  },
+  "verdict": {
+    "kind": "verdict",
+    "n": 145,
+    "observed": 0.993103448275862,
+    "expected": 0.9862544589774078,
+    "kappa": 0.49826989619377154,
+    "labels_c": {
+      "NOT_ENOUGH_EVIDENCE": 1,
+      "SUPPORTED": 144
+    },
+    "labels_d": {
+      "REFUTED": 1,
+      "SUPPORTED": 144
+    },
+    "only_c": [],
+    "only_d": [],
+    "disagreements": [
+      {
+        "query_id": "q048",
+        "item_id": "c2",
+        "label_c": "NOT_ENOUGH_EVIDENCE",
+        "label_d": "REFUTED"
+      }
+    ]
+  },
+  "relevance_fleiss": {
+    "n": 448,
+    "observed": 0.9709821428571425,
+    "expected": 0.6267682203089568,
+    "kappa": 0.9222524481519816,
+    "labels": {
+      "0": 1037,
+      "1": 84,
+      "2": 223
+    },
+    "missing_a": [],
+    "missing_c": [],
+    "missing_d": []
+  }
+}

@@ -342,15 +342,12 @@ def chunk_offsets(
     return chunks
 
 
-def build_passages(
+def _section_passages(
     doc: Doc,
     token_offsets: TokenOffsets,
-    max_tokens: int = 350,
-    overlap: int = 40,
+    max_tokens: int,
+    overlap: int,
 ) -> list[Passage]:
-    if doc.split is None:
-        raise ValueError(f"doc {doc.doc_id} has no split assigned")
-
     sections = split_clean_sections(doc.text_clean)
     passages: list[Passage] = []
 
@@ -379,6 +376,132 @@ def build_passages(
             )
 
     return passages
+
+
+def _fixed_passages(
+    doc: Doc,
+    token_offsets: TokenOffsets,
+    max_tokens: int,
+    overlap: int,
+) -> list[Passage]:
+    """Fixed-size windows over the whole cleaned document (no heading awareness)."""
+    content = doc.text_clean
+    offsets = token_offsets(content)
+    if not offsets:
+        return []
+    passages: list[Passage] = []
+    for idx, chunk in enumerate(chunk_offsets(offsets, content, max_tokens, overlap)):
+        passages.append(
+            Passage(
+                passage_id=f"{doc.doc_id}#fixed#{idx}",
+                doc_id=doc.doc_id,
+                section="fixed",
+                idx=idx,
+                text=chunk["text"],
+                char_start=chunk["char_start"],
+                char_end=chunk["char_end"],
+                token_count=chunk["token_end"] - chunk["token_start"],
+                source_year=doc.source_year,
+                source_title=doc.source_title,
+                split=doc.split,
+            )
+        )
+    return passages
+
+
+def _hierarchical_passages(
+    doc: Doc,
+    token_offsets: TokenOffsets,
+    max_tokens: int,
+    overlap: int,
+) -> list[Passage]:
+    """Recipe summary (title + ingredients) plus one or more passages per step.
+
+    The summary is a derived passage: its text includes the recipe title, while
+    its character span points at the ingredients section in ``text_clean``.
+    Step passages are exact substrings of the directions section.
+    """
+    sections = split_clean_sections(doc.text_clean)
+    passages: list[Passage] = []
+
+    if "ingredients" in sections:
+        ingredients, ingredients_start = sections["ingredients"]
+        summary_text = f"{doc.title}\n{ingredients}" if ingredients else doc.title
+        offsets = token_offsets(summary_text)
+        for idx, chunk in enumerate(
+            chunk_offsets(offsets, summary_text, max_tokens, overlap)
+        ):
+            passages.append(
+                Passage(
+                    passage_id=f"{doc.doc_id}#summary#{idx}",
+                    doc_id=doc.doc_id,
+                    section="summary",
+                    idx=idx,
+                    text=chunk["text"],
+                    char_start=ingredients_start,
+                    char_end=ingredients_start + len(ingredients),
+                    token_count=chunk["token_end"] - chunk["token_start"],
+                    source_year=doc.source_year,
+                    source_title=doc.source_title,
+                    split=doc.split,
+                )
+            )
+
+    if "directions" in sections:
+        directions, directions_start = sections["directions"]
+        cursor = 0
+        step_index = 0
+        for line in directions.split("\n"):
+            line = line.strip()
+            if not line:
+                continue
+            line_start = directions.find(line, cursor)
+            if line_start < 0:
+                continue
+            cursor = line_start + len(line)
+            offsets = token_offsets(line)
+            if not offsets:
+                continue
+            for chunk in chunk_offsets(offsets, line, max_tokens, overlap):
+                absolute_start = directions_start + line_start + chunk["char_start"]
+                passages.append(
+                    Passage(
+                        passage_id=f"{doc.doc_id}#step#{step_index}",
+                        doc_id=doc.doc_id,
+                        section="step",
+                        idx=step_index,
+                        text=chunk["text"],
+                        char_start=absolute_start,
+                        char_end=absolute_start + chunk["char_end"] - chunk["char_start"],
+                        token_count=chunk["token_end"] - chunk["token_start"],
+                        source_year=doc.source_year,
+                        source_title=doc.source_title,
+                        split=doc.split,
+                    )
+                )
+                step_index += 1
+
+    return passages
+
+
+def build_passages(
+    doc: Doc,
+    token_offsets: TokenOffsets,
+    max_tokens: int = 350,
+    overlap: int = 40,
+    mode: str = "section",
+) -> list[Passage]:
+    """Build passages for one of the three A1 chunking modes."""
+    if doc.split is None:
+        raise ValueError(f"doc {doc.doc_id} has no split assigned")
+
+    if mode == "section":
+        return _section_passages(doc, token_offsets, max_tokens, overlap)
+    if mode == "fixed":
+        return _fixed_passages(doc, token_offsets, max_tokens, overlap)
+    if mode == "hierarchical":
+        return _hierarchical_passages(doc, token_offsets, max_tokens, overlap)
+    raise ValueError(f"unknown chunking mode: {mode}")
 
 
 def write_source_register(path: Path, docs: Iterable[Doc]) -> None:

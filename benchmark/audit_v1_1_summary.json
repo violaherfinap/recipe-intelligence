@@ -1,0 +1,14 @@
+{
+  "version": "1.1",
+  "date": "2026-11-19",
+  "population": "items where C>=1 or D>=1: 183 of 1789 (168 label 2, 13 label 1, 2 label 0)",
+  "method": "census: setiap item dibaca dengan klaim query dan teks passage penuh; label audit ditetapkan sebelum dibandingkan dengan label final",
+  "provenance": "disusun A (Vio) dengan bantuan asisten; human spot-check item yang berubah wajib sebelum dipakai untuk klaim gate",
+  "confirmed": 181,
+  "changed": 2,
+  "changed_items": [
+    "q083 ye-old-american:raspberry-cream#ingredients#0",
+    "q083 ye-old-american:raspberry-cream-3#ingredients#0"
+  ],
+  "adjudication": "14 konflik diputus ulang oleh A; 12 sama dengan final v1.0, 2 berubah (q083 x2)"
+}

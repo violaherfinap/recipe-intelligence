@@ -8,6 +8,7 @@ yang dijaga dapat meningkatkan jawaban faktual dengan sitasi dibanding LLM biasa
 
 Repo ini mengikuti `RENCANA_LENGKAP.md` dan `RENCANA_MINGGUAN.md`.
 Week 1 blok A membangun fondasi data: korpus, passage, split, dan index retrieval.
+Indeks dokumentasi: [`docs/README.md`](docs/README.md).
 
 ## Kebutuhan
 
@@ -77,10 +78,73 @@ build bisa diverifikasi.
 - **Week 1, blok A:** selesai — 5.605 resep dibersihkan, 11.266 passage
   (5.600 dokumen kanonik), split 70/15/15 (seed 42), index BM25 dan dense 384d,
   22 unit test lulus, ruff bersih.
-- **Handoff A → B:** lihat [`docs/handoff/w1-a.md`](docs/handoff/w1-a.md) untuk
-  status, artefak, dan keputusan yang masih terbuka.
-- **Week 1, blok B:** guideline anotasi dan 115 query benchmark.
-- **Week 1, blok C/D:** qrels blind, adjudikasi, dan benchmark frozen.
+- **Week 1, blok B:** selesai — guideline anotasi, tool anotasi blind, 115 query
+  (35 easy / 25 multi-hop / 30 temporal / 25 no-evidence), gold evidence
+  test-only, verifikasi no-evidence 25/25, hash query di
+  `benchmark/queries.sha256`.
+- **Week 1, blok C:** selesai — qrels relevance pass 1 (1.789 baris), verdict
+  pass 1 (145/145 klaim), metrics library, 75 unit test lulus, ruff bersih,
+  actual 11,47 jam.
+- **Handoff A → B:** lihat [`docs/handoff/w1-a.md`](docs/handoff/w1-a.md).
+- **Handoff B → C:** lihat [`docs/handoff/w1-b.md`](docs/handoff/w1-b.md).
+- **Handoff C → D:** lihat [`docs/handoff/w1-c.md`](docs/handoff/w1-c.md).
+- **Laporan Week 1:** lihat [`reports/week1.md`](reports/week1.md).
+- **Week 1, blok D:** selesai — relevance pass 2 (1.789 baris), verdict pass 2
+  (145 klaim), κ relevance 0.9607 / verdict 0.4983, 14 konflik diadjudikasi,
+  annotation log 14 baris, benchmark frozen, 100 test lulus, ruff bersih.
+  Laporan: [`reports/week1.md`](reports/week1.md).
+- **Revisi v1.1 (Week 1):** adjudikasi ulang 14 konflik oleh A (12 sama, 2
+  berubah), audit 183 item non-zero (181 dipertahankan), klarifikasi relevance
+  per passage/per klaim di `benchmark/guidelines.md`. κ pada 183 item penentu:
+  0.6333, bukan 0.9607 (pool penuh).
+- **Week 2, blok A:** selesai — B2/B3 pipeline, tiga index A1 (section 11.266 /
+  fixed 5.738 / hierarchical 37.754 passage), empat config retrieval A2,
+  prompt registry B0/B1, 120 test lulus, ruff bersih. Branch
+  `feat/w2-a-retrieval` **belum di-merge** ke `dev`/`main`.
+  Handoff: [`docs/handoff/w2-a.md`](docs/handoff/w2-a.md).
+
+## Benchmark
+
+```powershell
+# validasi 115 query + gold + no-evidence
+uv run python tools/validate_benchmark.py --strict
+
+# bangun pool anotasi test-only (C)
+uv run python tools/build_pool.py
+
+# anotasi relevance (C atau D)
+uv run python tools/annotate.py relevance --annotator C --out benchmark/qrels_c.jsonl
+
+# hitung agreement, adjudikasi, lalu freeze
+uv run python tools/compute_agreement.py
+uv run python tools/adjudicate.py status
+uv run python tools/finalize_benchmark.py --dry-run
+uv run python tools/finalize_benchmark.py
+uv run python tools/validate_benchmark.py --strict
+```
+
+Aturan anotasi ada di [`benchmark/guidelines.md`](benchmark/guidelines.md).
+File `benchmark/` tidak boleh dibaca oleh pipeline agent/training.
+
+## Week 2 — Retrieval
+
+```powershell
+# Bangun passage + index untuk A1 (sekali saja)
+.\scripts\tasks.ps1 passages-fixed
+.\scripts\tasks.ps1 passages-hierarchical
+.\scripts\tasks.ps1 index-fixed
+.\scripts\tasks.ps1 index-hierarchical
+
+# B2 (dense + fixed chunk + top-5) / B3 (hybrid + rerank)
+uv run python -m recipe_qa.pipeline.b2 --query-id q002 --no-generate
+uv run python -m recipe_qa.pipeline.b3 --query-id q002 --no-generate
+
+# A2 smoke: dense / bm25 / hybrid / hybrid+rerank
+uv run python -m recipe_qa.retrieval.cli --config configs/retrieval_hybrid_rerank.yaml --limit 10
+```
+
+Detail pipeline, config, dan temuan ada di
+[`docs/handoff/w2-a.md`](docs/handoff/w2-a.md).
 
 ## Lisensi
 

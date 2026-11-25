@@ -1,0 +1,12 @@
+id: a2_bm25
+retrieval:
+  mode: bm25
+  chunking: section
+  top_k_dense: 0
+  top_k_bm25: 50
+  fusion: none
+  rrf_k: 60
+  rerank: false
+  rerank_top_n: 50
+  final_k: 10
+  filters: false
