@@ -142,7 +142,7 @@ bagian **Rebuild di laptop lain**.
 
 - **Selesai:** baseline B0-B3 test seed 1 lengkap 115 query/config (`reports/b0_b3_test_s1.md`); planner rule + LLM (`planner_v1`) dengan validasi JSON dan fallback rule; retry maks. 2 berbasis `retry.min_sufficiency`; integrasi B4 (`planner -> retrieve -> retry -> sufficiency -> generate -> verify`) dengan metadata `plan`/`retry`; `configs/b4.yaml`; tool kalibrasi τ (`tools/calibrate_sufficiency.py`); 187 test lulus, ruff bersih.
 - **Baseline:** B0 schema 107/115 (p50 14,7 s), B1 108/115 (13,9 s), B2 113/115 (20,9 s), B3 103/115 (20,9 s, p95 39,3 s). Artefak di `artifacts/runs/b0-test-s1/`..`b3-test-s1/`.
-- **B4 smoke:** `q061` dan `q036` berjalan; plan/retry terisi; keduanya abstain (satu `format_error`). Planner LLM 0.5B sering tidak layak; fallback rule-based dipakai. Ini smoke integrasi, bukan evaluasi.
+- **B4 smoke:** `q061` dan `q036` berjalan; plan/retry terisi; keduanya abstain (satu `format_error`). `q021` menghasilkan jawaban valid, 1 klaim SUPPORTED, tidak abstain. Planner LLM 0.5B sering tidak layak; fallback rule-based dipakai. Ini smoke integrasi, bukan evaluasi.
 - **Belum:** dev query+label (Q10) sehingga τ/NLI belum dikalibrasi; B4 20 query dev; A3/A4 penuh; B4 test seed 1 (D); kualitas planner LLM dan abstain B4 belum dievaluasi.
 - **Berikutnya untuk B/D:** pakai `reports/b0_b3_test_s1.md` sebagai baseline; siapkan dev set; kalibrasi τ/NLI di dev; jalankan B4 test hanya setelah konfigurasi dibekukan. Jangan tuning di 115 query test.
 

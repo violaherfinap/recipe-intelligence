@@ -108,5 +108,8 @@ chunking.
   `retry` terisi, tetapi keduanya abstain (satu `format_error`). Planner LLM
   0.5B sering menghasilkan subquery tidak layak, sehingga fallback rule-based
   yang dipakai. Ini smoke integrasi, bukan evaluasi kualitas.
+- B4 smoke `q021`: jawaban dihasilkan ("steamed ... for 1 hour"), 1 klaim
+  SUPPORTED, tidak abstain, plan LLM + retry metadata terisi. Ini bukti jalur
+  jawaban B4 berfungsi, bukan klaim kualitas agregat.
 - Selanjutnya: buat dev query+label, kalibrasi τ/NLI di dev, lalu jalankan B4
   20 query dev. Jangan memakai 115 query test untuk tuning.
