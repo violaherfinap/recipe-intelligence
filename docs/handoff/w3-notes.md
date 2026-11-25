@@ -1,9 +1,11 @@
 # Week 3 - catatan peringatan dan urutan kerja
 
 - **Tanggal:** 2026-11-25
-- **Status:** P0 (grounding gate) sudah diimplementasikan; Week 3 belum resmi mulai
+- **Status:** P0 (grounding gate) dan A (planner/retry/B4) sudah diimplementasikan;
+  baseline B0-B3 test sedang berjalan
 - **Basis:** `benchmark/qrels.jsonl` v2 frozen, tag `benchmark-v2`
 - **Laporan P0:** `reports/a3_verify_dev.md`
+- **Branch A:** `feat/w3-a-planner-b4` (di atas `feat/w3-p0-grounding`)
 
 ## Prioritas error (dari taxonomy Week 2)
 
@@ -81,3 +83,20 @@ chunking.
 - Bukti sample: 21/22 error generation diblokir; `q021` benar dipertahankan;
   `q060` NE menjadi abstain `format_error`; 6/6 no-evidence abstain.
 - Sisa: kalibrasi dev, A3 penuh 115 query, planner untuk E1/E3.
+
+## Status A saat ini
+
+- `src/recipe_qa/pipeline/planner.py`: planner LLM (`planner_v1`) dengan
+  fallback rule-based untuk dekomposisi tahun dan entitas `both ... and ...`.
+- `src/recipe_qa/pipeline/retry.py`: maksimal 2 reformulasi, dipicu oleh
+  `retry.min_sufficiency`; tidak melebihi budget.
+- `src/recipe_qa/pipeline/common.py`: planner -> retrieve -> retry ->
+  sufficiency -> generate -> verify; metadata `plan`/`retry` hanya ditulis
+  saat fitur aktif agar output B0-B3 tidak berubah.
+- `configs/b4.yaml`: B3 + planner LLM + retry 2 + verifier NLI + abstain.
+  `abstain.sufficiency` tetap `false` sampai τ dikalibrasi di dev.
+- `tools/calibrate_sufficiency.py` dan
+  `src/recipe_qa/eval/sufficiency_calibration.py`: siap dipakai setelah dev
+  query+label tersedia; jangan kalibrasi di 115 query test.
+- Unit test baru mencakup planner rule/LLM/fallback, retry bound, integrasi
+  pipeline, dan kalibrasi sintetis.

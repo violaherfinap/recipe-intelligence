@@ -149,7 +149,12 @@ def _retrieve_with_retry(
     recovered = False
     for variant in RetryPolicy(config.retry).plan(query_text).queries[1:]:
         variant_hits = retriever.retrieve(variant, filter_spec=filter_spec)
-        hits = _merge_hits([hits, variant_hits], config.retrieval.final_k)
+        merged = _merge_hits(
+            [hits, variant_hits],
+            max(1, len(hits) + len(variant_hits)),
+        )
+        merged.sort(key=lambda hit: hit.score, reverse=True)
+        hits = _rank_hits(merged[: max(1, config.retrieval.final_k)])
         score = sufficiency(query_text, hits).score
         attempts.append({"query": variant, "hits": len(variant_hits), "score": score})
         if hits and score >= threshold:
