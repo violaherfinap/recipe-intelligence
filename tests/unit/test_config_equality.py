@@ -74,3 +74,7 @@ def test_b3_b4_diff_is_grounding_planner_retry():
     }
     assert diff_keys(config("b3"), config("b4")) <= allowed
     assert diff_keys(config("b3"), config("b4"))
+
+
+def test_b4_calib_toggles_sufficiency_only():
+    assert diff_keys(config("b4"), config("b4_calib")) == {"abstain.sufficiency"}

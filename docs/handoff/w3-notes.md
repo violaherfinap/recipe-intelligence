@@ -111,5 +111,26 @@ chunking.
 - B4 smoke `q021`: jawaban dihasilkan ("steamed ... for 1 hour"), 1 klaim
   SUPPORTED, tidak abstain, plan LLM + retry metadata terisi. Ini bukti jalur
   jawaban B4 berfungsi, bukan klaim kualitas agregat.
-- Selanjutnya: buat dev query+label, kalibrasi τ/NLI di dev, lalu jalankan B4
-  20 query dev. Jangan memakai 115 query test untuk tuning.
+- `configs/b4_calib.yaml`: B4 + `abstain.sufficiency: true`; hanya untuk
+  menghasilkan skor sufficiency di dev. Jangan pakai config ini untuk klaim
+  B4 test.
+- Selanjutnya: tunggu dev query+label frozen dari B/C/D, kalibrasi τ/NLI di
+  dev, lalu jalankan B4 20 query dev. Jangan memakai 115 query test untuk
+  tuning.
+
+## Urutan A-only
+
+| # | Langkah | Status |
+| ---: | --- | --- |
+| 1 | Baseline B0-B3 test seed 1 | selesai |
+| 2 | Planner rule + LLM/fallback | selesai |
+| 3 | Retry maks. 2 | selesai |
+| 4 | Integrasi B4 + smoke | selesai |
+| 5 | Siapkan `configs/b4_calib.yaml` | selesai |
+| 6 | Terima dev set frozen dari B/C/D | blocked |
+| 7 | Kalibrasi τ di dev | blocked |
+| 8 | Jalankan B4 20 query dev | blocked |
+| 9 | Handoff ke D untuk B4 test | setelah 7-8 |
+
+A tidak menulis query dev dan tidak memberi label dev; itu tanggung jawab
+B/C/D. A hanya mengonsumsi artefak beku.
