@@ -16,6 +16,8 @@ from ..generation.schema import AnswerPayload, Claim, EvidenceItem
 from ..retrieval.search import Retriever
 from ..verify.claims import verify_claims
 from ..verify.sufficiency import should_abstain, sufficiency
+from .planner import Planner
+from .retry import RetryPolicy
 
 
 def registry_path(config: SystemConfig) -> Path:
@@ -76,6 +78,92 @@ def _sentence_claims(
     ]
 
 
+def _rank_hits(hits: list) -> list:
+    for index, hit in enumerate(hits, start=1):
+        hit.rank = index
+    return hits
+
+
+def _merge_hits(groups: list[list], limit: int) -> list:
+    limit = max(1, int(limit))
+    merged = []
+    seen: set[str] = set()
+    max_length = max((len(group) for group in groups), default=0)
+    for position in range(max_length):
+        for group in groups:
+            if position >= len(group):
+                continue
+            hit = group[position]
+            if hit.passage_id in seen:
+                continue
+            seen.add(hit.passage_id)
+            merged.append(hit)
+            if len(merged) >= limit:
+                return _rank_hits(merged)
+    return _rank_hits(merged)
+
+
+def _retrieve_with_planner(
+    retriever: Retriever,
+    config: SystemConfig,
+    query_text: str,
+    as_of: int | None,
+    filter_spec,
+    generator=None,
+) -> tuple[list, dict | None]:
+    if not config.planner.enabled:
+        return retriever.retrieve(query_text, filter_spec=filter_spec), None
+    llm = getattr(generator, "generate", None)
+    plan = Planner(config.planner, llm=llm).plan(
+        query_text,
+        as_of=as_of,
+        filter_spec=filter_spec,
+    )
+    groups = [
+        retriever.retrieve(subquery.text, filter_spec=subquery.filter)
+        for subquery in plan.subqueries
+    ]
+    return _merge_hits(groups, config.retrieval.final_k), plan.to_dict()
+
+
+def _retrieve_with_retry(
+    retriever: Retriever,
+    config: SystemConfig,
+    query_text: str,
+    filter_spec,
+    hits: list,
+) -> tuple[list, dict | None]:
+    if not config.retry.enabled:
+        return hits, None
+    threshold = config.retry.min_sufficiency
+    initial_score = sufficiency(query_text, hits).score
+    if hits and initial_score >= threshold:
+        return hits, {
+            "enabled": True,
+            "threshold": threshold,
+            "initial_score": initial_score,
+            "attempts": [],
+            "recovered": False,
+        }
+    attempts = []
+    recovered = False
+    for variant in RetryPolicy(config.retry).plan(query_text).queries[1:]:
+        variant_hits = retriever.retrieve(variant, filter_spec=filter_spec)
+        hits = _merge_hits([hits, variant_hits], config.retrieval.final_k)
+        score = sufficiency(query_text, hits).score
+        attempts.append({"query": variant, "hits": len(variant_hits), "score": score})
+        if hits and score >= threshold:
+            recovered = True
+            break
+    return hits, {
+        "enabled": True,
+        "threshold": threshold,
+        "initial_score": initial_score,
+        "attempts": attempts,
+        "recovered": recovered,
+    }
+
+
 def run_query(
     config: SystemConfig,
     query_row: dict,
@@ -90,9 +178,25 @@ def run_query(
     filter_spec = query_row.get("filter")
 
     hits = []
+    plan_meta: dict | None = None
+    retry_meta: dict | None = None
     if config.retrieval.mode != "none":
         retriever = retriever or Retriever(config.retrieval)
-        hits = retriever.retrieve(query_text, filter_spec=filter_spec)
+        hits, plan_meta = _retrieve_with_planner(
+            retriever,
+            config,
+            query_text,
+            as_of,
+            filter_spec,
+            generator=generator,
+        )
+        hits, retry_meta = _retrieve_with_retry(
+            retriever,
+            config,
+            query_text,
+            filter_spec,
+            hits,
+        )
 
     evidence = format_evidence(hits) if hits else "(no evidence retrieved)"
     examples = (
@@ -115,9 +219,11 @@ def run_query(
     sufficiency_meta: dict | None = None
     verification_meta: dict | None = None
 
-    if hits and config.abstain.enabled and config.abstain.sufficiency:
+    if config.abstain.enabled and config.abstain.sufficiency:
         result = sufficiency(query_text, hits)
-        abstained = should_abstain(result, config.abstain.sufficiency_threshold)
+        abstained = bool(hits) and should_abstain(
+            result, config.abstain.sufficiency_threshold
+        )
         sufficiency_meta = {
             "score": result.score,
             "top_score": result.top_score,
@@ -197,7 +303,7 @@ def run_query(
         verification_meta = report.to_dict()
 
     latency_ms = (time.perf_counter() - started) * 1000.0
-    return {
+    result = {
         "query_id": query_id,
         "config": config.id,
         "question": query_text,
@@ -211,6 +317,11 @@ def run_query(
         "schema_valid": answer.schema_valid if answer else None,
         "latency_ms": round(latency_ms, 2),
     }
+    if plan_meta is not None:
+        result["plan"] = plan_meta
+    if retry_meta is not None:
+        result["retry"] = retry_meta
+    return result
 
 
 def pipeline_cli(default_config: str, argv: list[str] | None = None) -> int:

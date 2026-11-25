@@ -64,6 +64,18 @@ class AbstainConfig(_Model):
     sufficiency_threshold: float = 0.35
 
 
+class PlannerConfig(_Model):
+    enabled: bool = False
+    mode: Literal["rule", "llm"] = "rule"
+    max_subqueries: int = 3
+
+
+class RetryConfig(_Model):
+    enabled: bool = False
+    max_retries: int = 2
+    min_sufficiency: float = 0.35
+
+
 class AgentConfig(_Model):
     enabled: bool = False
 
@@ -80,6 +92,8 @@ class SystemConfig(_Model):
     retrieval: RetrievalConfig = Field(default_factory=RetrievalConfig)
     verification: VerificationConfig = Field(default_factory=VerificationConfig)
     abstain: AbstainConfig = Field(default_factory=AbstainConfig)
+    planner: PlannerConfig = Field(default_factory=PlannerConfig)
+    retry: RetryConfig = Field(default_factory=RetryConfig)
     agent: AgentConfig = Field(default_factory=AgentConfig)
     budget: BudgetConfig = Field(default_factory=BudgetConfig)
 
