@@ -7,6 +7,7 @@
 - **Laporan P0:** `reports/a3_verify_dev.md`
 - **Laporan baseline:** `reports/b0_b3_test_s1.md`
 - **Branch A:** `feat/w3-a-planner-b4` (di atas `feat/w3-p0-grounding`)
+- **Handoff lengkap A/B/C/D:** `docs/handoff/w3.md`
 
 ## Prioritas error (dari taxonomy Week 2)
 

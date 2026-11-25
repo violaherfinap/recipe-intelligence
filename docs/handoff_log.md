@@ -150,3 +150,11 @@ bagian **Rebuild di laptop lain**.
 **Branch:** `feat/w3-p0-grounding` (`9edf55b`) -> `feat/w3-a-planner-b4` (`92d1452`, follow-up `53939a1`). **Status:** belum di-push/merge.
 
 **Artefak:** `src/recipe_qa/pipeline/{planner,retry,b4}.py`, `src/recipe_qa/eval/sufficiency_calibration.py`, `tools/calibrate_sufficiency.py`, `configs/b4.yaml`, `configs/b4_calib.yaml`, `prompts/registry/planner_v1.yaml`, `reports/b0_b3_test_s1.md`, `tests/unit/test_{planner,retry,pipeline_planner_retry,sufficiency_calibration}.py`, `artifacts/runs/b0-test-s1/`..`b4-smoke/` (lokal).
+
+## Week 3 - Master Handoff A/B/C/D - 2026-11-26
+
+- **Dokumen lengkap:** `docs/handoff/w3.md`.
+- **Mapping:** A = Lois, B = Anin, C = Dhea, D = Vio.
+- **Keputusan:** Lois adjudikasi dev; Dhea mengirim adapter via Google Drive; tugas A tetap dikerjakan Lois.
+- **Status:** rencana eksekusi; dev set belum ada; tag `w3-base-a`, `w3-dev-frozen`, `w3-config-frozen` belum dibuat.
+- **Urutan:** Lois base -> Anin query dev -> Dhea/Vio label -> Lois adjudikasi/freeze -> Lois tau + Anin NLI -> config freeze -> Vio test/A3/A6 -> Gate 3.
