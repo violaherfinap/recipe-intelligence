@@ -1,10 +1,11 @@
 # Week 3 - catatan peringatan dan urutan kerja
 
 - **Tanggal:** 2026-11-25
-- **Status:** P0 (grounding gate) dan A (planner/retry/B4) sudah diimplementasikan;
-  baseline B0-B3 test sedang berjalan
+- **Status:** P0 (grounding gate), A (planner/retry/B4), dan baseline B0-B3 test
+  sudah selesai; kalibrasi dev masih blocker
 - **Basis:** `benchmark/qrels.jsonl` v2 frozen, tag `benchmark-v2`
 - **Laporan P0:** `reports/a3_verify_dev.md`
+- **Laporan baseline:** `reports/b0_b3_test_s1.md`
 - **Branch A:** `feat/w3-a-planner-b4` (di atas `feat/w3-p0-grounding`)
 
 ## Prioritas error (dari taxonomy Week 2)
@@ -100,3 +101,12 @@ chunking.
   query+label tersedia; jangan kalibrasi di 115 query test.
 - Unit test baru mencakup planner rule/LLM/fallback, retry bound, integrasi
   pipeline, dan kalibrasi sintetis.
+- Baseline B0-B3 test seed 1 selesai 115 query/config; ringkasan di
+  `reports/b0_b3_test_s1.md`. Artefak: `artifacts/runs/b0-test-s1/` sampai
+  `b3-test-s1/` (lokal).
+- B4 smoke 2 query test (`q061`, `q036`): pipeline jalan, metadata `plan` dan
+  `retry` terisi, tetapi keduanya abstain (satu `format_error`). Planner LLM
+  0.5B sering menghasilkan subquery tidak layak, sehingga fallback rule-based
+  yang dipakai. Ini smoke integrasi, bukan evaluasi kualitas.
+- Selanjutnya: buat dev query+label, kalibrasi τ/NLI di dev, lalu jalankan B4
+  20 query dev. Jangan memakai 115 query test untuk tuning.

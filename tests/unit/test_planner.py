@@ -104,6 +104,22 @@ def test_llm_planner_falls_back_to_rule_on_invalid_json():
     assert len(plan.subqueries) == 2
 
 
+def test_llm_planner_falls_back_on_unusable_subqueries():
+    planner = Planner(
+        PlannerConfig(enabled=True, mode="llm", max_subqueries=3),
+        llm=FakeLlm(
+            '{"rationale": "sql", "subqueries": ['
+            '{"text": "SELECT * FROM recipes WHERE year = 1796"}]}'
+        ),
+    )
+    plan = planner.plan(
+        "Compare 1851 and 1871 recipes.",
+        filter_spec={"year_min": 1851, "year_max": 1871},
+    )
+    assert plan.rationale == "temporal-year-decomposition"
+    assert len(plan.subqueries) == 2
+
+
 def test_llm_planner_respects_max_subqueries():
     planner = Planner(
         PlannerConfig(enabled=True, mode="llm", max_subqueries=2),

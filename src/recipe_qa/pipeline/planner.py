@@ -65,6 +65,26 @@ def _clean_filter(spec) -> dict | None:
     return cleaned or None
 
 
+def _valid_subquery_text(text: str) -> bool:
+    stripped = text.strip()
+    if not stripped or "\n" in stripped:
+        return False
+    words = stripped.split()
+    if len(words) > 16:
+        return False
+    if stripped.endswith(".") and len(words) > 6:
+        return False
+    lowered = stripped.lower()
+    if any(marker in lowered for marker in ("select ", " from ", " where ", "```")):
+        return False
+    if any(
+        phrase in lowered
+        for phrase in ("we need", "would need", "might have", "typically contain")
+    ):
+        return False
+    return True
+
+
 def render_planner_prompt(
     query: str,
     as_of: int | None,
@@ -114,8 +134,8 @@ class Planner:
         subqueries = []
         for item in payload.subqueries[: self.config.max_subqueries]:
             text = item.text.strip()
-            if not text:
-                continue
+            if not _valid_subquery_text(text):
+                raise ValueError("planner returned an unusable subquery")
             filter_value = dict(base_filter or {})
             filter_value.update(_clean_filter(item.filter) or {})
             subqueries.append(Subquery(text, filter_value or None))
