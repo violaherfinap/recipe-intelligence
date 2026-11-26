@@ -182,3 +182,9 @@ bagian **Rebuild di laptop lain**.
 - **Berikutnya untuk B:** tulis `reports/b4_train65.md` dari run train-65 tanpa run duplikat. **Untuk D:** mulai A3/A6 dari `w3-config-frozen`; test-50 B4 sudah tersedia. **Untuk C:** lanjut LoRA/B5; test-50 B5 setelah adapter siap.
 
 **Branch:** `feat/w3-a-calibration`. **Artefak:** `reports/b0_b3_test50_s1.md`, `reports/sufficiency_calibration_train65.md`, `reports/b4_test50.md`, `configs/b4.yaml`, `configs/b4_calib.yaml`, `tests/unit/test_config_equality.py`, `docs/handoff/w3.md`.
+
+## Week 3 - Catatan post-freeze untuk B/C/D - 2026-11-26
+
+- **Selesai:** `docs/handoff/w3.md` §16 dan ringkasan di `docs/handoff/w3-notes.md`; berisi guardrail post-freeze, tugas B/C/D, temuan B4 test-50 (`q099`, `q062`, abstain 78%), dan keputusan terbuka.
+- **Belum:** keputusan sumber `reports/b4_train65.md`, hash split di manifest, dan ACC Q13.
+- **Berikutnya:** B/C/D fetch tag `w3-config-frozen` dan branch dari situ; jangan memakai `w3-base-a3` sebagai base kode.

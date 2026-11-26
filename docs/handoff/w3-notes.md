@@ -141,3 +141,19 @@ chunking.
 
 A tidak menulis query/label; split sudah disediakan B. A hanya mengonsumsi
 artefak beku.
+
+## Post-freeze - baca sebelum lanjut
+
+Config freeze ada di tag `w3-config-frozen` (commit `a6b7a26`). Detail lengkap
+untuk B/C/D ada di `docs/handoff/w3.md` §16. Ringkas:
+
+1. `git fetch origin --tags`, lalu branch dari `w3-config-frozen`; jangan pakai
+   `w3-base-a3` karena `configs/b4.yaml` sudah berubah.
+2. `artifacts/runs/` lokal/gitignored; jalankan ulang run yang dibutuhkan.
+3. Jangan tuning parameter/split apa pun di test-50.
+4. C: LoRA hanya passage `split=train`, bukan gold passage 65 query train.
+5. D: A3 = B4 verifier off vs on; A4/B5 hanya setelah hash adapter C cocok.
+6. B: `reports/b4_train65.md` belum punya run B4 final; jangan salah label
+   `b4_calib` sebagai B4 final.
+7. Temuan A: B4 test-50 abstain 78%, `q099` false confident verdict, `q062`
+   temporal salah. Audit, jangan tuning di test.
