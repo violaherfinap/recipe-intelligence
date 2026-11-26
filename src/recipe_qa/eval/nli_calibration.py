@@ -10,6 +10,7 @@ from ..benchmark.schema import Qrel, Query
 @dataclass(frozen=True)
 class ProbePair:
     query_id: str
+    slice: str
     claim_id: str
     claim: str
     passage_id: str
@@ -19,6 +20,7 @@ class ProbePair:
     def to_dict(self) -> dict:
         return {
             "query_id": self.query_id,
+            "slice": self.slice,
             "claim_id": self.claim_id,
             "claim": self.claim,
             "passage_id": self.passage_id,
@@ -79,6 +81,7 @@ def build_probe(
                 pairs.append(
                     ProbePair(
                         query_id=query.query_id,
+                        slice=query.slice,
                         claim_id=claim_id,
                         claim=claim,
                         passage_id=passage_id,
@@ -104,6 +107,7 @@ def build_probe(
                 pairs.append(
                     ProbePair(
                         query_id=query.query_id,
+                        slice=query.slice,
                         claim_id=claim_id,
                         claim=claim,
                         passage_id=passage_id,

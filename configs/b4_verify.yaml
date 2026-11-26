@@ -30,6 +30,7 @@ verification:
   max_repair_rounds: 2
   keep_refuted: false
   abstain_on_unsupported: true
+  premise_context: true
 abstain:
   enabled: true
   sufficiency: false

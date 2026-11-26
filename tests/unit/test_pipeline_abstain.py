@@ -200,3 +200,4 @@ def test_b4_verify_config_enables_citation_and_temporal_checks() -> None:
     assert config.abstain.citations
     assert config.abstain.temporal
     assert not config.abstain.require_evidence
+    assert config.verification.premise_context

@@ -310,6 +310,7 @@ def run_query(
             model=config.verification.nli_model,
             keep_refuted=config.verification.keep_refuted,
             abstain_on_unsupported=config.verification.abstain_on_unsupported,
+            premise_context=config.verification.premise_context,
         )
         verification_meta = report.to_dict()
 

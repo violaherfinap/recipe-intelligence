@@ -6,6 +6,7 @@ from dataclasses import dataclass
 
 from ..generation.schema import AnswerPayload, Claim, EvidenceItem
 from .nli import NliScores, Scorer
+from .premise import premise_text
 
 
 @dataclass(frozen=True)
@@ -44,13 +45,14 @@ def _evidence(hit, span_limit: int = 500) -> EvidenceItem:
 
 def _score_hit(
     scorer: Scorer,
-    hit,
+    premise: str,
     hypothesis: str,
     cache: dict[str, NliScores],
+    key: str,
 ) -> NliScores:
-    if hit.passage_id not in cache:
-        cache[hit.passage_id] = scorer(str(hit.passage.get("text", "")), hypothesis)
-    return cache[hit.passage_id]
+    if key not in cache:
+        cache[key] = scorer(premise, hypothesis)
+    return cache[key]
 
 
 def _candidate_hits(claim: Claim, hits: list, top_n: int) -> list:
@@ -78,6 +80,7 @@ def verify_claims(
     abstain_on_unsupported: bool = True,
     drop_unsupported: bool = True,
     top_n: int = 3,
+    premise_context: bool = False,
 ) -> tuple[AnswerPayload, VerificationReport]:
     if payload.abstain or not payload.claims:
         report = VerificationReport(
@@ -97,6 +100,11 @@ def verify_claims(
     refuted = 0
     dropped = 0
     by_id = {hit.passage_id: hit for hit in hits}
+
+    def premise_for(hit) -> str:
+        if premise_context:
+            return premise_text(hit.passage)
+        return str(hit.passage.get("text", ""))
 
     for claim in payload.claims:
         cited_for = [
@@ -124,7 +132,9 @@ def verify_claims(
             premise = str(hit.passage.get("text", ""))
             if not premise.strip():
                 continue
-            scores = _score_hit(scorer, hit, claim.claim, score_cache)
+            scores = _score_hit(
+                scorer, premise_for(hit), claim.claim, score_cache, hit.passage_id
+            )
             if scores.entailment > best_entailment:
                 best_entailment = scores.entailment
                 entail_hit = hit
@@ -135,7 +145,9 @@ def verify_claims(
         cited_support = 0.0
         cited_support_hit = None
         for hit in cited_for:
-            scores = _score_hit(scorer, hit, claim.claim, score_cache)
+            scores = _score_hit(
+                scorer, premise_for(hit), claim.claim, score_cache, hit.passage_id
+            )
             if scores.entailment > cited_support:
                 cited_support = scores.entailment
                 cited_support_hit = hit
@@ -143,7 +155,9 @@ def verify_claims(
         cited_refute = 0.0
         cited_refute_hit = None
         for hit in cited_against:
-            scores = _score_hit(scorer, hit, claim.claim, score_cache)
+            scores = _score_hit(
+                scorer, premise_for(hit), claim.claim, score_cache, hit.passage_id
+            )
             if scores.contradiction > cited_refute:
                 cited_refute = scores.contradiction
                 cited_refute_hit = hit

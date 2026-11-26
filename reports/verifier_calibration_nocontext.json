@@ -1,0 +1,182 @@
+{
+  "pairs": 117,
+  "positives": 35,
+  "negatives": 82,
+  "threshold": 0.85,
+  "precision": 0.9,
+  "recall": 0.2571428571428571,
+  "f1": 0.39999999999999997,
+  "balanced_accuracy": 0.6224738675958188,
+  "sweep": [
+    {
+      "threshold": 0.3,
+      "tp": 9,
+      "fp": 1,
+      "fn": 26,
+      "tn": 81,
+      "precision": 0.9,
+      "recall": 0.2571428571428571,
+      "f1": 0.39999999999999997,
+      "balanced_accuracy": 0.6224738675958188
+    },
+    {
+      "threshold": 0.35,
+      "tp": 9,
+      "fp": 1,
+      "fn": 26,
+      "tn": 81,
+      "precision": 0.9,
+      "recall": 0.2571428571428571,
+      "f1": 0.39999999999999997,
+      "balanced_accuracy": 0.6224738675958188
+    },
+    {
+      "threshold": 0.4,
+      "tp": 9,
+      "fp": 1,
+      "fn": 26,
+      "tn": 81,
+      "precision": 0.9,
+      "recall": 0.2571428571428571,
+      "f1": 0.39999999999999997,
+      "balanced_accuracy": 0.6224738675958188
+    },
+    {
+      "threshold": 0.45,
+      "tp": 9,
+      "fp": 1,
+      "fn": 26,
+      "tn": 81,
+      "precision": 0.9,
+      "recall": 0.2571428571428571,
+      "f1": 0.39999999999999997,
+      "balanced_accuracy": 0.6224738675958188
+    },
+    {
+      "threshold": 0.5,
+      "tp": 9,
+      "fp": 1,
+      "fn": 26,
+      "tn": 81,
+      "precision": 0.9,
+      "recall": 0.2571428571428571,
+      "f1": 0.39999999999999997,
+      "balanced_accuracy": 0.6224738675958188
+    },
+    {
+      "threshold": 0.55,
+      "tp": 9,
+      "fp": 1,
+      "fn": 26,
+      "tn": 81,
+      "precision": 0.9,
+      "recall": 0.2571428571428571,
+      "f1": 0.39999999999999997,
+      "balanced_accuracy": 0.6224738675958188
+    },
+    {
+      "threshold": 0.6,
+      "tp": 9,
+      "fp": 1,
+      "fn": 26,
+      "tn": 81,
+      "precision": 0.9,
+      "recall": 0.2571428571428571,
+      "f1": 0.39999999999999997,
+      "balanced_accuracy": 0.6224738675958188
+    },
+    {
+      "threshold": 0.65,
+      "tp": 9,
+      "fp": 1,
+      "fn": 26,
+      "tn": 81,
+      "precision": 0.9,
+      "recall": 0.2571428571428571,
+      "f1": 0.39999999999999997,
+      "balanced_accuracy": 0.6224738675958188
+    },
+    {
+      "threshold": 0.7,
+      "tp": 9,
+      "fp": 1,
+      "fn": 26,
+      "tn": 81,
+      "precision": 0.9,
+      "recall": 0.2571428571428571,
+      "f1": 0.39999999999999997,
+      "balanced_accuracy": 0.6224738675958188
+    },
+    {
+      "threshold": 0.75,
+      "tp": 9,
+      "fp": 1,
+      "fn": 26,
+      "tn": 81,
+      "precision": 0.9,
+      "recall": 0.2571428571428571,
+      "f1": 0.39999999999999997,
+      "balanced_accuracy": 0.6224738675958188
+    },
+    {
+      "threshold": 0.8,
+      "tp": 9,
+      "fp": 1,
+      "fn": 26,
+      "tn": 81,
+      "precision": 0.9,
+      "recall": 0.2571428571428571,
+      "f1": 0.39999999999999997,
+      "balanced_accuracy": 0.6224738675958188
+    },
+    {
+      "threshold": 0.85,
+      "tp": 9,
+      "fp": 1,
+      "fn": 26,
+      "tn": 81,
+      "precision": 0.9,
+      "recall": 0.2571428571428571,
+      "f1": 0.39999999999999997,
+      "balanced_accuracy": 0.6224738675958188
+    },
+    {
+      "threshold": 0.9,
+      "tp": 8,
+      "fp": 1,
+      "fn": 27,
+      "tn": 81,
+      "precision": 0.8888888888888888,
+      "recall": 0.22857142857142856,
+      "f1": 0.3636363636363636,
+      "balanced_accuracy": 0.6081881533101046
+    }
+  ],
+  "caveat": "negatives are synthetic; report precision/recall as a probe, not human-annotated accuracy",
+  "model": "cross-encoder/nli-deberta-v3-base",
+  "queries": 65,
+  "queries_path": "benchmark/queries_train.jsonl",
+  "seed": 42,
+  "slices": [
+    "easy"
+  ],
+  "premise_context": false,
+  "probe_pairs": 317,
+  "per_slice": {
+    "easy": {
+      "positives": 35,
+      "mean_entailment": 0.2588544024387375,
+      "supported_at_threshold": 9
+    },
+    "multi-hop": {
+      "positives": 90,
+      "mean_entailment": 0.00040690266881332113,
+      "supported_at_threshold": 0
+    },
+    "temporal": {
+      "positives": 110,
+      "mean_entailment": 0.0004488323112044864,
+      "supported_at_threshold": 0
+    }
+  }
+}

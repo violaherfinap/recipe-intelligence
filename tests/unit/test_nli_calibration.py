@@ -97,6 +97,12 @@ def test_build_probe_skips_no_evidence_queries() -> None:
     assert build_probe(queries, [], {}) == []
 
 
+def test_build_probe_carries_slice_metadata() -> None:
+    queries, qrels, passages = _fixtures()
+    pairs = build_probe(queries, qrels, passages)
+    assert {pair.slice for pair in pairs} == {"temporal"}
+
+
 def test_sweep_computes_precision_recall_and_balanced_accuracy() -> None:
     scored = [(0.9, 1), (0.8, 1), (0.4, 0), (0.2, 0)]
     sweep = sweep_thresholds(scored, [0.5])

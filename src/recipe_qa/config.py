@@ -56,6 +56,7 @@ class VerificationConfig(_Model):
     max_repair_rounds: int = 2
     keep_refuted: bool = False
     abstain_on_unsupported: bool = True
+    premise_context: bool = False
 
 
 class AbstainConfig(_Model):

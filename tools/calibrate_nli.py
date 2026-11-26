@@ -31,6 +31,17 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--model", default="cross-encoder/nli-deberta-v3-base")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--negatives-per-claim", type=int, default=1)
+    parser.add_argument(
+        "--slices",
+        nargs="*",
+        default=None,
+        help="restrict calibration to slices, e.g. easy; default uses every query",
+    )
+    parser.add_argument(
+        "--premise-context",
+        action="store_true",
+        help="prepend recipe title, book, and year to the passage premise",
+    )
     parser.add_argument("--start", type=float, default=0.30)
     parser.add_argument("--stop", type=float, default=0.90)
     parser.add_argument("--step", type=float, default=0.05)
@@ -47,7 +58,10 @@ def _markdown(report: dict, queries_path: Path) -> str:
         "",
         f"- Model: `{report['model']}`",
         f"- Query set: `{queries_path}` ({report['queries']} queries)",
-        f"- Pairs: {report['pairs']} ({report['positives']} gold, "
+        f"- Slices: `{report['slices']}`",
+        f"- Premise context: `{report['premise_context']}`",
+        f"- Probe pairs: {report['probe_pairs']} (all train claims)",
+        f"- Calibration pairs: {report['pairs']} ({report['positives']} gold, "
         f"{report['negatives']} synthetic negatives)",
         f"- Selected threshold: **{report['threshold']}**",
         f"- Precision {report['precision']:.4f} · Recall {report['recall']:.4f} · "
@@ -61,6 +75,21 @@ def _markdown(report: dict, queries_path: Path) -> str:
             f"| {row['threshold']} | {row['precision']:.4f} | {row['recall']:.4f} | "
             f"{row['f1']:.4f} | {row['balanced_accuracy']:.4f} |"
         )
+    if report.get("per_slice"):
+        lines.extend(
+            [
+                "",
+                "## Positive coverage per slice",
+                "",
+                "| Slice | Positives | Mean entailment | Supported at threshold |",
+                "| --- | ---: | ---: | ---: |",
+            ]
+        )
+        for name, row in report["per_slice"].items():
+            lines.append(
+                f"| {name} | {row['positives']} | {row['mean_entailment']:.4f} | "
+                f"{row['supported_at_threshold']}/{row['positives']} |"
+            )
     lines.extend(
         [
             "",
@@ -105,22 +134,48 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     from recipe_qa.verify.nli import NliVerifier
+    from recipe_qa.verify.premise import premise_text
 
     verifier = NliVerifier(args.model)
+
+    def premise(passage: dict) -> str:
+        return premise_text(passage) if args.premise_context else str(passage.get("text", ""))
+
     scored = [
         (
-            verifier.score(str(passages[pair.passage_id].get("text", "")), pair.claim).entailment,
-            pair.label,
+            verifier.score(premise(passages[pair.passage_id]), pair.claim).entailment,
+            pair,
         )
         for pair in pairs
     ]
-    report = calibrate(scored, threshold_grid(args.start, args.stop, args.step))
+    selected = [
+        (score, pair.label)
+        for score, pair in scored
+        if pair.label == 0 or args.slices is None or pair.slice in set(args.slices)
+    ]
+    report = calibrate(selected, threshold_grid(args.start, args.stop, args.step))
+    per_slice = {}
+    for slice_name in sorted({pair.slice for _, pair in scored}):
+        positives = [score for score, pair in scored if pair.label == 1 and pair.slice == slice_name]
+        if not positives:
+            continue
+        per_slice[slice_name] = {
+            "positives": len(positives),
+            "mean_entailment": sum(positives) / len(positives),
+            "supported_at_threshold": sum(
+                1 for score in positives if score >= report["threshold"]
+            ),
+        }
     report.update(
         {
             "model": args.model,
             "queries": len(queries),
             "queries_path": str(args.queries).replace("\\", "/"),
             "seed": args.seed,
+            "slices": sorted(args.slices) if args.slices else "all",
+            "premise_context": args.premise_context,
+            "probe_pairs": len(pairs),
+            "per_slice": per_slice,
         }
     )
     text = json.dumps(report, indent=2) + "\n"
