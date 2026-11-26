@@ -14,8 +14,11 @@ from ..generation.generate import AnswerGenerator
 from ..generation.prompt import format_evidence, load_examples, render_prompt
 from ..generation.schema import AnswerPayload, Claim, EvidenceItem
 from ..retrieval.search import Retriever
+from ..verify.citations import check_citations
 from ..verify.claims import verify_claims
 from ..verify.sufficiency import should_abstain, sufficiency
+from ..verify.temporal import check_temporal
+from .abstain import AbstainPolicy, decide_abstain
 from .planner import Planner
 from .retry import RetryPolicy
 
@@ -223,6 +226,9 @@ def run_query(
     repairs = 0
     sufficiency_meta: dict | None = None
     verification_meta: dict | None = None
+    citations_meta: dict | None = None
+    temporal_meta: dict | None = None
+    abstain_meta: dict | None = None
 
     if config.abstain.enabled and config.abstain.sufficiency:
         result = sufficiency(query_text, hits)
@@ -304,8 +310,35 @@ def run_query(
             model=config.verification.nli_model,
             keep_refuted=config.verification.keep_refuted,
             abstain_on_unsupported=config.verification.abstain_on_unsupported,
+            premise_context=config.verification.premise_context,
         )
         verification_meta = report.to_dict()
+
+    if (
+        answer is not None
+        and config.abstain.enabled
+        and (config.abstain.citations or config.abstain.temporal)
+    ):
+        citation_report = check_citations(answer, hits)
+        temporal_report = check_temporal(answer, hits, as_of=as_of)
+        if config.abstain.citations:
+            citations_meta = citation_report.to_dict()
+        if config.abstain.temporal:
+            temporal_meta = temporal_report.to_dict()
+        policy = AbstainPolicy(
+            on_citation_failure=config.abstain.citations,
+            on_temporal_violation=config.abstain.temporal,
+            require_evidence=config.abstain.require_evidence,
+        )
+        answer, decision = decide_abstain(
+            answer,
+            hits,
+            citations=citation_report,
+            temporal=temporal_report,
+            verification=verification_meta,
+            policy=policy,
+        )
+        abstain_meta = decision.to_dict()
 
     latency_ms = (time.perf_counter() - started) * 1000.0
     result = {
@@ -326,6 +359,12 @@ def run_query(
         result["plan"] = plan_meta
     if retry_meta is not None:
         result["retry"] = retry_meta
+    if citations_meta is not None:
+        result["citations"] = citations_meta
+    if temporal_meta is not None:
+        result["temporal"] = temporal_meta
+    if abstain_meta is not None:
+        result["abstain"] = abstain_meta
     return result
 
 

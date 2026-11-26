@@ -23,4 +23,5 @@ benchmark/annotation_log.csv text eol=lf
 benchmark/query_split.json text eol=lf
 benchmark/queries_train.jsonl text eol=lf
 benchmark/queries_test.jsonl text eol=lf
+benchmark/nli_probe_train.jsonl text eol=lf
 data/processed/split.json text eol=crlf

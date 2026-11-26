@@ -56,12 +56,16 @@ class VerificationConfig(_Model):
     max_repair_rounds: int = 2
     keep_refuted: bool = False
     abstain_on_unsupported: bool = True
+    premise_context: bool = False
 
 
 class AbstainConfig(_Model):
     enabled: bool = False
     sufficiency: bool = False
     sufficiency_threshold: float = 0.35
+    citations: bool = False
+    temporal: bool = False
+    require_evidence: bool = False
 
 
 class PlannerConfig(_Model):
