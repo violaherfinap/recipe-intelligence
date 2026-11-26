@@ -2,8 +2,8 @@
 
 - **Owner:** D (early Week 3)
 - **Tanggal:** 2026-11-25
-- **Status:** implementasi selesai; bukti sample sudah ada; kalibrasi dev belum
-- **Handoff ke:** A/B untuk dev set, kalibrasi, dan B4
+- **Status:** implementasi selesai; bukti sample sudah ada; kalibrasi train-65
+- **Handoff ke:** A/B untuk kalibrasi train-65 dan B4
 
 ## Ringkasan
 
@@ -76,7 +76,7 @@ bukan bread pudding yang diminta. Ini butuh planner/retrieval, bukan verifier.
 Gate ini menangkap no-evidence, tetapi **terlalu agresif pada query
 answerable**. Skor reranker top-1 sering negatif sehingga `sigmoid` mendekati
 0 dan coverage tidak cukup menyelamatkan. **Jangan aktifkan sampai threshold
-dikalibrasi di dev.**
+dikalibrasi di train-65.**
 
 ## Latency
 
@@ -107,8 +107,9 @@ satu direktori.
 
 ## Batasan
 
-- Belum ada dev query set (Q10). Threshold NLI 0.5 dan τ sufficiency belum
-  dikalibrasi; angka di atas adalah sample, bukan test final.
+- Kalibrasi memakai train-65 (`benchmark/queries_train.jsonl`); test final
+  memakai `benchmark/queries_test.jsonl` (50). Angka di atas adalah sample,
+  bukan test final.
 - Sample generation hanya 24 query; jangan klaim cakupan 115 query.
 - Jawaban yang diverifikasi berasal dari B3 (tanpa planner). E1/E3 masih
   menyebabkan false refusal; `q071` membuktikan verifier tidak bisa
@@ -143,9 +144,10 @@ uv run python tools/validate_benchmark.py --strict
 
 ## Langkah berikutnya (Week 3)
 
-1. Buat dev query set + label dev; kalibrasi threshold NLI dan τ di dev.
-2. Jalankan A3 verifier on/off pada dev dan test dengan `eval` yang sama;
-   laporkan unsupported claim rate, abstain recall, false refusal.
-3. Jangan aktifkan sufficiency sebelum false refusal terukur di dev.
+1. Kalibrasi threshold NLI dan τ di train-65 (`benchmark/queries_train.jsonl`).
+2. Jalankan A3 verifier on/off di train-65 (pengembangan) dan test-50 setelah
+   config freeze dengan `eval` yang sama; laporkan unsupported claim rate,
+   abstain recall, false refusal.
+3. Jangan aktifkan sufficiency sebelum false refusal terukur di train-65.
 4. Planner/retrieval untuk E1 dan entity swap (`q071`).
 5. Perluas audit generation dan rerun error taxonomy setelah B4.

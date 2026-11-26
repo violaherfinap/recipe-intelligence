@@ -40,18 +40,20 @@ Hasil lengkap: `reports/verifier_calibration.md`. Ringkas:
 | Item | Nilai |
 | --- | ---: |
 | Threshold | **0,5** |
-| Precision | **0,8824** |
+| Precision | **0,7500** |
 | Recall | **0,8571** |
-| F1 | **0,8696** |
-| Balanced accuracy | **0,9042** |
+| F1 | **0,8000** |
+| Balanced accuracy | **0,8676** |
 | Pasangan | 117 (35 gold easy + 82 negatif sintetis) |
+
+Negatif sintetis diambil dari korpus `split=train` dan mengecualikan seluruh gold document benchmark, supaya pemilihan threshold tidak memakai passage test.
 
 Ablasi premise:
 
 | Setup | Threshold | Precision | Recall | BA |
 | --- | ---: | ---: | ---: | ---: |
 | Tanpa konteks | 0,85 | 0,9000 | 0,2571 | 0,6225 |
-| Dengan konteks resep/buku/tahun | **0,50** | **0,8824** | **0,8571** | **0,9042** |
+| Dengan konteks resep/buku/tahun | **0,50** | **0,7500** | **0,8571** | **0,8676** |
 
 Cakupan positif per slice (konteks aktif, threshold 0,5): easy 30/35, multi-hop 49/90, temporal 50/110. Klaim agregat multi-hop/temporal tidak bisa diverifikasi oleh satu passage; dekomposisi planner tetap diperlukan.
 
@@ -67,13 +69,13 @@ uv run python tools/calibrate_nli.py `
 ```
 
 - Positif: gold claim easy × gold passage (klaim atomik).
-- Negatif: klaim yang sama × passage dokumen lain dengan overlap token tertinggi (hard synthetic negative); kandidat `split=test`, dokumen gold dikecualikan.
+- Negatif: klaim yang sama × passage dokumen lain dengan overlap token tertinggi (hard synthetic negative); kandidat `split=train` di korpus, seluruh gold document benchmark dikecualikan.
 - Ambang dipilih dari balanced accuracy; tie-break F1 lalu threshold lebih tinggi.
 - Negatif sintetis, bukan label manusia; 4 negatif di atas threshold adalah label noise (resep lain dengan prosedur hampir sama).
 
 ## 4. Yang belum selesai
 
-- `reports/b4_dev.md`: menunggu run B4 milik A di train-65.
+- `reports/b4_train65.md`: menunggu run B4 milik A di train-65.
 - Evaluasi citation/temporal end-to-end: jalankan `configs/b4_verify.yaml` di train-65 setelah config freeze.
 - Keputusan A: apakah `premise_context: true` masuk `configs/b4.yaml`; sementara ini hanya di `b4_verify.yaml`.
 - `docs/open_questions.md` Q13: protokol negatif sintetis perlu ACC A.

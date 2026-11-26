@@ -3,9 +3,13 @@
 - **Tanggal:** 2026-11-25
 - **Config:** `configs/b0.yaml` sampai `configs/b3.yaml`
 - **Data:** `benchmark/queries.jsonl` (115 query), `benchmark/qrels.jsonl` v2
-- **Split:** test; tidak ada tuning pada run ini
+- **Split:** development evaluation (115 query); tidak ada tuning pada run ini
 - **Artefak:** `artifacts/runs/b0-test-s1/` sampai `artifacts/runs/b3-test-s1/`
   (lokal, gitignored)
+
+> Sejak split 65/50 (Week 3), angka test final hanya dihitung dari
+> `benchmark/queries_test.jsonl` (50 query). Laporan ini dipertahankan sebagai
+> evaluasi pengembangan 115 query, bukan test final.
 
 ## Ringkasan
 

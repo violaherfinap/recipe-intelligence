@@ -15,11 +15,13 @@ Ambang NLI **0,5** dipertahankan, tetapi premise verifier harus menyertakan kont
 | Metrik | Nilai |
 | --- | ---: |
 | Threshold | **0,5** |
-| Precision | **0,8824** |
+| Precision | **0,7500** |
 | Recall | **0,8571** |
-| F1 | **0,8696** |
-| Balanced accuracy | **0,9042** |
+| F1 | **0,8000** |
+| Balanced accuracy | **0,8676** |
 | Pasangan kalibrasi | 117 (35 gold, 82 negatif sintetis) |
+
+> Revisi 2026-11-26: negatif sintetis sekarang diambil dari passage korpus `split=train` dan mengecualikan seluruh gold document 115 query, supaya pemilihan threshold tidak menyentuh passage test. Angka di bawah adalah hasil setelah perbaikan ini.
 
 Tanpa konteks premise, model yang sama hanya mencapai balanced accuracy 0,6225 pada pasangan yang sama. Jadi perbaikan utama bukan pada threshold, melainkan pada **premise**.
 
@@ -36,7 +38,7 @@ Tanpa konteks premise, model yang sama hanya mencapai balanced accuracy 0,6225 p
 
 Alasan pembatasan positif ke slice `easy`: klaim multi-hop dan temporal adalah klaim agregat lintas dokumen, sehingga satu passage tidak seharusnya meng-entail klaim tersebut. Positif dari slice itu tetap disimpan di probe sebagai diagnostik cakupan (lihat bawah), tetapi tidak dipakai memilih threshold.
 
-Negatif sintetis: klaim yang sama dipasangkan dengan passage dari dokumen lain, dipilih berdasarkan overlap token tertinggi (hard negative), kandidat dibatasi `split=test`, dokumen gold query dikecualikan. Seed 42, satu negatif per klaim.
+Negatif sintetis: klaim yang sama dipasangkan dengan passage dari dokumen lain, dipilih berdasarkan overlap token tertinggi (hard negative), kandidat dibatasi `split=train` di korpus, dan **seluruh** gold document benchmark (115 query) dikecualikan. Seed 42, satu negatif per klaim.
 
 ## Hasil sweep
 
@@ -44,11 +46,11 @@ Tabel lengkap ada di `reports/verifier_calibration_table.md`. Ringkas:
 
 | Threshold | Precision | Recall | F1 | Balanced accuracy |
 | ---: | ---: | ---: | ---: | ---: |
-| 0,30 | 0,8824 | 0,8571 | 0,8696 | 0,9042 |
-| 0,50 | 0,8824 | 0,8571 | 0,8696 | 0,9042 |
-| 0,60 | 0,8788 | 0,8286 | 0,8529 | 0,8899 |
-| 0,70 | 0,8750 | 0,8000 | 0,8358 | 0,8756 |
-| 0,90 | 0,8750 | 0,8000 | 0,8358 | 0,8756 |
+| 0,30 | 0,7500 | 0,8571 | 0,8000 | 0,8676 |
+| 0,50 | 0,7500 | 0,8571 | 0,8000 | 0,8676 |
+| 0,60 | 0,7436 | 0,8286 | 0,7838 | 0,8533 |
+| 0,70 | 0,7368 | 0,8000 | 0,7671 | 0,8390 |
+| 0,90 | 0,8000 | 0,8000 | 0,8000 | 0,8573 |
 
 0,5 dipilih karena berada di dataran tertinggi dan sama dengan default P0, sehingga tidak perlu mengubah config hanya untuk threshold.
 
@@ -57,7 +59,7 @@ Tabel lengkap ada di `reports/verifier_calibration_table.md`. Ringkas:
 | Setup | Threshold terpilih | Precision | Recall | F1 | Balanced accuracy |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Tanpa konteks (passage text saja) | 0,85 | 0,9000 | 0,2571 | 0,4000 | 0,6225 |
-| Dengan konteks (resep + buku + tahun) | **0,50** | **0,8824** | **0,8571** | **0,8696** | **0,9042** |
+| Dengan konteks (resep + buku + tahun) | **0,50** | **0,7500** | **0,8571** | **0,8000** | **0,8676** |
 
 Tanpa konteks, klaim yang menyebut tahun/resep — mis. “The 1796 cheap seed cake is baked for one and a half hours.” — diberi entailment ±0,00 karena judul resep tidak ada di teks passage. Setelah judul resep dari `doc_id` dan buku/tahun ditambahkan, skor melonjak ke ±0,99. Ini bug desain P0, bukan masalah threshold.
 
@@ -73,18 +75,18 @@ Implikasi: NLI per passage hanya layak untuk klaim atomik. Klaim multi-hop/tempo
 
 ## Analisis error (easy, threshold 0,5)
 
-5 positif di bawah threshold:
+5 positif easy di bawah threshold:
 
 - `q019` “The cooked apple mixture stands for twelve hours.” (2 passage, 0,005 dan 0,046) — klaim meringkas proses yang tidak dinyatakan eksplisit di passage.
 - `q003` “The bottles are kept in slowly boiling water for half an hour.” (0,011) — parafrase jauh dari teks passage.
 - `q013` “The bread steeps in hot steam for about three quarters of an hour.” (0,097) — jarak leksikal.
 - `q014` “The 1851 boiled Indian pudding is boiled for at least four hours.” (0,163 pada satu passage; 0,531 pada passage lain) — salah satu gold passage tidak memuat durasi.
 
-4 negatif di atas threshold:
+10 negatif di atas threshold (skor ≥ 0,5):
 
-- `q090` vs `tripe-and-oysters` (0,994), `q013` vs `neapolitan-pudding` (0,989), `q032` vs `tomato-cream-sauce` (0,969), `q046` vs `tomata-honey-2` (0,939).
+- `q018` vs `light-biscuit-no-1` (0,992), `q040` vs `an-arrow-root-pudding` (0,995), `q070` vs `plum-pudding-2` (0,932), `q077` vs `lobster-salad-no-1` (0,781), `q080` vs `peaches-for-common-use` (0,993), `q081` vs `a-boiled-plum-pudding` (0,978), `q088` vs `rice-snow-balls` (0,745), `q089` vs `soup-la-lucy` (0,995), `q090` vs `oyster-soup-no-2` (0,960), `q013` vs `chicken-pot-pie-no-1` (0,705).
 
-Tiga pertama adalah **label noise**: passage dari resep lain memakai bahan/prosedur yang sangat mirip (overlap token q013 = 0,714), sehingga secara semantik memang mendukung klaim. Ini batas konstruksi negatif sintetis, bukan semata kesalahan model. Presisi 0,88 karena itu bersifat konservatif.
+Sebagian besar adalah **label noise**: negatif diambil dari resep korpus train yang bahan/prosedurnya sangat mirip, sehingga secara semantik memang mendukung klaim. Ini batas konstruksi negatif sintetis, bukan semata kesalahan model. Presisi 0,75 karena itu bersifat konservatif.
 
 ## Rekomendasi
 

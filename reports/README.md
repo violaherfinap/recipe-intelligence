@@ -9,7 +9,7 @@
 | 2 | [`../docs/error_taxonomy.md`](../docs/error_taxonomy.md) | D | qrels v2 final, Fleiss, error taxonomy 162 kegagalan |
 | 3 (dev) | [`a3_verify_dev.md`](a3_verify_dev.md) | D | P0 grounding gate: verifier NLI, abstain, repair; sample 24 query |
 | 3 (train) | [`verifier_calibration.md`](verifier_calibration.md) | B | NLI threshold di 65 train; premise context, ablasi, error analysis |
-| 3 (test) | [`b0_b3_test_s1.md`](b0_b3_test_s1.md) | A | Baseline B0-B3 test seed 1, 115 query/config |
+| 3 (dev) | [`b0_b3_test_s1.md`](b0_b3_test_s1.md) | A | Baseline B0-B3 development evaluation (115 query); angka test final dihitung di test-50 |
 
 ## Konteks Week 2
 

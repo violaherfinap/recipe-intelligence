@@ -31,13 +31,15 @@ def _qrel(query_id: str, passage_id: str, doc_id: str, relevance: int = 2) -> Qr
     )
 
 
-def _passage(doc_id: str, passage_id: str, text: str, year: int = 1871) -> dict:
+def _passage(
+    doc_id: str, passage_id: str, text: str, year: int = 1871, split: str = "test"
+) -> dict:
     return {
         "passage_id": passage_id,
         "doc_id": doc_id,
         "text": text,
         "source_year": year,
-        "split": "test",
+        "split": split,
     }
 
 
@@ -48,12 +50,22 @@ def _fixtures():
         _qrel("q001", "d2#ingredients#0", "d2"),
     ]
     passages = {
-        "d1#ingredients#0": _passage("d1", "d1#ingredients#0", "white sugar and flour", 1851),
-        "d2#ingredients#0": _passage("d2", "d2#ingredients#0", "powdered sugar and eggs", 1871),
-        "d3#ingredients#0": _passage(
-            "d3", "d3#ingredients#0", "white sugar and powdered sugar for the cake", 1887
+        "d1#ingredients#0": _passage(
+            "d1", "d1#ingredients#0", "white sugar and flour", 1851, split="test"
         ),
-        "d4#ingredients#0": _passage("d4", "d4#ingredients#0", "roast the duck with salt", 1896),
+        "d2#ingredients#0": _passage(
+            "d2", "d2#ingredients#0", "powdered sugar and eggs", 1871, split="test"
+        ),
+        "d3#ingredients#0": _passage(
+            "d3",
+            "d3#ingredients#0",
+            "white sugar and powdered sugar for the cake",
+            1887,
+            split="train",
+        ),
+        "d4#ingredients#0": _passage(
+            "d4", "d4#ingredients#0", "roast the duck with salt", 1896, split="train"
+        ),
     }
     return queries, qrels, passages
 
@@ -75,6 +87,35 @@ def test_build_probe_pairs_claims_with_gold_and_synthetic_negatives() -> None:
         "d1#ingredients#0",
         "d2#ingredients#0",
     }
+
+
+def test_build_probe_negatives_use_train_split_and_skip_all_gold_docs() -> None:
+    queries = [
+        _query("q001", ["The 1851 recipe uses white sugar."]),
+        _query("q002", ["The 1871 recipe uses powdered sugar."]),
+    ]
+    qrels = [
+        _qrel("q001", "d1#ingredients#0", "d1"),
+        _qrel("q002", "d2#ingredients#0", "d2"),
+    ]
+    passages = {
+        "d1#ingredients#0": _passage(
+            "d1", "d1#ingredients#0", "white sugar and flour", 1851, split="test"
+        ),
+        "d2#ingredients#0": _passage(
+            "d2", "d2#ingredients#0", "powdered sugar and eggs", 1871, split="test"
+        ),
+        "d3#ingredients#0": _passage(
+            "d3", "d3#ingredients#0", "white sugar for the cake", 1887, split="train"
+        ),
+    }
+    pairs = build_probe(queries, qrels, passages, seed=42)
+    negatives = [pair for pair in pairs if pair.label == 0]
+    assert negatives
+    assert all(passages[pair.passage_id]["split"] == "train" for pair in negatives)
+    assert all(
+        passages[pair.passage_id]["doc_id"] not in {"d1", "d2"} for pair in negatives
+    )
 
 
 def test_build_probe_is_deterministic() -> None:

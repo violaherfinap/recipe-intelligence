@@ -46,21 +46,26 @@ def build_probe(
     passages: dict[str, dict],
     seed: int = 42,
     negatives_per_claim: int = 1,
-    candidate_split: str | None = "test",
+    candidate_split: str | None = "train",
 ) -> list[ProbePair]:
     gold_by_query: dict[str, list[str]] = {}
     gold_docs: dict[str, set[str]] = {}
+    gold_passage_ids: set[str] = set()
     for row in qrels:
         if row.relevance != 2:
             continue
         gold_by_query.setdefault(row.query_id, []).append(row.passage_id)
         gold_docs.setdefault(row.query_id, set()).add(row.doc_id)
+        gold_passage_ids.add(row.passage_id)
+    forbidden_docs = set().union(*gold_docs.values()) if gold_docs else set()
 
     candidate_ids = [
         passage_id
         for passage_id, passage in passages.items()
         if str(passage.get("text", "")).strip()
         and (candidate_split is None or passage.get("split") == candidate_split)
+        and passage_id not in gold_passage_ids
+        and passage.get("doc_id") not in forbidden_docs
     ]
     tokens_by_passage = {
         passage_id: _tokens(str(passages[passage_id].get("text", "")))
@@ -72,7 +77,6 @@ def build_probe(
         gold_passages = sorted(gold_by_query.get(query.query_id, []))
         if not gold_passages:
             continue
-        forbidden = gold_docs.get(query.query_id, set())
         for index, claim in enumerate(query.gold_claims, start=1):
             claim_id = f"c{index}"
             for passage_id in gold_passages:
@@ -92,11 +96,7 @@ def build_probe(
             if negatives_per_claim <= 0:
                 continue
             claim_tokens = _tokens(claim)
-            candidates = [
-                passage_id
-                for passage_id in candidate_ids
-                if passages[passage_id].get("doc_id") not in forbidden
-            ]
+            candidates = list(candidate_ids)
             candidates.sort(
                 key=lambda passage_id: (
                     -len(claim_tokens & tokens_by_passage[passage_id]),
