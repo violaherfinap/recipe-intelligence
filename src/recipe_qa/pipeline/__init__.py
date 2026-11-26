@@ -1,4 +1,4 @@
-﻿"""B0-B3 pipeline entry points and shared execution."""
+﻿"""B0-B4 pipeline entry points and shared execution."""
 
 from .common import run_query
 

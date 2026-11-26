@@ -53,3 +53,28 @@ def test_b2_b3_diff_is_retrieval_only():
     }
     assert diff_keys(config("b2"), config("b3")) <= allowed
     assert diff_keys(config("b2"), config("b3"))
+
+
+def test_b3_b4_diff_is_grounding_planner_retry():
+    allowed = {
+        "verification.enabled",
+        "verification.nli_model",
+        "verification.nli_threshold",
+        "verification.max_repair_rounds",
+        "verification.keep_refuted",
+        "verification.abstain_on_unsupported",
+        "abstain.sufficiency",
+        "abstain.sufficiency_threshold",
+        "planner.enabled",
+        "planner.mode",
+        "planner.max_subqueries",
+        "retry.enabled",
+        "retry.max_retries",
+        "retry.min_sufficiency",
+    }
+    assert diff_keys(config("b3"), config("b4")) <= allowed
+    assert diff_keys(config("b3"), config("b4"))
+
+
+def test_b4_calib_toggles_sufficiency_only():
+    assert diff_keys(config("b4"), config("b4_calib")) == {"abstain.sufficiency"}

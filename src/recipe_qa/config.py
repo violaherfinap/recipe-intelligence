@@ -51,13 +51,29 @@ class RetrievalConfig(_Model):
 
 class VerificationConfig(_Model):
     enabled: bool = False
+    nli_model: str = "cross-encoder/nli-deberta-v3-base"
     nli_threshold: float = 0.5
     max_repair_rounds: int = 2
+    keep_refuted: bool = False
+    abstain_on_unsupported: bool = True
 
 
 class AbstainConfig(_Model):
     enabled: bool = False
+    sufficiency: bool = False
     sufficiency_threshold: float = 0.35
+
+
+class PlannerConfig(_Model):
+    enabled: bool = False
+    mode: Literal["rule", "llm"] = "rule"
+    max_subqueries: int = 3
+
+
+class RetryConfig(_Model):
+    enabled: bool = False
+    max_retries: int = 2
+    min_sufficiency: float = 0.35
 
 
 class AgentConfig(_Model):
@@ -76,6 +92,8 @@ class SystemConfig(_Model):
     retrieval: RetrievalConfig = Field(default_factory=RetrievalConfig)
     verification: VerificationConfig = Field(default_factory=VerificationConfig)
     abstain: AbstainConfig = Field(default_factory=AbstainConfig)
+    planner: PlannerConfig = Field(default_factory=PlannerConfig)
+    retry: RetryConfig = Field(default_factory=RetryConfig)
     agent: AgentConfig = Field(default_factory=AgentConfig)
     budget: BudgetConfig = Field(default_factory=BudgetConfig)
 

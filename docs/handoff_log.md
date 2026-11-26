@@ -128,3 +128,34 @@ bagian **Rebuild di laptop lain**.
 **Branch:** `feat/w2-d-finalize-qrels-v2`. **Commit:** `0497de8` (qrels/tooling) dan `c674d28` (taxonomy/A1 v2); commit dokumentasi adalah HEAD branch.
 
 **Artefak final:** `benchmark/qrels.jsonl` (SHA-256 `8ed07e8e...`), `benchmark/verdict_qrels.jsonl` (SHA-256 `b86d1d39...`), `benchmark/manifest.sha256`, `benchmark/archive/`, `benchmark/kappa_v2.json`, `benchmark/adjudication_v2.jsonl`, `benchmark/no_evidence_spotcheck_v2.csv`, `error_analysis.csv`, `docs/error_taxonomy.md`, `reports/a1_dev.md`, `reports/b2b3_dev.md`, `artifacts/runs/retrieval_b2_v2.json`, `artifacts/runs/retrieval_b3_v2.json` (lokal), `docs/handoff/w2-d.md`.
+
+## Week 3 - P0 Grounding Gate (Orang D) - 2026-11-25
+
+- **Selesai:** prioritas P0 error taxonomy - verifier NLI per klaim (`cross-encoder/nli-deberta-v3-base`, threshold 0.5), claim splitting, repair JSON, kebijakan drop/abstain, metadata verifikasi di pipeline; sufficiency gate diimplementasikan tetapi dimatikan karena belum terkalibrasi; config `a3_verify` (verifier-only) dan `a3_verify_suff` (eksperimen); 161 test lulus, ruff bersih, validator v2 valid.
+- **Belum:** kalibrasi NLI/τ di dev (dev set belum ada, Q10); A3 penuh 115 query; sufficiency masih over-abstain (easy 17/35, multi-hop 23/25, temporal 27/30); residual `q071` (entity swap) butuh planner; `keep_refuted=false` membuang klaim REFUTED.
+- **Berikutnya untuk A/B:** buat dev query+label, bekukan baseline B0-B3 test seed 1, lalu kalibrasi threshold dan lanjut planner/E1.
+- **Bukti sample:** 6/6 no-evidence abstain (baseline 0/6); 24 query generation audit -> 21/22 error diblokir, `q021` benar dipertahankan, `q060` NE jadi abstain `format_error`; latency p50 29,2 s / p95 55,2 s.
+
+**Artefak:** `src/recipe_qa/verify/`, `src/recipe_qa/generation/generate.py`, `src/recipe_qa/pipeline/common.py`, `tools/run_config.py`, `configs/a3_verify.yaml`, `configs/a3_verify_suff.yaml`, `tests/unit/test_verify_*.py`, `tests/unit/test_generation_repair.py`, `tests/unit/test_pipeline_verify.py`, `reports/a3_verify_dev.md`, `docs/handoff/w3-notes.md`, `artifacts/runs/a3_verify_*` (lokal).
+
+## Week 3 - Block A (Orang A) - 2026-11-25
+
+- **Selesai:** baseline B0-B3 test seed 1 lengkap 115 query/config (`reports/b0_b3_test_s1.md`); planner rule + LLM (`planner_v1`) dengan validasi JSON dan fallback rule; retry maks. 2 berbasis `retry.min_sufficiency`; integrasi B4 (`planner -> retrieve -> retry -> sufficiency -> generate -> verify`) dengan metadata `plan`/`retry`; `configs/b4.yaml`, `configs/b4_calib.yaml`; tool kalibrasi τ (`tools/calibrate_sufficiency.py`); 188 test lulus, ruff bersih.
+- **Baseline:** B0 schema 107/115 (p50 14,7 s), B1 108/115 (13,9 s), B2 113/115 (20,9 s), B3 103/115 (20,9 s, p95 39,3 s). Artefak di `artifacts/runs/b0-test-s1/`..`b3-test-s1/`.
+- **B4 smoke:** `q061` dan `q036` berjalan; plan/retry terisi; keduanya abstain (satu `format_error`). `q021` menghasilkan jawaban valid, 1 klaim SUPPORTED, tidak abstain. Planner LLM 0.5B sering tidak layak; fallback rule-based dipakai. Ini smoke integrasi, bukan evaluasi.
+- **Belum:** dev query+label (Q10) sehingga τ/NLI belum dikalibrasi; B4 20 query dev; A3/A4 penuh; B4 test seed 1 (D); kualitas planner LLM dan abstain B4 belum dievaluasi.
+- **Status A-only:** langkah 1-5 selesai; langkah 6-8 menunggu dev set frozen dari B/C/D. A tidak menulis query/label dev.
+- **Berikutnya untuk B/D:** pakai `reports/b0_b3_test_s1.md` sebagai baseline; siapkan dev set; kalibrasi τ/NLI di dev; jalankan B4 test hanya setelah konfigurasi dibekukan. Jangan tuning di 115 query test.
+
+**Branch:** `feat/w3-p0-grounding` (`9edf55b`) -> `feat/w3-a-planner-b4` (`92d1452`, follow-up `53939a1`). **Status:** belum di-push/merge.
+
+**Artefak:** `src/recipe_qa/pipeline/{planner,retry,b4}.py`, `src/recipe_qa/eval/sufficiency_calibration.py`, `tools/calibrate_sufficiency.py`, `configs/b4.yaml`, `configs/b4_calib.yaml`, `prompts/registry/planner_v1.yaml`, `reports/b0_b3_test_s1.md`, `tests/unit/test_{planner,retry,pipeline_planner_retry,sufficiency_calibration}.py`, `artifacts/runs/b0-test-s1/`..`b4-smoke/` (lokal).
+
+## Week 3 - Master Handoff A/B/C/D - 2026-11-26
+
+- **Dokumen lengkap:** `docs/handoff/w3.md`.
+- **Mapping:** A = Lois, B = Anin, C = Dhea, D = Vio.
+- **Keputusan:** Lois adjudikasi dev; Dhea mengirim adapter via Google Drive; tugas A tetap dikerjakan Lois.
+- **Status:** rencana eksekusi; dev set belum ada; tag `w3-base-a`, `w3-dev-frozen`, `w3-config-frozen` belum dibuat.
+- **Urutan:** Lois base -> Anin query dev -> Dhea/Vio label -> Lois adjudikasi/freeze -> Lois tau + Anin NLI -> config freeze -> Vio test/A3/A6 -> Gate 3.
+- **Peringatan:** orang keempat (Vio/D) wajib melapor ke grup Lois/Anin/Vio setelah test B4/B5, A3/A4/A6, dan 3 seed selesai; jangan menunggu Gate 3.

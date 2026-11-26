@@ -4,6 +4,13 @@ Dokumen sumber (tidak diubah): [`spek.md`](../spek.md),
 [`RENCANA_LENGKAP.md`](../RENCANA_LENGKAP.md),
 [`RENCANA_MINGGUAN.md`](../RENCANA_MINGGUAN.md).
 
+## Week 3 (persiapan)
+
+| Kebutuhan | Dokumen |
+| --- | --- |
+| Peringatan dan urutan kerja | [`handoff/w3-notes.md`](handoff/w3-notes.md) |
+| Laporan P0 grounding gate | [`../reports/a3_verify_dev.md`](../reports/a3_verify_dev.md) |
+
 ## Week 2 (aktif)
 
 | Kebutuhan | Dokumen |

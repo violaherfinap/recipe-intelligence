@@ -28,12 +28,22 @@ def summarize(rows: list[dict]) -> dict:
         valid = sum(1 for row in items if row.get("schema_valid"))
         abstain = sum(1 for row in items if (row.get("answer") or {}).get("abstain"))
         latencies = [float(row.get("latency_ms") or 0.0) for row in items]
+        verification = [
+            row["verification"] for row in items if row.get("verification")
+        ]
         return {
             "n": len(items),
             "schema_valid": valid,
             "schema_valid_rate": valid / len(items) if items else 0.0,
             "abstain": abstain,
             "abstain_rate": abstain / len(items) if items else 0.0,
+            "verification": {
+                "n": len(verification),
+                "supported": sum(int(item.get("supported") or 0) for item in verification),
+                "refuted": sum(int(item.get("refuted") or 0) for item in verification),
+                "dropped": sum(int(item.get("dropped") or 0) for item in verification),
+                "abstained": sum(1 for item in verification if item.get("abstained")),
+            },
             "latency_ms": {
                 "p50": percentile(latencies, 0.50),
                 "p95": percentile(latencies, 0.95),
@@ -81,10 +91,21 @@ def main(argv: list[str] | None = None) -> int:
 
     retriever = Retriever(config.retrieval) if config.retrieval.mode != "none" else None
     generator = None if args.no_generate else AnswerGenerator(config.model)
+    verifier = None
+    if config.verification.enabled and not args.no_generate:
+        from recipe_qa.verify.nli import NliVerifier
+
+        verifier = NliVerifier(config.verification.nli_model)
 
     rows: list[dict] = []
     for row in selected:
-        result = run_query(config, row, retriever=retriever, generator=generator)
+        result = run_query(
+            config,
+            row,
+            retriever=retriever,
+            generator=generator,
+            verifier=verifier,
+        )
         result["slice"] = row.get("slice")
         rows.append(result)
         print(
