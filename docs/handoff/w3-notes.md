@@ -8,6 +8,7 @@
 - **Laporan baseline:** `reports/b0_b3_test_s1.md`
 - **Branch A:** `feat/w3-a-planner-b4` (di atas `feat/w3-p0-grounding`)
 - **Handoff lengkap A/B/C/D:** `docs/handoff/w3.md`
+- **Base branch:** gunakan tag `w3-base-a2`; jangan memakai `w3-base-a` lama.
 - **Peringatan:** orang keempat (Vio/D) wajib melapor ke grup Lois/Anin/Vio setelah test B4/B5, A3/A4/A6, dan 3 seed selesai; jangan menunggu Gate 3.
 
 ## Prioritas error (dari taxonomy Week 2)
