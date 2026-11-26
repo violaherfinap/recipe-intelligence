@@ -158,3 +158,4 @@ bagian **Rebuild di laptop lain**.
 - **Keputusan:** Lois adjudikasi dev; Dhea mengirim adapter via Google Drive; tugas A tetap dikerjakan Lois.
 - **Status:** rencana eksekusi; dev set belum ada; tag `w3-base-a`, `w3-dev-frozen`, `w3-config-frozen` belum dibuat.
 - **Urutan:** Lois base -> Anin query dev -> Dhea/Vio label -> Lois adjudikasi/freeze -> Lois tau + Anin NLI -> config freeze -> Vio test/A3/A6 -> Gate 3.
+- **Peringatan:** orang keempat (Vio/D) wajib melapor ke grup Lois/Anin/Vio setelah test B4/B5, A3/A4/A6, dan 3 seed selesai; jangan menunggu Gate 3.
