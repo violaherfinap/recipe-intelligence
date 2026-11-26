@@ -159,3 +159,11 @@ bagian **Rebuild di laptop lain**.
 - **Status:** base `w3-base-a2` siap (instruksi branch ada di handoff); dev set belum ada; tag `w3-dev-frozen` dan `w3-config-frozen` belum dibuat.
 - **Urutan:** Lois base -> Anin query dev -> Dhea/Vio label -> Lois adjudikasi/freeze -> Lois tau + Anin NLI -> config freeze -> Vio test/A3/A6 -> Gate 3.
 - **Peringatan:** orang keempat (Vio/D) wajib melapor ke grup Lois/Anin/Vio setelah test B4/B5, A3/A4/A6, dan 3 seed selesai; jangan menunggu Gate 3.
+
+## Week 3 - Block B (Orang B) - 2026-11-26
+
+- **Selesai:** split query 65 train / 50 test (cluster-aware, 0 gold-doc overlap; easy 20/15, multi-hop 14/11, temporal 17/13, no-evidence 14/11) di `benchmark/query_split.json` + `queries_train.jsonl` / `queries_test.jsonl`; tool `tools/split_queries.py`; 6 unit test baru (termasuk reproduksibilitas split); 194 test lulus, ruff bersih. Dev 24 query dibatalkan karena requirement baru.
+- **Belum:** split belum di-review/di-tag A; baseline B0-B3 masih dihitung pada 115 query; `reports/verifier_calibration.md`, `reports/b4_dev.md`, `verify/citations.py`, `verify/temporal.py`, `pipeline/abstain.py` belum ada.
+- **Berikutnya untuk A:** review + tag split, jalankan ulang B0-B3 pada 50 test, revisi `docs/handoff/w3.md` §5; untuk C/D: tidak ada branch label dev, lanjut LoRA/prep.
+
+**Branch:** `feat/w3-b-dev` (dari `w3-base-a2`). **Artefak:** `benchmark/query_split.json`, `benchmark/queries_train.jsonl` (SHA-256 `9d000d51...`), `benchmark/queries_test.jsonl` (SHA-256 `08f4e3fa...`), `tools/split_queries.py`, `src/recipe_qa/benchmark/query_split.py`, `tests/unit/test_query_split.py`, `docs/handoff/w3-b.md`, `benchmark/guidelines.md` v2.1.

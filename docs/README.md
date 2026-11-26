@@ -9,6 +9,8 @@ Dokumen sumber (tidak diubah): [`spek.md`](../spek.md),
 | Kebutuhan | Dokumen |
 | --- | --- |
 | Peringatan dan urutan kerja | [`handoff/w3-notes.md`](handoff/w3-notes.md) |
+| Handoff A/B/C/D | [`handoff/w3.md`](handoff/w3.md) |
+| Handoff B (split 65/50) | [`handoff/w3-b.md`](handoff/w3-b.md) |
 | Laporan P0 grounding gate | [`../reports/a3_verify_dev.md`](../reports/a3_verify_dev.md) |
 
 ## Week 2 (aktif)
@@ -47,6 +49,8 @@ Dokumen sumber (tidak diubah): [`spek.md`](../spek.md),
 ## Benchmark
 
 - Query: `benchmark/queries.jsonl` + `benchmark/queries.sha256`
+- Split query Week 3: `benchmark/query_split.json`, `benchmark/queries_train.jsonl`
+  (65), `benchmark/queries_test.jsonl` (50)
 - Gold evidence: `benchmark/gold_candidates.jsonl`
 - Verifikasi no-evidence: `benchmark/no_evidence_check.csv`
 - Spot-check no-evidence v2: `benchmark/no_evidence_spotcheck_v2.csv`
@@ -70,6 +74,7 @@ Dokumen sumber (tidak diubah): [`spek.md`](../spek.md),
 | Anotasi relevance/verdict | `tools/annotate.py` |
 | Pool v1 / pool v2 | `tools/build_pool.py`, `tools/build_pool_v2.py` |
 | Validasi benchmark | `tools/validate_benchmark.py` |
+| Split query train/test | `tools/split_queries.py` |
 | Evaluasi retrieval | `tools/eval_retrieval.py` |
 | Smoke/batch config | `tools/run_config.py` |
 | Tabel ringkas run | `tools/summarize_runs.py` |
