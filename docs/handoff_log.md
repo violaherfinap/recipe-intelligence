@@ -174,3 +174,11 @@ bagian **Rebuild di laptop lain**.
 - **Dampak A:** baseline B0-B3 115 query menjadi development evaluation; A harus merge split, review + tag `w3-query-split`, rerun baseline di test-50, kalibrasi tau di train-65, lalu config freeze (`w3-config-frozen`) sebelum B4 test-50.
 - **Guardrail baru:** kalibrasi hanya train-65; test-50 hanya angka final; passage gold milik 65 query train tetap `split=test` sehingga tidak boleh dipakai sebagai teks training LoRA.
 - **Handoff diperbarui:** `docs/handoff/w3.md`, `docs/handoff/w3-notes.md`. Dev set, branch label dev, dan tag `w3-dev-frozen` dihapus dari alur.
+
+## Week 3 - Block A - Calibration dan config freeze - 2026-11-26
+
+- **Selesai:** baseline B0-B3 test-50 (`reports/b0_b3_test50_s1.md`; B0/B1 schema 0,94, B2 1,00, B3 0,86); kalibrasi tau train-65 (`reports/sufficiency_calibration_train65.md`; tau 0,17, balanced accuracy 0,8305); config freeze `configs/b4.yaml` dengan `premise_context: true`, `abstain.sufficiency: true` (tau 0,17), citation/temporal gate aktif; `configs/b4_calib.yaml` dipin ke setting pra-freeze; tag `w3-config-frozen` (commit `a6b7a26`); B4 final test-50 (`reports/b4_test50.md`; schema 49/50, abstain 39/50, p50 43,4 s, p95 82,0 s); 197 test lulus, ruff bersih.
+- **Belum:** B5/A4 menunggu adapter C; A3/A6 menunggu D; `reports/b4_train65.md` milik B; false confident verdict `q099` (no-evidence) dan residual temporal `q062` belum diperbaiki.
+- **Berikutnya untuk B:** tulis `reports/b4_train65.md` dari run train-65 tanpa run duplikat. **Untuk D:** mulai A3/A6 dari `w3-config-frozen`; test-50 B4 sudah tersedia. **Untuk C:** lanjut LoRA/B5; test-50 B5 setelah adapter siap.
+
+**Branch:** `feat/w3-a-calibration`. **Artefak:** `reports/b0_b3_test50_s1.md`, `reports/sufficiency_calibration_train65.md`, `reports/b4_test50.md`, `configs/b4.yaml`, `configs/b4_calib.yaml`, `tests/unit/test_config_equality.py`, `docs/handoff/w3.md`.
