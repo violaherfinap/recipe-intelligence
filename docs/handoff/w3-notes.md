@@ -1,8 +1,8 @@
 # Week 3 - catatan peringatan dan urutan kerja
 
 - **Tanggal:** 2026-11-25
-- **Status:** P0 (grounding gate), A (planner/retry/B4), dan baseline B0-B3 test
-  sudah selesai; kalibrasi dev masih blocker
+- **Status:** P0 (grounding gate), A (planner/retry/B4), dan split 65/50 sudah
+  selesai; kalibrasi train-65 menunggu review split
 - **Basis:** `benchmark/qrels.jsonl` v2 frozen, tag `benchmark-v2`
 - **Laporan P0:** `reports/a3_verify_dev.md`
 - **Laporan baseline:** `reports/b0_b3_test_s1.md`
@@ -31,11 +31,13 @@ chunking.
 
 ### Blocker
 
-1. **Dev set belum ada (Q10).** Jangan kalibrasi threshold NLI, τ sufficiency,
-   atau parameter planner di 115 query test. Buat dev query + label dev lebih
-   dulu; freeze hash.
-2. **Bekukan baseline B0-B3 test seed 1** dengan qrels v2 sebelum mengubah kode.
-   Tanpa baseline, klaim perbaikan tidak sah.
+1. **Split 65/50 sudah ada (Q10 ditutup).** Jangan kalibrasi threshold NLI,
+   τ sufficiency, atau parameter planner di 115 query maupun test-50.
+   Kalibrasi hanya di `benchmark/queries_train.jsonl` (65); angka final hanya di
+   `benchmark/queries_test.jsonl` (50) setelah config freeze.
+2. **Bekukan baseline B0-B3 test-50 seed 1** dengan qrels v2 sebelum mengubah
+   kode. Tanpa baseline, klaim perbaikan tidak sah. Angka 115 query hanya
+   development evaluation.
 3. **Jangan ubah query/qrels test** tanpa versi baru dan regenerate manifest.
 
 ### Metodologi
@@ -45,7 +47,7 @@ chunking.
    A3.
 5. **Sufficiency belum terkalibrasi.** Proxy 115 query: abstain easy 17/35,
    multi-hop 23/25, temporal 27/30, no-evidence 25/25. Terlalu agresif; jangan
-   aktifkan di test sebelum dev.
+   aktifkan di test-50 sebelum dikalibrasi di train-65.
 6. **Error taxonomy harus chunking-aware.** Rerun setelah B4 dengan chunking
    yang sama; jangan membandingkan E1 lintas chunking.
 7. **E3/E5 hanya sample 24 query generation.** Perluas audit sebelum klaim
@@ -66,27 +68,28 @@ chunking.
     tidak hilang saat planner/retry masuk.
 14. **Budget/latency.** Sample P0 p50 29,2 s, p95 55,2 s. Retry dan repair
     memperpanjang tail; laporkan p50/p95 + token.
-15. **LoRA:** hanya train split, tanpa passage test, base model sama, catat hash
-    + resource + train-dev gap, 3 seed subset; mulai setelah B4 stabil.
+15. **LoRA:** hanya passage `split=train` korpus, tanpa passage test, dan bukan
+    gold passage milik 65 query train; base model sama, catat hash + resource +
+    train-test gap, 3 seed subset; mulai setelah B4 stabil.
 16. **Tool misuse (E6)** belum diukur; butuh B6 controller + authorization.
 
 ### Urutan Week 3
 
-1. A: baseline B0-B3 test (seed 1) -> planner -> sufficiency + kalibrasi τ di
-   dev -> retry -> B4.
+1. A: baseline B0-B3 test-50 (setelah `w3-query-split`) -> planner ->
+   kalibrasi tau + retry -> B4 train-65 -> config freeze -> B4 test-50.
 2. B: NLI verifier -> citation/temporal check -> abstain -> kalibrasi verifier
-   -> evaluasi B4 dev.
-3. C: dataset LoRA 600-800 (train only) -> training CPU -> evaluasi B5 dev +
-   OOD -> resource.
-4. D: A3/A4/A6 -> run B4/B5 test seed 1 -> 3 seed subset -> variance.
-5. Gate 3: adapter + B5 eval + A3/A4/A6 + test B4/B5, semua artefak ber-hash.
+   di train-65 -> evaluasi B4 train-65.
+3. C: dataset LoRA 600-800 (korpus train only, bukan gold train-65) -> training
+   CPU -> evaluasi B5 train-65 + OOD -> resource -> B5 test-50 setelah freeze.
+4. D: A3/A6 train-65 -> run B4/B5 test-50 seed 1 -> 3 seed subset -> variance.
+5. Gate 3: adapter + B5 eval + A3/A4/A6 + test-50 B4/B5, semua artefak ber-hash.
 
 ## Status P0 saat ini
 
 - Verifier, claim splitting, repair, dan abstain policy sudah terintegrasi.
 - Bukti sample: 21/22 error generation diblokir; `q021` benar dipertahankan;
   `q060` NE menjadi abstain `format_error`; 6/6 no-evidence abstain.
-- Sisa: kalibrasi dev, A3 penuh 115 query, planner untuk E1/E3.
+- Sisa: kalibrasi train-65, A3 penuh, planner untuk E1/E3.
 
 ## Status A saat ini
 
@@ -98,15 +101,15 @@ chunking.
   sufficiency -> generate -> verify; metadata `plan`/`retry` hanya ditulis
   saat fitur aktif agar output B0-B3 tidak berubah.
 - `configs/b4.yaml`: B3 + planner LLM + retry 2 + verifier NLI + abstain.
-  `abstain.sufficiency` tetap `false` sampai τ dikalibrasi di dev.
+  `abstain.sufficiency` tetap `false` sampai τ dikalibrasi di train-65.
 - `tools/calibrate_sufficiency.py` dan
-  `src/recipe_qa/eval/sufficiency_calibration.py`: siap dipakai setelah dev
-  query+label tersedia; jangan kalibrasi di 115 query test.
+  `src/recipe_qa/eval/sufficiency_calibration.py`: dipakai pada run
+  `queries_train.jsonl` (65); jangan kalibrasi di test-50 atau 115 query.
 - Unit test baru mencakup planner rule/LLM/fallback, retry bound, integrasi
   pipeline, dan kalibrasi sintetis.
-- Baseline B0-B3 test seed 1 selesai 115 query/config; ringkasan di
-  `reports/b0_b3_test_s1.md`. Artefak: `artifacts/runs/b0-test-s1/` sampai
-  `b3-test-s1/` (lokal).
+- Baseline B0-B3 115 query/config selesai sebagai development evaluation;
+  ringkasan di `reports/b0_b3_test_s1.md`. Artefak: `artifacts/runs/b0-test-s1/`
+  sampai `b3-test-s1/` (lokal). Angka test final harus dihitung ulang di test-50.
 - B4 smoke 2 query test (`q061`, `q036`): pipeline jalan, metadata `plan` dan
   `retry` terisi, tetapi keduanya abstain (satu `format_error`). Planner LLM
   0.5B sering menghasilkan subquery tidak layak, sehingga fallback rule-based
@@ -115,25 +118,26 @@ chunking.
   SUPPORTED, tidak abstain, plan LLM + retry metadata terisi. Ini bukti jalur
   jawaban B4 berfungsi, bukan klaim kualitas agregat.
 - `configs/b4_calib.yaml`: B4 + `abstain.sufficiency: true`; hanya untuk
-  menghasilkan skor sufficiency di dev. Jangan pakai config ini untuk klaim
-  B4 test.
-- Selanjutnya: tunggu dev query+label frozen dari B/C/D, kalibrasi τ/NLI di
-  dev, lalu jalankan B4 20 query dev. Jangan memakai 115 query test untuk
-  tuning.
+  menghasilkan skor sufficiency di train-65. Jangan pakai config ini untuk
+  klaim B4 test-50.
+- Selanjutnya: merge split ke integration, review + tag `w3-query-split`,
+  kalibrasi τ/NLI di train-65, config freeze, lalu jalankan B4 di test-50.
+  Jangan memakai test-50 atau 115 query untuk tuning.
 
 ## Urutan A-only
 
 | # | Langkah | Status |
 | ---: | --- | --- |
-| 1 | Baseline B0-B3 test seed 1 | selesai |
+| 1 | Baseline B0-B3 115 query (development) | selesai |
 | 2 | Planner rule + LLM/fallback | selesai |
 | 3 | Retry maks. 2 | selesai |
 | 4 | Integrasi B4 + smoke | selesai |
 | 5 | Siapkan `configs/b4_calib.yaml` | selesai |
-| 6 | Terima dev set frozen dari B/C/D | blocked |
-| 7 | Kalibrasi τ di dev | blocked |
-| 8 | Jalankan B4 20 query dev | blocked |
-| 9 | Handoff ke D untuk B4 test | setelah 7-8 |
+| 6 | Merge + review split, tag `w3-query-split` | next |
+| 7 | Baseline B0-B3 di test-50 | setelah 6 |
+| 8 | Kalibrasi τ di train-65 | setelah 7 |
+| 9 | Config freeze + B4 test-50 | setelah 8 |
+| 10 | Handoff ke D untuk B4 test-50 | setelah 9 |
 
-A tidak menulis query dev dan tidak memberi label dev; itu tanggung jawab
-B/C/D. A hanya mengonsumsi artefak beku.
+A tidak menulis query/label; split sudah disediakan B. A hanya mengonsumsi
+artefak beku.

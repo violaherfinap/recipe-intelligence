@@ -4,12 +4,18 @@ Dokumen sumber (tidak diubah): [`spek.md`](../spek.md),
 [`RENCANA_LENGKAP.md`](../RENCANA_LENGKAP.md),
 [`RENCANA_MINGGUAN.md`](../RENCANA_MINGGUAN.md).
 
-## Week 3 (persiapan)
+## Week 3 (aktif)
 
 | Kebutuhan | Dokumen |
 | --- | --- |
+| Handoff A/B/C/D | [`handoff/w3.md`](handoff/w3.md) |
 | Peringatan dan urutan kerja | [`handoff/w3-notes.md`](handoff/w3-notes.md) |
 | Laporan P0 grounding gate | [`../reports/a3_verify_dev.md`](../reports/a3_verify_dev.md) |
+
+Split query Week 3 (dari branch B, belum di-merge ke integration):
+`benchmark/query_split.json`, `benchmark/queries_train.jsonl` (65 train,
+kalibrasi), `benchmark/queries_test.jsonl` (50 test, angka final). Angka 115
+query adalah development evaluation.
 
 ## Week 2 (aktif)
 

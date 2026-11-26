@@ -159,3 +159,10 @@ bagian **Rebuild di laptop lain**.
 - **Status:** base `w3-base-a2` siap (instruksi branch ada di handoff); dev set belum ada; tag `w3-dev-frozen` dan `w3-config-frozen` belum dibuat.
 - **Urutan:** Lois base -> Anin query dev -> Dhea/Vio label -> Lois adjudikasi/freeze -> Lois tau + Anin NLI -> config freeze -> Vio test/A3/A6 -> Gate 3.
 - **Peringatan:** orang keempat (Vio/D) wajib melapor ke grup Lois/Anin/Vio setelah test B4/B5, A3/A4/A6, dan 3 seed selesai; jangan menunggu Gate 3.
+
+## Week 3 - Block A - Revisi split 65/50 - 2026-11-26
+
+- **Keputusan:** dev 24 query dibatalkan. 115 query beku dipecah menjadi 65 train (kalibrasi) dan 50 test (angka final) pada level query, cluster-aware (0 gold-doc overlap, seed 42). Artefak: `benchmark/query_split.json`, `benchmark/queries_train.jsonl` (65), `benchmark/queries_test.jsonl` (50).
+- **Dampak A:** baseline B0-B3 115 query menjadi development evaluation; A harus merge split, review + tag `w3-query-split`, rerun baseline di test-50, kalibrasi tau di train-65, lalu config freeze (`w3-config-frozen`) sebelum B4 test-50.
+- **Guardrail baru:** kalibrasi hanya train-65; test-50 hanya angka final; passage gold milik 65 query train tetap `split=test` sehingga tidak boleh dipakai sebagai teks training LoRA.
+- **Handoff diperbarui:** `docs/handoff/w3.md`, `docs/handoff/w3-notes.md`. Dev set, branch label dev, dan tag `w3-dev-frozen` dihapus dari alur.
