@@ -13,6 +13,8 @@ AbstainReason = Literal[
     "out_of_period",
     "conflicting_sources",
     "format_error",
+    "citation_failure",
+    "temporal_violation",
 ]
 
 
