@@ -1,8 +1,8 @@
-# Benchmark & Annotation Guidelines — v2
+# Benchmark & Annotation Guidelines — v2.1
 
 **Proyek:** Historical Recipe Evidence QA
 **Use case:** C (temporal fact-checking) pada korpus `ye-old-american`
-**Versi:** 2.0 — 2026-11-24
+**Versi:** 2.1 — 2026-11-26
 **Pemilik:** B (penulis query)
 **Anotator:** A, C (pass 1), dan D (pass 2)
 **Corpus commit:** `ae3bd2c009a8899dfe63b9166fa98ae3fa8041a8`
@@ -64,6 +64,26 @@ B adalah satu-satunya penulis query, sehingga C dan D dapat menjadi dua anotator
 | `no-evidence` | 25 | q091–q115 | Jawaban tidak ada di seluruh korpus |
 
 Setiap query answerable (90 query) punya minimal satu gold passage. Semua gold passage harus `split=test`.
+
+### Split train/test 65/50 (Week 3)
+
+Sejak 2026-11-26, 115 query yang sudah dibekukan dibagi menjadi **65 train** dan **50 test** pada level query. Pembagian dibuat dengan `tools/split_queries.py` (seed 42, cluster-aware) dan dibekukan di `benchmark/query_split.json`:
+
+| Slice | Total | Train | Test |
+| --- | ---: | ---: | ---: |
+| `easy` | 35 | 20 | 15 |
+| `multi-hop` | 25 | 14 | 11 |
+| `temporal` | 30 | 17 | 13 |
+| `no-evidence` | 25 | 14 | 11 |
+| **Total** | **115** | **65** | **50** |
+
+Aturan:
+
+1. Query yang berbagi gold document dimasukkan ke sisi yang sama (komponen tidak dipecah). Tidak ada gold document yang muncul di train dan test sekaligus.
+2. Train hanya untuk kalibrasi threshold, τ, dan pemilihan konfigurasi.
+3. Test hanya untuk angka final setelah konfigurasi dibekukan.
+4. Gold passage 65 query train tetap `split=test` di korpus. Karena itu passage tersebut **tidak boleh** dipakai sebagai teks training LoRA atau few-shot example.
+5. Query, qrels, dan hash test tidak berubah; split disimpan di file terpisah dan tidak menggantikan `benchmark/queries.jsonl`.
 
 ---
 
@@ -463,6 +483,7 @@ uv run ruff check src tests tools
 | 1.0 | 2026-11-14 | Versi awal: 115 query, aturan 0/1/2, pooling, verdict, no-evidence, adjudikasi |
 | 1.1 | 2026-11-19 | Klarifikasi relevance per passage/per klaim (multi-hop dan passage `ingredients`); adjudikasi v1.1 oleh A, bukan anotator; 2 label q083 `0` -> `1` |
 | 1.2 | 2026-11-19 | Pool v2: union pool v1 + B2 fixed + B3/A2 section top-10; anotasi multi-file passage (`section` + `fixed`) |
+| 2.1 | 2026-11-26 | Split query 65 train / 50 test (cluster-aware, 0 gold-doc overlap); train hanya untuk kalibrasi, test hanya untuk angka final |
 
 Perubahan aturan harus disetujui B + C + D dan dicatat di tabel ini.
 
