@@ -20,4 +20,7 @@ benchmark/changes_v1_1.jsonl text eol=lf
 benchmark/audit_v1_1.jsonl text eol=lf
 benchmark/audit_v1_1_summary.json text eol=lf
 benchmark/annotation_log.csv text eol=lf
+benchmark/query_split.json text eol=lf
+benchmark/queries_train.jsonl text eol=lf
+benchmark/queries_test.jsonl text eol=lf
 data/processed/split.json text eol=crlf
