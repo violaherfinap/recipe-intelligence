@@ -13,10 +13,13 @@ Dokumen sumber (tidak diubah): [`spek.md`](../spek.md),
 | Handoff B (split 65/50) | [`handoff/w3-b.md`](handoff/w3-b.md) |
 | Laporan P0 grounding gate | [`../reports/a3_verify_dev.md`](../reports/a3_verify_dev.md) |
 
-Split query Week 3 (sudah di-merge ke integration, tag `w3-query-split`):
-`benchmark/query_split.json`, `benchmark/queries_train.jsonl` (65 train,
-kalibrasi), `benchmark/queries_test.jsonl` (50 test, angka final). Angka 115
-query adalah development evaluation.
+Base W3 aktif: tag **`w3-base-a3`** (split + verifier + fix kalibrasi). Mulai
+branch baru dari tag ini, bukan dari branch W3 lama.
+
+Split query Week 3 (tag data `w3-query-split`): `benchmark/query_split.json`,
+`benchmark/queries_train.jsonl` (65 train, kalibrasi),
+`benchmark/queries_test.jsonl` (50 test, angka final). Angka 115 query adalah
+development evaluation.
 
 ## Week 2 (aktif)
 
