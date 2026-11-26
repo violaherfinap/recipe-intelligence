@@ -63,8 +63,12 @@ def test_b3_b4_diff_is_grounding_planner_retry():
         "verification.max_repair_rounds",
         "verification.keep_refuted",
         "verification.abstain_on_unsupported",
+        "verification.premise_context",
         "abstain.sufficiency",
         "abstain.sufficiency_threshold",
+        "abstain.citations",
+        "abstain.temporal",
+        "abstain.require_evidence",
         "planner.enabled",
         "planner.mode",
         "planner.max_subqueries",
@@ -76,5 +80,12 @@ def test_b3_b4_diff_is_grounding_planner_retry():
     assert diff_keys(config("b3"), config("b4"))
 
 
-def test_b4_calib_toggles_sufficiency_only():
-    assert diff_keys(config("b4"), config("b4_calib")) == {"abstain.sufficiency"}
+def test_b4_calib_preserves_pre_freeze_calibration_settings():
+    # b4_calib is pinned to the settings used to produce the train-65
+    # sufficiency scores: no premise context, old tau, no citation/temporal gate.
+    assert diff_keys(config("b4"), config("b4_calib")) == {
+        "verification.premise_context",
+        "abstain.sufficiency_threshold",
+        "abstain.citations",
+        "abstain.temporal",
+    }

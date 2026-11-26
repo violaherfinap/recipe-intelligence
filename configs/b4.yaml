@@ -30,10 +30,14 @@ verification:
   max_repair_rounds: 2
   keep_refuted: false
   abstain_on_unsupported: true
+  premise_context: true
 abstain:
   enabled: true
-  sufficiency: false
-  sufficiency_threshold: 0.35
+  sufficiency: true
+  sufficiency_threshold: 0.17
+  citations: true
+  temporal: true
+  require_evidence: false
 planner:
   enabled: true
   mode: llm
