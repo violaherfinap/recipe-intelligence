@@ -1,0 +1,50 @@
+{
+  "total": 700,
+  "kinds": {
+    "directions": 270,
+    "ingredients": 270,
+    "metadata": 100,
+    "no_recipe": 30,
+    "out_of_period": 30
+  },
+  "templates": {
+    "directions_cook": 67,
+    "directions_method": 67,
+    "directions_prepared": 68,
+    "directions_steps": 68,
+    "ingredients_goes_into": 67,
+    "ingredients_list": 67,
+    "ingredients_what": 68,
+    "ingredients_which": 68,
+    "metadata_cookbook": 25,
+    "metadata_source": 25,
+    "metadata_when_book": 25,
+    "metadata_year_book": 25,
+    "no_recipe_goes_into": 7,
+    "no_recipe_list": 7,
+    "no_recipe_what": 8,
+    "no_recipe_which": 8,
+    "out_of_period_cook": 7,
+    "out_of_period_method": 7,
+    "out_of_period_prepared": 8,
+    "out_of_period_steps": 8
+  },
+  "years": {
+    "1796": 17,
+    "1851": 109,
+    "1871": 110,
+    "1887": 218,
+    "1896": 246
+  },
+  "evidence_sections": {
+    "directions": 414,
+    "ingredients": 286
+  },
+  "unique_source_docs": 700,
+  "excluded_year": 1824,
+  "forbidden_years": [],
+  "bad_evidence_ids": [],
+  "bad_source_docs": [],
+  "invalid_targets": [],
+  "dataset_sha256": "20deed873ddc10a734709590ccdbf3be84b78ff78d6e516c7e11aa143534f827"
+}

@@ -11,6 +11,7 @@
 | 2 | B | B | 13 | ≈13 | Smoke B0/B1, evaluasi A2/B2/B3, pool v2, laporan | done |
 | 2 | C | C | 10 | ≈10 | Qrels v2 pass 1, evaluasi A1, handoff | done |
 | 2 | D | D | 13 | ≈16 (termasuk closeout) | Qrels v2 pass 2, adjudikasi, Gate 2, taxonomy, A1 v2, handoff | done |
+| 3 | C | Dhea | 13 | — | Dataset LoRA, training adapter, evaluasi B5 | in progress |
 
 `≈` berarti estimasi jam kerja, bukan timer otomatis. Nilai D mencakup
 2-3 jam closeout qrels v2, A1 v2, dan dokumentasi.
@@ -157,3 +158,17 @@
 | A1 v2 rerun | `reports/a1_dev.md`, `artifacts/runs/a1_context_stats_v2.json` (lokal) | D |
 | Gate 2 report | `reports/b2b3_dev.md`, `artifacts/runs/retrieval_b2_v2.json`, `retrieval_b3_v2.json` (lokal) | D |
 | Handoff | `docs/handoff/w2-d.md` | D |
+
+## Block C - Week 3 detail (in progress)
+
+| Item | Artefak | Owner |
+| --- | --- | --- |
+| Dataset builder | `train/build_dataset.py`, `src/recipe_qa/training/dataset.py` | Dhea |
+| Dataset 700 contoh + hash + audit | `train/dataset.jsonl`, `train/dataset.sha256`, `train/dataset_audit.json` | Dhea |
+| Test kebocoran dataset | `tests/unit/test_lora_dataset.py` | Dhea |
+| Dukungan adapter | `src/recipe_qa/config.py`, `src/recipe_qa/generation/generate.py` | Dhea |
+| Config B5 | `configs/b5.yaml` | Dhea |
+| Training LoRA | `train/lora_config.yaml`, `train/train_lora.py` | Dhea |
+| Adapter + log | `train/adapter/`, `train/logs/` (lokal, gitignored) | Dhea |
+| Evaluasi B5 | `reports/b5_train65.md`, `reports/b5_test50.md` | Dhea |
+| Handoff | `docs/handoff/w3-c.md` | Dhea |

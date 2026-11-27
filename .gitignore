@@ -57,3 +57,11 @@ benchmark/pool_v2_meta.jsonl
 /benchmark/verdict_answer_sheet_d*.csv
 /benchmark/qrels_d.jsonl.bak
 /benchmark/verdict_qrels_d.jsonl.bak
+
+# LoRA training artifacts (adapter stays out of Git; dataset/hashes are committed)
+/w3-c-adapter/
+/train/archive/
+/train/adapter/
+/train/logs/
+/train/smoke_adapter/
+/train/smoke_logs/

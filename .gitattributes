@@ -25,3 +25,6 @@ benchmark/queries_train.jsonl text eol=lf
 benchmark/queries_test.jsonl text eol=lf
 benchmark/nli_probe_train.jsonl text eol=lf
 data/processed/split.json text eol=crlf
+train/dataset.jsonl text eol=lf
+train/dataset.sha256 text eol=lf
+train/dataset_audit.json text eol=lf

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from recipe_qa.config import flatten_config, load_yaml
+from recipe_qa.config import flatten_config, load_system_config, load_yaml
 
 ROOT = Path("configs")
 
@@ -78,3 +78,13 @@ def test_b3_b4_diff_is_grounding_planner_retry():
 
 def test_b4_calib_toggles_sufficiency_only():
     assert diff_keys(config("b4"), config("b4_calib")) == {"abstain.sufficiency"}
+
+
+def test_b4_b5_diff_is_adapter_only():
+    assert diff_keys(config("b4"), config("b5")) == {"model.adapter"}
+
+
+def test_b5_config_loads_adapter_path():
+    parsed = load_system_config(ROOT / "b5.yaml")
+    assert parsed.model.adapter == "train/adapter"
+    assert parsed.parent == "b4"

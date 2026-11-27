@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 
 from ..config import ModelConfig
 from .schema import AnswerPayload, Claim, EvidenceItem
@@ -206,6 +207,13 @@ class AnswerGenerator:
             "bfloat16": torch.bfloat16,
         }.get(config.dtype, torch.float32)
         self.model = AutoModelForCausalLM.from_pretrained(config.name, torch_dtype=dtype)
+        if config.adapter:
+            from peft import PeftModel
+
+            adapter_path = Path(config.adapter)
+            if not adapter_path.exists():
+                raise FileNotFoundError(f"adapter not found: {adapter_path}")
+            self.model = PeftModel.from_pretrained(self.model, str(adapter_path))
         self.model.eval()
 
     def generate(self, prompt: str) -> str:

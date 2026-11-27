@@ -1,0 +1,32 @@
+base_model: Qwen/Qwen2.5-0.5B-Instruct
+dataset: train/dataset.jsonl
+output_dir: train/adapter
+log_dir: train/logs
+dtype: float32
+max_seq_len: 768
+batch_size: 1
+grad_accum: 8
+epochs: 1
+learning_rate: 0.0002
+weight_decay: 0.01
+warmup_ratio: 0.03
+max_grad_norm: 1.0
+seed: 42
+val_mode: template_holdout
+val_fraction: 0.0
+eval_every_steps: 20
+log_every_steps: 5
+threads: 8
+gradient_checkpointing: true
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj

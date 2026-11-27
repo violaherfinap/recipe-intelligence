@@ -174,3 +174,43 @@ bagian **Rebuild di laptop lain**.
 - **Dampak A:** baseline B0-B3 115 query menjadi development evaluation; A harus merge split, review + tag `w3-query-split`, rerun baseline di test-50, kalibrasi tau di train-65, lalu config freeze (`w3-config-frozen`) sebelum B4 test-50.
 - **Guardrail baru:** kalibrasi hanya train-65; test-50 hanya angka final; passage gold milik 65 query train tetap `split=test` sehingga tidak boleh dipakai sebagai teks training LoRA.
 - **Handoff diperbarui:** `docs/handoff/w3.md`, `docs/handoff/w3-notes.md`. Dev set, branch label dev, dan tag `w3-dev-frozen` dihapus dari alur.
+
+## Week 3 - Block C (Orang C/Dhea) - progress - 2026-11-26
+
+- **Selesai:** dataset LoRA 700 contoh dari `split=train` tanpa 1824 (`train/dataset.jsonl`, SHA-256 `7b76145d...`); builder + audit + test; dukungan adapter di `ModelConfig`/`AnswerGenerator`; `configs/b5.yaml`; `train/train_lora.py` + `train/lora_config.yaml`; smoke training 1 contoh (49,7 detik, peak RSS 2.401,5 MB) dan adapter smoke bisa di-load; 234 test lulus, ruff bersih.
+- **Belum:** training penuh 1 epoch, evaluasi B5 train-65/OOD, adapter final + upload Drive, `reports/b5_train65.md`, B5 test-50 setelah `w3-config-frozen`.
+- **Berikutnya untuk C:** jalankan training penuh overnight, evaluasi B5, lalu refresh `configs/b5.yaml` dari B4 frozen sebelum test-50; untuk D: adapter menyusul via Drive.
+- **Blocker:** `w3-config-frozen`, `reports/b4_train65.md`, dan hasil B4 test-50 belum ada.
+
+**Branch:** `feat/w3-c-lora-b5`. **Dokumen lengkap:** `docs/handoff/w3-c.md`.
+
+## Week 3 - Block C (Orang C/Dhea) - v1 eval + dataset v2 - 2026-11-27
+
+- **Selesai:** training v1 1 epoch (84 step, 19.016 detik, peak RSS 2.634,8 MB; adapter SHA-256 `77bf805d...`); B5 train-65 v1 65/65 schema valid tetapi 60/65 abstain (92,3%) dan raw output memantulkan `example_id` training; OOD 1824 10/10 abstain. Diagnosis: `target.query_id` = `example_id`, template terlalu seragam, abstain 100/700.
+- **Dataset v2:** 700 contoh, komposisi 270/270/100/30/30, `query_id` konstan `"q"`, 4 variasi template per jenis + `template_id`; SHA-256 `20deed87...`; v1 diarsipkan di `train/archive/v1/` (gitignored). 234 test lulus, ruff bersih, benchmark valid.
+- **Belum:** retrain v2, sanity check, eval B5 v2 train-65/OOD, `reports/b5_train65.md`, adapter final + Drive, B5 test-50 setelah freeze.
+- **Berikutnya untuk C:** ubah validasi `train_lora.py` berbasis `template_id`, retrain v2, sanity 10 query, lalu full eval; untuk D: adapter menyusul via Drive.
+- **Blocker:** `w3-config-frozen`, `reports/b4_train65.md`, hasil B4 test-50.
+
+## Week 3 - Block C (Orang C/Dhea) - split holdout siap - 2026-11-27
+
+- **Selesai:** adapter v1 + logs diarsipkan ke `train/archive/v1/` (SHA-256 adapter `77bf805d...`); `split_template_holdout` ditambahkan; `train_lora.py` mendukung `val_mode: template_holdout`; `lora_config.yaml` memakai mode itu. Split aktual: 527 train / 173 val; template val: `directions_cook`, `ingredients_goes_into`, `metadata_when_book`, `no_recipe_list`, `out_of_period_method`. 236 test lulus, ruff bersih, benchmark valid.
+- **Belum:** retrain v2, sanity check, eval B5 v2, `reports/b5_train65.md`, adapter final + Drive.
+- **Berikutnya:** retrain v2 (`uv run python train/train_lora.py --config train/lora_config.yaml`), sanity 10 query, lalu full eval.
+
+## Week 3 - Block C (Orang C/Dhea) - v2 trained, sanity gagal - 2026-11-27
+
+- **Training v2 selesai:** 66 step, 16.808,42 detik, peak RSS 2.611,6 MB; eval loss `0.0306 -> 0.0150 -> 0.0121`; adapter SHA-256 `392fe5f5...`.
+- **Sanity v2:** 10/10 schema valid, 10/10 abstain (9 `no_recipe`, 1 `out_of_period`); tidak ada echo ID training. `q001`, `q005`, `q010`, `q021`, `q040`, `q043`, `q071` salah abstain; `q082` `out_of_period`; `q094`/`q115` benar abstain.
+- **B4 control:** 8/10 schema valid, 9/10 abstain; `q021` dijawab benar ("one hour"); `q040`/`q094` `format_error`. Over-abstain juga terjadi tanpa adapter, jadi masalah sistemik (retrieval/verifier/prompt), bukan hanya LoRA.
+- **Package:** `w3-c-adapter/` (adapter v2 + logs + dataset + SHA256SUMS + README candidate) siap untuk Vio; total 48.213.967 byte.
+- **Belum:** full eval B5 v2, `reports/b5_train65.md`, keputusan pipeline/retrain v3, B5 test-50 setelah freeze.
+- **Berikutnya:** kirim package ke Vio sebagai candidate; minta `w3-config-frozen` ke Lois; tunjukkan B4 control vs v2 ke tim; jangan retrain sebelum keputusan.
+
+## Week 3 - Block C (Orang C/Dhea) - handoff status & action request - 2026-11-27
+
+- **Dokumen:** `docs/handoff/w3-c-status.md`; adapter Drive: https://drive.google.com/drive/folders/1BT67FGjPQKgVeCwYP-S1JJeWEkBG3917?usp=sharing
+- **Frozen check:** commit freeze `a6b7a26` ada di `origin/feat/w3-a-calibration`, tetapi tag `w3-config-frozen` belum ada di remote saat `git fetch --tags`. `reports/b4_train65.md` belum ada; `reports/b4_test50.md` ada di branch A.
+- **B4 test-50 dari A:** schema 49/50, abstain 39/50 (78%); 20 dari 39 abstain dipicu verifikasi; `q099` false confident, `q062` temporal salah.
+- **Aksi:** Lois push tag frozen + lengkapi B4 train-65 report; Anin audit verifier/abstain; Vio perbaiki retrieval/A6; Dhea siapkan branch test-50 setelah tag ada.
+- **Blocker:** tag frozen belum di remote, B4 train-65 report belum ada, B5 train-65/OOD/test-50 belum jalan.
