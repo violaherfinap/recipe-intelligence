@@ -10,6 +10,8 @@
 | 3 (dev) | [`a3_verify_dev.md`](a3_verify_dev.md) | D | P0 grounding gate: verifier NLI, abstain, repair; sample 24 query |
 | 3 (train) | [`verifier_calibration.md`](verifier_calibration.md) | B | NLI threshold di 65 train; premise context, ablasi, error analysis |
 | 3 (dev) | [`b0_b3_test_s1.md`](b0_b3_test_s1.md) | A | Baseline B0-B3 development evaluation (115 query); angka test final dihitung di test-50 |
+| 3 (train) | [`b4_train65.md`](b4_train65.md) | B | B4 final di 65 train dari artefak A; sumber abstain, false refusal proxy, gap ke test-50 |
+| 3 (audit) | [`verifier_audit.md`](verifier_audit.md) | B | Diagnosis verifier/abstain: floor coverage, klaim agregat, citation gate, relevansi klaim |
 
 ## Konteks Week 2
 
