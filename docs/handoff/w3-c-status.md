@@ -211,7 +211,7 @@ Catatan:
 
 ## 11. Blockers
 
-1. `reports/b4_train65.md` belum ada (butuh run B4 final train-65).
+1. `reports/b4_train65.md` belum ada (run B4 train-65 sudah selesai; report milik B).
 2. B5 train-65 full dan OOD 1824 belum jalan.
 3. B5 test-50 belum bisa jalan.
 4. Keputusan pipeline-first vs v3 belum diambil.

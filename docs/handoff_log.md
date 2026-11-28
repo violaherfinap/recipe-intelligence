@@ -191,6 +191,6 @@ bagian **Rebuild di laptop lain**.
 
 ## Week 3 - Block A - Sync tag, integration, artefak test-50 - 2026-11-28
 
-- **Selesai:** tag `w3-config-frozen` di-push & terverifikasi (`ca35609` -> commit `a6b7a26`); `configs/b4.yaml` SHA-256 `57339e7b6b4a9d06630f26d7485d80d7fc2e5469c1fe5ab35831b240029c6a44`; `feat/w3-integration` sinkron ke `b8a50e7` (frozen config + `reports/b4_test50.md`); artefak `b4-test50-s1` + `SHA256SUMS.txt` dibagikan via Drive (link di `docs/handoff/w3.md` section 16.0).
-- **Belum:** run B4 final train-65 + upload; `reports/b4_train65.md` (B); keputusan bug `verify_claims`/`sufficiency` (fix + re-freeze `w3-config-frozen-r2` vs known limitation).
-- **Berikutnya:** A run `configs/b4.yaml` di train-65 -> upload `b4-train65-s1` -> B tulis `b4_train65.md`; B audit q099/q062 dari artefak test-50.
+- **Selesai:** tag `w3-config-frozen` di-push & terverifikasi (`ca35609` -> commit `a6b7a26`); `configs/b4.yaml` SHA-256 `57339e7b6b4a9d06630f26d7485d80d7fc2e5469c1fe5ab35831b240029c6a44`; `feat/w3-integration` sinkron ke `b8a50e7` (frozen config + `reports/b4_test50.md`); artefak `b4-test50-s1` + `SHA256SUMS.txt` dibagikan via Drive (link di `docs/handoff/w3.md` section 16.0); B4 final train-65 dijalankan (`artifacts/runs/b4-train65-s1/`; 65 query, schema 61/65, abstain 48/65; `results.jsonl` SHA-256 `8db0f7dc3132dacceb1ee7dbdaf429e92a06e329617e60024d49cb99d28a299c`).
+- **Belum:** upload `b4-train65-s1` ke Drive; `reports/b4_train65.md` (B); keputusan bug `verify_claims`/`sufficiency` (fix + re-freeze `w3-config-frozen-r2` vs known limitation).
+- **Berikutnya:** A upload `b4-train65-s1` -> B tulis `b4_train65.md`; B audit q099/q062 dari artefak test-50.
