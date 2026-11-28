@@ -204,6 +204,7 @@ Catatan:
 | B5 sanity | `artifacts/runs/b5-v2-sanity/` | ada |
 | B4 control | `artifacts/runs/b4-sanity/` | ada |
 | B4 test-50 (audit) | `artifacts/runs/b4-test50-s1/` | Drive: https://drive.google.com/drive/folders/1ou6L22amy3z605wMoiQkZS_iwwmRfAd0 |
+| B4 train-65 (report) | `artifacts/runs/b4-train65-s1/` | Drive: https://drive.google.com/drive/folders/1k2mPCF_xIP_SEbSGGJs7YCCHTyVdKKDH |
 | B5 test-50 | `artifacts/runs/b5-test50-s1/` | pending |
 | B5 report | `reports/b5_test50.md` | pending |
 | Training log | `train/logs/resource.json` | ada |
