@@ -188,3 +188,9 @@ bagian **Rebuild di laptop lain**.
 - **Selesai:** `docs/handoff/w3.md` §16 dan ringkasan di `docs/handoff/w3-notes.md`; berisi guardrail post-freeze, tugas B/C/D, temuan B4 test-50 (`q099`, `q062`, abstain 78%), dan keputusan terbuka.
 - **Belum:** keputusan sumber `reports/b4_train65.md`, hash split di manifest, dan ACC Q13.
 - **Berikutnya:** B/C/D fetch tag `w3-config-frozen` dan branch dari situ; jangan memakai `w3-base-a3` sebagai base kode.
+
+## Week 3 - Block A - Sync tag, integration, artefak test-50 - 2026-11-28
+
+- **Selesai:** tag `w3-config-frozen` di-push & terverifikasi (`ca35609` -> commit `a6b7a26`); `configs/b4.yaml` SHA-256 `57339e7b6b4a9d06630f26d7485d80d7fc2e5469c1fe5ab35831b240029c6a44`; `feat/w3-integration` sinkron ke `b8a50e7` (frozen config + `reports/b4_test50.md`); artefak `b4-test50-s1` + `SHA256SUMS.txt` dibagikan via Drive (link di `docs/handoff/w3.md` section 16.0).
+- **Belum:** run B4 final train-65 + upload; `reports/b4_train65.md` (B); keputusan bug `verify_claims`/`sufficiency` (fix + re-freeze `w3-config-frozen-r2` vs known limitation).
+- **Berikutnya:** A run `configs/b4.yaml` di train-65 -> upload `b4-train65-s1` -> B tulis `b4_train65.md`; B audit q099/q062 dari artefak test-50.
